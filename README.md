@@ -13,6 +13,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 - `npm run dev` — servidor local
 - `npm run build` — gera o site estático em `dist/` (é o conteúdo de `dist/` que sobe para a hospedagem)
 - `python3 tools/versao-teste.py` — gera `teste/index.html`, a versão de testes num arquivo só
+- `python3 tools/build-v2-teste.py` — depois do `npm run build`, gera `dist-v2-teste/` (e `.zip`) para a subpasta `/v2-teste/`: links com prefixo, `noindex, nofollow` em todas as páginas, sem canonical e sem o `.htaccess` de produção. É o que sobe para `public_html/v2-teste/`
 
 ## Onde mexer
 

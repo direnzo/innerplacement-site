@@ -18,3 +18,7 @@ dist/
 
 # versão de teste num arquivo só (gerada por tools/versao-teste.py)
 /teste/
+
+# variante para a subpasta /v2-teste/ (gerada por tools/build-v2-teste.py)
+/dist-v2-teste/
+/dist-v2-teste.zip
