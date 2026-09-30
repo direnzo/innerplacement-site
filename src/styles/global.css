@@ -171,34 +171,50 @@
   @keyframes il-fluir { to { stroke-dashoffset: -12.4px; } }
 }
 
-/* Bloco 2 · movimento (Por que a Inner, Prova, Método). Ganchos b2-* e met-* de
-   tools/ilustracao/bloco2.mts.
+/* Bloco 2 · movimento (Por que a Inner, Prova, Clientes, Método). Ganchos b2-*, met-* e
+   fundo-par de tools/ilustracao/bloco2.mts.
    - Entrada genérica: o script põe .il-anim nos elementos [data-entrada] (animações pausadas no
      estado inicial) e .visto quando aparecem na tela.
    - Números [data-conta]: o script conta de 0 ao valor final ao aparecer.
-   - Método: [data-rolagem="elemento"] recebe --rolagem de 0 (entrando pela base da tela) a 1 (no
-     terço de cima); os círculos se aproximam e o objetivo nasce no encontro.
+   - [data-rolagem="elemento"] recebe --rolagem de 0 (entrando pela base da tela) a 1 (no terço de
+     cima): no método os círculos se aproximam e o objetivo nasce no encontro; nas formas de fundo
+     (.fundo-par) há um leve deslocamento vertical.
    Sem script, ou com "reduzir movimento", tudo aparece completo e parado. */
 @layer components {
-  .il-anim .b2-desenho { stroke-dasharray: 1 1; animation: il-desenha .9s .1s cubic-bezier(.45, 0, .25, 1) both paused; }
-  .il-anim :is(.b2-marcos > *, .b2-rosa, .b2-anel) { transform-box: fill-box; transform-origin: center; }
-  .il-anim .b2-marcos > * { animation: il-pop .3s cubic-bezier(.3, 1.6, .5, 1) both paused; }
-  .il-anim .b2-marcos > :nth-child(1) { animation-delay: .25s; }
-  .il-anim .b2-marcos > :nth-child(2) { animation-delay: .4s; }
-  .il-anim .b2-marcos > :nth-child(3) { animation-delay: .55s; }
-  .il-anim .b2-marcos > :nth-child(4) { animation-delay: .7s; }
-  .il-anim .b2-marcos > :nth-child(5) { animation-delay: .8s; }
-  .il-anim .b2-marcos > :nth-child(6) { animation-delay: .9s; }
-  .il-anim .b2-marcos > :nth-child(7) { animation-delay: 1s; }
-  .il-anim .b2-rosa { animation: il-floresce .55s .85s cubic-bezier(.2, 1.3, .4, 1) both paused; }
-  .il-anim .b2-anel { animation: b2-anel .7s cubic-bezier(.2, .9, .3, 1) both paused; }
-  .il-anim .b2-anel-2 { animation-delay: .2s; }
-  .il-anim .b2-anel-3 { animation-delay: .4s; }
-  .il-anim .b2-grupo { animation: il-chega .6s ease-out both paused; }
-  .il-anim .b2-quem { animation: il-chega .45s ease-out both paused; }
-  .il-anim.visto :is(.b2-desenho, .b2-marcos > *, .b2-rosa, .b2-anel, .b2-grupo, .b2-quem) { animation-play-state: running; }
-  @keyframes b2-anel { from { opacity: 0; scale: .45; } }
+  .il-anim :is(.b2-bola, .b2-barra, .b2-casas > *, .b2-rede > circle, .b2-arco-novo) { transform-box: fill-box; }
+  .il-anim .b2-bola-esq { animation: b2-da-esq .7s cubic-bezier(.2, .8, .3, 1) both paused; }
+  .il-anim .b2-bola-dir { animation: b2-da-dir .7s cubic-bezier(.2, .8, .3, 1) both paused; }
+  .il-anim .b2-lente { animation: b2-surge .5s .6s ease-out both paused; }
+  .il-anim .b2-rede { animation: b2-surge .4s .75s ease-out both paused; }
+  .il-anim .b2-quem { animation: il-chega .45s .1s ease-out both paused; }
+  .il-anim .b2-arco-novo { transform-origin: bottom; animation: b2-cresce .6s .25s cubic-bezier(.2, .9, .3, 1) both paused; }
+  .il-anim .b2-org { animation: b2-surge .5s ease-out both paused; }
+  .il-anim .b2-seta { animation: b2-sobe .45s .7s cubic-bezier(.2, .9, .3, 1) both paused; }
+  .il-anim .b2-barra { transform-origin: bottom; animation: b2-cresce .55s cubic-bezier(.2, .9, .3, 1) both paused; }
+  .il-anim .b2-barra:nth-child(2) { animation-delay: .15s; }
+  .il-anim .b2-barra:nth-child(3) { animation-delay: .3s; }
+  .il-anim .b2-casas > * { transform-origin: center; animation: il-pop .25s calc(.1s + var(--i) * 55ms) cubic-bezier(.3, 1.6, .5, 1) both paused; }
+  .il-anim .b2-fileira { animation: b2-sobe .5s ease-out both paused; }
+  .il-anim .b2-fileira:nth-child(2) { animation-delay: .15s; }
+  .il-anim .b2-fileira:nth-child(3) { animation-delay: .3s; }
+  .il-anim .b2-rosca { animation: b2-rosca 1.1s cubic-bezier(.3, 0, .2, 1) both paused; }
+  .il-anim.visto :is(.b2-bola, .b2-lente, .b2-rede, .b2-quem, .b2-arco-novo, .b2-org, .b2-seta, .b2-barra, .b2-casas > *, .b2-fileira, .b2-rosca) { animation-play-state: running; }
+  @keyframes b2-da-esq { from { opacity: 0; translate: -12px 0; } }
+  @keyframes b2-da-dir { from { opacity: 0; translate: 12px 0; } }
+  @keyframes b2-surge { from { opacity: 0; } }
+  @keyframes b2-cresce { from { scale: 1 0; } }
+  @keyframes b2-sobe { from { opacity: 0; translate: 0 8px; } }
+  @keyframes b2-rosca { from { stroke-dasharray: 0 999; } }
+
+  /* Clientes: logos entram em sequência; no hover o cartão sobe e fica branco. */
+  .logos .logo { transition: translate .25s ease, background-color .25s ease, box-shadow .25s ease; }
+  .logos .logo svg { opacity: .78; transition: opacity .25s ease, scale .25s ease; }
+  .logos .logo:hover { translate: 0 -3px; background: #fff; box-shadow: 0 0 0 1.5px var(--color-coral), 0 10px 24px rgb(35 31 32 / .08); }
+  .logos .logo:hover svg { opacity: 1; scale: 1.06; }
+  .logos.il-anim .logo { animation: b2-sobe .45s calc(var(--i) * 60ms) ease-out both paused; }
+  .logos.il-anim.visto .logo { animation-play-state: running; }
 
   .met-bola { translate: calc((1 - var(--rolagem, 1)) * var(--dx) * 40px) calc((1 - var(--rolagem, 1)) * var(--dy) * 30px); }
   .met-objetivo { transform-box: fill-box; transform-origin: center; scale: calc(.3 + .7 * var(--rolagem, 1)); opacity: calc(var(--rolagem, 1) * 1.4 - .4); }
+  .fundo-par { translate: 0 calc((1 - var(--rolagem, 1)) * 70px); }
 }

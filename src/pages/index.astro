@@ -9,12 +9,16 @@ import DepoVideo from '../components/DepoVideo.astro';
 import Acordeao from '../components/Acordeao.astro';
 import heroSvg from '../../imagens/inner-H01-hero-v4.svg?raw';
 // Bloco 2 (propostas, tools/ilustracao/bloco2.mts): entram em imagens/ quando aprovadas.
-import h04 from '../../docs/ilustracao/bloco-2/H04-transicao.svg?raw';
-import h05 from '../../docs/ilustracao/bloco-2/H05-crescimento.svg?raw';
+import h04 from '../../docs/ilustracao/bloco-2/H04a-duas-leituras.svg?raw';
+import h05 from '../../docs/ilustracao/bloco-2/H05b-pilulas.svg?raw';
 import h06 from '../../docs/ilustracao/bloco-2/H06-capa.svg?raw';
-import h21 from '../../docs/ilustracao/bloco-2/H21-anos.svg?raw';
-import h22 from '../../docs/ilustracao/bloco-2/H22-profissionais.svg?raw';
-import h23 from '../../docs/ilustracao/bloco-2/H23-recolocados.svg?raw';
+import nAnos from '../../docs/ilustracao/bloco-2/N-anos.svg?raw';
+import nPessoas from '../../docs/ilustracao/bloco-2/N-pessoas.svg?raw';
+import nPorcento from '../../docs/ilustracao/bloco-2/N-porcento.svg?raw';
+import fBola from '../../docs/ilustracao/bloco-2/F-bola.svg?raw';
+import fArcos from '../../docs/ilustracao/bloco-2/F-arcos.svg?raw';
+import fSetas from '../../docs/ilustracao/bloco-2/F-setas.svg?raw';
+import fOval from '../../docs/ilustracao/bloco-2/F-oval.svg?raw';
 import metodoSvg from '../../docs/ilustracao/bloco-2/M-metodo.svg?raw';
 import { miolo } from '../lib/svg';
 import { depoimentos as D } from '../data/depoimentos';
@@ -23,7 +27,9 @@ import { numeros, rotas } from '../data/site';
 
 // Painel do hero: H-01 aprovada (SVG gerado por tools/ilustracao/hero.mts), inline.
 const painel = miolo(heroSvg);
-const glifos = [h21, h22, h23];
+const glifos = [nAnos, nPessoas, nPorcento];
+// Formas de fundo: decorativas, nas bordas, com leve deslocamento na rolagem (.fundo-par).
+const fundo = (svg: string, vb: string, cls: string) => `<svg viewBox="${vb}" class="fundo-par pointer-events-none absolute ${cls}" aria-hidden="true" data-rolagem="elemento">${miolo(svg)}</svg>`;
 
 const metodo = [
   ['Contexto individual', 'Quem você é, onde está agora e o que está em jogo nesta escolha.'],
@@ -57,7 +63,9 @@ const metodo = [
   <Caminhos />
 
   <!-- 3 · Por que a Inner -->
-  <section class="bloco bg-white py-9 md:py-12" aria-labelledby="porque-titulo">
+  <section class="bloco relative isolate bg-white py-9 md:py-12" aria-labelledby="porque-titulo">
+    <Fragment set:html={fundo(fBola, '0 0 400 400', '-right-40 -top-40 -z-10 w-[340px] md:-right-32 md:-top-48 md:w-[460px]')} />
+    <Fragment set:html={fundo(fSetas, '0 0 240 120', 'bottom-6 -left-10 -z-10 w-[160px] opacity-30 md:w-[220px]')} />
     <div class="wrap flex flex-col gap-7">
       <div class="grid gap-4 md:grid-cols-2 md:gap-14">
         <h2 id="porque-titulo" class="h2">Carreira se decide com método — <strong>e se realiza com acompanhamento.</strong></h2>
@@ -82,7 +90,10 @@ const metodo = [
     </div>
   </section>
 
-  <!-- 4 · Prova -->
+  <!-- 4 · Prova (e Clientes): formas de fundo nas bordas da página -->
+  <div class="relative isolate flex flex-col gap-6 overflow-x-clip md:gap-8">
+  <Fragment set:html={fundo(fOval, '0 0 200 280', '-left-24 top-24 -z-10 w-[150px] opacity-50 md:-left-16 md:w-[200px]')} />
+  <Fragment set:html={fundo(fBola, '0 0 400 400', '-right-48 top-[45%] -z-10 w-[360px] md:-right-40 md:w-[520px]')} />
   <section class="wrap flex flex-col gap-6 pt-2 md:gap-7" aria-labelledby="prova-titulo">
     <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-12">
       <div class="flex max-w-[640px] flex-col gap-2.5">
@@ -96,11 +107,11 @@ const metodo = [
       <DepoCard d={D.gustavo} />
       <DepoCard d={D.otavio} />
     </div>
-    <div class="grid grid-cols-3 gap-3 border-t border-tinta/15 pt-5 md:flex md:gap-20 md:pt-6">
+    <div class="mx-auto grid w-full max-w-[820px] grid-cols-3 gap-3 border-t border-tinta/15 pt-6 md:gap-10 md:pt-8">
       {numeros.map((n, i) => (
-        <div class="flex flex-col gap-1.5">
-          <svg viewBox="0 0 120 28" class="h-6 w-auto self-start md:h-7" aria-hidden="true" data-entrada set:html={miolo(glifos[i])} />
-          <b data-conta class="text-[28px] font-light leading-none tracking-[-.02em] tabular-nums md:text-[40px]">{n.n}</b>
+        <div class="flex flex-col items-center gap-2 text-center">
+          <svg viewBox="0 0 96 64" class="h-11 w-auto md:h-16" aria-hidden="true" data-entrada set:html={miolo(glifos[i])} />
+          <b data-conta class="text-[28px] font-light leading-none tracking-[-.02em] tabular-nums md:text-[44px]">{n.n}</b>
           <span class="max-w-[190px] text-[13px] leading-[1.4] text-texto md:text-[14px]">{n.t}</span>
         </div>
       ))}
@@ -109,15 +120,17 @@ const metodo = [
   </section>
 
   <Clientes />
+  </div>
 
   <!-- 5 · Método -->
-  <section class="bloco bg-areia-c py-9 md:py-12" aria-labelledby="metodo-titulo">
-    <div class="wrap grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-14">
+  <section class="bloco relative isolate bg-areia-c py-9 md:py-12" aria-labelledby="metodo-titulo">
+    <Fragment set:html={fundo(fArcos, '0 0 400 400', '-bottom-10 -left-24 -z-10 w-[300px] md:-left-16 md:w-[420px]')} />
+    <div class="wrap grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_460px] lg:gap-14">
       <div class="flex flex-col gap-5">
         <h2 id="metodo-titulo" class="h2">Antes de mover, <strong>entender.</strong></h2>
         <p class="lead">Você não precisa recomeçar do zero. Precisa lapidar o que já construiu — e isso começa por entender. O método é uma conversa estruturada que percorre quatro dimensões, para que a sua decisão de carreira se construa conectada a você e ao cenário em que ela vai acontecer. É no encontro dessas quatro dimensões que o seu objetivo ganha forma.</p>
       </div>
-      <div class="flex justify-center lg:row-span-2"><svg viewBox="0 0 412.79 295.26" class="h-auto w-full max-w-[250px] md:max-w-[340px] lg:max-w-[400px]" role="img" aria-label="Diagrama do método: contexto individual, ambiente e cultura, potencial e recursos e cenário futuro se encontram no objetivo" data-rolagem="elemento" set:html={miolo(metodoSvg)} /></div>
+      <div class="flex justify-center lg:row-span-2"><svg viewBox="0 0 412.79 295.26" class="h-auto w-full max-w-[290px] overflow-visible md:max-w-[400px] lg:max-w-[460px]" role="img" aria-label="Diagrama do método: contexto individual, ambiente e cultura, potencial e recursos e cenário futuro se encontram no objetivo" data-rolagem="elemento" set:html={miolo(metodoSvg)} /></div>
       <ul class="grid grid-cols-2 gap-x-4 gap-y-4 border-t border-tinta/15 pt-5 md:gap-x-8 md:gap-y-5" role="list">
         {metodo.map(([t, p]) => (
           <li class="flex flex-col gap-1"><h3 class="text-[15px] font-semibold md:text-[16px]">{t}</h3><p class="text-[14px] leading-[1.5] text-texto md:text-[15px]">{p}</p></li>

@@ -1,5 +1,6 @@
 ---
 import Svg from './Svg.astro';
+import Badge from './Badge.astro';
 import { kit } from '../data/kit';
 import { logos } from '../data/site';
 const cap = (id: string, h: number, wmax: number) => {
@@ -10,12 +11,13 @@ const cap = (id: string, h: number, wmax: number) => {
 ---
 <section class="wrap" aria-labelledby="clientes-titulo">
   <div class="flex flex-col gap-5 rounded-[28px] bg-white p-5 md:gap-6 md:p-9">
-    <h2 id="clientes-titulo" class="h2">Alguns dos <strong>nossos clientes</strong></h2>
-    <ul class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5 md:gap-3.5" role="list">
-      {logos.map((l) => {
+    <!-- Selo "Clientes": texto novo, pendente de aprovação do dono (não está na documentação funcional). -->
+    <div class="flex flex-col gap-3"><Badge>Clientes</Badge><h2 id="clientes-titulo" class="h2">Alguns dos <strong>nossos clientes</strong></h2></div>
+    <ul class="logos grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5 md:gap-3.5" role="list" data-entrada>
+      {logos.map((l, i) => {
         const m = cap(l.id, l.h * 0.56, 112), d = cap(l.id, l.h, 150);
         return (
-          <li class="flex h-[56px] items-center justify-center rounded-[20px] bg-areia-c text-tinta/90 md:h-[100px]" data-autorizado={l.autorizado ? 'sim' : 'pendente'}>
+          <li class="logo flex h-[56px] items-center justify-center rounded-[20px] bg-areia-c text-tinta md:h-[100px]" style={`--i:${i}`} data-autorizado={l.autorizado ? 'sim' : 'pendente'}>
             <Svg name={'logo_' + l.id} w={d.w} h={d.h} label={l.nome} class="h-[var(--hm)] w-auto md:h-[var(--hd)]" style={`--hm:${m.h}px;--hd:${d.h}px`} />
           </li>
         );

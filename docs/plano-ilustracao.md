@@ -162,19 +162,34 @@ encaixe no site → merge.
 ## Bloco 2 · Por que a Inner, Prova e Método
 
 Branch `imagens/bloco-2`. Gerador: `tools/ilustracao/bloco2.mts` → `docs/ilustracao/bloco-2/`. As
-propostas já estão aplicadas na home dessa branch (importadas de `docs/`; vão para `imagens/` quando
+propostas estão aplicadas na home dessa branch (importadas de `docs/`; vão para `imagens/` quando
 aprovadas). Revisão com o HTML real: https://claude.ai/artifact/Tn4XLpFGHALBnh7ZvE2BmD
+
+### Feedback do dono na rodada 1 (30/09) — vale para os próximos blocos
+
+- **Trilha pontilhada subindo até a rosácea já está repetitiva.** Usar só onde conta um percurso
+  (hero, discos); buscar outros motivos nas demais peças.
+- **Nada que lembre halo ou imagem religiosa** (anéis em volta da cabeça).
+- **Ícones de números com objeto próprio**, não variações de bolinhas e traços: calendário para
+  anos, multidão para pessoas, gráfico para porcentagem.
+- **Mais elementos no fundo**, preenchendo as bordas das seções, de forma sutil.
+- Aprovados na rodada 1: a capa de vídeo em SVG (**desde que fique por cima da miniatura real do
+  vídeo**) e a animação do método (com ajustes: maior, sem corte, rótulos centralizados).
+
+### Rodada 2
 
 | Arquivo | Onde | Ideia |
 | --- | --- | --- |
-| `H04-transicao.svg` | Por que a Inner, coluna transição | A pessoa parte; a rota passa por três marcos e chega à rosácea (do primeiro encontro à recolocação) |
-| `H05-crescimento.svg` | Por que a Inner, coluna crescer | Cabeça coral com anéis de impacto que se expandem, dentro de um arco (espaço reservado) |
-| `H21-anos.svg`, `H22-profissionais.svg`, `H23-recolocados.svg` | Prova, acima dos números | Trajetória longa; muitas pessoas; poucos marcos até a rosácea |
-| `H06-capa.svg` | Prova, capa do vídeo da Gisele | Bolas translúcidas, oval e trilha do kit, centro livre para o play; comparada com a H-06 do ChatGPT |
-| `M-metodo.svg` | Método | Diagrama oficial redesenhado (mesma geometria, rótulos como texto) para animar |
+| `H04a-duas-leituras.svg` (na home) / `H04b-passagem.svg` | Por que a Inner, transição | Profissional e mercado em círculos que se sobrepõem / o par passa de um arco menor para um maior |
+| `H05b-pilulas.svg` (na home) / `H05a-organograma.svg` | Por que a Inner, crescer | Pílulas que crescem, com a seta da marca / a pessoa se destaca no organograma |
+| `N-anos.svg`, `N-pessoas.svg`, `N-porcento.svg` | Prova, números (centralizados) | Calendário de 15 casas; multidão em três fileiras; rosca de 86% |
+| `H06-capa.svg` / `H06-sobre.svg` | Prova, vídeo | Capa inteira (sem miniatura) / moldura sobre a miniatura (`DepoVideo` aceita `thumb`) |
+| `F-bola.svg`, `F-arcos.svg`, `F-setas.svg`, `F-oval.svg` | Fundos das seções | Formas da marca nas bordas, com leve deslocamento na rolagem (`.fundo-par`) |
+| `M-metodo.svg` | Método | Diagrama redesenhado; maior, `overflow: visible`, rótulos no centro da área livre |
 
-Movimento: entrada genérica `data-entrada` (`.il-anim` → `.visto`), contagem `data-conta` nos números
-e `data-rolagem="elemento"` no método (os círculos convergem com a rolagem). CSS "Bloco 2 ·
-movimento" em `global.css`; script em `app.ts` (cópia em `tools/versao-teste.py`). Utilitário
-comum para embutir SVG: `src/lib/svg.ts`.
+Clientes: selo "Clientes" (texto novo, **pendente de aprovação**), entrada em sequência e hover
+(cartão sobe, fica branco com contorno coral; o logo não muda de cor, por ser marca de terceiro).
 
+Movimento: entrada genérica `data-entrada` (`.il-anim` → `.visto`), contagem `data-conta`,
+`data-rolagem="elemento"` (método e fundos). CSS "Bloco 2 · movimento" em `global.css`; script em
+`app.ts` (cópia em `tools/versao-teste.py`). Utilitário para embutir SVG: `src/lib/svg.ts`.
