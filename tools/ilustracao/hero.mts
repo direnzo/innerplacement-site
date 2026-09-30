@@ -104,11 +104,30 @@ function dois(p: string, nivel: 0 | 1 | 2 | 3) {
   ].join('');
 }
 
+// Nó de network (vindo da opção B): marco cheio com cabeças de figuras ligadas por traço fino.
+function rede(x: number, y: number, cabecas: [number, number, string][]) {
+  return `<g stroke="${C.tinta}" stroke-opacity=".35" stroke-width="1.6">`
+    + cabecas.map(([cx, cy]) => `<line x1="${x}" y1="${y}" x2="${cx}" y2="${cy}"/>`).join('') + `</g>`
+    + cabecas.map(([cx, cy, cor]) => cabeca(cx, cy, 8, cor)).join('')
+    + marco(x, y, true);
+}
+
+// A0 com rede (escolhida em 29/09): a composição plana da A, com um nó de network em cada caminho
+// no lugar dos marcos vazios. Crescer também passa por ativar a rede, não só a transição.
+const planaRede = [
+  chao,
+  trilha('M178,200 C236,196 250,110 306,96 S352,90 368,92'),
+  trilha('M178,200 C262,222 318,214 350,184 S386,140 392,128', C.tinta, .55),
+  `<circle cx="178" cy="200" r="5.5" fill="${C.coral}"/>`,
+  rede(306, 96, [[282, 62, C.areia], [322, 58, C.tinta], [338, 126, C.ambar]]),
+  rede(350, 184, [[326, 224, C.tinta], [370, 228, C.areia], [398, 202, C.ambar]]),
+  ROSA(412, 86, 84),
+  par(40, BASE, .98),
+].join('');
+
 const variacoes: Record<string, [string, string]> = {
+  'H01-a0-rede': ['Dois caminhos, uma chegada, com a rede nos dois', planaRede],
   'H01-a0-plana': ['Dois caminhos, uma chegada · plana', dois('h01a0', 0)],
-  'H01-a1-sutil': ['Dois caminhos, uma chegada · sutil', dois('h01a1', 1)],
-  'H01-a2-equilibrada': ['Dois caminhos, uma chegada · equilibrada', dois('h01a2', 2)],
-  'H01-a3-rica': ['Dois caminhos, uma chegada · rica', dois('h01a3', 3)],
 };
 
 const dir = new URL('../../docs/ilustracao/bloco-1/', import.meta.url);

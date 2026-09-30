@@ -99,14 +99,16 @@ Branch `imagens/bloco-1-hero`. Gerador: `tools/ilustracao/hero.mts`
 
 - **Rodada 1:** três ideias, A (dois caminhos, uma chegada), B (caminhar junto) e C (rede). O dono
   escolheu a **A**. B e C estão no histórico do git (commit `fd3f4b3`).
-- **Rodada 2:** a A em quatro intensidades de degradê e transparência, em `docs/ilustracao/bloco-1/`:
+- **Rodada 2:** a A em quatro intensidades de degradê e transparência (A0 plana, A1 sutil,
+  A2 equilibrada, A3 rica). O dono ficou com a **A0 plana**. A1 a A3 estão no histórico (commit
+  `76953eb`); os efeitos continuam disponíveis na função `fx` do gerador para outros blocos.
+- **Rodada 3:** A0 com o nó de network da antiga B nos dois caminhos (marco cheio e três cabeças
+  ligadas por traço fino), em `docs/ilustracao/bloco-1/`:
 
 | Arquivo | O que tem |
 | --- | --- |
-| `H01-a0-plana.svg` | A da rodada 1, sem efeitos |
-| `H01-a1-sutil.svg` | Bola translúcida atrás da rosácea, chão como fio que esmaece |
-| `H01-a2-equilibrada.svg` | A1 + arco em degradê no ponto de partida + oval em degradê como partida (recomendada) |
-| `H01-a3-rica.svg` | A2 + faixa de chevrons e ritmo de ovais na base (limite superior) |
+| `H01-a0-rede.svg` | A0 com um nó de network em cada caminho (proposta atual) |
+| `H01-a0-plana.svg` | A0 com marcos vazios, para comparação |
 
 Comparação no layout: https://claude.ai/artifact/JRSHwhqaZ7SeksikQWVBh3
 
