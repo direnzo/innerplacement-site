@@ -61,6 +61,17 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
   push/sync pela extensão de Git do VS Code. Commite e avise; não tente autenticar.
 - Nunca versionar `node_modules/`, `dist/`, `.astro/`, `teste/` nem as pastas locais de imagens.
 
+## Publicação do teste (/v2-teste/)
+
+- `tools/publicar-v2-teste.sh` publica; `--simular` mostra o que mudaria. Nunca toca na raiz do
+  domínio (WordPress). Backup automático em `~/backups-v2-teste/` no servidor.
+- Acesso: host `inner-v2` no `~/.ssh/config` (usuário cPanel `s100c354`), chave `~/.ssh/inner_v2`
+  **com senha**. O dono destrava a chave no terminal dele (comando no topo do script) num agente com
+  socket fixo `~/.ssh/agente-inner-v2.sock`, válido por 4 h. Se o script disser "Sem acesso",
+  peça ao dono para destravar; nunca peça nem manipule a senha.
+- A chave antiga `~/.ssh/innerplacement` (sem senha) é do repositório do WordPress; não usar aqui.
+  Revogá-la fica para depois (decisão do dono, 29/09).
+
 ## Ambiente
 
 - Windows + WSL2 (Ubuntu). Repositórios em `~/projetos/`. Downloads e Drive do Windows em `/mnt/d/`.
