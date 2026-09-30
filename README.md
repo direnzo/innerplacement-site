@@ -11,6 +11,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 | Pasta | O que é | Versionado |
 | --- | --- | --- |
 | `src/` | Código-fonte Astro do site (**ainda não importado** — ver Pendências) | sim |
+| `build/v0.9/` | Site compilado v0.9, exportado do Claude Desktop em 29/09: 10 páginas (inclui `/obrigado/`), links na raiz do domínio, `.htaccess` com 301 das URLs do WordPress, `robots.txt` bloqueando tudo e `noindex` (ainda é teste). Linha de base enquanto a fonte não chega | sim |
 | `imagens/` | Peças de ilustração **aprovadas**, no padrão `inner-<código>-<assunto>-v<n>.png` + `.txt` com prompt e ferramenta | sim |
 | `imagens/pendente/` | Peças geradas aguardando aprovação | não |
 | `imagens/exploracao/` | Gerações descartadas e o registro da conversa de aprovação | não |
@@ -27,7 +28,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 
 ## Pendências
 
-1. **Importar o código-fonte Astro da v2.** Ele foi criado no Claude Desktop (sessão "Innerplacement site redesign strategy") e não existe nesta máquina — exportar de lá como zip.
+1. **Importar o código-fonte Astro da v2.** O zip `site-inner-teste-v0.9.zip` trouxe só o site compilado (guardado em `build/v0.9/`). A fonte (`src/*.astro`, `package.json`, `astro.config.*`, estilos) continua na sessão do Claude Desktop "Innerplacement site redesign strategy".
 2. **Revisar as 8 peças aprovadas contra o checklist do guia.** Várias têm brilho/sombra, figuras em silhueta e skyline genérico, que o checklist proíbe. Todas têm uma franja de artefato na borda do recorte (defeito técnico, corrigível no acabamento). Detalhes no `.txt` de cada peça.
 3. **P-03** aguarda aprovação (`imagens/pendente/`).
 
