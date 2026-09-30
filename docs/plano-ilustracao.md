@@ -38,6 +38,36 @@ As 8 peças continuam em `imagens/` com status de aprovadas. Manter, ajustar ou 
 Vantagens do SVG: paleta exata, poucos KB (cabe no limite de 60 KB com folga), editável depois,
 e todas as peças saem da mesma família porque usam as mesmas funções de desenho.
 
+### Degradês e transparências (decisão do dono, 29/09)
+
+Podem entrar, **de forma equilibrada e sutil**, sempre dentro da paleta. Isso ajusta o item
+"nenhuma sombra, brilho ou efeito 3D" do checklist do guia: degradês e transparências dos grafismos
+oficiais são permitidos; sombra projetada, brilho de luz, 3D e névoa continuam fora.
+
+Os efeitos são recriados com degradês nativos em `tools/ilustracao/` (função `fx`), e não colados
+dos arquivos originais: os SVGs do Illustrator usam máscaras e IDs genéricos (`#d`, `#e`…) que
+colidem quando várias peças ficam na mesma página. Cada ID leva o prefixo da peça.
+
+### Grafismos do site antigo aproveitáveis
+
+Fontes: `imagens/apoio/` (kit do Drive, local) e `~/projetos/innerplacement/wp-content/uploads/2025/`.
+
+| Grafismo | Arquivo de origem | Uso previsto |
+| --- | --- | --- |
+| Bola translúcida (centro claro, borda coral) | `bola.svg`, `bola_fundo.svg` | Destaque atrás da rosácea ou de um marco |
+| Bolas sobrepostas | `bolas_sobrepostas.svg` | Duas leituras que se encontram (H-07, Método) |
+| Oval em degradê coral → âmbar | `oval_gradiente.svg`, `botão_seta.svg` | Ponto de partida, acento de movimento |
+| Oval transparente | `oval_transparente.svg` | Fundo leve de cartões |
+| Arco em degradê (transparente → coral) | `fundo-foto.png`, `mask2.svg` (WordPress) | Lugar de partida, moldura |
+| Barra em degradê | `barra_gradiente.svg`, `card_degrade.svg` | Faixas e cartões |
+| Fio que esmaece | `menu.svg` | Chão, divisores |
+| Chevrons | `setas_grafismo.svg`, `setas_laranja.png`, `setas_amarela.png` | Faixa de movimento, padrão G-06/G-07 |
+| Ritmo de ovais | `bolas.svg`, `destravar.svg`, `bolas_tit.png` | Divisor, ritmo sob títulos |
+| Cartões com figuras | `carreira_transição.svg`, `desenvolvimento.svg`, `reinserção.svg`, `sucessão.svg` | Referência de composição para P-01 a P-04 |
+
+As fotos do WordPress (`Asset-*.png`, `para-empresas-1.png` etc.) são banco de imagens e ficam de
+fora, como o guia pede.
+
 ## Blocos
 
 | Bloco | Seções | Peças centrais | Estado |
@@ -64,16 +94,21 @@ mostrar que fazem falta.
 ## Bloco 1 · Hero e Caminhos
 
 Branch `imagens/bloco-1-hero`. Gerador: `tools/ilustracao/hero.mts`
-(`node --experimental-strip-types tools/ilustracao/hero.mts`). Propostas para o painel do hero
-(viewBox 496 × 280, o mesmo de `src/pages/index.astro`):
+(`node --experimental-strip-types tools/ilustracao/hero.mts`). Painel do hero com viewBox
+496 × 280, o mesmo de `src/pages/index.astro`.
 
-| Arquivo | Ideia |
+- **Rodada 1:** três ideias, A (dois caminhos, uma chegada), B (caminhar junto) e C (rede). O dono
+  escolheu a **A**. B e C estão no histórico do git (commit `fd3f4b3`).
+- **Rodada 2:** a A em quatro intensidades de degradê e transparência, em `docs/ilustracao/bloco-1/`:
+
+| Arquivo | O que tem |
 | --- | --- |
-| `docs/ilustracao/bloco-1/H01-a-dois-caminhos.svg` | Do mesmo ponto saem crescer (trilha coral, sobe) e transição (trilha tinta, avança); as duas chegam à rosácea; o par entrelaçado parte junto |
-| `docs/ilustracao/bloco-1/H01-b-caminhar-junto.svg` | Uma trilha com os três marcos dos chips (posicionamento, network ativado, até acontecer), o par entrelaçado caminhando junto |
-| `docs/ilustracao/bloco-1/H01-c-rede.svg` | Figura em destaque sobre círculo claro, a rede ativada em volta e a trilha até a rosácea |
+| `H01-a0-plana.svg` | A da rodada 1, sem efeitos |
+| `H01-a1-sutil.svg` | Bola translúcida atrás da rosácea, chão como fio que esmaece |
+| `H01-a2-equilibrada.svg` | A1 + arco em degradê no ponto de partida + oval em degradê como partida (recomendada) |
+| `H01-a3-rica.svg` | A2 + faixa de chevrons e ritmo de ovais na base (limite superior) |
 
 Comparação no layout: https://claude.ai/artifact/JRSHwhqaZ7SeksikQWVBh3
 
-Próximos passos do bloco: escolha do hero → mesma linguagem nos discos de Caminhos (H-02, H-03) →
+Próximos passos do bloco: escolha da intensidade → mesma linguagem nos discos de Caminhos (H-02, H-03) →
 encaixe no site → merge.
