@@ -7,24 +7,13 @@ import Clientes from '../components/Clientes.astro';
 import DepoCard from '../components/DepoCard.astro';
 import DepoVideo from '../components/DepoVideo.astro';
 import Acordeao from '../components/Acordeao.astro';
-import { kit } from '../data/kit';
+import heroSvg from '../../imagens/inner-H01-hero-v4.svg?raw';
 import { depoimentos as D } from '../data/depoimentos';
 import { faqHome } from '../data/faq';
 import { numeros, rotas } from '../data/site';
 
-// Composição do painel do hero: peças oficiais posicionadas num único SVG fluido (espaço reservado até a imagem de apoio definitiva).
-const peca = (k: string, x: number, y: number, h: number) => {
-  const e = kit[k]; const w = +(h * e.w / e.h).toFixed(1);
-  return `<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="0 0 ${e.w} ${e.h}">${e.inner}</svg>`;
-};
-const BASE = 262;
-const painel = `
-  <line x1="24" y1="${BASE}" x2="472" y2="${BASE}" stroke="#231F20" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
-  <path d="M132,138 L360,80" fill="none" stroke="#FF6558" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 10"/>
-  <circle cx="132" cy="138" r="5.5" fill="#FF6558"/>
-  ${peca('pessoa_up', 28, BASE - 120, 120)}
-  ${peca('pessoas', 186, BASE - 112, 112)}
-  ${peca('rosacea_coral', 362, 26, 86)}`;
+// Painel do hero: H-01 aprovada (SVG gerado por tools/ilustracao/hero.mts). Entra inline, sem o <svg> externo.
+const painel = heroSvg.replace(/<title>.*?<\/title>/, '').replace(/^<svg[^>]*>|<\/svg>\s*$/g, '');
 
 const metodo = [
   ['Contexto individual', 'Quem você é, onde está agora e o que está em jogo nesta escolha.'],
@@ -45,7 +34,8 @@ const metodo = [
     </div>
     <div class="flex flex-col gap-3 rounded-[28px] bg-areia-c p-4 md:p-6">
       <svg viewBox="0 0 496 280" class="h-auto w-full" aria-hidden="true" set:html={painel} />
-      <div class="flex flex-wrap gap-1.5 md:justify-between">
+      <!-- Chips numa linha só, alinhados às etapas da ilustração; no celular a fonte escala com a largura do painel. -->
+      <div class="@container flex justify-between gap-1.5 [&>.chip]:h-[2.6em] [&>.chip]:px-[.72em] [&>.chip]:text-[clamp(9.5px,calc(4.03cqi-0.48px),13px)]">
         <span class="chip">posicionamento</span>
         <span class="chip">network ativado</span>
         <span class="chip !bg-tinta !text-white">até acontecer</span>

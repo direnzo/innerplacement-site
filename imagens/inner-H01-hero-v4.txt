@@ -1,0 +1,15 @@
+PEÇA: H-01 · Hero (painel à direita do título; no celular, abaixo do subtítulo)
+STATUS: APROVADA (dono, 29/09/2026, rodada 3 do bloco 1: "A0 com rede")
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/hero.mts (variação 'H01-a0-rede'); cópia de docs/ilustracao/bloco-1/H01-a0-rede.svg
+SUBSTITUI NO SITE: o espaço reservado montado com pessoa_up + pessoas + rosácea. A H-01 v3
+(PNG do ChatGPT) continua em imagens/ como referência, mas não é usada no site.
+
+Conceito: dois caminhos saem do mesmo ponto e chegam à rosácea. A trilha coral sobe (crescer),
+a trilha tinta avança (transição). O par entrelaçado da peça `pessoas` parte junto. Cada caminho
+tem um nó de network (marco coral cheio e três cabeças ligadas por traço fino), que corresponde ao
+chip "network ativado". Os chips ficam abaixo, na ordem posicionamento / network ativado / até
+acontecer, alinhados à esquerda, ao centro e à direita.
+
+Checklist: só as seis cores; sem texto; figuras no padrão Figura Inner; sem sombra, brilho ou 3D;
+fundo transparente; viewBox 496 × 280; ~4 KB.

@@ -72,7 +72,7 @@ fora, como o guia pede.
 
 | Bloco | Seções | Peças centrais | Estado |
 | --- | --- | --- | --- |
-| 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | em andamento |
+| 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | H-01 no site; falta H-02/H-03 |
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | não iniciado |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | não iniciado |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | não iniciado |
@@ -109,6 +109,14 @@ Branch `imagens/bloco-1-hero`. Gerador: `tools/ilustracao/hero.mts`
 | --- | --- |
 | `H01-a0-rede.svg` | A0 com um nó de network em cada caminho (proposta atual) |
 | `H01-a0-plana.svg` | A0 com marcos vazios, para comparação |
+
+- **Aprovada:** a A0 com rede virou `imagens/inner-H01-hero-v4.svg` (+ `.txt`) e entrou no hero de
+  `src/pages/index.astro`, importada como texto (`?raw`) e embutida inline.
+- **Chips do hero:** no celular, "até acontecer" quebrava para uma segunda linha e perdia a relação
+  com a ilustração. Agora os três ficam sempre numa linha, alinhados à esquerda, ao centro e à
+  direita, com a fonte escalando pela largura do painel (container query): 13 px no computador,
+  cerca de 11 px em 360–375 px e 9,5 px em 320 px. A regra fica só no hero; a classe `.chip`
+  global (usada em Depoimentos e FAQ) não mudou.
 
 Comparação no layout: https://claude.ai/artifact/JRSHwhqaZ7SeksikQWVBh3
 
