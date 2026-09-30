@@ -28,6 +28,11 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 
 ## Imagens — regras que já custaram retrabalho
 
+- **Abordagem atual (decisão do dono, 29/09/2026): híbrida e por blocos.** Ilustrações, ícones e
+  padrões são SVG desenhados no código a partir do kit (`tools/ilustracao/`); IA só para peças de
+  atmosfera (capas de vídeo, texturas). Plano, diagnóstico e estado dos blocos em
+  `docs/plano-ilustracao.md`. Um bloco por vez, com comparação no layout antes de encaixar.
+
 - As ilustrações são geradas **pelo dono direto no ChatGPT**, seguindo `docs/guia-imagens.md`
   (74 peças com códigos H-xx, P-xx, G-xx; prompts, especificações, checklist, ordem de rodadas).
 - O dono exporta aquela conversa periodicamente como
