@@ -118,6 +118,17 @@ Branch `imagens/bloco-1-hero`. Gerador: `tools/ilustracao/hero.mts`
   cerca de 11 px em 360–375 px e 9,5 px em 320 px. A regra fica só no hero; a classe `.chip`
   global (usada em Depoimentos e FAQ) não mudou.
 
+- **Movimento (rodada 4):** entrada de ~2 s ao abrir a página (o par aparece, as trilhas se
+  desenham por máscara, os nós surgem quando a trilha passa, a rosácea floresce) com os chips
+  acendendo em sincronia; e movimento ligado à rolagem (os pontos correm para a rosácea, que gira até
+  90°, e o par avança 14 px). CSS em `src/styles/global.css` ("Hero · movimento"), rolagem em
+  `src/scripts/app.ts` (atributo `data-rolagem`, variável `--rolagem`), cópia do script em
+  `tools/versao-teste.py`. O gerador marca as partes com classes `h01-*`. Sem animação ou com
+  "reduzir movimento", a peça aparece completa e parada.
+
+Padrão para os próximos blocos: a mesma técnica (classes na peça, entrada curta, `data-rolagem`
+para o movimento contínuo) serve para as outras ilustrações, sem biblioteca.
+
 Comparação no layout: https://claude.ai/artifact/JRSHwhqaZ7SeksikQWVBh3
 
 Próximos passos do bloco: escolha da intensidade → mesma linguagem nos discos de Caminhos (H-02, H-03) →

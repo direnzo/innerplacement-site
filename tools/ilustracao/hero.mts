@@ -114,15 +114,26 @@ function rede(x: number, y: number, cabecas: [number, number, string][]) {
 
 // A0 com rede (escolhida em 29/09): a composição plana da A, com um nó de network em cada caminho
 // no lugar dos marcos vazios. Crescer também passa por ativar a rede, não só a transição.
+// Classes `h01-*` são os ganchos da animação do hero (src/styles/global.css, "Hero · movimento").
+// Sem CSS, ou com "reduzir movimento", a peça aparece completa e parada.
+const TRILHA_A = 'M178,200 C236,196 250,110 306,96 S352,90 368,92';
+const TRILHA_B = 'M178,200 C262,222 318,214 350,184 S386,140 392,128';
+// Trilha pontilhada revelada por uma máscara de traço contínuo (pathLength=1): a animação leva o
+// stroke-dashoffset da máscara de 1 a 0 e a trilha "se desenha"; os pontos em si continuam livres
+// para correr com a rolagem (stroke-dashoffset da trilha).
+const trilhaViva = (id: string, d: string, cor: string, op: number) =>
+  `<mask id="h01-m-${id}" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}">`
+  + `<path class="h01-desenho h01-desenho-${id}" d="${d}" pathLength="1" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/></mask>`
+  + `<g mask="url(#h01-m-${id})"><path class="h01-fluxo" d="${d}" fill="none" stroke="${cor}" stroke-opacity="${op}" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="0.1 11"/></g>`;
 const planaRede = [
   chao,
-  trilha('M178,200 C236,196 250,110 306,96 S352,90 368,92'),
-  trilha('M178,200 C262,222 318,214 350,184 S386,140 392,128', C.tinta, .55),
-  `<circle cx="178" cy="200" r="5.5" fill="${C.coral}"/>`,
-  rede(306, 96, [[282, 62, C.areia], [322, 58, C.tinta], [338, 126, C.ambar]]),
-  rede(350, 184, [[326, 224, C.tinta], [370, 228, C.areia], [398, 202, C.ambar]]),
-  ROSA(412, 86, 84),
-  par(40, BASE, .98),
+  trilhaViva('a', TRILHA_A, C.coral, 1),
+  trilhaViva('b', TRILHA_B, C.tinta, .55),
+  `<circle class="h01-partida" cx="178" cy="200" r="5.5" fill="${C.coral}"/>`,
+  `<g class="h01-no h01-no-a">${rede(306, 96, [[282, 62, C.areia], [322, 58, C.tinta], [338, 126, C.ambar]])}</g>`,
+  `<g class="h01-no h01-no-b">${rede(350, 184, [[326, 224, C.tinta], [370, 228, C.areia], [398, 202, C.ambar]])}</g>`,
+  `<g class="h01-rosa"><g class="h01-rosa-giro">${ROSA(412, 86, 84)}</g></g>`,
+  `<g class="h01-par">${par(40, BASE, .98)}</g>`,
 ].join('');
 
 const variacoes: Record<string, [string, string]> = {

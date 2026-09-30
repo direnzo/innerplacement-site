@@ -109,3 +109,40 @@
   .assina { font-size: 13.5px; line-height: 1.45; color: var(--color-mudo); }
   .assina b { color: var(--color-tinta); font-weight: 600; }
 }
+
+/* Hero · movimento (H-01, ganchos h01-* gerados por tools/ilustracao/hero.mts).
+   1) Entrada, uma vez, ~2 s: o par aparece, as trilhas se desenham, os nós de network surgem quando
+      a trilha passa, a rosácea floresce na chegada; os chips acendem em sincronia.
+   2) Rolagem: src/scripts/app.ts escreve --rolagem (0 → 1,2) no painel; os pontos correm para a
+      rosácea, a rosácea gira e o par avança um pouco.
+   O estado padrão é a peça completa e parada. Com "reduzir movimento", a regra global zera as
+   animações e o script não escreve --rolagem. */
+@layer components {
+  .hero-anim svg * { transform-box: fill-box; }
+  .hero-anim .h01-par { animation: h01-surge .45s ease-out both; }
+  .hero-anim .h01-partida { transform-origin: center; animation: h01-pop .3s .3s cubic-bezier(.3, 1.6, .5, 1) both; }
+  .hero-anim .h01-desenho { stroke-dasharray: 1 1; animation: h01-desenha 1s .45s cubic-bezier(.45, 0, .25, 1) both; }
+  .hero-anim .h01-desenho-b { animation-delay: .55s; }
+  .hero-anim .h01-no { transform-origin: center; animation: h01-pop .4s 1s cubic-bezier(.3, 1.5, .5, 1) both; }
+  .hero-anim .h01-no-b { animation-delay: 1.12s; }
+  .hero-anim .h01-rosa { transform-origin: center; animation: h01-floresce .65s 1.4s cubic-bezier(.2, 1.3, .4, 1) both; }
+  .hero-anim .h01-chip { animation: h01-acende .5s both; }
+  .hero-anim .h01-chip-1 { animation-delay: .35s; }
+  .hero-anim .h01-chip-2 { animation-delay: 1.05s; }
+  .hero-anim .h01-chip-3 { animation-delay: 1.6s; }
+
+  /* Rolagem: só transformações e dashoffset, sem custo de layout. */
+  .hero-anim .h01-fluxo { stroke-dashoffset: calc(var(--rolagem, 0) * -88.8px); }
+  .hero-anim .h01-rosa-giro { transform-origin: center; transform: rotate(calc(var(--rolagem, 0) * 75deg)); }
+  .hero-anim .h01-par > g { translate: calc(var(--rolagem, 0) * 14px) 0; }
+
+  @keyframes h01-surge { from { opacity: 0; translate: -10px 0; } }
+  @keyframes h01-pop { from { opacity: 0; scale: .2; } }
+  @keyframes h01-desenha { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes h01-floresce { from { opacity: 0; scale: .35; rotate: -50deg; } }
+  @keyframes h01-acende {
+    0% { opacity: .35; box-shadow: 0 0 0 0 rgb(255 101 88 / 0); }
+    55% { opacity: 1; box-shadow: 0 0 0 5px rgb(255 101 88 / .28); }
+    100% { opacity: 1; box-shadow: 0 0 0 0 rgb(255 101 88 / 0); }
+  }
+}

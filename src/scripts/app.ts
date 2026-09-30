@@ -24,5 +24,27 @@ Alpine.data('contato', () => ({
   },
 }));
 
+// Rolagem das ilustrações: cada elemento com [data-rolagem] recebe --rolagem, de 0 (topo da página)
+// a 1,2 (depois de rolar pouco mais de uma tela). O CSS da peça decide o que se move.
+// Só roda enquanto o elemento está visível e nunca com "reduzir movimento".
+const rolaveis = document.querySelectorAll<HTMLElement>('[data-rolagem]');
+if (rolaveis.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const visiveis = new Set<HTMLElement>();
+  let pedido = 0;
+  const atualiza = () => {
+    pedido = 0;
+    const p = Math.min(scrollY / innerHeight, 1.2).toFixed(4);
+    visiveis.forEach((el) => el.style.setProperty('--rolagem', p));
+  };
+  const agenda = () => { if (!pedido && visiveis.size) pedido = requestAnimationFrame(atualiza); };
+  const io = new IntersectionObserver((es) => {
+    es.forEach((e) => (e.isIntersecting ? visiveis.add(e.target as HTMLElement) : visiveis.delete(e.target as HTMLElement)));
+    agenda();
+  });
+  rolaveis.forEach((el) => io.observe(el));
+  addEventListener('scroll', agenda, { passive: true });
+  addEventListener('resize', agenda, { passive: true });
+}
+
 (window as any).Alpine = Alpine;
 Alpine.start();

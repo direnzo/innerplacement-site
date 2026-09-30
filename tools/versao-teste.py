@@ -108,6 +108,25 @@ document.addEventListener('alpine:init', function () {
   window.addEventListener('hashchange', ir);
   ir();
 })();
+// Rolagem das ilustrações: cópia de src/scripts/app.ts (manter as duas iguais).
+(function () {
+  var rolaveis = document.querySelectorAll('[data-rolagem]');
+  if (!rolaveis.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var visiveis = new Set(), pedido = 0;
+  function atualiza() {
+    pedido = 0;
+    var p = Math.min(scrollY / innerHeight, 1.2).toFixed(4);
+    visiveis.forEach(function (el) { el.style.setProperty('--rolagem', p); });
+  }
+  function agenda() { if (!pedido && visiveis.size) pedido = requestAnimationFrame(atualiza); }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { e.isIntersecting ? visiveis.add(e.target) : visiveis.delete(e.target); });
+    agenda();
+  });
+  rolaveis.forEach(function (el) { io.observe(el); });
+  addEventListener('scroll', agenda, { passive: true });
+  addEventListener('resize', agenda, { passive: true });
+})();
 </script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.9/cdn.min.js"></script>
 """
