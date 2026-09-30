@@ -126,6 +126,24 @@ Branch `imagens/bloco-1-hero`. Gerador: `tools/ilustracao/hero.mts`
   `tools/versao-teste.py`. O gerador marca as partes com classes `h01-*`. Sem animação ou com
   "reduzir movimento", a peça aparece completa e parada.
 
+### Caminhos (H-02, H-03)
+
+Gerador: `tools/ilustracao/caminhos.mts`. As primitivas comuns (figura, par, trilha, marco,
+rosácea) passaram para `tools/ilustracao/base.mts`, usado pelos dois geradores; o hero sai idêntico.
+Discos em viewBox 100 × 100, com chão invisível em y = 84 para as figuras ficarem inteiras no recorte
+circular (88 px no computador, 56 px no celular). Cada disco desenha os dois links do cartão: um
+caminho que sobe (crescer) e um que sai (transição).
+
+| Arquivo | Ideia |
+| --- | --- |
+| `H02-a-dois-caminhos.svg` | Para você: uma pessoa; trilha coral sobe à rosácea, trilha tinta sai pela borda |
+| `H03-a-arco.svg` | Para sua empresa: o arco (empresa) acolhe quem sobe à rosácea; o par sai pela porta (recomendada) |
+| `H03-b-grupo.svg` | Para sua empresa sem arco: uma pessoa sobe, o par sai acompanhado |
+
+Movimento proposto: entrada quando o disco aparece na tela (IntersectionObserver) e destaque da
+trilha correspondente ao passar o mouse ou focar um link do cartão. Comparação:
+https://claude.ai/artifact/6ZMBiH4u7yj1Ukjy3pZPno
+
 Padrão para os próximos blocos: a mesma técnica (classes na peça, entrada curta, `data-rolagem`
 para o movimento contínuo) serve para as outras ilustrações, sem biblioteca.
 
