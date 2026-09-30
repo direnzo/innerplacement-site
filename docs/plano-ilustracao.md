@@ -72,7 +72,7 @@ fora, como o guia pede.
 
 | Bloco | Seções | Peças centrais | Estado |
 | --- | --- | --- | --- |
-| 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | H-01 no site; falta H-02/H-03 |
+| 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | concluído (29/09), no site com movimento |
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | não iniciado |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | não iniciado |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | não iniciado |
@@ -136,11 +136,18 @@ caminho que sobe (crescer) e um que sai (transição).
 
 | Arquivo | Ideia |
 | --- | --- |
-| `H02-a-dois-caminhos.svg` | Para você: uma pessoa; trilha coral sobe à rosácea, trilha tinta sai pela borda |
-| `H03-a-arco.svg` | Para sua empresa: o arco (empresa) acolhe quem sobe à rosácea; o par sai pela porta (recomendada) |
-| `H03-b-grupo.svg` | Para sua empresa sem arco: uma pessoa sobe, o par sai acompanhado |
+| `H02-a-dois-caminhos.svg` | Para você: uma pessoa; trilha coral sobe à rosácea, trilha tinta sai pela borda (aprovada) |
+| `H03-b-grupo.svg` | Para sua empresa: uma pessoa sobe, o par sai acompanhado (aprovada; a versão com arco está no histórico, commit `3e1e3db`) |
 
-Movimento proposto: entrada quando o disco aparece na tela (IntersectionObserver) e destaque da
+Aprovadas como `imagens/inner-H02-para-voce-v1.svg` e `imagens/inner-H03-para-empresa-v1.svg`, embutidas
+em `src/components/Caminhos.astro`. Movimento no site: CSS "Caminhos · movimento" em `global.css`,
+script em `app.ts` (e cópia em `tools/versao-teste.py`). Os links têm `data-cam="sobe|sai"` e o
+cartão, `data-cartao`. Keyframes comuns ao hero e aos discos: `il-*`.
+
+Lição técnica: `transform-box: fill-box` só nas peças que giram ou crescem pelo centro. Aplicado a
+todos os elementos, desloca os que são desenhados com o atributo `transform` (o par entrelaçado).
+
+Movimento: entrada quando o disco aparece na tela (IntersectionObserver) e destaque da
 trilha correspondente ao passar o mouse ou focar um link do cartão. Comparação:
 https://claude.ai/artifact/6ZMBiH4u7yj1Ukjy3pZPno
 

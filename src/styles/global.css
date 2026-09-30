@@ -118,14 +118,16 @@
    O estado padrão é a peça completa e parada. Com "reduzir movimento", a regra global zera as
    animações e o script não escreve --rolagem. */
 @layer components {
-  .hero-anim svg * { transform-box: fill-box; }
+  /* fill-box só nas peças que giram ou crescem pelo próprio centro; aplicado a tudo, desloca os
+     elementos desenhados com o atributo transform (o par). */
+  .hero-anim :is(.h01-partida, .h01-no, .h01-rosa, .h01-rosa-giro) { transform-box: fill-box; }
   .hero-anim .h01-par { animation: h01-surge .45s ease-out both; }
-  .hero-anim .h01-partida { transform-origin: center; animation: h01-pop .3s .3s cubic-bezier(.3, 1.6, .5, 1) both; }
-  .hero-anim .h01-desenho { stroke-dasharray: 1 1; animation: h01-desenha 1s .45s cubic-bezier(.45, 0, .25, 1) both; }
+  .hero-anim .h01-partida { transform-origin: center; animation: il-pop .3s .3s cubic-bezier(.3, 1.6, .5, 1) both; }
+  .hero-anim .h01-desenho { stroke-dasharray: 1 1; animation: il-desenha 1s .45s cubic-bezier(.45, 0, .25, 1) both; }
   .hero-anim .h01-desenho-b { animation-delay: .55s; }
-  .hero-anim .h01-no { transform-origin: center; animation: h01-pop .4s 1s cubic-bezier(.3, 1.5, .5, 1) both; }
+  .hero-anim .h01-no { transform-origin: center; animation: il-pop .4s 1s cubic-bezier(.3, 1.5, .5, 1) both; }
   .hero-anim .h01-no-b { animation-delay: 1.12s; }
-  .hero-anim .h01-rosa { transform-origin: center; animation: h01-floresce .65s 1.4s cubic-bezier(.2, 1.3, .4, 1) both; }
+  .hero-anim .h01-rosa { transform-origin: center; animation: il-floresce .65s 1.4s cubic-bezier(.2, 1.3, .4, 1) both; }
   .hero-anim .h01-chip { animation: h01-acende .5s both; }
   .hero-anim .h01-chip-1 { animation-delay: .35s; }
   .hero-anim .h01-chip-2 { animation-delay: 1.05s; }
@@ -137,12 +139,34 @@
   .hero-anim .h01-par > g { translate: calc(var(--rolagem, 0) * 14px) 0; }
 
   @keyframes h01-surge { from { opacity: 0; translate: -10px 0; } }
-  @keyframes h01-pop { from { opacity: 0; scale: .2; } }
-  @keyframes h01-desenha { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-  @keyframes h01-floresce { from { opacity: 0; scale: .35; rotate: -50deg; } }
+  @keyframes il-pop { from { opacity: 0; scale: .2; } }
+  @keyframes il-desenha { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes il-floresce { from { opacity: 0; scale: .35; rotate: -50deg; } }
   @keyframes h01-acende {
     0% { opacity: .35; box-shadow: 0 0 0 0 rgb(255 101 88 / 0); }
     55% { opacity: 1; box-shadow: 0 0 0 5px rgb(255 101 88 / .28); }
     100% { opacity: 1; box-shadow: 0 0 0 0 rgb(255 101 88 / 0); }
   }
+}
+
+/* Caminhos · movimento (H-02, H-03). Ganchos cam-* gerados por tools/ilustracao/caminhos.mts.
+   1) Entrada: quando o disco aparece na tela, as trilhas se desenham, a rosácea floresce e o par
+      (H-03) chega. O script põe .cam-anim (estado inicial pausado) e depois .visto (roda).
+   2) Destaque: passar o mouse ou focar um link do cartão destaca a trilha daquele link (os pontos
+      correm) e esmaece a outra. O cartão recebe data-foco="sobe" ou "sai".
+   Sem script, ou com "reduzir movimento", o disco aparece completo e parado.
+   Keyframes il-* são compartilhados com o hero. */
+@layer components {
+  .cam-disco :is(.cam-partida, .cam-rosa) { transform-box: fill-box; }
+  .cam-anim .cam-desenho { stroke-dasharray: 1 1; animation: il-desenha .8s .15s cubic-bezier(.45, 0, .25, 1) both paused; }
+  .cam-anim .cam-sai .cam-desenho { animation-delay: .3s; }
+  .cam-anim .cam-partida { transform-origin: center; animation: il-pop .3s cubic-bezier(.3, 1.6, .5, 1) both paused; }
+  .cam-anim .cam-rosa { transform-origin: center; animation: il-floresce .55s .8s cubic-bezier(.2, 1.3, .4, 1) both paused; }
+  .cam-anim .cam-par { animation: il-chega .5s .75s ease-out both paused; }
+  .cam-anim.visto :is(.cam-desenho, .cam-partida, .cam-rosa, .cam-par) { animation-play-state: running; }
+  .cam-disco :is(.cam-sobe, .cam-sai) { transition: opacity .25s ease; }
+  [data-foco="sobe"] .cam-sai, [data-foco="sai"] .cam-sobe { opacity: .28; }
+  [data-foco="sobe"] .cam-sobe .cam-fluxo, [data-foco="sai"] .cam-sai .cam-fluxo { animation: il-fluir .8s linear infinite; }
+  @keyframes il-chega { from { opacity: 0; translate: -8px 0; } }
+  @keyframes il-fluir { to { stroke-dashoffset: -12.4px; } }
 }

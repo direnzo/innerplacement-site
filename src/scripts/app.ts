@@ -46,5 +46,23 @@ if (rolaveis.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) 
   addEventListener('resize', agenda, { passive: true });
 }
 
+// Discos de Caminhos: entrada quando aparecem na tela (.cam-anim pausa no estado inicial, .visto roda)
+// e destaque da trilha do link sob o mouse ou o foco (data-foco no cartão). CSS em global.css.
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const discos = document.querySelectorAll<HTMLElement>('.cam-disco');
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); }
+  }), { threshold: 0.6 });
+  discos.forEach((d) => { d.classList.add('cam-anim'); io.observe(d); });
+  document.querySelectorAll<HTMLElement>('[data-cam]').forEach((a) => {
+    const cartao = a.closest<HTMLElement>('[data-cartao]');
+    if (!cartao) return;
+    const liga = () => { cartao.dataset.foco = a.dataset.cam; };
+    const desliga = () => { delete cartao.dataset.foco; };
+    a.addEventListener('mouseenter', liga); a.addEventListener('focus', liga);
+    a.addEventListener('mouseleave', desliga); a.addEventListener('blur', desliga);
+  });
+}
+
 (window as any).Alpine = Alpine;
 Alpine.start();

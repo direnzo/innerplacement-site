@@ -1,0 +1,13 @@
+PEÇA: H-02 · Caminhos, disco do cartão coral "Para você"
+STATUS: APROVADA (dono, 29/09/2026, bloco 1)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/caminhos.mts (variação 'H02-a-dois-caminhos'); cópia de docs/ilustracao/bloco-1/H02-a-dois-caminhos.svg
+SUBSTITUI NO SITE: o pictograma pessoa_up do kit. O PNG inner-H02-H03-caminhos-v1.png (ChatGPT)
+continua em imagens/ só como referência.
+
+Conceito: o hero em miniatura. Uma pessoa; do mesmo ponto saem a trilha coral que sobe até a
+rosácea (link "Quero crescer onde estou") e a trilha tinta que sai pela borda do disco (link
+"Estou saindo, ou já saí"). Ganchos cam-* para a animação de entrada e o destaque dos links.
+
+Checklist: seis cores; sem texto; Figura Inner; sem sombra, brilho ou 3D; fundo transparente (o
+disco areia-c vem do componente); viewBox 100 × 100, legível em 56 px; ~3,5 KB.

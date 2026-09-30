@@ -1,0 +1,12 @@
+PEÇA: H-03 · Caminhos, disco do cartão tinta "Para sua empresa"
+STATUS: APROVADA (dono, 29/09/2026, bloco 1, opção B "sem arco")
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/caminhos.mts (variação 'H03-b-grupo'); cópia de docs/ilustracao/bloco-1/H03-b-grupo.svg
+SUBSTITUI NO SITE: o pictograma pessoas do kit. A opção A (com arco) está no histórico do git.
+
+Conceito: uma pessoa sobe pela trilha coral até a rosácea (link "Preparar quem precisa crescer") e
+o par entrelaçado sai acompanhado pela trilha tinta (link "Cuidar de quem sai"). Ganchos cam-* para
+a animação de entrada e o destaque dos links.
+
+Checklist: seis cores; sem texto; Figura Inner e par do kit; sem sombra, brilho ou 3D; fundo
+transparente; viewBox 100 × 100, legível em 56 px; ~4 KB.

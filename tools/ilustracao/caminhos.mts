@@ -31,17 +31,7 @@ const variacoes: Record<string, [string, string]> = {
     `<g class="cam-quem">${figura(29, CHAO, .36, C.areia, C.tinta, 2.4)}</g>`,
   ].join('')],
 
-  // H-03 · Para sua empresa, com arco: o arco (a empresa, na forma do corpo da Figura Inner) acolhe
-  // quem cresce, que sobe pela trilha coral até a rosácea; o par sai pela porta, acompanhado, pela
-  // trilha tinta ("Cuidar de quem sai").
-  'H03-a-arco': ['Para sua empresa: crescer dentro, sair acompanhado', [
-    `<path d="M13,${CHAO} V38 a20,20 0 0 1 40,0 V${CHAO} Z" fill="${C.areia}" fill-opacity=".6"/>`,
-    `<g class="cam-sobe">${T('h03a', 'sobe', 'M33,50 C33,45 33,42 33,38')}<g class="cam-rosa">${ROSA(33, 29, 15)}</g></g>`,
-    `<g class="cam-quem">${figura(33, CHAO, .25, C.ambar, C.tinta, 2.2)}</g>`,
-    `<g class="cam-sai">${T('h03a', 'sai', 'M44,78 C50,76 55,73 60,72', C.tinta, .55)}<g class="cam-par">${par(66, CHAO, .22, C.areia, C.tinta, 2.2)}</g></g>`,
-  ].join('')],
-
-  // H-03 · Para sua empresa, sem arco: uma pessoa sobe pela trilha coral até a rosácea, e o par sai
+  // H-03 · Para sua empresa (escolhida em 29/09, opção B; a versão com arco está no histórico): uma pessoa sobe pela trilha coral até a rosácea, e o par sai
   // acompanhado pela trilha tinta.
   'H03-b-grupo': ['Para sua empresa: um cresce, outro sai acompanhado', [
     `<g class="cam-sobe">${T('h03b', 'sobe', 'M34,52 C36,42 42,34 50,30')}<g class="cam-rosa">${ROSA(58, 26, 18)}</g></g>`,

@@ -72,7 +72,7 @@ Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/
 | Código | Peça | Status |
 | --- | --- | --- |
 | H-01 | Hero | aprovada: v4 em SVG no site (v3 do ChatGPT fica só como referência) |
-| H-02/H-03 | Caminhos | aprovada |
+| H-02/H-03 | Caminhos | aprovadas: discos em SVG no site (o PNG do ChatGPT fica só como referência) |
 | H-04 | Selo transição | aprovada |
 | H-05 | Selo crescimento | aprovada |
 | H-06 | Capa de vídeo | aprovada |
