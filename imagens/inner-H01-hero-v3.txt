@@ -1,0 +1,21 @@
+PEÇA: H-01 · Hero
+STATUS: APROVADA (na conversa paralela ChatGPT, ver docs/guia-imagens-v2.md e o histórico
+consolidado em imagens/exploracao/conversa-inner-placement.md)
+FERRAMENTA: ChatGPT Image Generation
+ARQUIVO ORIGINAL: a_wide_minimalist_modern_vector_illustration_sty.png
+
+Prompt (H-01 · Hero, geração de imagens inner.md):
+Imagem para o topo do site, formato horizontal. O terço esquerdo deve ficar mais calmo, porque
+o título fica ao lado.
+Tema: uma decisão importante de carreira (crescer onde está ou fazer uma transição) e a presença
+de alguém experiente que acompanha até o resultado.
+Cena: uma executiva ou executivo num momento de reflexão e, perto dela, um conselheiro presente
+de forma discreta. A composição sugere dois caminhos possíveis sem ser literal. Tom sereno e
+confiante.
+
+ATENÇÃO — desvios do checklist do próprio guia (não corrigidos ainda):
+- brilho/glow forte e sombras marcadas (checklist proíbe "sombra, brilho ou efeito 3D")
+- figuras em silhueta simples (cabeça+corpo), não "pessoas com proporções realistas e rosto sem
+  detalhes" como o prompt pede
+- franja de artefato vermelho/amarelo/preto na borda do recorte (defeito técnico de exportação,
+  não uma escolha de estilo)

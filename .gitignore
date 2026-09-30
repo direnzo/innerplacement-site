@@ -1,0 +1,17 @@
+# dependências e builds
+node_modules/
+dist/
+.astro/
+
+# imagens: só as aprovadas (raiz de imagens/) são versionadas
+# kit de referência copiado do Drive (tem fotos da equipe) — só local
+/imagens/apoio/
+# rejeitadas/exploratórias e pendentes de aprovação
+/imagens/exploracao/
+/imagens/pendente/
+
+# espelho compilado do /v2-teste/ publicado — regenerável, não versionado
+/referencia-v2-teste/
+
+.DS_Store
+*.log

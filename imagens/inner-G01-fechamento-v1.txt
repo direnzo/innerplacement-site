@@ -1,0 +1,11 @@
+PEÇA: G-01 · Fechamento (todas as páginas, sobre fundo tinta)
+STATUS: APROVADA
+FERRAMENTA: ChatGPT Image Generation
+ARQUIVO ORIGINAL: a_wide_minimalist_modern_vector_illustration_sce.png
+
+Conceito (geração de imagens inner.md): duas figuras caminhando juntas em direção ao horizonte —
+"Todo movimento de carreira começa com uma conversa".
+
+ATENÇÃO — desvios do checklist: contém skyline de prédios literal (a especificação evita
+"banco de imagens"/cenário genérico), brilho/glow forte, figuras em silhueta (não "proporções
+realistas e rosto sem detalhes").

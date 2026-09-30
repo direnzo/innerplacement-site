@@ -1,0 +1,15 @@
+PEÇA: P-02 · Desenvolvimento de Carreira (topo da página)
+STATUS: APROVADA
+FERRAMENTA: ChatGPT Image Generation
+ARQUIVO ORIGINAL: wide_cinematic_vector_illustration_style_concept.png
+
+Prompt (geração de imagens inner.md):
+P-02 · Topo da página.
+Tema: crescer na carreira é uma decisão; assumir mais e ganhar relevância no que já faz.
+Cena: uma executiva num mezanino do escritório, olhando o espaço de trabalho abaixo com postura
+de liderança tranquila. Crescer onde está.
+
+ATENÇÃO — a imagem entregue não corresponde ao prompt (mezanino/escritório): mostra uma figura
+subindo por plataformas circulares em direção a um sol/anel, o que se aproxima do clichê
+"escadas para o céu" que o próprio guia lista como proibido. Recomendo regenerar antes de aprovar
+definitivamente.

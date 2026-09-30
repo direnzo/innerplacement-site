@@ -1,0 +1,11 @@
+PEÇA: H-06 · Capa do vídeo em destaque (Gisele Hinz)
+STATUS: APROVADA
+FERRAMENTA: ChatGPT Image Generation
+ARQUIVO ORIGINAL: a_clean_abstract_minimal_background_scene_with_a_s.png
+
+Prompt (geração de imagens inner.md):
+Fundo para capa de vídeo, formato horizontal.
+Cena: ambiente de escritório elegante e desfocado, com luz quente de fim de tarde entrando pela
+janela. Nenhuma pessoa nítida. O centro deve ficar limpo para um botão de play.
+
+ATENÇÃO: mesma franja de artefato na borda (defeito técnico).

@@ -1,0 +1,12 @@
+PEÇA: H-02/H-03 · Caminhos (discos "Para você" / "Para sua empresa")
+STATUS: APROVADA
+FERRAMENTA: ChatGPT Image Generation
+ARQUIVO ORIGINAL: wide_cinematic_minimalist_vector_illustration_st.png
+
+Conceito (geração de imagens inner.md): H-02 = uma figura dando um passo para uma plataforma
+mais alta; H-03 = um arco acolhendo pessoas, uma sobe outra sai acompanhada. Na peça entregue,
+as duas rotas (coral/tinta) aparecem juntas numa só composição bifurcada.
+
+ATENÇÃO — desvios do checklist: skyline de prédios literal, brilho/glow forte, figuras em
+silhueta (não "proporções realistas e rosto sem detalhes"), mancha preta em cunha no topo
+(artefato de geração).

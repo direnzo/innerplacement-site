@@ -1,0 +1,12 @@
+PEÇA: P-01 · Transição e Recolocação (topo da página)
+STATUS: APROVADA
+FERRAMENTA: ChatGPT Image Generation
+ARQUIVO ORIGINAL: a_clean_minimalist_modern_vector_illustration_st.png
+
+Prompt (geração de imagens inner.md):
+P-01 · Topo da página.
+Tema: uma transição de carreira bem conduzida combina decisão fundamentada e execução precisa.
+Cena: um executivo em transição caminhando por um corredor amplo e iluminado de um prédio
+corporativo, ao lado de uma consultora, ambos serenos. Sensação de passagem para uma nova etapa.
+
+ATENÇÃO: skyline literal, brilho/glow, figuras em silhueta — mesmos desvios do checklist do G-01.
