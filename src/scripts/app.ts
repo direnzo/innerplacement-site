@@ -31,17 +31,25 @@ const rolaveis = document.querySelectorAll<HTMLElement>('[data-rolagem]');
 if (rolaveis.length && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const visiveis = new Set<HTMLElement>();
   let pedido = 0;
+  // data-rolagem vazio: progresso da página (0 no topo → 1,2). data-rolagem="elemento": progresso do
+  // próprio elemento (0 entrando pela base da tela → 1 ao chegar ao terço de cima).
   const atualiza = () => {
     pedido = 0;
-    const p = Math.min(scrollY / innerHeight, 1.2).toFixed(4);
-    visiveis.forEach((el) => el.style.setProperty('--rolagem', p));
+    const pagina = Math.min(scrollY / innerHeight, 1.2).toFixed(4);
+    visiveis.forEach((el) => {
+      const p = el.dataset.rolagem === 'elemento'
+        ? Math.min(Math.max((innerHeight - el.getBoundingClientRect().top) / (innerHeight * 0.7), 0), 1).toFixed(4)
+        : pagina;
+      el.style.setProperty('--rolagem', p);
+    });
   };
   const agenda = () => { if (!pedido && visiveis.size) pedido = requestAnimationFrame(atualiza); };
   const io = new IntersectionObserver((es) => {
     es.forEach((e) => (e.isIntersecting ? visiveis.add(e.target as HTMLElement) : visiveis.delete(e.target as HTMLElement)));
     agenda();
   });
-  rolaveis.forEach((el) => io.observe(el));
+  // Elementos de progresso próprio começam no início (0), para não saltarem ao entrar na tela.
+  rolaveis.forEach((el) => { if (el.dataset.rolagem === 'elemento') el.style.setProperty('--rolagem', '0'); io.observe(el); });
   addEventListener('scroll', agenda, { passive: true });
   addEventListener('resize', agenda, { passive: true });
 }
@@ -62,6 +70,30 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     a.addEventListener('mouseenter', liga); a.addEventListener('focus', liga);
     a.addEventListener('mouseleave', desliga); a.addEventListener('blur', desliga);
   });
+}
+
+// Entrada genérica: [data-entrada] ganha .il-anim (pausado no estado inicial) e .visto ao aparecer.
+// Números [data-conta] contam de 0 ao valor final (prefixo e sufixo preservados, ex.: +1500, 86%).
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const conta = (el: HTMLElement) => {
+    const m = (el.textContent ?? '').match(/^(\D*)(\d+)(\D*)$/);
+    if (!m) return;
+    const [, pre, num, suf] = m, fim = +num, t0 = performance.now();
+    const passo = (t: number) => {
+      const k = Math.min((t - t0) / 1100, 1), v = Math.round(fim * (1 - Math.pow(1 - k, 3)));
+      el.textContent = pre + v + suf;
+      if (k < 1) requestAnimationFrame(passo);
+    };
+    requestAnimationFrame(passo);
+  };
+  const io = new IntersectionObserver((es) => es.forEach((e) => {
+    if (!e.isIntersecting) return;
+    const el = e.target as HTMLElement;
+    if (el.hasAttribute('data-conta')) conta(el); else el.classList.add('visto');
+    io.unobserve(el);
+  }), { threshold: 0.5 });
+  document.querySelectorAll<HTMLElement>('[data-entrada]').forEach((el) => { el.classList.add('il-anim'); io.observe(el); });
+  document.querySelectorAll<HTMLElement>('[data-conta]').forEach((el) => io.observe(el));
 }
 
 (window as any).Alpine = Alpine;

@@ -73,7 +73,7 @@ fora, como o guia pede.
 | Bloco | Seções | Peças centrais | Estado |
 | --- | --- | --- | --- |
 | 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | concluído (29/09), no site com movimento |
-| 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | não iniciado |
+| 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | rodada 1 em revisão |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | não iniciado |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | não iniciado |
 | 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | não iniciado |
@@ -158,3 +158,23 @@ Comparação no layout: https://claude.ai/artifact/JRSHwhqaZ7SeksikQWVBh3
 
 Próximos passos do bloco: escolha da intensidade → mesma linguagem nos discos de Caminhos (H-02, H-03) →
 encaixe no site → merge.
+
+## Bloco 2 · Por que a Inner, Prova e Método
+
+Branch `imagens/bloco-2`. Gerador: `tools/ilustracao/bloco2.mts` → `docs/ilustracao/bloco-2/`. As
+propostas já estão aplicadas na home dessa branch (importadas de `docs/`; vão para `imagens/` quando
+aprovadas). Revisão com o HTML real: https://claude.ai/artifact/Tn4XLpFGHALBnh7ZvE2BmD
+
+| Arquivo | Onde | Ideia |
+| --- | --- | --- |
+| `H04-transicao.svg` | Por que a Inner, coluna transição | A pessoa parte; a rota passa por três marcos e chega à rosácea (do primeiro encontro à recolocação) |
+| `H05-crescimento.svg` | Por que a Inner, coluna crescer | Cabeça coral com anéis de impacto que se expandem, dentro de um arco (espaço reservado) |
+| `H21-anos.svg`, `H22-profissionais.svg`, `H23-recolocados.svg` | Prova, acima dos números | Trajetória longa; muitas pessoas; poucos marcos até a rosácea |
+| `H06-capa.svg` | Prova, capa do vídeo da Gisele | Bolas translúcidas, oval e trilha do kit, centro livre para o play; comparada com a H-06 do ChatGPT |
+| `M-metodo.svg` | Método | Diagrama oficial redesenhado (mesma geometria, rótulos como texto) para animar |
+
+Movimento: entrada genérica `data-entrada` (`.il-anim` → `.visto`), contagem `data-conta` nos números
+e `data-rolagem="elemento"` no método (os círculos convergem com a rolagem). CSS "Bloco 2 ·
+movimento" em `global.css`; script em `app.ts` (cópia em `tools/versao-teste.py`). Utilitário
+comum para embutir SVG: `src/lib/svg.ts`.
+

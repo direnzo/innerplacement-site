@@ -170,3 +170,35 @@
   @keyframes il-chega { from { opacity: 0; translate: -8px 0; } }
   @keyframes il-fluir { to { stroke-dashoffset: -12.4px; } }
 }
+
+/* Bloco 2 · movimento (Por que a Inner, Prova, Método). Ganchos b2-* e met-* de
+   tools/ilustracao/bloco2.mts.
+   - Entrada genérica: o script põe .il-anim nos elementos [data-entrada] (animações pausadas no
+     estado inicial) e .visto quando aparecem na tela.
+   - Números [data-conta]: o script conta de 0 ao valor final ao aparecer.
+   - Método: [data-rolagem="elemento"] recebe --rolagem de 0 (entrando pela base da tela) a 1 (no
+     terço de cima); os círculos se aproximam e o objetivo nasce no encontro.
+   Sem script, ou com "reduzir movimento", tudo aparece completo e parado. */
+@layer components {
+  .il-anim .b2-desenho { stroke-dasharray: 1 1; animation: il-desenha .9s .1s cubic-bezier(.45, 0, .25, 1) both paused; }
+  .il-anim :is(.b2-marcos > *, .b2-rosa, .b2-anel) { transform-box: fill-box; transform-origin: center; }
+  .il-anim .b2-marcos > * { animation: il-pop .3s cubic-bezier(.3, 1.6, .5, 1) both paused; }
+  .il-anim .b2-marcos > :nth-child(1) { animation-delay: .25s; }
+  .il-anim .b2-marcos > :nth-child(2) { animation-delay: .4s; }
+  .il-anim .b2-marcos > :nth-child(3) { animation-delay: .55s; }
+  .il-anim .b2-marcos > :nth-child(4) { animation-delay: .7s; }
+  .il-anim .b2-marcos > :nth-child(5) { animation-delay: .8s; }
+  .il-anim .b2-marcos > :nth-child(6) { animation-delay: .9s; }
+  .il-anim .b2-marcos > :nth-child(7) { animation-delay: 1s; }
+  .il-anim .b2-rosa { animation: il-floresce .55s .85s cubic-bezier(.2, 1.3, .4, 1) both paused; }
+  .il-anim .b2-anel { animation: b2-anel .7s cubic-bezier(.2, .9, .3, 1) both paused; }
+  .il-anim .b2-anel-2 { animation-delay: .2s; }
+  .il-anim .b2-anel-3 { animation-delay: .4s; }
+  .il-anim .b2-grupo { animation: il-chega .6s ease-out both paused; }
+  .il-anim .b2-quem { animation: il-chega .45s ease-out both paused; }
+  .il-anim.visto :is(.b2-desenho, .b2-marcos > *, .b2-rosa, .b2-anel, .b2-grupo, .b2-quem) { animation-play-state: running; }
+  @keyframes b2-anel { from { opacity: 0; scale: .45; } }
+
+  .met-bola { translate: calc((1 - var(--rolagem, 1)) * var(--dx) * 40px) calc((1 - var(--rolagem, 1)) * var(--dy) * 30px); }
+  .met-objetivo { transform-box: fill-box; transform-origin: center; scale: calc(.3 + .7 * var(--rolagem, 1)); opacity: calc(var(--rolagem, 1) * 1.4 - .4); }
+}

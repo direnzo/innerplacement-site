@@ -8,12 +8,22 @@ import DepoCard from '../components/DepoCard.astro';
 import DepoVideo from '../components/DepoVideo.astro';
 import Acordeao from '../components/Acordeao.astro';
 import heroSvg from '../../imagens/inner-H01-hero-v4.svg?raw';
+// Bloco 2 (propostas, tools/ilustracao/bloco2.mts): entram em imagens/ quando aprovadas.
+import h04 from '../../docs/ilustracao/bloco-2/H04-transicao.svg?raw';
+import h05 from '../../docs/ilustracao/bloco-2/H05-crescimento.svg?raw';
+import h06 from '../../docs/ilustracao/bloco-2/H06-capa.svg?raw';
+import h21 from '../../docs/ilustracao/bloco-2/H21-anos.svg?raw';
+import h22 from '../../docs/ilustracao/bloco-2/H22-profissionais.svg?raw';
+import h23 from '../../docs/ilustracao/bloco-2/H23-recolocados.svg?raw';
+import metodoSvg from '../../docs/ilustracao/bloco-2/M-metodo.svg?raw';
+import { miolo } from '../lib/svg';
 import { depoimentos as D } from '../data/depoimentos';
 import { faqHome } from '../data/faq';
 import { numeros, rotas } from '../data/site';
 
-// Painel do hero: H-01 aprovada (SVG gerado por tools/ilustracao/hero.mts). Entra inline, sem o <svg> externo.
-const painel = heroSvg.replace(/<title>.*?<\/title>/, '').replace(/^<svg[^>]*>|<\/svg>\s*$/g, '');
+// Painel do hero: H-01 aprovada (SVG gerado por tools/ilustracao/hero.mts), inline.
+const painel = miolo(heroSvg);
+const glifos = [h21, h22, h23];
 
 const metodo = [
   ['Contexto individual', 'Quem você é, onde está agora e o que está em jogo nesta escolha.'],
@@ -55,12 +65,14 @@ const metodo = [
       </div>
       <div class="grid gap-7 border-t border-linha pt-7 md:grid-cols-2 md:gap-14">
         <div class="flex flex-col gap-2.5" x-data="{ mais: false }">
+          <svg viewBox="0 0 168 88" class="mb-1 h-[72px] w-auto self-start md:h-[88px]" aria-hidden="true" data-entrada set:html={miolo(h04)} />
           <Badge>Para quem está em transição</Badge>
           <h3 class="text-[17.5px] font-semibold leading-[1.35] md:text-[19px]">Estratégia de mercado e leitura cuidadosa do profissional, no mesmo processo</h3>
           <p class="text-[15.5px] leading-[1.62] text-texto md:text-[16px] max-md:line-clamp-4" x-bind:class="mais && 'max-md:line-clamp-none'">Uma transição bem conduzida começa por uma leitura precisa: o que você construiu, o que quer a seguir e como o mercado enxerga isso. A partir dela, a estratégia: posicionamento definido, network ativado com método, oportunidades acompanhadas uma a uma e preparação para cada entrevista. Do primeiro encontro à recolocação.</p>
           <button type="button" class="self-start text-[14.5px] font-semibold text-coral-d underline underline-offset-4 md:hidden" x-on:click="mais = !mais" x-text="mais ? 'Ler menos' : 'Ler mais'">Ler mais</button>
         </div>
         <div class="flex flex-col gap-2.5" x-data="{ mais: false }">
+          <svg viewBox="0 0 168 88" class="mb-1 h-[72px] w-auto self-start md:h-[88px]" aria-hidden="true" data-entrada set:html={miolo(h05)} />
           <Badge>Para quem quer crescer</Badge>
           <h3 class="text-[17.5px] font-semibold leading-[1.35] md:text-[19px]">Estratégia de desenvolvimento e impacto na organização, no mesmo processo</h3>
           <p class="text-[15.5px] leading-[1.62] text-texto md:text-[16px] max-md:line-clamp-4" x-bind:class="mais && 'max-md:line-clamp-none'">Você quer crescer ou ganhar mais relevância no que já faz. Nos dois casos o trabalho é preciso: definimos o impacto que você quer ter, na carreira e na organização, e construímos a estratégia de desenvolvimento para chegar lá — pode ser uma competência, um comportamento, a forma de se posicionar, ou o que só aparece no caminho. O programa se ajusta ao que o seu dia a dia traz, e acontece fora da hierarquia da empresa: um espaço profissional e confidencial para trabalhar o que lá dentro não dá para expor.</p>
@@ -79,16 +91,16 @@ const metodo = [
       </div>
       <a href={rotas.depoimentos} class="btn-l hidden md:inline-flex">Ver todos os depoimentos</a>
     </div>
-    <DepoVideo d={D.gisele} grande />
+    <DepoVideo d={D.gisele} grande capa={h06} />
     <div class="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start md:[&>*]:w-auto">
       <DepoCard d={D.gustavo} />
       <DepoCard d={D.otavio} />
     </div>
     <div class="grid grid-cols-3 gap-3 border-t border-tinta/15 pt-5 md:flex md:gap-20 md:pt-6">
-      {numeros.map((n) => (
+      {numeros.map((n, i) => (
         <div class="flex flex-col gap-1.5">
-          <Svg name="fio" w={44} />
-          <b class="text-[28px] font-light leading-none tracking-[-.02em] tabular-nums md:text-[40px]">{n.n}</b>
+          <svg viewBox="0 0 120 28" class="h-6 w-auto self-start md:h-7" aria-hidden="true" data-entrada set:html={miolo(glifos[i])} />
+          <b data-conta class="text-[28px] font-light leading-none tracking-[-.02em] tabular-nums md:text-[40px]">{n.n}</b>
           <span class="max-w-[190px] text-[13px] leading-[1.4] text-texto md:text-[14px]">{n.t}</span>
         </div>
       ))}
@@ -105,7 +117,7 @@ const metodo = [
         <h2 id="metodo-titulo" class="h2">Antes de mover, <strong>entender.</strong></h2>
         <p class="lead">Você não precisa recomeçar do zero. Precisa lapidar o que já construiu — e isso começa por entender. O método é uma conversa estruturada que percorre quatro dimensões, para que a sua decisão de carreira se construa conectada a você e ao cenário em que ela vai acontecer. É no encontro dessas quatro dimensões que o seu objetivo ganha forma.</p>
       </div>
-      <div class="flex justify-center lg:row-span-2"><Svg name="metodologia" w={400} class="h-auto w-full max-w-[250px] md:max-w-[340px] lg:max-w-[400px]" label="Diagrama do método: contexto individual, ambiente e cultura, potencial e recursos e cenário futuro se encontram no objetivo" /></div>
+      <div class="flex justify-center lg:row-span-2"><svg viewBox="0 0 412.79 295.26" class="h-auto w-full max-w-[250px] md:max-w-[340px] lg:max-w-[400px]" role="img" aria-label="Diagrama do método: contexto individual, ambiente e cultura, potencial e recursos e cenário futuro se encontram no objetivo" data-rolagem="elemento" set:html={miolo(metodoSvg)} /></div>
       <ul class="grid grid-cols-2 gap-x-4 gap-y-4 border-t border-tinta/15 pt-5 md:gap-x-8 md:gap-y-5" role="list">
         {metodo.map(([t, p]) => (
           <li class="flex flex-col gap-1"><h3 class="text-[15px] font-semibold md:text-[16px]">{t}</h3><p class="text-[14px] leading-[1.5] text-texto md:text-[15px]">{p}</p></li>
