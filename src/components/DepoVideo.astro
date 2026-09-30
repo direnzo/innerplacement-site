@@ -1,0 +1,20 @@
+---
+import Svg from './Svg.astro';
+import type { Depoimento } from '../data/depoimentos';
+import { assinatura } from '../data/depoimentos';
+interface Props { d: Depoimento; grande?: boolean; lado?: boolean }
+const { d, grande = false, lado = true } = Astro.props;
+---
+<div class:list={['grid items-center gap-5', lado ? 'md:grid-cols-2 md:gap-8' : '']}>
+  <div class="relative flex h-[200px] items-center justify-center overflow-hidden rounded-[20px] bg-areia-c md:h-[260px]" role="img" aria-label={`Vídeo do depoimento de ${d.nome}`}>
+    <Svg name="oval_grad" h={300} class="absolute -bottom-16 -right-10 rotate-[-12deg] opacity-60" />
+    <span class="relative flex size-[68px] items-center justify-center rounded-full bg-coral text-tinta shadow-[0_8px_24px_rgba(35,31,32,.15)]">
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+    </span>
+    <span class="absolute bottom-3.5 left-4 rounded-full bg-white/70 px-3 py-1 text-[12.5px] text-texto">Vídeo · {d.nome}</span>
+  </div>
+  <figure class="flex flex-col gap-3">
+    <blockquote class:list={[grande ? 'text-[20px] font-light leading-[1.4] tracking-[-.01em] md:text-[26px]' : 'text-[17px] font-light leading-[1.5] md:text-[20px]']}>“{d.texto}”</blockquote>
+    <figcaption class="assina"><b>{d.nome}</b>{assinatura(d) && <> · {assinatura(d)}</>}</figcaption>
+  </figure>
+</div>

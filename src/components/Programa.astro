@@ -1,0 +1,10 @@
+---
+import Badge from './Badge.astro';
+interface Props { rotulo: string; nome: string }
+const { rotulo, nome } = Astro.props;
+---
+<article class="card flex flex-col gap-3 p-5 md:p-7">
+  <Badge>{rotulo}</Badge>
+  <h2 class="text-[22px] font-semibold tracking-[-.01em] md:text-[24px]">{nome}</h2>
+  <p class="text-[15.5px] leading-[1.62] text-texto"><slot /></p>
+</article>

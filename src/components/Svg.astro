@@ -1,0 +1,17 @@
+---
+import { kit } from '../data/kit';
+// Elementos que se repetem muito ficam num sprite único (Sprite.astro) e são referenciados por <use>.
+export const SPRITE = ['logo', 'rosacea_coral', 'rosacea_tinta'];
+interface Props { name: string; w?: number; h?: number; class?: string; style?: string; label?: string; }
+const { name, w, h, class: cls, style, label } = Astro.props;
+const k = kit[name];
+if (!k) throw new Error(`Elemento do kit não encontrado: ${name}`);
+let width = w, height = h;
+if (width && !height) height = +(width * k.h / k.w).toFixed(1);
+if (height && !width) width = +(height * k.w / k.h).toFixed(1);
+const usa = SPRITE.includes(name);
+const a11y = label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'true' };
+---
+{usa
+  ? <svg width={width} height={height} viewBox={`0 0 ${k.w} ${k.h}`} class={cls} style={style} focusable="false" {...a11y}><use href={`#k-${name}`} /></svg>
+  : <svg width={width} height={height} viewBox={`0 0 ${k.w} ${k.h}`} class={cls} style={style} focusable="false" {...a11y} set:html={k.inner} />}

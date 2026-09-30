@@ -1,0 +1,26 @@
+---
+import type { Pergunta } from '../data/faq';
+interface Props { itens: Pergunta[]; abrirPrimeira?: boolean; prefixo: string }
+const { itens, abrirPrimeira = false, prefixo } = Astro.props;
+---
+<div class="flex flex-col rounded-[20px] bg-white px-5 md:px-7" x-data={`{ aberta: ${abrirPrimeira ? `'${itens[0].id}'` : 'null'} }`}>
+  {itens.map((p, i) => (
+    <div class:list={[i > 0 && 'border-t border-linha']}>
+      <h3>
+        <button type="button" id={`${prefixo}-${p.id}-b`} aria-controls={`${prefixo}-${p.id}`}
+          aria-expanded={abrirPrimeira && i === 0 ? 'true' : 'false'}
+          x-bind:aria-expanded={`(aberta === '${p.id}').toString()`}
+          x-on:click={`aberta = aberta === '${p.id}' ? null : '${p.id}'`}
+          class="flex min-h-[60px] w-full items-center justify-between gap-4 py-3.5 text-left text-[15.5px] font-semibold md:text-[16.5px]">
+          <span>{p.q}</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+            class="shrink-0 text-coral-d transition-transform" x-bind:class={`aberta === '${p.id}' && 'rotate-180'`}><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </h3>
+      <div id={`${prefixo}-${p.id}`} role="region" aria-labelledby={`${prefixo}-${p.id}-b`}
+        x-show={`aberta === '${p.id}'`} x-transition.opacity.duration.200ms style={abrirPrimeira && i === 0 ? undefined : 'display:none'}>
+        <p class="pb-5 pr-2 text-[15px] leading-[1.62] text-texto md:pr-12 md:text-[15.5px]">{p.a}</p>
+      </div>
+    </div>
+  ))}
+</div>

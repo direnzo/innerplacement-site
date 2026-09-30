@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import TopoPagina from '../components/TopoPagina.astro';
+import Programa from '../components/Programa.astro';
+import DepoCard from '../components/DepoCard.astro';
+import Badge from '../components/Badge.astro';
+import { depoimentos as D } from '../data/depoimentos';
+---
+<Base titulo="Outplacement" fechamento
+  descricao="Outplacement com método e acompanhamento individual para cada pessoa desligada: programas Platinum e Focus.">
+  <TopoPagina titulo="Outplacement" trilha="Para sua empresa" acento="rosacea_coral" acentoClass="-right-16 -top-16 w-[330px]!"
+    intro="A forma como a empresa conduz a saída de cada profissional é parte da sua cultura — e da sua reputação. A Inner estrutura esse cuidado em dois programas, Platinum e Focus: método e acompanhamento individual para cada pessoa desligada." />
+  <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
+    <Programa rotulo="Outplacement" nome="Platinum">Para executivos e lideranças em transições que exigem maior complexidade, profundidade e acompanhamento próximo. O Platinum combina reflexão, posicionamento e execução, com suporte individual e exclusivo em todas as etapas: leitura de trajetória com os sócios da Inner, definição de direcionamento, currículo e LinkedIn, ativação de network, job hunting e preparação para entrevistas. Uma consultora dedicada garante ritmo, organização e continuidade até a recolocação.</Programa>
+    <Programa rotulo="Outplacement" nome="Focus">Para profissionais de níveis intermediários — como especialistas, analistas e coordenadores — em desligamentos individuais ou em grupo. O Focus combina uma trilha estruturada e suporte nos momentos decisivos da transição: posicionamento, currículo, LinkedIn, network, preparação para entrevistas e orientação para a busca de oportunidades. O profissional conduz o processo com autonomia e conta com encontros individuais para definir a estratégia e preparar cada etapa da busca. Uma alternativa acessível, estruturada e efetiva para apoiar a recolocação.</Programa>
+  </section>
+  <section class="wrap">
+    <aside class="flex flex-col gap-3 rounded-[20px] bg-tinta p-5 text-white md:flex-row md:items-center md:gap-10 md:p-8">
+      <Badge variante="coral">O que a empresa acompanha</Badge>
+      <p class="text-[17px] leading-[1.55] md:text-[19px]">A evolução de cada participante durante o programa e, ao final, um relatório com a decisão de carreira de cada um. O conteúdo das conversas é do profissional.</p>
+    </aside>
+  </section>
+  <section class="wrap flex flex-col gap-5 pt-2" aria-labelledby="prova">
+    <h2 id="prova" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+    <div class="grid gap-3.5 md:grid-cols-2 md:gap-6">
+      <DepoCard d={D.fabiola} />
+      <DepoCard d={D.katia} />
+    </div>
+  </section>
+</Base>

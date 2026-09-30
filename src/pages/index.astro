@@ -1,0 +1,149 @@
+---
+import Base from '../layouts/Base.astro';
+import Svg from '../components/Svg.astro';
+import Badge from '../components/Badge.astro';
+import Caminhos from '../components/Caminhos.astro';
+import Clientes from '../components/Clientes.astro';
+import DepoCard from '../components/DepoCard.astro';
+import DepoVideo from '../components/DepoVideo.astro';
+import Acordeao from '../components/Acordeao.astro';
+import { kit } from '../data/kit';
+import { depoimentos as D } from '../data/depoimentos';
+import { faqHome } from '../data/faq';
+import { numeros, rotas } from '../data/site';
+
+// Composição do painel do hero: peças oficiais posicionadas num único SVG fluido (espaço reservado até a imagem de apoio definitiva).
+const peca = (k: string, x: number, y: number, h: number) => {
+  const e = kit[k]; const w = +(h * e.w / e.h).toFixed(1);
+  return `<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="0 0 ${e.w} ${e.h}">${e.inner}</svg>`;
+};
+const BASE = 262;
+const painel = `
+  <line x1="24" y1="${BASE}" x2="472" y2="${BASE}" stroke="#231F20" stroke-opacity=".18" stroke-width="2" stroke-linecap="round"/>
+  <path d="M132,138 L360,80" fill="none" stroke="#FF6558" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 10"/>
+  <circle cx="132" cy="138" r="5.5" fill="#FF6558"/>
+  ${peca('pessoa_up', 28, BASE - 120, 120)}
+  ${peca('pessoas', 186, BASE - 112, 112)}
+  ${peca('rosacea_coral', 362, 26, 86)}`;
+
+const metodo = [
+  ['Contexto individual', 'Quem você é, onde está agora e o que está em jogo nesta escolha.'],
+  ['Ambiente e cultura', 'Onde você rende — e onde você apenas sobrevive.'],
+  ['Potencial e recursos', 'O que já existe em você e pode ser ativado agora.'],
+  ['Cenário futuro', 'Para onde você quer levar a sua carreira — e para onde o mercado está indo.'],
+];
+---
+<Base titulo="Consultoria de desenvolvimento de carreira" fechamento
+  descricao="Consultoria de desenvolvimento de carreira: transição, outplacement e crescimento de executivos. Método e acompanhamento até acontecer.">
+
+  <!-- 1 · Hero -->
+  <section class="wrap grid grid-cols-[minmax(0,1fr)] items-center gap-6 pt-6 md:pt-8 lg:grid-cols-[minmax(0,1fr)_496px] lg:gap-11">
+    <div class="flex flex-col gap-3.5 md:gap-4">
+      <Badge>Consultoria de carreira · até acontecer</Badge>
+      <h1 class="h1-hero max-w-[26ch]">Crescer na carreira ou fazer uma transição: decisões que exigem clareza, estratégia — e alguém que caminhe <strong>junto até acontecer.</strong></h1>
+      <p class="lead text-[16.5px] md:text-[19px]">Consultoria de desenvolvimento de carreira: transição, outplacement e crescimento de executivos.</p>
+    </div>
+    <div class="flex flex-col gap-3 rounded-[28px] bg-areia-c p-4 md:p-6">
+      <svg viewBox="0 0 496 280" class="h-auto w-full" aria-hidden="true" set:html={painel} />
+      <div class="flex flex-wrap gap-1.5 md:justify-between">
+        <span class="chip">posicionamento</span>
+        <span class="chip">network ativado</span>
+        <span class="chip !bg-tinta !text-white">até acontecer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Caminhos -->
+  <Caminhos />
+
+  <!-- 3 · Por que a Inner -->
+  <section class="bloco bg-white py-9 md:py-12" aria-labelledby="porque-titulo">
+    <div class="wrap flex flex-col gap-7">
+      <div class="grid gap-4 md:grid-cols-2 md:gap-14">
+        <h2 id="porque-titulo" class="h2">Carreira se decide com método — <strong>e se realiza com acompanhamento.</strong></h2>
+        <p class="lead">Uma decisão de carreira depende de duas leituras: quem você é e onde quer chegar. A Inner faz as duas no mesmo processo, com método — quatro dimensões de análise e um percurso estruturado — e acompanha a execução até o resultado.</p>
+      </div>
+      <div class="grid gap-7 border-t border-linha pt-7 md:grid-cols-2 md:gap-14">
+        <div class="flex flex-col gap-2.5" x-data="{ mais: false }">
+          <Badge>Para quem está em transição</Badge>
+          <h3 class="text-[17.5px] font-semibold leading-[1.35] md:text-[19px]">Estratégia de mercado e leitura cuidadosa do profissional, no mesmo processo</h3>
+          <p class="text-[15.5px] leading-[1.62] text-texto md:text-[16px] max-md:line-clamp-4" x-bind:class="mais && 'max-md:line-clamp-none'">Uma transição bem conduzida começa por uma leitura precisa: o que você construiu, o que quer a seguir e como o mercado enxerga isso. A partir dela, a estratégia: posicionamento definido, network ativado com método, oportunidades acompanhadas uma a uma e preparação para cada entrevista. Do primeiro encontro à recolocação.</p>
+          <button type="button" class="self-start text-[14.5px] font-semibold text-coral-d underline underline-offset-4 md:hidden" x-on:click="mais = !mais" x-text="mais ? 'Ler menos' : 'Ler mais'">Ler mais</button>
+        </div>
+        <div class="flex flex-col gap-2.5" x-data="{ mais: false }">
+          <Badge>Para quem quer crescer</Badge>
+          <h3 class="text-[17.5px] font-semibold leading-[1.35] md:text-[19px]">Estratégia de desenvolvimento e impacto na organização, no mesmo processo</h3>
+          <p class="text-[15.5px] leading-[1.62] text-texto md:text-[16px] max-md:line-clamp-4" x-bind:class="mais && 'max-md:line-clamp-none'">Você quer crescer ou ganhar mais relevância no que já faz. Nos dois casos o trabalho é preciso: definimos o impacto que você quer ter, na carreira e na organização, e construímos a estratégia de desenvolvimento para chegar lá — pode ser uma competência, um comportamento, a forma de se posicionar, ou o que só aparece no caminho. O programa se ajusta ao que o seu dia a dia traz, e acontece fora da hierarquia da empresa: um espaço profissional e confidencial para trabalhar o que lá dentro não dá para expor.</p>
+          <button type="button" class="self-start text-[14.5px] font-semibold text-coral-d underline underline-offset-4 md:hidden" x-on:click="mais = !mais" x-text="mais ? 'Ler menos' : 'Ler mais'">Ler mais</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Prova -->
+  <section class="wrap flex flex-col gap-6 pt-2 md:gap-7" aria-labelledby="prova-titulo">
+    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-12">
+      <div class="flex max-w-[640px] flex-col gap-2.5">
+        <h2 id="prova-titulo" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+        <p class="lead">Não só o resultado. O processo inteiro — inclusive a parte difícil, que ninguém costuma mostrar.</p>
+      </div>
+      <a href={rotas.depoimentos} class="btn-l hidden md:inline-flex">Ver todos os depoimentos</a>
+    </div>
+    <DepoVideo d={D.gisele} grande />
+    <div class="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start md:[&>*]:w-auto">
+      <DepoCard d={D.gustavo} />
+      <DepoCard d={D.otavio} />
+    </div>
+    <div class="grid grid-cols-3 gap-3 border-t border-tinta/15 pt-5 md:flex md:gap-20 md:pt-6">
+      {numeros.map((n) => (
+        <div class="flex flex-col gap-1.5">
+          <Svg name="fio" w={44} />
+          <b class="text-[28px] font-light leading-none tracking-[-.02em] tabular-nums md:text-[40px]">{n.n}</b>
+          <span class="max-w-[190px] text-[13px] leading-[1.4] text-texto md:text-[14px]">{n.t}</span>
+        </div>
+      ))}
+    </div>
+    <a href={rotas.depoimentos} class="btn-l w-full md:hidden">Ver todos os depoimentos</a>
+  </section>
+
+  <Clientes />
+
+  <!-- 5 · Método -->
+  <section class="bloco bg-areia-c py-9 md:py-12" aria-labelledby="metodo-titulo">
+    <div class="wrap grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-14">
+      <div class="flex flex-col gap-5">
+        <h2 id="metodo-titulo" class="h2">Antes de mover, <strong>entender.</strong></h2>
+        <p class="lead">Você não precisa recomeçar do zero. Precisa lapidar o que já construiu — e isso começa por entender. O método é uma conversa estruturada que percorre quatro dimensões, para que a sua decisão de carreira se construa conectada a você e ao cenário em que ela vai acontecer. É no encontro dessas quatro dimensões que o seu objetivo ganha forma.</p>
+      </div>
+      <div class="flex justify-center lg:row-span-2"><Svg name="metodologia" w={400} class="h-auto w-full max-w-[250px] md:max-w-[340px] lg:max-w-[400px]" label="Diagrama do método: contexto individual, ambiente e cultura, potencial e recursos e cenário futuro se encontram no objetivo" /></div>
+      <ul class="grid grid-cols-2 gap-x-4 gap-y-4 border-t border-tinta/15 pt-5 md:gap-x-8 md:gap-y-5" role="list">
+        {metodo.map(([t, p]) => (
+          <li class="flex flex-col gap-1"><h3 class="text-[15px] font-semibold md:text-[16px]">{t}</h3><p class="text-[14px] leading-[1.5] text-texto md:text-[15px]">{p}</p></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6 · Perguntas -->
+  <section class="wrap grid gap-5 md:gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14" aria-labelledby="perguntas-titulo">
+    <div class="flex flex-col items-start gap-5">
+      <h2 id="perguntas-titulo" class="h2">Antes de conversar, <strong>o que costumam perguntar</strong></h2>
+      <a href={rotas.faq} class="btn-l hidden lg:inline-flex">Ver todas as perguntas</a>
+    </div>
+    <Acordeao itens={faqHome} abrirPrimeira prefixo="home" />
+    <a href={rotas.faq} class="btn-l w-full lg:hidden">Ver todas as perguntas</a>
+  </section>
+
+  <!-- 7 · Manifesto -->
+  <section class="wrap" aria-labelledby="manifesto-titulo">
+    <div class="relative grid gap-5 overflow-hidden rounded-[28px] bg-white p-6 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:items-center md:gap-14 md:p-11">
+      <Svg name="rosacea_coral" w={260} class="pointer-events-none absolute -right-20 -top-16 opacity-15" />
+      <div class="relative flex flex-col items-start gap-4">
+        <h2 id="manifesto-titulo" class="h2 !font-semibold">Manifesto</h2>
+        <a href={rotas.manifesto} class="btn-l hidden md:inline-flex">Ler o manifesto</a>
+      </div>
+      <blockquote class="relative text-[20px] font-light leading-[1.4] tracking-[-.01em] md:text-[27px]"><span class="font-semibold text-coral">“</span>Não reinventamos ninguém. Lapidamos o que cada pessoa já construiu, para que fique visível.<span class="font-semibold text-coral">”</span></blockquote>
+      <a href={rotas.manifesto} class="btn-l relative w-full md:hidden">Ler o manifesto</a>
+    </div>
+  </section>
+</Base>

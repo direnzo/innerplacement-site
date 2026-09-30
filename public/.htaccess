@@ -1,0 +1,8 @@
+# Redirecionamentos 301 das URLs do WordPress atual para as páginas novas
+RewriteEngine On
+Redirect 301 /profissionais-transicao-de-carreira-outplacement/ /transicao-e-recolocacao/
+Redirect 301 /profissionais-evolucao-de-carreira/ /desenvolvimento-de-carreira/
+Redirect 301 /empresas-desenvolvimento-de-executivos/ /desenvolvimento-de-executivos/
+Redirect 301 /empresas/ /outplacement/
+Redirect 301 /faq/ /perguntas-frequentes/
+ErrorDocument 404 /

@@ -1,0 +1,16 @@
+---
+import Svg from './Svg.astro';
+interface Props { titulo: string; intro?: string; trilha?: string; acento?: string; acentoStyle?: string; acentoClass?: string }
+const { titulo, intro, trilha, acento, acentoStyle, acentoClass } = Astro.props;
+---
+<section class="relative overflow-hidden bg-areia-c">
+  {acento === 'card_degrade'
+    ? <div class="pointer-events-none absolute bottom-6 right-6 top-6 hidden overflow-hidden rounded-[28px] md:block lg:right-10"><Svg name="card_degrade" w={420} class="h-full w-auto" /></div>
+    : acento && <Svg name={acento} w={420} class={`pointer-events-none absolute hidden h-auto md:block ${acentoClass ?? ''}`} style={acentoStyle} />}
+  <div class="wrap relative flex flex-col gap-3 py-9 md:gap-4 md:py-14 md:pr-[min(38%,420px)] lg:pr-0">
+    {trilha && <p class="text-[14px] text-mudo"><a href="/" class="hover:text-tinta">Início</a> / {trilha}</p>}
+    <h1 class="h1-pag max-w-[20ch]"><slot name="titulo">{titulo}</slot></h1>
+    {intro && <p class="lead md:max-w-[58ch]">{intro}</p>}
+    <slot />
+  </div>
+</section>

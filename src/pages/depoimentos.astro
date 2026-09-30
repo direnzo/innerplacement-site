@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import TopoPagina from '../components/TopoPagina.astro';
+import DepoCard from '../components/DepoCard.astro';
+import DepoVideo from '../components/DepoVideo.astro';
+import { depoimentos as D, secoesDepoimentos } from '../data/depoimentos';
+---
+<Base titulo="Depoimentos" fechamento
+  descricao="Quem já fez esse caminho conta como foi: depoimentos de transição, outplacement e crescimento de carreira com a Inner Placement.">
+  <TopoPagina titulo="Depoimentos" acento="oval_transparente" acentoClass="right-24 -top-10 -rotate-[14deg] w-[220px]!"
+    intro="Não só o resultado. O processo inteiro — inclusive a parte difícil, que ninguém costuma mostrar.">
+    <nav aria-label="Seções de depoimentos" class="flex flex-wrap gap-2 pt-1">
+      {secoesDepoimentos.map((s) => <a href={`#${s.id}`} class="chip hover:bg-tinta hover:text-white">{s.titulo}</a>)}
+    </nav>
+  </TopoPagina>
+  {secoesDepoimentos.map((s) => {
+    const itens = s.ids.map((id) => D[id]);
+    const videos = itens.filter((d) => d.video);
+    const textos = itens.filter((d) => !d.video);
+    return (
+      <section id={s.id} class="wrap flex scroll-mt-24 flex-col gap-5" aria-labelledby={`${s.id}-t`}>
+        <h2 id={`${s.id}-t`} class="h2 !font-semibold">{s.titulo}</h2>
+        {videos.length > 0 && <div class="grid gap-6 md:grid-cols-2">{videos.map((d) => <DepoVideo d={d} lado={false} />)}</div>}
+        {textos.length > 0 && <div class="grid gap-3.5 md:grid-cols-2 md:gap-6">{textos.map((d) => <DepoCard d={d} />)}</div>}
+      </section>
+    );
+  })}
+</Base>

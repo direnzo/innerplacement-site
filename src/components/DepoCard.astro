@@ -1,0 +1,10 @@
+---
+import type { Depoimento } from '../data/depoimentos';
+import { assinatura } from '../data/depoimentos';
+interface Props { d: Depoimento; fundo?: 'branco' | 'areia' }
+const { d, fundo = 'branco' } = Astro.props;
+---
+<figure class:list={['flex flex-col gap-3 rounded-[20px] p-5 md:p-6', fundo === 'branco' ? 'bg-white' : 'bg-areia-c']}>
+  <blockquote class="citacao">“{d.texto}”</blockquote>
+  <figcaption class="assina"><b>{d.nome}</b>{assinatura(d) && <> · {assinatura(d)}</>}</figcaption>
+</figure>

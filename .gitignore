@@ -15,3 +15,6 @@ dist/
 
 .DS_Store
 *.log
+
+# versão de teste num arquivo só (gerada por tools/versao-teste.py)
+/teste/

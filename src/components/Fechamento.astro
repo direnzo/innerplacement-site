@@ -1,0 +1,18 @@
+---
+import Svg from './Svg.astro';
+import IconeZap from './IconeZap.astro';
+import { CTA, WHATSAPP_URL, rotas } from '../data/site';
+---
+<section class="bloco relative bg-tinta text-white" aria-labelledby="fechamento-titulo">
+  <Svg name="rosacea_coral" w={240} class="pointer-events-none absolute -bottom-24 -right-20 opacity-90 md:-bottom-28 md:-right-16 md:w-[260px]" />
+  <div class="wrap relative flex flex-col gap-6 py-9 md:py-12 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
+    <div class="flex max-w-[560px] flex-col gap-3">
+      <h2 id="fechamento-titulo" class="h2">Todo movimento de carreira começa <strong>com uma conversa.</strong></h2>
+      <p class="text-[16px] leading-[1.55] text-white/80 md:text-[17px]">Uma conversa sobre o seu momento. Sem apresentação de produto e sem compromisso.</p>
+    </div>
+    <div class="flex flex-col gap-3 sm:flex-row lg:shrink-0">
+      <a href={rotas.contato} class="btn">{CTA}</a>
+      <a href={WHATSAPP_URL} class="btn-c" target="_blank" rel="noopener"><IconeZap />Chamar no WhatsApp</a>
+    </div>
+  </div>
+</section>

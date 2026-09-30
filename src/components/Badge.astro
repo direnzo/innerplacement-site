@@ -1,0 +1,8 @@
+---
+import Svg from './Svg.astro';
+interface Props { variante?: 'padrao' | 'tinta' | 'coral' | 'branco'; as?: string }
+const { variante = 'padrao', as: Tag = 'span' } = Astro.props;
+const cls = { padrao: '', tinta: 'badge-tinta', coral: 'badge-coral', branco: 'badge-branco' }[variante];
+const flor = variante === 'coral' ? 'rosacea_tinta' : 'rosacea_coral';
+---
+<Tag class={`badge ${cls}`}><Svg name={flor} w={16} /><slot /></Tag>

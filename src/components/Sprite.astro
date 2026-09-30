@@ -1,0 +1,7 @@
+---
+import { kit } from '../data/kit';
+import { SPRITE } from './Svg.astro';
+---
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  {SPRITE.map((n) => <symbol id={`k-${n}`} viewBox={`0 0 ${kit[n].w} ${kit[n].h}`} set:html={kit[n].inner} />)}
+</svg>

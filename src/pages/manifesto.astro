@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Svg from '../components/Svg.astro';
+const paragrafos = [
+  'Acompanhar pessoas e empresas nos seus movimentos de carreira é um privilégio — e uma responsabilidade que levamos até o fim.',
+  'Aprendemos que nenhuma ferramenta substitui a atuação humana: é na relação, com método, que um movimento difícil ganha clareza e vira resultado.',
+  'Não reinventamos ninguém. Lapidamos o que cada pessoa já construiu, para que fique visível — para ela e para onde quer chegar.',
+  'Não prometemos milagre. Prometemos caminhar junto até acontecer — e é assim que a Inner Placement cresce: com a evolução de cada cliente.',
+];
+---
+<Base titulo="Manifesto" fechamento descricao="O manifesto da Inner Placement: não reinventamos ninguém, lapidamos o que cada pessoa já construiu. Caminhar junto até acontecer.">
+  <section class="bloco relative bg-white">
+    <Svg name="rosacea_coral" w={420} class="pointer-events-none absolute -right-40 -top-28 h-auto opacity-30 md:-right-24" />
+    <div class="wrap relative grid gap-6 py-10 md:py-16 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+      <h1 class="text-[30px] font-semibold leading-[1.15] tracking-[-.02em] md:text-[38px]">Manifesto</h1>
+      <div class="flex flex-col">
+        {paragrafos.map((p, i) => (
+          <p class:list={['py-5 text-[19px] font-light leading-[1.5] tracking-[-.005em] md:text-[23px]', i > 0 && 'border-t border-linha']}>{p}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
