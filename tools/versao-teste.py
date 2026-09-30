@@ -108,6 +108,42 @@ document.addEventListener('alpine:init', function () {
   window.addEventListener('hashchange', ir);
   ir();
 })();
+// Rolagem das ilustrações: cópia de src/scripts/app.ts (manter as duas iguais).
+(function () {
+  var rolaveis = document.querySelectorAll('[data-rolagem]');
+  if (!rolaveis.length || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var visiveis = new Set(), pedido = 0;
+  function atualiza() {
+    pedido = 0;
+    var p = Math.min(scrollY / innerHeight, 1.2).toFixed(4);
+    visiveis.forEach(function (el) { el.style.setProperty('--rolagem', p); });
+  }
+  function agenda() { if (!pedido && visiveis.size) pedido = requestAnimationFrame(atualiza); }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { e.isIntersecting ? visiveis.add(e.target) : visiveis.delete(e.target); });
+    agenda();
+  });
+  rolaveis.forEach(function (el) { io.observe(el); });
+  addEventListener('scroll', agenda, { passive: true });
+  addEventListener('resize', agenda, { passive: true });
+})();
+// Discos de Caminhos: cópia de src/scripts/app.ts (manter as duas iguais).
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var discos = document.querySelectorAll('.cam-disco');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); } });
+  }, { threshold: .6 });
+  discos.forEach(function (d) { d.classList.add('cam-anim'); io.observe(d); });
+  document.querySelectorAll('[data-cam]').forEach(function (a) {
+    var card = a.closest('[data-cartao]');
+    if (!card) return;
+    var liga = function () { card.dataset.foco = a.dataset.cam; };
+    var desliga = function () { delete card.dataset.foco; };
+    a.addEventListener('mouseenter', liga); a.addEventListener('focus', liga);
+    a.addEventListener('mouseleave', desliga); a.addEventListener('blur', desliga);
+  });
+})();
 </script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.9/cdn.min.js"></script>
 """

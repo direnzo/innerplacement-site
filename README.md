@@ -36,6 +36,9 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 | `imagens/exploracao/` | Gerações descartadas e o registro da conversa de aprovação | não |
 | `imagens/apoio/` | Kit oficial da marca (SVGs, fotos da equipe) copiado do Drive | não |
 | `docs/guia-imagens.md` | Guia canônico de geração de imagens (74 peças, códigos H/P/G, prompts, checklist) | sim |
+| `docs/plano-ilustracao.md` | Abordagem híbrida (SVG da marca + IA só para atmosfera), divisão em 5 blocos e estado de cada um | sim |
+| `docs/ilustracao/` | Propostas em SVG de cada bloco, aguardando escolha | sim |
+| `tools/ilustracao/` | Geradores das ilustrações em SVG a partir do kit (`node --experimental-strip-types tools/ilustracao/<bloco>.mts`) | sim |
 | `tools/versao-teste.py` | Gera a versão de testes num HTML único a partir de `dist/` | sim |
 | `tools/imagem/` | Acabamento das imagens com `sharp` (WebP, AVIF, PNG, SVG). Rodar `npm install` na pasta | sim |
 | `referencia-v2-teste/` | Espelho do HTML publicado em `/v2-teste/`, só para consulta | não |
@@ -64,10 +67,12 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 
 ## Estado das imagens
 
+Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/plano-ilustracao.md`.
+
 | Código | Peça | Status |
 | --- | --- | --- |
-| H-01 | Hero | aprovada |
-| H-02/H-03 | Caminhos | aprovada |
+| H-01 | Hero | aprovada: v4 em SVG no site (v3 do ChatGPT fica só como referência) |
+| H-02/H-03 | Caminhos | aprovadas: discos em SVG no site (o PNG do ChatGPT fica só como referência) |
 | H-04 | Selo transição | aprovada |
 | H-05 | Selo crescimento | aprovada |
 | H-06 | Capa de vídeo | aprovada |
