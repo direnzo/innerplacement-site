@@ -1,0 +1,9 @@
+PEÇA: Ícone de título · Prova (home e páginas de serviço), "Quem já fez esse caminho conta como foi."
+STATUS: APROVADA (dono, 30/09/2026, frente "ícones de título e hover")
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/titulos.mts (peça 'T-prova'); cópia de docs/ilustracao/titulos/T-prova.svg
+
+Conceito: Balão de depoimento com aspas coral e selo de play.
+
+Formato do H-09: 140 × 104, objeto próprio, gradiente e sombra sutis; entrada por [data-entrada] e gesto
+de hover (CSS "Títulos · movimento"). Componente src/components/ComIcone.astro. ~1.2 KB.

@@ -1,6 +1,8 @@
 ---
 import Svg from './Svg.astro';
 import Badge from './Badge.astro';
+import ComIcone from './ComIcone.astro';
+import tClientes from '../../imagens/inner-T-clientes-v1.svg?raw';
 import { kit } from '../data/kit';
 import { logos } from '../data/site';
 const cap = (id: string, h: number, wmax: number) => {
@@ -12,7 +14,7 @@ const cap = (id: string, h: number, wmax: number) => {
 <section class="wrap" aria-labelledby="clientes-titulo">
   <div class="flex flex-col gap-5 rounded-[28px] bg-white p-5 md:gap-6 md:p-9">
     <!-- Selo "Clientes": texto novo, aprovado pelo dono em 30/09 (não está na documentação funcional). -->
-    <div class="flex flex-col gap-3"><Badge>Clientes</Badge><h2 id="clientes-titulo" class="h2">Alguns dos <strong>nossos clientes</strong></h2></div>
+    <div class="flex flex-col gap-3"><Badge>Clientes</Badge><ComIcone svg={tClientes}><h2 id="clientes-titulo" class="h2">Alguns dos <strong>nossos clientes</strong></h2></ComIcone></div>
     <ul class="logos grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-5 md:gap-3.5" role="list" data-entrada>
       {logos.map((l, i) => {
         const m = cap(l.id, l.h * 0.56, 112), d = cap(l.id, l.h, 150);

@@ -1,10 +1,23 @@
 ---
 import Badge from './Badge.astro';
-interface Props { rotulo: string; nome: string }
-const { rotulo, nome } = Astro.props;
+import ComIcone from './ComIcone.astro';
+import tPlatinum from '../../imagens/inner-T-platinum-v1.svg?raw';
+import tFocus from '../../imagens/inner-T-focus-v1.svg?raw';
+import tNext from '../../imagens/inner-T-nextlevel-v1.svg?raw';
+import Svg from './Svg.astro';
+// para: 'pessoa' (Transição, Carreira) ou 'empresa' (Outplacement, Executivos). A documentação funcional
+// tirou os sufixos dos nomes ("Next Level Corporate" vira "Next Level"); a diferença fica no tratamento
+// do logotipo, como no site antigo: pessoa = texto tinta e rosácea coral; empresa = texto coral e
+// rosácea tinta translúcida.
+interface Props { rotulo: string; nome: string; para?: 'pessoa' | 'empresa' }
+const { rotulo, nome, para = 'pessoa' } = Astro.props;
+// Ícone do título pelo nome do programa (tools/ilustracao/titulos.mts).
+const icone = ({ Platinum: tPlatinum, Focus: tFocus, 'Next Level': tNext } as Record<string, string>)[nome];
 ---
 <article class="card flex flex-col gap-3 p-5 md:p-7">
   <Badge>{rotulo}</Badge>
-  <h2 class="text-[22px] font-semibold tracking-[-.01em] md:text-[24px]">{nome}</h2>
+  {icone
+    ? <ComIcone svg={icone}><h2 class="prog-logo" data-para={para}><span class="pl-nome">{nome}</span><Svg name="rosacea_coral" w={60} class="pl-ros" /></h2></ComIcone>
+    : <h2 class="prog-logo" data-para={para}><span class="pl-nome">{nome}</span><Svg name="rosacea_coral" w={60} class="pl-ros" /></h2>}
   <p class="text-[15.5px] leading-[1.62] text-texto"><slot /></p>
 </article>

@@ -40,7 +40,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 | `docs/guia-imagens.md` | Guia canônico de geração de imagens (74 peças, códigos H/P/G, prompts, checklist) | sim |
 | `docs/plano-ilustracao.md` | Abordagem híbrida (SVG da marca + IA só para atmosfera), divisão em 5 blocos e estado de cada um | sim |
 | `docs/ilustracao/` | Propostas em SVG de cada bloco, aguardando escolha | sim |
-| `tools/ilustracao/` | Geradores das ilustrações em SVG a partir do kit (`node --experimental-strip-types tools/ilustracao/<bloco>.mts`) | sim |
+| `tools/ilustracao/` | Geradores das ilustrações em SVG a partir do kit (`node --experimental-strip-types tools/ilustracao/<bloco>.mts`); `sincronizar.py` atualiza as cópias aprovadas em `imagens/` | sim |
 | `tools/versao-teste.py` | Gera a versão de testes num HTML único a partir de `dist/` | sim |
 | `tools/imagem/` | Acabamento das imagens com `sharp` (WebP, AVIF, PNG, SVG). Rodar `npm install` na pasta | sim |
 | `referencia-v2-teste/` | Espelho do HTML publicado em `/v2-teste/`, só para consulta | não |
@@ -81,6 +81,7 @@ Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/
 | H-21 a H-23 | Ícones dos números | aprovados: calendário, multidão, rosca |
 | M-01 | Diagrama do método (redesenho) | aprovado, animado com a rolagem |
 | F-01 a F-04 | Formas de fundo das seções | aprovadas |
+| T-* (13) | Ícones junto aos títulos (home, programas, Depoimentos, FAQ) | aprovados; `src/components/ComIcone.astro` |
 | G-01 | Fechamento | aprovada: v2 em SVG (a conversa) no site; o PNG v1 fica como referência |
 | H-09 | Perguntas, ícone do título | aprovada (balões) |
 | H-10 | Manifesto | aprovada (oval lapidado com a rolagem) |

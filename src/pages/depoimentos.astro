@@ -4,6 +4,12 @@ import TopoPagina from '../components/TopoPagina.astro';
 import DepoCard from '../components/DepoCard.astro';
 import DepoVideo from '../components/DepoVideo.astro';
 import { depoimentos as D, secoesDepoimentos } from '../data/depoimentos';
+import ComIcone from '../components/ComIcone.astro';
+import tTransicao from '../../imagens/inner-T-transicao-v1.svg?raw';
+import tOutplacement from '../../imagens/inner-T-outplacement-v1.svg?raw';
+import tCrescimento from '../../imagens/inner-T-crescimento-v1.svg?raw';
+// Ícone de cada seção (tools/ilustracao/titulos.mts); Transição e Crescimento também são usados no FAQ.
+const icones: Record<string, string> = { 'secao-transicao': tTransicao, 'secao-outplacement': tOutplacement, 'secao-crescimento': tCrescimento };
 ---
 <Base titulo="Depoimentos" fechamento
   descricao="Quem já fez esse caminho conta como foi: depoimentos de transição, outplacement e crescimento de carreira com a Inner Placement.">
@@ -19,7 +25,7 @@ import { depoimentos as D, secoesDepoimentos } from '../data/depoimentos';
     const textos = itens.filter((d) => !d.video);
     return (
       <section id={s.id} class="wrap flex scroll-mt-24 flex-col gap-5" aria-labelledby={`${s.id}-t`}>
-        <h2 id={`${s.id}-t`} class="h2 !font-semibold">{s.titulo}</h2>
+        <ComIcone svg={icones[s.id]}><h2 id={`${s.id}-t`} class="h2 !font-semibold">{s.titulo}</h2></ComIcone>
         {videos.length > 0 && <div class="grid gap-6 md:grid-cols-2">{videos.map((d) => <DepoVideo d={d} lado={false} />)}</div>}
         {textos.length > 0 && <div class="grid gap-3.5 md:grid-cols-2 md:gap-6">{textos.map((d) => <DepoCard d={d} />)}</div>}
       </section>

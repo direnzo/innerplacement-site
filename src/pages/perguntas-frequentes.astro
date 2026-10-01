@@ -3,6 +3,14 @@ import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
 import Acordeao from '../components/Acordeao.astro';
 import { secoesFaq } from '../data/faq';
+import ComIcone from '../components/ComIcone.astro';
+import tComecar from '../../imagens/inner-T-comecar-v1.svg?raw';
+import tCrescimento from '../../imagens/inner-T-crescimento-v1.svg?raw';
+import tTransicao from '../../imagens/inner-T-transicao-v1.svg?raw';
+import tEmpresas from '../../imagens/inner-T-empresas-v1.svg?raw';
+import tInvestimento from '../../imagens/inner-T-investimento-v1.svg?raw';
+// Ícone de cada seção (tools/ilustracao/titulos.mts); Transição e Crescimento são os mesmos de Depoimentos.
+const icones: Record<string, string> = { 'para-comecar': tComecar, 'para-quem-quer-crescer': tCrescimento, 'para-quem-esta-em-transicao': tTransicao, 'para-empresas': tEmpresas, 'investimento-e-condicoes': tInvestimento };
 const schema = { '@context': 'https://schema.org', '@type': 'FAQPage',
   mainEntity: secoesFaq.flatMap((s) => s.perguntas).map((p) => ({ '@type': 'Question', name: p.q, acceptedAnswer: { '@type': 'Answer', text: p.a } })) };
 ---
@@ -15,7 +23,7 @@ const schema = { '@context': 'https://schema.org', '@type': 'FAQPage',
   </TopoPagina>
   {secoesFaq.map((s, i) => (
     <section id={s.id} class="wrap grid scroll-mt-24 gap-4 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14" aria-labelledby={`${s.id}-t`}>
-      <h2 id={`${s.id}-t`} class="h2 !font-semibold lg:pt-4">{s.titulo}</h2>
+      <ComIcone svg={icones[s.id]} class="lg:flex-col lg:items-start lg:pt-4"><h2 id={`${s.id}-t`} class="h2 !font-semibold">{s.titulo}</h2></ComIcone>
       <Acordeao itens={s.perguntas} abrirPrimeira={i === 0} prefixo={s.id} />
     </section>
   ))}

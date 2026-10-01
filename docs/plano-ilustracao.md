@@ -239,3 +239,34 @@ ela não destacava) e fechamento **A**. Aprovadas em `imagens/`: `inner-H09-balo
 **Próxima frente pedida pelo dono:** um ícone junto a cada título de seção, no formato do H-09
 (objeto próprio, ao lado do título, entrada animada), revisando todos os títulos do site.
 
+## Ícones de título e hover (30/09)
+
+Branch `imagens/titulos-e-hover`. Pedidos do dono: um ícone junto a cada título (formato do H-09),
+um pequeno gesto de hover em toda ilustração animada e o trecho em negrito dos títulos em coral no
+hover. Revisão (home inteira): https://claude.ai/artifact/6duhBb51AQ78Nf6k3Gc6aJ
+
+- Gerador `tools/ilustracao/titulos.mts` → `docs/ilustracao/titulos/`: `T-porque` (plano com checklist
+  e o par num selo), `T-prova` (balão de depoimento com aspas e play), `T-metodo` (lupa sobre as quatro
+  dimensões), `T-clientes` (cartões de empresa). Componente `src/components/ComIcone.astro`.
+- Hover (CSS "Títulos · movimento", só com `@media (hover: hover)`): gesto geral (escala e leve
+  inclinação) e gestos próprios. A rosácea agora vem num grupo `.ros` (em `base.mts`), girável sem
+  conflitar com a entrada; as peças aprovadas foram ressincronizadas com
+  `tools/ilustracao/sincronizar.py`, que copia de `docs/` para `imagens/` guiado pelo `.txt`.
+- Teste: o Chromium sem tela se declara sem mouse; para testar hover, iniciar com
+  `--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4`.
+- Rodada 1 (home: T-porque, T-prova, T-metodo, T-clientes) e os hovers: **aprovados pelo dono**.
+- Rodada 2: 9 ícones para os 11 títulos internos (Transição e Crescimento se repetem em Depoimentos e
+  FAQ): `T-platinum`, `T-focus`, `T-nextlevel` (no componente `Programa`, pelo nome), `T-transicao`,
+  `T-outplacement`, `T-crescimento` (Depoimentos), `T-comecar`, `T-empresas`, `T-investimento` (FAQ).
+  Nas seções sobre fundo areia, o claro dos ícones é branco. Galeria: https://claude.ai/artifact/839R5uwB3J52obixydfz1N
+- Rodada 3 (30/09): o par do `T-porque` maior e centralizado no selo. **Logotipo dos programas**
+  (pedido do dono: trazer de volta, modernizado, o efeito dos logos antigos com o texto sobre a
+  rosácea): o nome em texto real sobre a rosácea, com `mix-blend-mode: multiply` (classe
+  `.prog-logo` em `global.css`). Variação por público, como no site antigo: `Programa para="pessoa"`
+  (Transição, Carreira: texto tinta, rosácea coral) e `para="empresa"` (Outplacement, Executivos:
+  texto coral, rosácea tinta translúcida). **Sem os sufixos "Corporate"/"Executivo"**: a documentação
+  funcional tirou "Next Level Corporate" e "Go Fast" dos nomes. Referência: os logos antigos em
+  `~/projetos/innerplacement/wp-content/uploads/2025/0{4,5}/` (`*_logo.png`, `emp-*.png`, `dep_*.png`).
+- **Fechamento (30/09):** os 13 ícones aprovados em `imagens/inner-T-<assunto>-v1.svg` (+ `.txt`); as
+  páginas importam de `imagens/`. Logotipo dos programas e hovers aprovados.
+

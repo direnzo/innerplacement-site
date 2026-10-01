@@ -1,0 +1,9 @@
+PEÇA: Ícone de título · Método (home), "Antes de mover, entender."
+STATUS: APROVADA (dono, 30/09/2026, frente "ícones de título e hover")
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/titulos.mts (peça 'T-metodo'); cópia de docs/ilustracao/titulos/T-metodo.svg
+
+Conceito: Lupa sobre o mini diagrama das quatro dimensões.
+
+Formato do H-09: 140 × 104, objeto próprio, gradiente e sombra sutis; entrada por [data-entrada] e gesto
+de hover (CSS "Títulos · movimento"). Componente src/components/ComIcone.astro. ~2.1 KB.

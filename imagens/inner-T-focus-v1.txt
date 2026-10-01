@@ -1,0 +1,9 @@
+PEÇA: Ícone de título · Programa Focus (Transição e Outplacement)
+STATUS: APROVADA (dono, 30/09/2026, frente "ícones de título e hover")
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/titulos.mts (peça 'T-focus'); cópia de docs/ilustracao/titulos/T-focus.svg
+
+Conceito: Trilha em etapas (barras de progresso) e o balão de apoio nos momentos decisivos.
+
+Formato do H-09: 140 × 104, objeto próprio, gradiente e sombra sutis; entrada por [data-entrada] e gesto
+de hover (CSS "Títulos · movimento"). Componente src/components/ComIcone.astro. ~1.4 KB.

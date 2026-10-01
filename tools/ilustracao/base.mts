@@ -21,9 +21,10 @@ export function peca(k: string, cx: number, cy: number, h: number, extra = '') {
 }
 // Rosácea do kit.
 // `cor` troca o coral das pétalas (ex.: branco sobre fundo coral, como no manifesto).
+// Fica num grupo `ros` (girável pelo centro): é o gancho do hover das ilustrações.
 export const ROSA = (cx: number, cy: number, h: number, cor?: string) => {
   const r = peca('rosacea_coral', cx, cy, h);
-  return cor ? r.replace(/#ff6558/gi, cor) : r;
+  return `<g class="ros">${cor ? r.replace(/#ff6558/gi, cor) : r}</g>`;
 };
 
 // Trilha pontilhada (forma e movimento, item 3 da folha de referência). Espessura e passo ajustáveis
