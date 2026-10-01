@@ -22,6 +22,10 @@ import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
 import metodoSvg from '../../imagens/inner-M01-metodo-v1.svg?raw';
 import h09 from '../../imagens/inner-H09-baloes-v1.svg?raw';
 import h10 from '../../imagens/inner-H10-oval-lapidado-v1.svg?raw';
+import tPorque from '../../docs/ilustracao/titulos/T-porque.svg?raw';
+import tProva from '../../docs/ilustracao/titulos/T-prova.svg?raw';
+import tMetodo from '../../docs/ilustracao/titulos/T-metodo.svg?raw';
+import ComIcone from '../components/ComIcone.astro';
 import { miolo } from '../lib/svg';
 import { depoimentos as D } from '../data/depoimentos';
 import { faqHome } from '../data/faq';
@@ -70,7 +74,7 @@ const metodo = [
     <Fragment set:html={fundo(fSetas, '0 0 240 120', 'bottom-6 -left-10 -z-10 w-[160px] opacity-30 md:w-[220px]')} />
     <div class="wrap flex flex-col gap-7">
       <div class="grid gap-4 md:grid-cols-2 md:gap-14">
-        <h2 id="porque-titulo" class="h2">Carreira se decide com método — <strong>e se realiza com acompanhamento.</strong></h2>
+        <ComIcone svg={tPorque}><h2 id="porque-titulo" class="h2">Carreira se decide com método — <strong>e se realiza com acompanhamento.</strong></h2></ComIcone>
         <p class="lead">Uma decisão de carreira depende de duas leituras: quem você é e onde quer chegar. A Inner faz as duas no mesmo processo, com método — quatro dimensões de análise e um percurso estruturado — e acompanha a execução até o resultado.</p>
       </div>
       <div class="grid gap-7 border-t border-linha pt-7 md:grid-cols-2 md:gap-14">
@@ -109,7 +113,7 @@ const metodo = [
   <section class="wrap flex flex-col gap-6 pt-2 md:gap-7" aria-labelledby="prova-titulo">
     <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between md:gap-12">
       <div class="flex max-w-[640px] flex-col gap-2.5">
-        <h2 id="prova-titulo" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+        <ComIcone svg={tProva}><h2 id="prova-titulo" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2></ComIcone>
         <p class="lead">Não só o resultado. O processo inteiro — inclusive a parte difícil, que ninguém costuma mostrar.</p>
       </div>
       <a href={rotas.depoimentos} class="btn-l hidden md:inline-flex">Ver todos os depoimentos</a>
@@ -139,7 +143,7 @@ const metodo = [
     <Fragment set:html={fundo(fArcos, '0 0 400 400', '-bottom-10 -left-24 -z-10 w-[300px] md:-left-16 md:w-[420px]')} />
     <div class="wrap grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_460px] lg:gap-14">
       <div class="flex flex-col gap-5">
-        <h2 id="metodo-titulo" class="h2">Antes de mover, <strong>entender.</strong></h2>
+        <ComIcone svg={tMetodo}><h2 id="metodo-titulo" class="h2">Antes de mover, <strong>entender.</strong></h2></ComIcone>
         <p class="lead">Você não precisa recomeçar do zero. Precisa lapidar o que já construiu — e isso começa por entender. O método é uma conversa estruturada que percorre quatro dimensões, para que a sua decisão de carreira se construa conectada a você e ao cenário em que ela vai acontecer. É no encontro dessas quatro dimensões que o seu objetivo ganha forma.</p>
       </div>
       <div class="flex justify-center lg:row-span-2"><svg viewBox="0 0 412.79 295.26" class="h-auto w-full max-w-[290px] overflow-visible md:max-w-[400px] lg:max-w-[460px]" role="img" aria-label="Diagrama do método: contexto individual, ambiente e cultura, potencial e recursos e cenário futuro se encontram no objetivo" data-rolagem="elemento" set:html={miolo(metodoSvg)} /></div>

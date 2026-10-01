@@ -239,3 +239,21 @@ ela não destacava) e fechamento **A**. Aprovadas em `imagens/`: `inner-H09-balo
 **Próxima frente pedida pelo dono:** um ícone junto a cada título de seção, no formato do H-09
 (objeto próprio, ao lado do título, entrada animada), revisando todos os títulos do site.
 
+## Ícones de título e hover (30/09)
+
+Branch `imagens/titulos-e-hover`. Pedidos do dono: um ícone junto a cada título (formato do H-09),
+um pequeno gesto de hover em toda ilustração animada e o trecho em negrito dos títulos em coral no
+hover. Revisão (home inteira): https://claude.ai/artifact/6duhBb51AQ78Nf6k3Gc6aJ
+
+- Gerador `tools/ilustracao/titulos.mts` → `docs/ilustracao/titulos/`: `T-porque` (plano com checklist
+  e o par num selo), `T-prova` (balão de depoimento com aspas e play), `T-metodo` (lupa sobre as quatro
+  dimensões), `T-clientes` (cartões de empresa). Componente `src/components/ComIcone.astro`.
+- Hover (CSS "Títulos · movimento", só com `@media (hover: hover)`): gesto geral (escala e leve
+  inclinação) e gestos próprios. A rosácea agora vem num grupo `.ros` (em `base.mts`), girável sem
+  conflitar com a entrada; as peças aprovadas foram ressincronizadas com
+  `tools/ilustracao/sincronizar.py`, que copia de `docs/` para `imagens/` guiado pelo `.txt`.
+- Teste: o Chromium sem tela se declara sem mouse; para testar hover, iniciar com
+  `--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4`.
+- Faltam 11 ícones de título fora da home: programas (Platinum, Focus, Next Level), seções de
+  Depoimentos (3) e do FAQ (5).
+
