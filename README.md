@@ -75,9 +75,12 @@ Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/
 | --- | --- | --- |
 | H-01 | Hero | aprovada: v4 em SVG no site (v3 do ChatGPT fica só como referência) |
 | H-02/H-03 | Caminhos | aprovadas: discos em SVG no site (o PNG do ChatGPT fica só como referência) |
-| H-04 | Selo transição | aprovada |
-| H-05 | Selo crescimento | aprovada |
-| H-06 | Capa de vídeo | aprovada |
+| H-04 | Por que a Inner, transição | aprovada: v1 em SVG (passagem) no site; o PNG antigo fica como referência |
+| H-05 | Por que a Inner, crescer | aprovada: v1 em SVG (organograma) no site |
+| H-06 | Capa de vídeo | aprovada: capa v2 em SVG no site e moldura v1 para quando houver miniatura |
+| H-21 a H-23 | Ícones dos números | aprovados: calendário, multidão, rosca |
+| M-01 | Diagrama do método (redesenho) | aprovado, animado com a rolagem |
+| F-01 a F-04 | Formas de fundo das seções | aprovadas |
 | G-01 | Fechamento | aprovada |
 | P-01 | Transição e Recolocação | aprovada |
 | P-02 | Desenvolvimento de Carreira | aprovada |

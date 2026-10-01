@@ -73,7 +73,7 @@ fora, como o guia pede.
 | Bloco | Seções | Peças centrais | Estado |
 | --- | --- | --- | --- |
 | 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | concluído (29/09), no site com movimento |
-| 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | rodada 1 em revisão |
+| 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | não iniciado |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | não iniciado |
 | 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | não iniciado |
@@ -193,9 +193,18 @@ O dono escolheu **H-04b (passagem)** e **H-05a (organograma)**, maiores e com o 
 lado da ilustração (no celular, ilustração menor e selo podendo quebrar linha). Aprovou os ícones
 dos números e as formas de fundo. Rótulos do método passam a ficar no centro exato de cada círculo.
 
-Clientes: selo "Clientes" (texto novo, **pendente de aprovação**), entrada em sequência e hover
+Clientes: selo "Clientes" (texto novo, **aprovado pelo dono em 30/09**), entrada em sequência e hover
 (cartão sobe, fica branco com contorno coral; o logo não muda de cor, por ser marca de terceiro).
 
 Movimento: entrada genérica `data-entrada` (`.il-anim` → `.visto`), contagem `data-conta`,
 `data-rolagem="elemento"` (método e fundos). CSS "Bloco 2 · movimento" em `global.css`; script em
 `app.ts` (cópia em `tools/versao-teste.py`). Utilitário para embutir SVG: `src/lib/svg.ts`.
+
+### Fechamento (30/09)
+
+Aprovadas e copiadas para `imagens/` (com `.txt`): `inner-H04-passagem-v1`, `inner-H05-organograma-v1`,
+`inner-H06-capa-video-v2`, `inner-H06-moldura-video-v1`, `inner-H21-calendario-v1`,
+`inner-H22-multidao-v1`, `inner-H23-rosca-v1`, `inner-M01-metodo-v1` e as formas de fundo
+`inner-F01-bola-v1` a `inner-F04-oval-v1` (família F, nova: fundos das seções). A home importa
+de `imagens/`.
+

@@ -1,0 +1,9 @@
+PEÇA: H-21 · Prova, ícone de "+15 anos de experiência dos sócios"
+STATUS: APROVADA (dono, 30/09/2026, bloco 2)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco2.mts (peça 'N-anos'); cópia de docs/ilustracao/bloco-2/N-anos.svg
+
+Conceito: Calendário com 15 casas, uma por ano; a última em coral. As casas acendem em sequência.
+
+Checklist: só a paleta; sem texto (exceto os rótulos do método, que são do diagrama oficial);
+sem sombra, brilho ou 3D; ~1.6 KB. Movimento em src/styles/global.css ("Bloco 2 · movimento").

@@ -1,0 +1,9 @@
+PEÇA: H-23 · Prova, ícone de "86% recolocados, em média, em 4,5 meses"
+STATUS: APROVADA (dono, 30/09/2026, bloco 2)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco2.mts (peça 'N-porcento'); cópia de docs/ilustracao/bloco-2/N-porcento.svg
+
+Conceito: Gráfico de rosca que enche até 86%, junto com a contagem do número.
+
+Checklist: só a paleta; sem texto (exceto os rótulos do método, que são do diagrama oficial);
+sem sombra, brilho ou 3D; ~0.4 KB. Movimento em src/styles/global.css ("Bloco 2 · movimento").

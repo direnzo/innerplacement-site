@@ -16,24 +16,11 @@ const pecas: Record<string, string> = {};
 
 // ── Por que a Inner ────────────────────────────────────────────────────────────────────────────
 // Rodada 2: sem a trilha pontilhada até a rosácea (o dono achou o motivo repetitivo) e sem halo
-// (a H-05 da rodada 1 lembrava imagem religiosa). Duas opções por coluna.
+// (a H-05 da rodada 1 lembrava imagem religiosa). Escolhidas pelo dono: H-04b e H-05a (as
+// alternativas H-04a e H-05b estão no histórico, commit 748765e).
 const CHAO_PI = 80;
 const chaoPI = `<line x1="6" y1="${CHAO_PI}" x2="162" y2="${CHAO_PI}" stroke="${C.tinta}" stroke-opacity=".14" stroke-width="1.6" stroke-linecap="round"/>`;
 const bolaDefs = (p: string) => `<defs><radialGradient id="${p}-bola"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset=".72" stop-color="#fff" stop-opacity=".5"/><stop offset=".92" stop-color="${C.coral}" stop-opacity=".16"/><stop offset="1" stop-color="${C.coral}" stop-opacity=".45"/></radialGradient></defs>`;
-
-// H-04a · Duas leituras: "estratégia de mercado e leitura cuidadosa do profissional, no mesmo
-// processo". Dois círculos do kit (bolas sobrepostas): o profissional, à esquerda, e o mercado, à
-// direita, com a rede. A lente do encontro fica coral.
-pecas['H04a-duas-leituras'] = svg(168, 88, 'Duas leituras no mesmo processo', [
-  bolaDefs('h04a'),
-  `<clipPath id="h04a-c"><circle cx="66" cy="44" r="34"/></clipPath>`,
-  `<g class="b2-bola b2-bola-esq"><circle cx="66" cy="44" r="34" fill="url(#h04a-bola)"/></g>`,
-  `<g class="b2-bola b2-bola-dir"><circle cx="104" cy="44" r="34" fill="url(#h04a-bola)"/></g>`,
-  `<g class="b2-lente"><circle cx="104" cy="44" r="34" fill="${C.coral}" fill-opacity=".22" clip-path="url(#h04a-c)"/></g>`,
-  `<g class="b2-rede" stroke="${C.tinta}" stroke-opacity=".35" stroke-width="1.3"><line x1="112" y1="40" x2="126" y2="28"/><line x1="112" y1="40" x2="128" y2="52"/><line x1="112" y1="40" x2="116" y2="62"/></g>`,
-  `<g class="b2-rede">${cabeca(126, 28, 5, C.tinta)}${cabeca(128, 52, 5, C.ambar)}${cabeca(116, 62, 5, C.areia)}${cabeca(112, 40, 3.6, C.coral)}</g>`,
-  `<g class="b2-quem">${figura(60, 72, .3, C.areia, C.tinta, 2.2)}</g>`,
-].join(''));
 
 // H-04b · Passagem: o par sai de um arco menor (o ciclo que se encerra) em direção a um arco maior
 // (a nova posição). Transição acompanhada, sem trilha.
@@ -53,18 +40,6 @@ pecas['H05a-organograma'] = svg(168, 88, 'Crescer dentro da organização', [
   `<g class="b2-org">${cabeca(84, 10, 5, C.tinta)}${cabeca(36, 40, 5, C.areia)}${cabeca(132, 40, 5, C.areia)}${cabeca(16, 66, 4.4, C.areia)}${cabeca(56, 66, 4.4, C.tinta)}${cabeca(112, 66, 4.4, C.areia)}${cabeca(152, 66, 4.4, C.tinta)}</g>`,
   `<g class="b2-quem">${figura(84, 84, .3, C.coral, C.tinta, 2.2)}</g>`,
   `<g class="b2-seta" fill="none" stroke="${C.tinta}" stroke-width="2.2" stroke-linejoin="bevel"><line x1="94" y1="50" x2="108" y2="36"/><polyline points="100.5,36.5 108,36 107.5,43.5"/></g>`,
-].join(''));
-
-// H-05b · Pílulas: barras em pílula (forma do kit) que crescem, como um gráfico de carreira; a
-// última é coral. A pessoa ao lado, com a seta oficial da marca.
-pecas['H05b-pilulas'] = svg(168, 88, 'Crescimento profissional', [
-  chaoPI,
-  `<g class="b2-barras">`
-    + `<rect class="b2-barra" x="74" y="54" width="16" height="26" rx="8" fill="${C.areia}"/>`
-    + `<rect class="b2-barra" x="98" y="40" width="16" height="40" rx="8" fill="${C.areia}"/>`
-    + `<rect class="b2-barra" x="122" y="22" width="16" height="58" rx="8" fill="${C.coral}"/></g>`,
-  `<g class="b2-quem">${figura(40, CHAO_PI, .36, C.areia, C.tinta, 2.2)}</g>`,
-  `<g class="b2-seta" fill="none" stroke="${C.tinta}" stroke-width="2.2" stroke-linejoin="bevel"><line x1="52" y1="38" x2="66" y2="24"/><polyline points="58.5,24.5 66,24 65.5,31.5"/></g>`,
 ].join(''));
 
 // ── Prova: ícones dos números ──────────────────────────────────────────────────────────────────
