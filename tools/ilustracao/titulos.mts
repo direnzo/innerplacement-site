@@ -16,13 +16,14 @@ const check = (cx: number, cy: number, cls: string) =>
 const pecas: Record<string, string> = {};
 
 // Por que a Inner · "Carreira se decide com método — e se realiza com acompanhamento".
-// O plano (cartão com checklist: método) e o par entrelaçado num selo coral (acompanhamento).
+// O plano (cartão com checklist: método) e o par entrelaçado num selo coral (acompanhamento),
+// centralizado e maior no selo (pedido do dono).
 pecas['T-porque'] = svg('Método e acompanhamento', [
   `<defs>${sombra('tpq-s')}${coralG('tpq-g')}</defs>`,
   `<g class="t-cartao" filter="url(#tpq-s)"><rect x="16" y="10" width="78" height="84" rx="14" fill="${C.branco}"/>`
     + `<g fill="${C.areia}"><rect x="40" y="25" width="42" height="5" rx="2.5"/><rect x="40" y="47" width="34" height="5" rx="2.5"/><rect x="40" y="69" width="38" height="5" rx="2.5"/></g>`
     + `${check(30, 27.5, 't-check t-check-1')}${check(30, 49.5, 't-check t-check-2')}<circle cx="30" cy="71.5" r="6" fill="none" stroke="${C.areia}" stroke-width="1.8"/></g>`,
-  `<g class="t-selo" filter="url(#tpq-s)"><circle cx="102" cy="68" r="28" fill="url(#tpq-g)"/><g class="t-par">${par(87.5, 82, .2, C.branco, C.ambar, 1.8).replace(new RegExp(C.tinta, 'g'), C.branco)}</g></g>`,
+  `<g class="t-selo" filter="url(#tpq-s)"><circle cx="102" cy="68" r="28" fill="url(#tpq-g)"/><g class="t-par">${par(102 - 48.67 * .32, 68 + 53 * .32, .32, C.branco, C.ambar, 2).replace(new RegExp(C.tinta, 'g'), C.branco)}</g></g>`,
 ].join(''));
 
 // Prova · "Quem já fez esse caminho conta como foi". Balão de depoimento com aspas coral e um selo

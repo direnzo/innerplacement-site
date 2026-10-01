@@ -259,4 +259,12 @@ hover. Revisão (home inteira): https://claude.ai/artifact/6duhBb51AQ78Nf6k3Gc6a
   FAQ): `T-platinum`, `T-focus`, `T-nextlevel` (no componente `Programa`, pelo nome), `T-transicao`,
   `T-outplacement`, `T-crescimento` (Depoimentos), `T-comecar`, `T-empresas`, `T-investimento` (FAQ).
   Nas seções sobre fundo areia, o claro dos ícones é branco. Galeria: https://claude.ai/artifact/839R5uwB3J52obixydfz1N
+- Rodada 3 (30/09): o par do `T-porque` maior e centralizado no selo. **Logotipo dos programas**
+  (pedido do dono: trazer de volta, modernizado, o efeito dos logos antigos com o texto sobre a
+  rosácea): o nome em texto real sobre a rosácea, com `mix-blend-mode: multiply` (classe
+  `.prog-logo` em `global.css`). Variação por público, como no site antigo: `Programa para="pessoa"`
+  (Transição, Carreira: texto tinta, rosácea coral) e `para="empresa"` (Outplacement, Executivos:
+  texto coral, rosácea tinta translúcida). **Sem os sufixos "Corporate"/"Executivo"**: a documentação
+  funcional tirou "Next Level Corporate" e "Go Fast" dos nomes. Referência: os logos antigos em
+  `~/projetos/innerplacement/wp-content/uploads/2025/0{4,5}/` (`*_logo.png`, `emp-*.png`, `dep_*.png`).
 
