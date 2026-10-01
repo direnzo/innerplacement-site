@@ -1,0 +1,9 @@
+PEÇA: H-09 · Perguntas (home), ao lado do título; acima dele no computador
+STATUS: APROVADA (dono, 30/09/2026, bloco 3)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco3.mts (peça 'H09-baloes'); cópia de docs/ilustracao/bloco-3/H09-baloes.svg
+
+Conceito: Dois balões de conversa: a pergunta (branco, sombra suave) e a resposta chegando (coral em degradê, com os pontinhos "digitando" em ciclo). O dono gostou do formato "ícone junto ao título" e pediu o mesmo nos demais títulos.
+
+Checklist: só a paleta; sem texto; gradientes e sombras sutis (liberados pelo dono em 30/09); ~1.2 KB.
+Movimento em src/styles/global.css ("Bloco 3 · movimento").

@@ -1,0 +1,9 @@
+PEÇA: G-01 · Fechamento de todas as páginas, sobre o fundo tinta
+STATUS: APROVADA (dono, 30/09/2026, bloco 3)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco3.mts (peça 'G01a-conversa'); cópia de docs/ilustracao/bloco-3/G01a-conversa.svg
+
+Conceito: "Todo movimento de carreira começa com uma conversa": duas figuras da marca frente a frente e os balões da conversa entre elas, com luz coral suave ao fundo. Substitui no site a G-01 v1 (PNG do ChatGPT), que fica como referência. Opção A, escolhida pelo dono.
+
+Checklist: só a paleta; sem texto; gradientes e sombras sutis (liberados pelo dono em 30/09); ~2.1 KB.
+Movimento em src/styles/global.css ("Bloco 3 · movimento").

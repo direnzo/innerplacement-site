@@ -33,6 +33,7 @@ pecas['H09-baloes'] = svg(140, 104, 'Uma conversa começando', [
 ].join(''));
 
 // ── H-10 · Manifesto: "lapidamos o que cada pessoa já construiu, para que fique visível" ───────
+// Escolhida pelo dono (30/09): A · Oval lapidado (a B, pedra que revela, está no histórico, d940035).
 // A · Oval lapidado: o oval da marca coberto de facetas (a pedra bruta). Com a rolagem, as facetas
 // somem (classe b3-faceta, opacidade ligada a --rolagem) e fica o oval liso, com brilho e a rosácea.
 const facetas = () => {
@@ -48,21 +49,11 @@ pecas['H10a-oval-lapidado'] = svg(240, 200, 'O que já existe, lapidado', [
   `<g filter="url(#h10a-s)"><ellipse cx="120" cy="100" rx="58" ry="92" transform="rotate(27 120 100)" fill="url(#h10a-g)"/></g>`,
   `<g clip-path="url(#h10a-c)"><g class="b3-facetas">${facetas()}</g>`
     + `<ellipse class="b3-brilho" cx="104" cy="70" rx="34" ry="52" transform="rotate(27 104 70)" fill="url(#h10a-brilho)"/></g>`,
-  `<g class="b3-rosa">${ROSA(124, 104, 54)}</g>`,
-].join(''));
-
-// B · Pedra que revela: a forma lisa (oval em areia clara, com sombra) se abre em duas metades e
-// mostra, por dentro, a rosácea sobre o degradê da marca. Com a rolagem, as metades se afastam.
-pecas['H10b-pedra-revela'] = svg(240, 200, 'A forma que revela o que há dentro', [
-  `<defs>${sombra('h10b-s', 8, 10, .16)}${degradeOval('h10b-g')}<linearGradient id="h10b-casca" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="${C.areia}"/></linearGradient>`
-    + `<clipPath id="h10b-esq"><rect x="0" y="0" width="120" height="200"/></clipPath><clipPath id="h10b-dir"><rect x="120" y="0" width="120" height="200"/></clipPath></defs>`,
-  `<ellipse cx="120" cy="100" rx="50" ry="78" fill="url(#h10b-g)"/>`,
-  `<g class="b3-rosa">${ROSA(120, 100, 64)}</g>`,
-  `<g class="b3-metade b3-metade-esq" filter="url(#h10b-s)" style="--lado:-1"><ellipse cx="120" cy="100" rx="56" ry="86" fill="url(#h10b-casca)" clip-path="url(#h10b-esq)"/></g>`,
-  `<g class="b3-metade b3-metade-dir" filter="url(#h10b-s)" style="--lado:1"><ellipse cx="120" cy="100" rx="56" ry="86" fill="url(#h10b-casca)" clip-path="url(#h10b-dir)"/></g>`,
+  `<g class="b3-rosa">${ROSA(124, 104, 54, C.branco)}</g>`,  // branca: em coral sobre o oval coral ela sumia
 ].join(''));
 
 // ── G-01 · Fechamento: "todo movimento de carreira começa com uma conversa" (sobre fundo tinta) ──
+// Escolhida pelo dono (30/09): A · Conversa (a B, encontro, está no histórico, d940035).
 // A · Conversa: duas figuras da marca frente a frente, em traço claro; entre elas, os balões da
 // conversa aparecem em sequência. Um halo coral suave por trás (degradê radial, não em volta de
 // cabeça).
@@ -75,19 +66,6 @@ pecas['G01a-conversa'] = svg(360, 220, 'Uma conversa', [
   `<g class="b3-quem b3-quem-d">${figura(274, 206, .78, C.ambar, '#FFFFFF', 3)}</g>`,
   `<g class="b3-balao b3-balao-1" filter="url(#g01a-s)">${balao(126, 40, 78, 30, 'e', C.branco)}${pontos(165, 55, C.areia, 'b3-ponto-fixo')}</g>`,
   `<g class="b3-balao b3-balao-2" filter="url(#g01a-s)">${balao(158, 84, 78, 30, 'd', 'url(#g01a-b)')}${pontos(197, 99, C.branco)}</g>`,
-].join(''));
-
-// B · Encontro: duas bolas translúcidas (as duas pessoas da conversa) se aproximam; no encontro, a
-// lente fica coral e a rosácea nasce. Com a rolagem, as bolas se aproximam.
-pecas['G01b-encontro'] = svg(360, 220, 'O encontro que começa o movimento', [
-  `<defs><radialGradient id="g01b-bola"><stop offset="0" stop-color="#fff" stop-opacity=".05"/><stop offset=".7" stop-color="#fff" stop-opacity=".1"/><stop offset=".92" stop-color="${C.coral}" stop-opacity=".25"/><stop offset="1" stop-color="${C.coral}" stop-opacity=".6"/></radialGradient>`
-    + `<radialGradient id="g01b-lente" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${C.coral}" stop-opacity=".75"/><stop offset="1" stop-color="${C.coral}" stop-opacity=".3"/></radialGradient>`
-    + `<clipPath id="g01b-c"><circle class="b3-bola-e" cx="140" cy="110" r="88"/></clipPath></defs>`,
-  `<circle class="b3-bola-e" cx="140" cy="110" r="88" fill="url(#g01b-bola)"/>`,
-  `<circle class="b3-bola-d" cx="220" cy="110" r="88" fill="url(#g01b-bola)"/>`,
-  `<g clip-path="url(#g01b-c)"><circle class="b3-bola-d" cx="220" cy="110" r="88" fill="url(#g01b-lente)"/></g>`,
-  `<g class="b3-rosa">${ROSA(180, 110, 70)}</g>`,
-  `<g opacity=".9">${cabeca(96, 110, 14, C.areia)}${cabeca(264, 110, 14, C.ambar)}</g>`,
 ].join(''));
 
 const dir = new URL('../../docs/ilustracao/bloco-3/', import.meta.url);

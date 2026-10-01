@@ -1,0 +1,9 @@
+PEÇA: H-10 · Manifesto (home), ao lado do título
+STATUS: APROVADA (dono, 30/09/2026, bloco 3)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco3.mts (peça 'H10a-oval-lapidado'); cópia de docs/ilustracao/bloco-3/H10a-oval-lapidado.svg
+
+Conceito: "Lapidamos o que cada pessoa já construiu": a pedra facetada vira, com a rolagem, o oval liso e brilhante da marca, com a rosácea em branco (em coral ela não destacava sobre o oval). Opção A, escolhida pelo dono.
+
+Checklist: só a paleta; sem texto; gradientes e sombras sutis (liberados pelo dono em 30/09); ~5.1 KB.
+Movimento em src/styles/global.css ("Bloco 3 · movimento").

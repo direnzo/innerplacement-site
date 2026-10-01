@@ -80,7 +80,7 @@ fora, como o guia pede.
 | --- | --- | --- | --- |
 | 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | concluído (29/09), no site com movimento |
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
-| 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | rodada 1 em revisão |
+| 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | concluído (30/09), no site com movimento |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | não iniciado |
 | 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | não iniciado |
 
@@ -228,4 +228,14 @@ https://claude.ai/artifact/7gSD6DVxuFBeRRyijJTVRe
 
 Movimento: balões e encontro por `data-entrada`; manifesto por `data-rolagem="elemento"`; os
 pontinhos do balão coral "digitam" em ciclo. CSS "Bloco 3 · movimento" em `global.css`.
+
+### Fechamento do bloco 3 (30/09)
+
+Escolhas do dono: manifesto **A** (com a rosácea em **branco**, porque em coral sobre o oval coral
+ela não destacava) e fechamento **A**. Aprovadas em `imagens/`: `inner-H09-baloes-v1`,
+`inner-H10-oval-lapidado-v1`, `inner-G01-conversa-v2`. `ROSA()` em `base.mts` ganhou o parâmetro
+`cor` (os blocos 1 e 2 saem idênticos).
+
+**Próxima frente pedida pelo dono:** um ícone junto a cada título de seção, no formato do H-09
+(objeto próprio, ao lado do título, entrada animada), revisando todos os títulos do site.
 
