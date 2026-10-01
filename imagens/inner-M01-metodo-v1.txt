@@ -1,0 +1,9 @@
+PEÇA: M-01 · Método, diagrama das quatro dimensões
+STATUS: APROVADA (dono, 30/09/2026, bloco 2)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco2.mts (peça 'M-metodo'); cópia de docs/ilustracao/bloco-2/M-metodo.svg
+
+Conceito: Redesenho do diagrama oficial (metodologia.svg) com a mesma geometria: quatro círculos de raio 84,8, eixos e objetivo coral. Rótulos como texto real, centralizados em cada círculo. Feito para a animação: os círculos convergem com a rolagem.
+
+Checklist: só a paleta; sem texto (exceto os rótulos do método, que são do diagrama oficial);
+sem sombra, brilho ou 3D; ~2.2 KB. Movimento em src/styles/global.css ("Bloco 2 · movimento").

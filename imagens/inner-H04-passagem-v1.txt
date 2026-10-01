@@ -1,0 +1,9 @@
+PEÇA: H-04 · Por que a Inner, coluna "Para quem está em transição"
+STATUS: APROVADA (dono, 30/09/2026, bloco 2)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco2.mts (peça 'H04b-passagem'); cópia de docs/ilustracao/bloco-2/H04b-passagem.svg
+
+Conceito: O par entrelaçado sai de um arco menor (o ciclo que se encerra) em direção a um arco maior, coral (a nova posição). Transição acompanhada, sem trilha pontilhada.
+
+Checklist: só a paleta; sem texto (exceto os rótulos do método, que são do diagrama oficial);
+sem sombra, brilho ou 3D; ~1.0 KB. Movimento em src/styles/global.css ("Bloco 2 · movimento").

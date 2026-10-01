@@ -115,17 +115,46 @@ document.addEventListener('alpine:init', function () {
   var visiveis = new Set(), pedido = 0;
   function atualiza() {
     pedido = 0;
-    var p = Math.min(scrollY / innerHeight, 1.2).toFixed(4);
-    visiveis.forEach(function (el) { el.style.setProperty('--rolagem', p); });
+    var pagina = Math.min(scrollY / innerHeight, 1.2).toFixed(4);
+    visiveis.forEach(function (el) {
+      var p = el.dataset.rolagem === 'elemento'
+        ? Math.min(Math.max((innerHeight - el.getBoundingClientRect().top) / (innerHeight * 0.7), 0), 1).toFixed(4)
+        : pagina;
+      el.style.setProperty('--rolagem', p);
+    });
   }
   function agenda() { if (!pedido && visiveis.size) pedido = requestAnimationFrame(atualiza); }
   var io = new IntersectionObserver(function (es) {
     es.forEach(function (e) { e.isIntersecting ? visiveis.add(e.target) : visiveis.delete(e.target); });
     agenda();
   });
-  rolaveis.forEach(function (el) { io.observe(el); });
+  rolaveis.forEach(function (el) { if (el.dataset.rolagem === 'elemento') el.style.setProperty('--rolagem', '0'); io.observe(el); });
   addEventListener('scroll', agenda, { passive: true });
   addEventListener('resize', agenda, { passive: true });
+})();
+// Entrada genérica e contagem dos números: cópia de src/scripts/app.ts (manter as duas iguais).
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  function conta(el) {
+    var m = (el.textContent || '').match(/^(\D*)(\d+)(\D*)$/);
+    if (!m) return;
+    var pre = m[1], fim = +m[2], suf = m[3], t0 = performance.now();
+    function passo(t) {
+      var k = Math.min((t - t0) / 1100, 1), v = Math.round(fim * (1 - Math.pow(1 - k, 3)));
+      el.textContent = pre + v + suf;
+      if (k < 1) requestAnimationFrame(passo);
+    }
+    requestAnimationFrame(passo);
+  }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      if (e.target.hasAttribute('data-conta')) conta(e.target); else e.target.classList.add('visto');
+      io.unobserve(e.target);
+    });
+  }, { threshold: .5 });
+  document.querySelectorAll('[data-entrada]').forEach(function (el) { el.classList.add('il-anim'); io.observe(el); });
+  document.querySelectorAll('[data-conta]').forEach(function (el) { io.observe(el); });
 })();
 // Discos de Caminhos: cópia de src/scripts/app.ts (manter as duas iguais).
 (function () {

@@ -1,6 +1,7 @@
 ---
 import discoVoce from '../../imagens/inner-H02-para-voce-v1.svg?raw';
 import discoEmpresa from '../../imagens/inner-H03-para-empresa-v1.svg?raw';
+import { miolo } from '../lib/svg';
 import Badge from './Badge.astro';
 import Seta from './Seta.astro';
 import { rotas } from '../data/site';
@@ -12,9 +13,8 @@ const blocos = [
     texto: 'Para empresas que cuidam da carreira das pessoas nos dois momentos: quando alguém precisa crescer, preparando executivos para responsabilidades maiores; e quando alguém sai, conduzindo o desligamento com responsabilidade.',
     links: [['Preparar quem precisa crescer', rotas.executivos], ['Cuidar de quem sai', rotas.outplacement]] },
 ];
-// Discos H-02 e H-03 (tools/ilustracao/caminhos.mts), embutidos inline sem o <svg> externo.
+// Discos H-02 e H-03 (tools/ilustracao/caminhos.mts), embutidos inline (src/lib/svg.ts).
 // Cada disco desenha os dois links do cartão: data-cam="sobe" (1º link) e "sai" (2º link).
-const miolo = (svg: string) => svg.replace(/<title>.*?<\/title>/, '').replace(/^<svg[^>]*>|<\/svg>\s*$/g, '');
 const cam = ['sobe', 'sai'];
 ---
 <div class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">

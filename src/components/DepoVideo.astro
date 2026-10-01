@@ -2,12 +2,18 @@
 import Svg from './Svg.astro';
 import type { Depoimento } from '../data/depoimentos';
 import { assinatura } from '../data/depoimentos';
-interface Props { d: Depoimento; grande?: boolean; lado?: boolean }
-const { d, grande = false, lado = true } = Astro.props;
+import { miolo } from '../lib/svg';
+// capa: SVG de tools/ilustracao/ (texto cru). Com miniatura (thumb, a imagem do vídeo), a capa vira
+// moldura por cima dela (use a versão sem fundo, H06-sobre). Sem capa, o oval do kit.
+interface Props { d: Depoimento; grande?: boolean; lado?: boolean; capa?: string; thumb?: string }
+const { d, grande = false, lado = true, capa, thumb } = Astro.props;
 ---
 <div class:list={['grid items-center gap-5', lado ? 'md:grid-cols-2 md:gap-8' : '']}>
   <div class="relative flex h-[200px] items-center justify-center overflow-hidden rounded-[20px] bg-areia-c md:h-[260px]" role="img" aria-label={`Vídeo do depoimento de ${d.nome}`}>
-    <Svg name="oval_grad" h={300} class="absolute -bottom-16 -right-10 rotate-[-12deg] opacity-60" />
+    {thumb && <img src={thumb} alt="" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async" />}
+    {capa
+      ? <svg viewBox="0 0 520 260" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 size-full" aria-hidden="true" set:html={miolo(capa)} />
+      : <Svg name="oval_grad" h={300} class="absolute -bottom-16 -right-10 rotate-[-12deg] opacity-60" />}
     <span class="relative flex size-[68px] items-center justify-center rounded-full bg-coral text-tinta shadow-[0_8px_24px_rgba(35,31,32,.15)]">
       <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
     </span>

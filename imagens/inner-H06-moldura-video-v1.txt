@@ -1,0 +1,9 @@
+PEÇA: H-06 · Prova, moldura sobre a miniatura do vídeo
+STATUS: APROVADA (dono, 30/09/2026, bloco 2)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco2.mts (peça 'H06-sobre'); cópia de docs/ilustracao/bloco-2/H06-sobre.svg
+
+Conceito: Sem fundo: bola e oval na borda, trilha na base, rosácea no canto, rosto e centro livres. Entra quando o vídeo tiver miniatura (DepoVideo, prop thumb). Condição do dono: ficar por cima da miniatura real.
+
+Checklist: só a paleta; sem texto (exceto os rótulos do método, que são do diagrama oficial);
+sem sombra, brilho ou 3D; ~3.1 KB. Movimento em src/styles/global.css ("Bloco 2 · movimento").

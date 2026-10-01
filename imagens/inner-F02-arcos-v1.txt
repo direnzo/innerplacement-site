@@ -1,0 +1,9 @@
+PEÇA: F-02 · Fundo da seção Método
+STATUS: APROVADA (dono, 30/09/2026, bloco 2)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco2.mts (peça 'F-arcos'); cópia de docs/ilustracao/bloco-2/F-arcos.svg
+
+Conceito: Arcos concêntricos em contorno coral (a forma do corpo da Figura Inner).
+
+Checklist: só a paleta; sem texto (exceto os rótulos do método, que são do diagrama oficial);
+sem sombra, brilho ou 3D; ~0.4 KB. Movimento em src/styles/global.css ("Bloco 2 · movimento").
