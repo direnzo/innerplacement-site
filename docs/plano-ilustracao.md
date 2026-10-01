@@ -38,6 +38,12 @@ As 8 peças continuam em `imagens/` com status de aprovadas. Manter, ajustar ou 
 Vantagens do SVG: paleta exata, poucos KB (cabe no limite de 60 KB com folga), editável depois,
 e todas as peças saem da mesma família porque usam as mesmas funções de desenho.
 
+### Gradientes e sombras (decisão do dono, 30/09)
+
+A partir do bloco 3, gradientes **e sombras** são permitidos, de forma **sutil e moderada**. Sombras
+com `feDropShadow` de baixa opacidade (≈ .14–.35), sempre com IDs prefixados por peça. Continua fora:
+brilho de luz forte, 3D e névoa.
+
 ### Degradês e transparências (decisão do dono, 29/09)
 
 Podem entrar, **de forma equilibrada e sutil**, sempre dentro da paleta. Isso ajusta o item
@@ -74,7 +80,7 @@ fora, como o guia pede.
 | --- | --- | --- | --- |
 | 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | concluído (29/09), no site com movimento |
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
-| 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | não iniciado |
+| 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | rodada 1 em revisão |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | não iniciado |
 | 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | não iniciado |
 
@@ -207,4 +213,19 @@ Aprovadas e copiadas para `imagens/` (com `.txt`): `inner-H04-passagem-v1`, `inn
 `inner-H22-multidao-v1`, `inner-H23-rosca-v1`, `inner-M01-metodo-v1` e as formas de fundo
 `inner-F01-bola-v1` a `inner-F04-oval-v1` (família F, nova: fundos das seções). A home importa
 de `imagens/`.
+
+## Bloco 3 · Perguntas, Manifesto e Fechamento
+
+Branch `imagens/bloco-3`. Gerador: `tools/ilustracao/bloco3.mts` → `docs/ilustracao/bloco-3/`.
+Aplicadas na home da branch: H-09, H-10 A e G-01 A. Revisão com o HTML real (e as opções B vivas):
+https://claude.ai/artifact/7gSD6DVxuFBeRRyijJTVRe
+
+| Arquivo | Onde | Ideia |
+| --- | --- | --- |
+| `H09-baloes.svg` | Perguntas, ao lado do título (acima, no computador) | Dois balões: a pergunta (branco) e a resposta chegando (coral, pontinhos "digitando") |
+| `H10a-oval-lapidado.svg` (na home) / `H10b-pedra-revela.svg` | Manifesto | A pedra facetada vira o oval liso com a rolagem ("lapidamos") / a pedra se abre e revela a rosácea |
+| `G01a-conversa.svg` (na home) / `G01b-encontro.svg` | Fechamento, todas as páginas | Duas figuras frente a frente com os balões / duas bolas que se encontram e fazem nascer a rosácea |
+
+Movimento: balões e encontro por `data-entrada`; manifesto por `data-rolagem="elemento"`; os
+pontinhos do balão coral "digitam" em ciclo. CSS "Bloco 3 · movimento" em `global.css`.
 
