@@ -204,7 +204,8 @@
   @keyframes b2-surge { from { opacity: 0; } }
   @keyframes b2-cresce { from { scale: 1 0; } }
   @keyframes b2-sobe { from { opacity: 0; translate: 0 8px; } }
-  @keyframes b2-rosca { from { stroke-dasharray: 0 999; } }
+  /* Rosca de 86%: circunferência 150,80; 86% à mostra = deslocamento 21,11 (tools/ilustracao/bloco2.mts). */
+  @keyframes b2-rosca { from { stroke-dashoffset: 150.8px; } to { stroke-dashoffset: 21.11px; } }
 
   /* Clientes: logos entram em sequência; no hover o cartão sobe e fica branco. */
   .logos .logo { transition: translate .25s ease, background-color .25s ease, box-shadow .25s ease; }
