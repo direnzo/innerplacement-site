@@ -136,7 +136,7 @@ document.addEventListener('alpine:init', function () {
 (function () {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   function conta(el) {
-    var m = (el.textContent || '').match(/^(\D*)(\d+)(\D*)$/);
+    var m = (el.textContent || '').match(/^(\\D*)(\\d+)(\\D*)$/);
     if (!m) return;
     var pre = m[1], fim = +m[2], suf = m[3], t0 = performance.now();
     function passo(t) {
