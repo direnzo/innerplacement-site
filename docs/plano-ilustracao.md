@@ -187,6 +187,12 @@ aprovadas). Revisão com o HTML real: https://claude.ai/artifact/Tn4XLpFGHALBnh7
 | `F-bola.svg`, `F-arcos.svg`, `F-setas.svg`, `F-oval.svg` | Fundos das seções | Formas da marca nas bordas, com leve deslocamento na rolagem (`.fundo-par`) |
 | `M-metodo.svg` | Método | Diagrama redesenhado; maior, `overflow: visible`, rótulos no centro da área livre |
 
+### Rodada 3 (30/09)
+
+O dono escolheu **H-04b (passagem)** e **H-05a (organograma)**, maiores e com o selo e o título ao
+lado da ilustração (no celular, ilustração menor e selo podendo quebrar linha). Aprovou os ícones
+dos números e as formas de fundo. Rótulos do método passam a ficar no centro exato de cada círculo.
+
 Clientes: selo "Clientes" (texto novo, **pendente de aprovação**), entrada em sequência e hover
 (cartão sobe, fica branco com contorno coral; o logo não muda de cor, por ser marca de terceiro).
 

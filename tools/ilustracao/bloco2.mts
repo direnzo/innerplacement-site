@@ -142,7 +142,7 @@ pecas['M-metodo'] = svg(412.79, 295.26, 'Diagrama do método', [
   `<defs><radialGradient id="met-bola"><stop offset="0" stop-color="#fff" stop-opacity=".38"/><stop offset=".76" stop-color="#fff" stop-opacity=".18"/><stop offset=".88" stop-color="${C.coral}" stop-opacity=".12"/><stop offset="1" stop-color="${C.coral}" stop-opacity=".38"/></radialGradient></defs>`,
   `<g class="met-eixos" stroke="${C.coral}" stroke-opacity=".45" stroke-width=".8"><line x1="${MX}" y1="0" x2="${MX}" y2="295.26"/><line x1="0" y1="${MY}" x2="412.79" y2="${MY}"/></g>`,
   ...dims.map(([id, cx, cy, [l1, l2], sx, sy]) => {
-    const tx = cx + sx * 16, ty = cy + sy * 16;  // rótulos no centro da área livre de cada círculo
+    const tx = cx, ty = cy;  // rótulo centralizado no círculo: as duas linhas ficam em volta do centro
     return `<g class="met-bola met-${id}" style="--dx:${sx};--dy:${sy}"><circle cx="${cx}" cy="${cy}" r="${R}" fill="url(#met-bola)" stroke="${C.coral}" stroke-opacity=".28" stroke-width=".8"/>`
       + `<text x="${tx}" y="${ty - 2}" text-anchor="middle" font-size="9.6" letter-spacing=".1" fill="${C.tinta}"><tspan x="${tx}">${l1}</tspan><tspan x="${tx}" dy="10.5">${l2}</tspan></text></g>`;
   }),

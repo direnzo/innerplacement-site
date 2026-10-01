@@ -9,8 +9,8 @@ import DepoVideo from '../components/DepoVideo.astro';
 import Acordeao from '../components/Acordeao.astro';
 import heroSvg from '../../imagens/inner-H01-hero-v4.svg?raw';
 // Bloco 2 (propostas, tools/ilustracao/bloco2.mts): entram em imagens/ quando aprovadas.
-import h04 from '../../docs/ilustracao/bloco-2/H04a-duas-leituras.svg?raw';
-import h05 from '../../docs/ilustracao/bloco-2/H05b-pilulas.svg?raw';
+import h04 from '../../docs/ilustracao/bloco-2/H04b-passagem.svg?raw';
+import h05 from '../../docs/ilustracao/bloco-2/H05a-organograma.svg?raw';
 import h06 from '../../docs/ilustracao/bloco-2/H06-capa.svg?raw';
 import nAnos from '../../docs/ilustracao/bloco-2/N-anos.svg?raw';
 import nPessoas from '../../docs/ilustracao/bloco-2/N-pessoas.svg?raw';
@@ -73,16 +73,26 @@ const metodo = [
       </div>
       <div class="grid gap-7 border-t border-linha pt-7 md:grid-cols-2 md:gap-14">
         <div class="flex flex-col gap-2.5" x-data="{ mais: false }">
-          <svg viewBox="0 0 168 88" class="mb-1 h-[72px] w-auto self-start md:h-[88px]" aria-hidden="true" data-entrada set:html={miolo(h04)} />
-          <Badge>Para quem está em transição</Badge>
-          <h3 class="text-[17.5px] font-semibold leading-[1.35] md:text-[19px]">Estratégia de mercado e leitura cuidadosa do profissional, no mesmo processo</h3>
+          <!-- Ilustração à esquerda, selo e título ao lado, quase encostando -->
+          <div class="flex items-center">
+            <svg viewBox="0 0 168 88" class="h-[60px] w-auto shrink-0 md:h-[112px] lg:h-[128px]" aria-hidden="true" data-entrada set:html={miolo(h04)} />
+            <div class="ml-1 flex min-w-0 flex-1 flex-col gap-2 max-md:[&_.badge]:w-auto">
+              <Badge>Para quem está em transição</Badge>
+              <h3 class="text-[16px] font-semibold leading-[1.32] md:text-[18px] lg:text-[19px]">Estratégia de mercado e leitura cuidadosa do profissional, no mesmo processo</h3>
+            </div>
+          </div>
           <p class="text-[15.5px] leading-[1.62] text-texto md:text-[16px] max-md:line-clamp-4" x-bind:class="mais && 'max-md:line-clamp-none'">Uma transição bem conduzida começa por uma leitura precisa: o que você construiu, o que quer a seguir e como o mercado enxerga isso. A partir dela, a estratégia: posicionamento definido, network ativado com método, oportunidades acompanhadas uma a uma e preparação para cada entrevista. Do primeiro encontro à recolocação.</p>
           <button type="button" class="self-start text-[14.5px] font-semibold text-coral-d underline underline-offset-4 md:hidden" x-on:click="mais = !mais" x-text="mais ? 'Ler menos' : 'Ler mais'">Ler mais</button>
         </div>
         <div class="flex flex-col gap-2.5" x-data="{ mais: false }">
-          <svg viewBox="0 0 168 88" class="mb-1 h-[72px] w-auto self-start md:h-[88px]" aria-hidden="true" data-entrada set:html={miolo(h05)} />
-          <Badge>Para quem quer crescer</Badge>
-          <h3 class="text-[17.5px] font-semibold leading-[1.35] md:text-[19px]">Estratégia de desenvolvimento e impacto na organização, no mesmo processo</h3>
+          <!-- Ilustração à esquerda, selo e título ao lado, quase encostando -->
+          <div class="flex items-center">
+            <svg viewBox="0 0 168 88" class="h-[60px] w-auto shrink-0 md:h-[112px] lg:h-[128px]" aria-hidden="true" data-entrada set:html={miolo(h05)} />
+            <div class="ml-1 flex min-w-0 flex-1 flex-col gap-2 max-md:[&_.badge]:w-auto">
+              <Badge>Para quem quer crescer</Badge>
+              <h3 class="text-[16px] font-semibold leading-[1.32] md:text-[18px] lg:text-[19px]">Estratégia de desenvolvimento e impacto na organização, no mesmo processo</h3>
+            </div>
+          </div>
           <p class="text-[15.5px] leading-[1.62] text-texto md:text-[16px] max-md:line-clamp-4" x-bind:class="mais && 'max-md:line-clamp-none'">Você quer crescer ou ganhar mais relevância no que já faz. Nos dois casos o trabalho é preciso: definimos o impacto que você quer ter, na carreira e na organização, e construímos a estratégia de desenvolvimento para chegar lá — pode ser uma competência, um comportamento, a forma de se posicionar, ou o que só aparece no caminho. O programa se ajusta ao que o seu dia a dia traz, e acontece fora da hierarquia da empresa: um espaço profissional e confidencial para trabalhar o que lá dentro não dá para expor.</p>
           <button type="button" class="self-start text-[14.5px] font-semibold text-coral-d underline underline-offset-4 md:hidden" x-on:click="mais = !mais" x-text="mais ? 'Ler menos' : 'Ler mais'">Ler mais</button>
         </div>
