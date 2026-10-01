@@ -81,7 +81,9 @@ Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/
 | H-21 a H-23 | Ícones dos números | aprovados: calendário, multidão, rosca |
 | M-01 | Diagrama do método (redesenho) | aprovado, animado com a rolagem |
 | F-01 a F-04 | Formas de fundo das seções | aprovadas |
-| G-01 | Fechamento | aprovada |
+| G-01 | Fechamento | aprovada: v2 em SVG (a conversa) no site; o PNG v1 fica como referência |
+| H-09 | Perguntas, ícone do título | aprovada (balões) |
+| H-10 | Manifesto | aprovada (oval lapidado com a rolagem) |
 | P-01 | Transição e Recolocação | aprovada |
 | P-02 | Desenvolvimento de Carreira | aprovada |
 | P-03 | Desenvolvimento de Executivos | pendente |

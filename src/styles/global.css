@@ -218,3 +218,30 @@
   .met-objetivo { transform-box: fill-box; transform-origin: center; scale: calc(.3 + .7 * var(--rolagem, 1)); opacity: calc(var(--rolagem, 1) * 1.4 - .4); }
   .fundo-par { translate: 0 calc((1 - var(--rolagem, 1)) * 70px); }
 }
+
+/* Bloco 3 · movimento (Perguntas, Manifesto, Fechamento). Ganchos b3-* de tools/ilustracao/bloco3.mts.
+   - Balões (H-09, G-01): entram em sequência quando aparecem ([data-entrada]); os pontinhos do balão
+     de resposta "digitam" em ciclo enquanto a página está aberta.
+   - Manifesto (H-10): [data-rolagem="elemento"]; com a rolagem, as facetas da pedra somem e fica o
+     oval liso e brilhante (A), ou as metades da pedra se abrem e mostram a rosácea (B).
+   - Encontro (G-01 B): as duas bolas chegam dos lados e a rosácea floresce.
+   Estado padrão (sem script ou com "reduzir movimento"): a peça completa, lapidada e aberta. */
+@layer components {
+  .il-anim :is(.b3-balao, .b3-rosa) { transform-box: fill-box; }
+  .il-anim .b3-balao-1 { transform-origin: 0 100%; animation: b3-balao .45s .15s cubic-bezier(.3, 1.4, .5, 1) both paused; }
+  .il-anim .b3-balao-2 { transform-origin: 100% 100%; animation: b3-balao .45s .7s cubic-bezier(.3, 1.4, .5, 1) both paused; }
+  .il-anim .b3-quem-e { animation: b2-da-esq .6s ease-out both paused; }
+  .il-anim .b3-quem-d { animation: b2-da-dir .6s ease-out both paused; }
+  .il-anim .b3-luz { animation: b2-surge 1s ease-out both paused; }
+  .il-anim .b3-bola-e { animation: b2-da-esq .8s cubic-bezier(.2, .8, .3, 1) both paused; }
+  .il-anim .b3-bola-d { animation: b2-da-dir .8s cubic-bezier(.2, .8, .3, 1) both paused; }
+  .il-anim .b3-rosa { transform-origin: center; animation: il-floresce .6s .7s cubic-bezier(.2, 1.3, .4, 1) both paused; }
+  .il-anim.visto :is(.b3-balao, .b3-quem-e, .b3-quem-d, .b3-luz, .b3-bola-e, .b3-bola-d, .b3-rosa) { animation-play-state: running; }
+  .b3-ponto { animation: b3-digita 1.4s calc(var(--i) * .18s) ease-in-out infinite; }
+  @keyframes b3-balao { from { opacity: 0; scale: .5; } }
+  @keyframes b3-digita { 0%, 60%, 100% { opacity: .45; translate: 0 0; } 30% { opacity: 1; translate: 0 -2px; } }
+
+  .b3-faceta { opacity: calc(1.15 - var(--rolagem, 1) * 1.3); }
+  .b3-brilho { opacity: var(--rolagem, 1); }
+  .b3-metade { translate: calc(var(--lado) * var(--rolagem, 1) * 34px) 0; }
+}

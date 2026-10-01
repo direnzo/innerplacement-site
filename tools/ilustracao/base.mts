@@ -20,7 +20,11 @@ export function peca(k: string, cx: number, cy: number, h: number, extra = '') {
   return `<svg x="${(cx - w / 2).toFixed(1)}" y="${(cy - h / 2).toFixed(1)}" width="${w}" height="${h}" viewBox="0 0 ${e.w} ${e.h}" ${extra}>${e.inner}</svg>`;
 }
 // Rosácea do kit.
-export const ROSA = (cx: number, cy: number, h: number) => peca('rosacea_coral', cx, cy, h);
+// `cor` troca o coral das pétalas (ex.: branco sobre fundo coral, como no manifesto).
+export const ROSA = (cx: number, cy: number, h: number, cor?: string) => {
+  const r = peca('rosacea_coral', cx, cy, h);
+  return cor ? r.replace(/#ff6558/gi, cor) : r;
+};
 
 // Trilha pontilhada (forma e movimento, item 3 da folha de referência). Espessura e passo ajustáveis
 // para peças pequenas; o padrão é o do hero.

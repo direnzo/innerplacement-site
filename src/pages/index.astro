@@ -20,6 +20,8 @@ import fArcos from '../../imagens/inner-F02-arcos-v1.svg?raw';
 import fSetas from '../../imagens/inner-F03-chevrons-v1.svg?raw';
 import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
 import metodoSvg from '../../imagens/inner-M01-metodo-v1.svg?raw';
+import h09 from '../../imagens/inner-H09-baloes-v1.svg?raw';
+import h10 from '../../imagens/inner-H10-oval-lapidado-v1.svg?raw';
 import { miolo } from '../lib/svg';
 import { depoimentos as D } from '../data/depoimentos';
 import { faqHome } from '../data/faq';
@@ -152,7 +154,10 @@ const metodo = [
   <!-- 6 · Perguntas -->
   <section class="wrap grid gap-5 md:gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14" aria-labelledby="perguntas-titulo">
     <div class="flex flex-col items-start gap-5">
-      <h2 id="perguntas-titulo" class="h2">Antes de conversar, <strong>o que costumam perguntar</strong></h2>
+      <div class="flex items-center gap-3 md:gap-4 lg:flex-col lg:items-start">
+        <svg viewBox="0 0 140 104" class="h-[64px] w-auto shrink-0 md:h-[88px] lg:h-[104px]" aria-hidden="true" data-entrada set:html={miolo(h09)} />
+        <h2 id="perguntas-titulo" class="h2">Antes de conversar, <strong>o que costumam perguntar</strong></h2>
+      </div>
       <a href={rotas.faq} class="btn-l hidden lg:inline-flex">Ver todas as perguntas</a>
     </div>
     <Acordeao itens={faqHome} abrirPrimeira prefixo="home" />
@@ -162,10 +167,13 @@ const metodo = [
   <!-- 7 · Manifesto -->
   <section class="wrap" aria-labelledby="manifesto-titulo">
     <div class="relative grid gap-5 overflow-hidden rounded-[28px] bg-white p-6 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:items-center md:gap-14 md:p-11">
-      <Svg name="rosacea_coral" w={260} class="pointer-events-none absolute -right-20 -top-16 opacity-15" />
-      <div class="relative flex flex-col items-start gap-4">
-        <h2 id="manifesto-titulo" class="h2 !font-semibold">Manifesto</h2>
-        <a href={rotas.manifesto} class="btn-l hidden md:inline-flex">Ler o manifesto</a>
+      <div class="relative flex items-center gap-4 md:gap-6">
+        <!-- H-10: a pedra facetada vira o oval liso com a rolagem ("lapidamos") -->
+        <svg viewBox="0 0 240 200" class="h-[104px] w-auto shrink-0 overflow-visible md:h-[150px]" aria-hidden="true" data-rolagem="elemento" set:html={miolo(h10)} />
+        <div class="flex flex-col items-start gap-4">
+          <h2 id="manifesto-titulo" class="h2 !font-semibold">Manifesto</h2>
+          <a href={rotas.manifesto} class="btn-l hidden md:inline-flex">Ler o manifesto</a>
+        </div>
       </div>
       <blockquote class="relative text-[20px] font-light leading-[1.4] tracking-[-.01em] md:text-[27px]"><span class="font-semibold text-coral">“</span>Não reinventamos ninguém. Lapidamos o que cada pessoa já construiu, para que fique visível.<span class="font-semibold text-coral">”</span></blockquote>
       <a href={rotas.manifesto} class="btn-l relative w-full md:hidden">Ler o manifesto</a>
