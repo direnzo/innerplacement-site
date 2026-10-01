@@ -66,10 +66,12 @@ const multidao = () => {
 pecas['N-pessoas'] = svg(96, 64, 'Muitas pessoas', multidao());
 // 86%: gráfico de rosca que enche até 86%. O traço tem o tamanho da circunferência (150,80) e o
 // deslocamento deixa 86% à mostra (21,11); a animação vai de 150,80 a 21,11, ambos explícitos no CSS
-// (animar o dasharray com o fim implícito falhava em alguns navegadores).
+// (animar o dasharray com o fim implícito falhava em alguns navegadores). A rotação que faz o arco
+// começar no topo fica num grupo: no próprio círculo, ela conflitava com o transform-box: fill-box
+// do hover e o arco era desenhado fora do ícone.
 pecas['N-porcento'] = svg(96, 64, 'Oitenta e seis por cento', [
   `<circle cx="48" cy="32" r="24" fill="none" stroke="${C.branco}" stroke-width="9"/>`,
-  `<circle class="b2-rosca" cx="48" cy="32" r="24" fill="none" stroke="${C.coral}" stroke-width="9" stroke-dasharray="${(2 * Math.PI * 24).toFixed(2)}" stroke-dashoffset="${(2 * Math.PI * 24 * .14).toFixed(2)}" transform="rotate(-90 48 32)"/>`,
+  `<g transform="rotate(-90 48 32)"><circle class="b2-rosca" cx="48" cy="32" r="24" fill="none" stroke="${C.coral}" stroke-width="9" stroke-dasharray="${(2 * Math.PI * 24).toFixed(2)}" stroke-dashoffset="${(2 * Math.PI * 24 * .14).toFixed(2)}"/></g>`,
 ].join(''));
 
 // ── Prova: capa de vídeo (H-06) ────────────────────────────────────────────────────────────────
