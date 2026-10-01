@@ -1,10 +1,18 @@
 ---
 import Badge from './Badge.astro';
+import ComIcone from './ComIcone.astro';
+import tPlatinum from '../../docs/ilustracao/titulos/T-platinum.svg?raw';
+import tFocus from '../../docs/ilustracao/titulos/T-focus.svg?raw';
+import tNext from '../../docs/ilustracao/titulos/T-nextlevel.svg?raw';
 interface Props { rotulo: string; nome: string }
 const { rotulo, nome } = Astro.props;
+// Ícone do título pelo nome do programa (tools/ilustracao/titulos.mts).
+const icone = ({ Platinum: tPlatinum, Focus: tFocus, 'Next Level': tNext } as Record<string, string>)[nome];
 ---
 <article class="card flex flex-col gap-3 p-5 md:p-7">
   <Badge>{rotulo}</Badge>
-  <h2 class="text-[22px] font-semibold tracking-[-.01em] md:text-[24px]">{nome}</h2>
+  {icone
+    ? <ComIcone svg={icone}><h2 class="text-[22px] font-semibold tracking-[-.01em] md:text-[24px]">{nome}</h2></ComIcone>
+    : <h2 class="text-[22px] font-semibold tracking-[-.01em] md:text-[24px]">{nome}</h2>}
   <p class="text-[15.5px] leading-[1.62] text-texto"><slot /></p>
 </article>

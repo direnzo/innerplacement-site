@@ -254,6 +254,9 @@ hover. Revisão (home inteira): https://claude.ai/artifact/6duhBb51AQ78Nf6k3Gc6a
   `tools/ilustracao/sincronizar.py`, que copia de `docs/` para `imagens/` guiado pelo `.txt`.
 - Teste: o Chromium sem tela se declara sem mouse; para testar hover, iniciar com
   `--blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4`.
-- Faltam 11 ícones de título fora da home: programas (Platinum, Focus, Next Level), seções de
-  Depoimentos (3) e do FAQ (5).
+- Rodada 1 (home: T-porque, T-prova, T-metodo, T-clientes) e os hovers: **aprovados pelo dono**.
+- Rodada 2: 9 ícones para os 11 títulos internos (Transição e Crescimento se repetem em Depoimentos e
+  FAQ): `T-platinum`, `T-focus`, `T-nextlevel` (no componente `Programa`, pelo nome), `T-transicao`,
+  `T-outplacement`, `T-crescimento` (Depoimentos), `T-comecar`, `T-empresas`, `T-investimento` (FAQ).
+  Nas seções sobre fundo areia, o claro dos ícones é branco. Galeria: https://claude.ai/artifact/839R5uwB3J52obixydfz1N
 
