@@ -1,0 +1,9 @@
+PEÇA: Ícone de título · Clientes (home)
+STATUS: APROVADA (dono, 30/09/2026, frente "ícones de título e hover")
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/titulos.mts (peça 'T-clientes'); cópia de docs/ilustracao/titulos/T-clientes.svg
+
+Conceito: Cartões de empresa sobrepostos; o da frente com a rosácea.
+
+Formato do H-09: 140 × 104, objeto próprio, gradiente e sombra sutis; entrada por [data-entrada] e gesto
+de hover (CSS "Títulos · movimento"). Componente src/components/ComIcone.astro. ~3.1 KB.

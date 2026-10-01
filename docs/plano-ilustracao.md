@@ -267,4 +267,6 @@ hover. Revisão (home inteira): https://claude.ai/artifact/6duhBb51AQ78Nf6k3Gc6a
   texto coral, rosácea tinta translúcida). **Sem os sufixos "Corporate"/"Executivo"**: a documentação
   funcional tirou "Next Level Corporate" e "Go Fast" dos nomes. Referência: os logos antigos em
   `~/projetos/innerplacement/wp-content/uploads/2025/0{4,5}/` (`*_logo.png`, `emp-*.png`, `dep_*.png`).
+- **Fechamento (30/09):** os 13 ícones aprovados em `imagens/inner-T-<assunto>-v1.svg` (+ `.txt`); as
+  páginas importam de `imagens/`. Logotipo dos programas e hovers aprovados.
 

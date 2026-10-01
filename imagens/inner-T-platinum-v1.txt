@@ -1,0 +1,9 @@
+PEÇA: Ícone de título · Programa Platinum (Transição e Outplacement), ao lado do logotipo
+STATUS: APROVADA (dono, 30/09/2026, frente "ícones de título e hover")
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/titulos.mts (peça 'T-platinum'); cópia de docs/ilustracao/titulos/T-platinum.svg
+
+Conceito: O par num cartão com a fita coral do programa (acompanhamento próximo).
+
+Formato do H-09: 140 × 104, objeto próprio, gradiente e sombra sutis; entrada por [data-entrada] e gesto
+de hover (CSS "Títulos · movimento"). Componente src/components/ComIcone.astro. ~1.2 KB.

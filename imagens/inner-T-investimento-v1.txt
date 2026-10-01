@@ -1,0 +1,9 @@
+PEÇA: Ícone de título · FAQ "Investimento e condições"
+STATUS: APROVADA (dono, 30/09/2026, frente "ícones de título e hover")
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/titulos.mts (peça 'T-investimento'); cópia de docs/ilustracao/titulos/T-investimento.svg
+
+Conceito: Moedas em degradê coral e o calendário das condições.
+
+Formato do H-09: 140 × 104, objeto próprio, gradiente e sombra sutis; entrada por [data-entrada] e gesto
+de hover (CSS "Títulos · movimento"). Componente src/components/ComIcone.astro. ~1.6 KB.
