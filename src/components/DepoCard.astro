@@ -1,14 +1,14 @@
 ---
 import Svg from './Svg.astro';
 import type { Depoimento } from '../data/depoimentos';
-interface Props { d: Depoimento; fundo?: 'branco' | 'areia' }
-const { d, fundo = 'branco' } = Astro.props;
+interface Props { d: Depoimento; fundo?: 'branco' | 'areia'; destaque?: boolean }
+const { d, fundo = 'branco', destaque = false } = Astro.props;
 // Cartão de depoimento: aspas e rosácea de canto no espírito do quadro de citação de Quem somos
 // (.socio-citacao); o selo do programa, no canto superior direito, é o mesmo logótipo pequeno usado em
 // Programa.astro (prog-logo: nome + rosácea), para reconhecer o programa de relance, sem repetir o nome
 // na assinatura debaixo.
 ---
-<figure class:list={['depo-cartao', fundo === 'areia' && 'depo-cartao-areia']}>
+<figure class:list={['depo-cartao', fundo === 'areia' && 'depo-cartao-areia', destaque && 'depo-cartao-destaque']} data-depo-id={d.id}>
   <span class="dc-canto" aria-hidden="true"><Svg name="rosacea_coral" w={150} /></span>
   <svg class="dc-aspas" viewBox="0 0 48 36" aria-hidden="true"><path d="M8,26 a8,8 0 1 1 8,-8 q0,12 -10.7,17.3 l-2,-2.7 q5.4,-3.5 6.2,-7.2 a8,8 0 0 1 -1.5,.6 z M32,26 a8,8 0 1 1 8,-8 q0,12 -10.7,17.3 l-2,-2.7 q5.4,-3.5 6.2,-7.2 a8,8 0 0 1 -1.5,.6 z" fill="currentColor"/></svg>
   {d.programa && <span class="dc-selo"><span class="dc-selo-nome">{d.programa}</span><Svg name="rosacea_coral" w={24} class="dc-selo-ros" /></span>}

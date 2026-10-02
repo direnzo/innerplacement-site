@@ -1,68 +1,109 @@
 ---
 import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
-// Texto literal da Política de Privacidade publicada em innerplacement.com.br (WordPress), migrada para
-// a v2 em 02/10/2026 — antes, o rodapé linkava para o site antigo. Conteúdo e estrutura exatamente como
-// estavam lá (conferido pela API do WordPress em 02/10/2026; última alteração registrada: 21/04/2025);
-// não é texto novo, por isso não passa pelas trocas da seção 11 da documentação funcional.
+import { EMAIL } from '../data/site';
+// Política de Privacidade, revisada em 02/10/2026 para a LGPD (Lei 13.709/2018) e para o que o site
+// ganhou nessa data: aviso de cookies por categoria (CookieConsent.astro) e o Gerenciador de Tags do
+// Google (Base.astro, GTM_ID em src/data/site.ts), com o Consent Mode. A base é o texto que já estava
+// publicado no WordPress (seções 1 a 4, 7 e 8, quase inalteradas); o que é novo aqui: a seção de cookies
+// detalhada por categoria, as bases legais, o compartilhamento com o Google, o prazo de guarda e os
+// direitos completos do art. 18 da LGPD (o texto antigo tinha só 4 dos 9).
+// Pendência antes de publicar em produção (não é algo que eu possa preencher sozinho): CNPJ e o nome e
+// contato do encarregado de dados (DPO) — ver o aviso na página e o README.
 ---
 <Base titulo="Política de Privacidade"
-  descricao="Como a Inner Placement coleta, usa, armazena e protege os dados pessoais de quem visita o site e preenche os formulários de contato.">
+  descricao="Como a Inner Placement coleta, usa, armazena e protege os dados pessoais de quem visita o site e preenche os formulários de contato, e quais cookies o site usa.">
   <TopoPagina titulo="Política de Privacidade" trilha="Inner" />
   <article class="wrap pb-6">
     <div class="prosa mx-auto w-full max-w-[720px]">
-      <p>A <strong>Inner Placement</strong> respeita a sua privacidade e está comprometida em proteger os dados pessoais que você nos fornece. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos suas informações.</p>
+      <div class="rounded-[16px] bg-coral-c px-5 py-4 text-[14.5px] leading-[1.55] text-tinta" role="note">
+        <strong>Pendente antes de publicar em produção:</strong> faltam o CNPJ da Inner Placement e o nome
+        e contato de quem responde formalmente pelos dados (o "encarregado", exigido pela LGPD) nas seções
+        1 e 10. Não preenchi esses dois pontos — são informações que só vocês têm.
+      </div>
 
-      <h2>1. Coleta de Informações</h2>
-      <p>Coletamos informações pessoais por meio dos formulários de contato e outros meios disponíveis em nosso site. Esses dados podem incluir:</p>
+      <p>A <strong>Inner Placement</strong> respeita a sua privacidade e está comprometida em proteger os dados pessoais que você nos fornece, conforme a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018). Esta Política de Privacidade descreve como coletamos, usamos, armazenamos, compartilhamos e protegemos suas informações, e quais direitos você tem sobre elas.</p>
+
+      <h2>1. Quem é o controlador dos seus dados</h2>
+      <p><strong>Inner Placement</strong>, CNPJ <em>[preencher]</em>, com atuação em São Paulo – SP e Curitiba – PR, é quem decide como e para quê os dados pessoais coletados por este site são usados ("controladora", no termo da LGPD).</p>
+
+      <h2>2. Dados que coletamos</h2>
+      <p>Coletamos dados de duas formas: o que você preenche, e o que o navegador informa automaticamente.</p>
+      <p><strong>Fornecidos por você</strong>, pelos formulários de contato e outros meios disponíveis no site:</p>
       <ul>
         <li>Nome completo</li>
         <li>Endereço de e-mail</li>
-        <li>Número de telefone</li>
+        <li>Número de telefone ou WhatsApp</li>
         <li>Empresa e cargo (quando aplicável)</li>
         <li>Informações fornecidas voluntariamente em mensagens e formulários</li>
       </ul>
+      <p><strong>Coletados automaticamente</strong>, só com a sua permissão (veja a seção 5, Cookies): páginas visitadas, tempo de navegação, origem do acesso (de onde você veio até o site) e dados técnicos do dispositivo e navegador, de forma agregada — não identificamos você pessoalmente a partir desses dados.</p>
 
-      <h2>2. Uso das Informações</h2>
+      <h2>3. Para que usamos</h2>
       <p>As informações coletadas são utilizadas para:</p>
       <ul>
         <li>Entrar em contato com você mediante solicitação</li>
         <li>Fornecer informações sobre nossos serviços</li>
         <li>Enviar conteúdos e atualizações relevantes</li>
-        <li>Melhorar a experiência do usuário no site</li>
+        <li>Entender como o site é usado e melhorar a experiência de navegação</li>
         <li>Cumprir obrigações legais e regulatórias</li>
       </ul>
 
-      <h2>3. Compartilhamento de Dados</h2>
-      <p><strong>Não compartilhamos, vendemos ou alugamos</strong> seus dados pessoais com terceiros, exceto quando necessário para cumprimento de obrigações legais ou mediante consentimento explícito.</p>
+      <h2>4. Base legal</h2>
+      <p>Tratamos seus dados com base no seu <strong>consentimento</strong> (ao preencher um formulário, ou ao aceitar cookies de estatística e marketing), no <strong>legítimo interesse</strong> da Inner Placement em responder a quem pede contato e em entender o uso do site, e no <strong>cumprimento de obrigação legal</strong>, quando aplicável.</p>
 
-      <h2>4. Armazenamento e Segurança</h2>
+      <h2>5. Cookies e tecnologias semelhantes</h2>
+      <p>Usamos cookies e o armazenamento local do navegador (localStorage) em três categorias, mostradas no aviso de cookies do site:</p>
+      <ul>
+        <li><strong>Necessários:</strong> fazem o site funcionar, inclusive lembrar a sua escolha no aviso de cookies. Não é possível desativá-los; sem eles, o site não funciona corretamente.</li>
+        <li><strong>Estatísticas:</strong> usados pelo Google Analytics, por meio do Google Tag Manager, para entender quantas pessoas visitam o site, quais páginas e de onde vêm — de forma agregada, sem identificar você. Só ativam com a sua permissão.</li>
+        <li><strong>Marketing:</strong> quando ativados (por exemplo, Google Ads), ajudam a medir a origem de quem chega pelo site, para campanhas. Só ativam com a sua permissão.</li>
+      </ul>
+      <p>Você escolhe essas categorias no aviso de cookies que aparece na primeira visita, e pode rever ou trocar a escolha a qualquer momento pelo link "Preferências de cookies", no rodapé de qualquer página. Também é possível bloquear cookies diretamente nas configurações do seu navegador, mas isso pode afetar o funcionamento do site.</p>
+
+      <h2>6. Compartilhamento de dados</h2>
+      <p><strong>Não vendemos nem alugamos</strong> seus dados pessoais. Compartilhamos dados apenas com:</p>
+      <ul>
+        <li>Prestadores de serviço que sustentam o site e o atendimento (hospedagem, envio de e-mail, e — quando você permite, pela categoria Estatísticas ou Marketing — o Google, pelo Google Analytics e Google Tag Manager), sempre na medida necessária para o serviço prestado;</li>
+        <li>Autoridades públicas, quando exigido por lei, ordem judicial ou para exercício regular de direitos.</li>
+      </ul>
+      <p>Alguns desses prestadores (como o Google) processam dados em servidores fora do Brasil. Nesses casos, exigimos salvaguardas compatíveis com a LGPD para a transferência internacional.</p>
+
+      <h2>7. Por quanto tempo guardamos</h2>
+      <p>Guardamos seus dados pelo tempo necessário para atender à finalidade da coleta (por exemplo, responder ao seu contato) ou pelo prazo exigido por obrigação legal ou regulatória, o que for maior. Depois disso, eliminamos ou anonimizamos os dados.</p>
+
+      <h2>8. Segurança</h2>
       <p>Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados pessoais contra acesso não autorizado, perda, uso indevido ou divulgação indevida.</p>
 
-      <h2>5. Cookies</h2>
-      <p>Nosso site pode utilizar cookies para melhorar a navegação e a experiência do usuário. Você pode, a qualquer momento, configurar seu navegador para recusar cookies, mas isso pode afetar a funcionalidade do site.</p>
-
-      <h2>6. Seus Direitos</h2>
-      <p>Você tem o direito de:</p>
+      <h2>9. Seus direitos</h2>
+      <p>Pela LGPD, você tem o direito de:</p>
       <ul>
-        <li>Acessar seus dados pessoais</li>
-        <li>Solicitar correção ou atualização de informações</li>
-        <li>Solicitar exclusão dos seus dados</li>
+        <li>Confirmar se tratamos algum dado seu</li>
+        <li>Acessar os seus dados</li>
+        <li>Corrigir dados incompletos, inexatos ou desatualizados</li>
+        <li>Solicitar a anonimização, o bloqueio ou a eliminação de dados desnecessários ou tratados fora da lei</li>
+        <li>Solicitar a portabilidade dos seus dados a outro fornecedor</li>
+        <li>Solicitar a eliminação dos dados tratados com o seu consentimento</li>
+        <li>Saber com quem compartilhamos os seus dados</li>
+        <li>Ser informado sobre a possibilidade de não fornecer consentimento, e as consequências disso</li>
         <li>Revogar o consentimento a qualquer momento</li>
       </ul>
-      <p>Para exercer seus direitos, entre em contato com a gente através do e-mail: <strong>contato@innerplacement.com.br</strong></p>
+      <p>Para exercer qualquer um desses direitos, fale com a gente pelo e-mail <strong>{EMAIL}</strong>. Se não resolvermos, você também pode procurar a Autoridade Nacional de Proteção de Dados (ANPD), em <a href="https://www.gov.br/anpd/" target="_blank" rel="noopener">gov.br/anpd</a>.</p>
 
-      <h2>7. Alterações na Política</h2>
-      <p>Esta Política de Privacidade pode ser atualizada periodicamente. Recomendamos que você revise esta página regularmente para se manter informado.</p>
+      <h2>10. Encarregado de dados (DPO)</h2>
+      <p><em>[preencher: nome e e-mail de contato de quem responde formalmente pelo tratamento de dados na Inner Placement]</em></p>
 
-      <h2>8. Contato</h2>
+      <h2>11. Alterações nesta política</h2>
+      <p>Esta Política de Privacidade pode ser atualizada periodicamente, inclusive para refletir novas ferramentas ou exigências legais. Recomendamos que você revise esta página regularmente para se manter informado.</p>
+
+      <h2>12. Contato</h2>
       <p>Se tiver dúvidas sobre esta política ou sobre o tratamento dos seus dados, fale com a gente:</p>
       <p><strong>Inner Placement</strong><br />
-      📧 contato@innerplacement.com.br<br />
+      📧 {EMAIL}<br />
       📍 São Paulo – SP | Curitiba – PR</p>
 
       <hr />
-      <p class="text-[14px] text-mudo">Última atualização: 21 de abril de 2025.</p>
+      <p class="text-[14px] text-mudo">Última atualização: 2 de outubro de 2026.</p>
     </div>
   </article>
 </Base>

@@ -1,35 +1,67 @@
 ---
 import { rotas } from '../data/site';
-// Aviso de cookies (LGPD): aparece no primeiro acesso e guarda a escolha em localStorage (sem servidor,
-// sem cookie de verdade para guardar a preferência). Hoje o site não carrega nenhum cookie de terceiro
-// (análise, publicidade) — só o essencial para funcionar; quando isso mudar, os novos scripts devem
-// checar essa escolha antes de carregar. O botão "Preferências de cookies" do rodapé reabre este aviso
-// a qualquer momento, para quem quiser rever ou trocar a escolha (o script fica em app.ts).
+// Aviso de cookies (LGPD): aparece no primeiro acesso e guarda a escolha em localStorage, por categoria
+// (necessários, sempre ativos; estatísticas; marketing). "Aceitar todos" e "Recusar" decidem as duas de
+// uma vez; "Personalizar" abre as duas separadas. A escolha vira sinal para o Consent Mode do Google
+// (gtag, carregado em Base.astro antes do Gerenciador de Tags): só mede com a permissão dada aqui, e só
+// na categoria dada. O botão "Preferências de cookies" do rodapé reabre este aviso a qualquer momento,
+// para quem quiser rever ou trocar a escolha (o script fica em app.ts).
 ---
 <aside x-data="{
     aberto: false,
-    escolher(v) {
-      try { localStorage.setItem('cookies-inner', v); } catch {}
+    detalhes: false,
+    estatisticas: false,
+    marketing: false,
+    aplicar(est, mkt) {
+      const p = { estatisticas: est, marketing: mkt };
+      try { localStorage.setItem('cookies-inner', JSON.stringify(p)); } catch {}
+      if (window.gtag) window.gtag('consent', 'update', {
+        analytics_storage: est ? 'granted' : 'denied',
+        ad_storage: mkt ? 'granted' : 'denied',
+        ad_user_data: mkt ? 'granted' : 'denied',
+        ad_personalization: mkt ? 'granted' : 'denied',
+      });
       this.aberto = false;
     },
     init() {
-      let v = null;
-      try { v = localStorage.getItem('cookies-inner'); } catch {}
-      this.aberto = !v;
+      let p = null;
+      try { p = JSON.parse(localStorage.getItem('cookies-inner') || 'null'); } catch {}
+      this.aberto = !p;
+      if (p) { this.estatisticas = !!p.estatisticas; this.marketing = !!p.marketing; }
     },
-  }" x-cloak x-show="aberto" x-transition.opacity.duration.200ms @cookies-reabrir.window="aberto = true"
+  }" x-cloak x-show="aberto" x-transition.opacity.duration.200ms @cookies-reabrir.window="aberto = true; detalhes = false"
   class="fixed inset-x-0 bottom-0 z-50 pb-[max(16px,env(safe-area-inset-bottom))] pt-4" role="dialog" aria-live="polite" aria-label="Preferências de cookies">
   <div class="wrap">
-    <div class="flex flex-col gap-4 rounded-[22px] bg-tinta p-5 text-white shadow-[0_18px_44px_rgba(35,31,32,.3)] md:flex-row md:items-center md:justify-between md:gap-8 md:p-6">
-      <p class="text-[13.5px] leading-[1.55] text-white/80 md:max-w-[620px] md:text-[14.5px]">
-        Usamos cookies essenciais para o site funcionar e, com a sua permissão, para entender como ele é
-        usado. Veja os detalhes na <a href={rotas.privacidade} class="text-white underline underline-offset-2 hover:text-coral-c">política de privacidade</a>.
-      </p>
-      <div class="flex shrink-0 gap-2.5">
-        <button type="button" @click="escolher('recusado')"
-          class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full px-5 text-[14px] font-semibold text-white ring-1 ring-inset ring-white/30 transition-colors hover:ring-white/60 md:flex-none">Recusar</button>
-        <button type="button" @click="escolher('aceito')"
-          class="btn min-h-[44px] flex-1 !px-5 !text-[14px] md:flex-none">Aceitar</button>
+    <div class="flex flex-col gap-4 rounded-[22px] bg-tinta p-5 text-white shadow-[0_18px_44px_rgba(35,31,32,.3)] md:p-6">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-8">
+        <p class="text-[13.5px] leading-[1.55] text-white/80 md:max-w-[560px] md:text-[14.5px]">
+          Usamos cookies essenciais para o site funcionar e, com a sua permissão, para entender como ele é
+          usado. Veja os detalhes na <a href={rotas.privacidade} class="text-white underline underline-offset-2 hover:text-coral-c">política de privacidade</a>.
+        </p>
+        <div class="flex shrink-0 flex-wrap gap-2.5">
+          <button type="button" @click="detalhes = !detalhes" aria-expanded="false" :aria-expanded="detalhes.toString()" aria-controls="cookies-detalhes"
+            class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full px-4 text-[14px] font-semibold text-white ring-1 ring-inset ring-white/30 transition-colors hover:ring-white/60 md:flex-none">Personalizar</button>
+          <button type="button" @click="aplicar(false, false)"
+            class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full px-4 text-[14px] font-semibold text-white ring-1 ring-inset ring-white/30 transition-colors hover:ring-white/60 md:flex-none">Recusar</button>
+          <button type="button" @click="aplicar(true, true)" class="btn min-h-[44px] flex-1 !px-4 !text-[14px] md:flex-none">Aceitar todos</button>
+        </div>
+      </div>
+      <div id="cookies-detalhes" x-show="detalhes" x-cloak x-transition.opacity.duration.150ms class="flex flex-col gap-4 border-t border-white/15 pt-4">
+        <div class="grid gap-3.5 md:grid-cols-3 md:gap-6">
+          <div class="flex items-start gap-2.5 text-[13.5px] leading-[1.45] text-white/80">
+            <input type="checkbox" checked disabled aria-label="Necessários, sempre ativos" class="mt-0.5 size-4 shrink-0 accent-coral opacity-70" />
+            <span><b class="block text-white">Necessários</b>Fazem o site funcionar, inclusive lembrar esta escolha. Sempre ativos.</span>
+          </div>
+          <label class="flex items-start gap-2.5 text-[13.5px] leading-[1.45] text-white/80">
+            <input type="checkbox" x-model="estatisticas" class="mt-0.5 size-4 shrink-0 accent-coral" />
+            <span><b class="block text-white">Estatísticas</b>Ajudam a entender como o site é usado, de forma agregada.</span>
+          </label>
+          <label class="flex items-start gap-2.5 text-[13.5px] leading-[1.45] text-white/80">
+            <input type="checkbox" x-model="marketing" class="mt-0.5 size-4 shrink-0 accent-coral" />
+            <span><b class="block text-white">Marketing</b>Medem a origem de quem chega pelo site, para campanhas.</span>
+          </label>
+        </div>
+        <button type="button" @click="aplicar(estatisticas, marketing)" class="btn self-start !px-5 !text-[14px]">Salvar escolhas</button>
       </div>
     </div>
   </div>
