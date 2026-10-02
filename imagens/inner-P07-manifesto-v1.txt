@@ -1,0 +1,9 @@
+PEÇA: P-07 · Manifesto, na coluna do título (fixa no computador)
+STATUS: APROVADA (dono, 01/10/2026, bloco 5)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco5.mts (peça 'P07-manifesto'); cópia de docs/ilustracao/bloco-5/P07-manifesto.svg
+
+Conceito: A rosácea grande e o par entrelaçado caminhando até ela ("caminhar junto até acontecer"). Formato vertical 320 × 380.
+
+Oculta no celular, como os demais topos. Gradientes e sombras moderados; ~3.2 KB.
+Movimento: CSS "Bloco 4 · movimento" e "Bloco 5 · movimento".

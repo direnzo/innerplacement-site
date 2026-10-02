@@ -1,0 +1,9 @@
+PEÇA: P-09 · Agradecimento, à direita da mensagem
+STATUS: APROVADA (dono, 01/10/2026, bloco 5)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco5.mts (peça 'P09-obrigado'); cópia de docs/ilustracao/bloco-5/P09-obrigado.svg
+
+Conceito: O envelope entregue, com o selo de confirmação coral e a rosácea florescendo ("recebemos a sua mensagem").
+
+Oculta no celular, como os demais topos. Gradientes e sombras moderados; ~3.4 KB.
+Movimento: CSS "Bloco 4 · movimento" e "Bloco 5 · movimento".

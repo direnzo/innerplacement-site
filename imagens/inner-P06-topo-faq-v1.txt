@@ -1,0 +1,9 @@
+PEÇA: P-06 · Topo de Perguntas frequentes
+STATUS: APROVADA (dono, 01/10/2026, bloco 5)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco5.mts (peça 'P06-faq'); cópia de docs/ilustracao/bloco-5/P06-faq.svg
+
+Conceito: Cartões de acordeão empilhados (o primeiro aberto) e o balão coral de uma conversa começando ("dúvidas organizadas por momento de carreira").
+
+Oculta no celular, como os demais topos. Gradientes e sombras moderados; ~2.4 KB.
+Movimento: CSS "Bloco 4 · movimento" e "Bloco 5 · movimento".

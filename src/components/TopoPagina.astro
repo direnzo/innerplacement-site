@@ -6,13 +6,14 @@ import { miolo } from '../lib/svg';
 interface Props { titulo: string; intro?: string; trilha?: string; acento?: string; acentoStyle?: string; acentoClass?: string; ilustracao?: string }
 const { titulo, intro, trilha, acento, acentoStyle, acentoClass, ilustracao } = Astro.props;
 ---
-<section class="relative overflow-hidden bg-areia-c">
+<!-- Com ilustração, o topo tem altura mínima para a cena (300 de altura) caber inteira, com o texto centralizado. -->
+<section class:list={['relative overflow-hidden bg-areia-c', ilustracao && 'md:flex md:min-h-[380px] md:items-center']}>
   {ilustracao
     ? <svg viewBox="0 0 420 300" class="topo-ilus absolute right-[max(16px,calc((100%-1120px)/2))] top-1/2 hidden w-[min(38%,440px)] -translate-y-1/2 md:block" aria-hidden="true" data-entrada set:html={miolo(ilustracao)} />
     : acento === 'card_degrade'
     ? <div class="pointer-events-none absolute bottom-6 right-6 top-6 hidden overflow-hidden rounded-[28px] md:block lg:right-10"><Svg name="card_degrade" w={420} class="h-full w-auto" /></div>
     : acento && <Svg name={acento} w={420} class={`pointer-events-none absolute hidden h-auto md:block ${acentoClass ?? ''}`} style={acentoStyle} />}
-  <div class="wrap relative flex flex-col gap-3 py-9 md:gap-4 md:py-14 md:pr-[min(38%,420px)] lg:pr-0">
+  <div class:list={['wrap relative flex flex-col gap-3 py-9 md:gap-4 md:py-14 md:pr-[min(38%,420px)]', ilustracao ? 'lg:pr-[min(42%,470px)]' : 'lg:pr-0']}>
     {trilha && <p class="text-[14px] text-mudo"><a href="/" class="hover:text-tinta">Início</a> / {trilha}</p>}
     <h1 class="h1-pag max-w-[20ch]"><slot name="titulo">{titulo}</slot></h1>
     {intro && <p class="lead md:max-w-[58ch]">{intro}</p>}

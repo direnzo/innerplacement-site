@@ -1,0 +1,9 @@
+PEÇA: P-05 · Topo de Depoimentos
+STATUS: APROVADA (dono, 01/10/2026, bloco 5)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco5.mts (peça 'P05-depoimentos'); cópia de docs/ilustracao/bloco-5/P05-depoimentos.svg
+
+Conceito: Quadro de vídeo com play e balões de depoimento; num deles, um gráfico que desce e depois sobe ("o processo inteiro — inclusive a parte difícil").
+
+Oculta no celular, como os demais topos. Gradientes e sombras moderados; ~2.6 KB.
+Movimento: CSS "Bloco 4 · movimento" e "Bloco 5 · movimento".

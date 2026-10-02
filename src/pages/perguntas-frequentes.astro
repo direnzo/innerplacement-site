@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
+import ilustracao from '../../imagens/inner-P06-topo-faq-v1.svg?raw';
 import Acordeao from '../components/Acordeao.astro';
 import { secoesFaq } from '../data/faq';
 import ComIcone from '../components/ComIcone.astro';
@@ -16,7 +17,7 @@ const schema = { '@context': 'https://schema.org', '@type': 'FAQPage',
 ---
 <Base titulo="Perguntas frequentes" fechamento schema={schema}
   descricao="Perguntas frequentes sobre os programas da Inner Placement: primeira conversa, sigilo, Next Level, transição, outplacement e investimento.">
-  <TopoPagina titulo="Perguntas frequentes" acento="rosacea_coral" acentoClass="-right-20 -bottom-24 w-[300px]! opacity-50">
+  <TopoPagina titulo="Perguntas frequentes" ilustracao={ilustracao}>
     <nav aria-label="Seções" class="flex flex-wrap gap-2 pt-1">
       {secoesFaq.map((s) => <a href={`#${s.id}`} class="chip hover:bg-tinta hover:text-white">{s.titulo}</a>)}
     </nav>
