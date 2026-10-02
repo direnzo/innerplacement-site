@@ -54,7 +54,8 @@ jobs:
               Port 22
               IdentityFile ~/.ssh/publicacao
               IdentitiesOnly yes
-              StrictHostKeyChecking yes
+              StrictHostKeyChecking accept-new
+              UserKnownHostsFile ~/.ssh/known_hosts
           CFG
           command -v rsync >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq rsync; }
 
