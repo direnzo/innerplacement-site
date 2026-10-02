@@ -1,0 +1,9 @@
+PEÇA: P-04 · Topo de Outplacement
+STATUS: APROVADA (dono, 01/10/2026, bloco 4)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco4.mts (peça 'P04-outplacement'); cópia de docs/ilustracao/bloco-4/P04-outplacement.svg
+
+Conceito: Prédio com a porta aberta e a luz coral saindo por ela; o par sai acompanhado rumo a um horizonte translúcido ("a forma como a empresa conduz a saída é parte da sua cultura").
+
+Cena 420 × 300 à direita do título (TopoPagina, prop ilustracao); oculta no celular, como no guia
+(aprovado assim pelo dono). Gradientes e sombras moderados; ~3.1 KB. Movimento: CSS "Bloco 4 · movimento".

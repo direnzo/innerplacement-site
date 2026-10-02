@@ -81,7 +81,7 @@ fora, como o guia pede.
 | 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | concluído (29/09), no site com movimento |
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | concluído (30/09), no site com movimento |
-| 4 | Topos das páginas de serviço | P-01 a P-04 | rodada 1 em revisão |
+| 4 | Topos das páginas de serviço | P-01 a P-04 | concluído (01/10), no site com movimento |
 | 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | não iniciado |
 
 As outras 50 peças do "plano completo" do guia (ícones de etapa, padrões) entram só onde um bloco
@@ -290,4 +290,8 @@ Movimento: entrada por `data-entrada`; hover com gestos (CSS "Bloco 4 · movimen
 `tools/navegador.mjs` (Chromium via DevTools Protocol): rola, passa o mouse, mede e fotografa em tempo
 real. Para testar hover, `HOVER=1` (o Chromium sem tela se declara sem mouse). Ex.:
 `HOVER=1 node tools/navegador.mjs http://localhost:4399/ /tmp/foto 1280 800 '[{"hover":".topo-ilus","foto":"a"}]'`.
+
+Fechamento do bloco 4 (01/10): aprovadas na rodada 1, sem ajustes; a cena continua oculta no celular.
+Em `imagens/`: `inner-P01-topo-transicao-v2`, `inner-P02-topo-carreira-v2`, `inner-P03-topo-executivos-v1`,
+`inner-P04-topo-outplacement-v1`.
 
