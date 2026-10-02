@@ -7,7 +7,7 @@
       "programa": "Platinum",
       "secao": "transicao",
       "ordem": 1,
-      "formato": "video",
+      "formato": "texto",
       "video": "",
       "texto": "O trabalho da Débora e da Paula foi não me deixar perder a esperança em mim."
     },
@@ -29,7 +29,7 @@
       "programa": "",
       "secao": "transicao",
       "ordem": 3,
-      "formato": "video",
+      "formato": "texto",
       "video": "",
       "texto": "Eu não me imagino ter feito essa transição sem a Inner. […] Certamente demoraria um tempo muito maior e teria perdido algumas oportunidades. […] Não consigo ver investimento melhor nesse tempo do que nesse processo."
     },
@@ -40,7 +40,7 @@
       "programa": "Platinum",
       "secao": "transicao",
       "ordem": 4,
-      "formato": "video",
+      "formato": "texto",
       "video": "",
       "texto": "Ficou muito nítido um processo muito bem estruturado e muito bem embasado, então isso dá muita confiança para quem está participando."
     },
@@ -73,8 +73,8 @@
       "programa": "Platinum",
       "secao": "outplacement",
       "ordem": 1,
-      "formato": "texto",
-      "video": "",
+      "formato": "video",
+      "video": "https://youtu.be/BnlNnPS8aZs",
       "texto": "Obviamente ali o momento do desligamento sempre é duro, nunca é fácil. E leva um tempo para você digerir tudo o que aconteceu. Mas sempre fui muito grata pela empresa que me deu essa oportunidade. […] Foi uma transição muito estruturada, importante para eu entender quem eu era e o que eu podia fazer."
     },
     {
