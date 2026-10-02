@@ -393,16 +393,20 @@
   }
 }
 
-/* Quem somos: a moldura das fotos do site antigo (contêiner areia #E1DFD8, arco em "U" com degradê do claro
-   ao coral — o fundo-foto.png do WordPress — e canto inferior direito de 36 px), recriada em CSS; e a
-   moldura da frase de cada sócio, em degradê coral-claro com aspas coral. */
+/* Quem somos: a moldura das fotos do site antigo, sem o contêiner areia (pedido do dono): só o arco em "U"
+   com degradê, transparente em cima e coral embaixo, por trás do recorte da pessoa — funciona sobre
+   qualquer fundo. A frase de cada sócio fica numa moldura em degradê coral-claro, com aspas coral de
+   abertura e a rosácea cortada no canto inferior direito. */
 @layer components {
-  .socio-moldura { position: relative; isolation: isolate; aspect-ratio: 218 / 209; overflow: hidden; background: #E1DFD8; border-radius: 0 0 36px 0; }
+  .socio-moldura { position: relative; isolation: isolate; aspect-ratio: 218 / 209; }
   .socio-moldura::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: 0 0 50% 50% / 0 0 48% 48%;
-    background: linear-gradient(180deg, #EFEBE4 0%, #F1E2DC 42%, #FBB3A8 78%, #FF8576 100%); }
+    background: linear-gradient(180deg, rgb(255 101 88 / 0) 0%, rgb(255 101 88 / .1) 40%, rgb(255 101 88 / .45) 76%, rgb(255 101 88 / .9) 100%); }
   .socio-moldura .socio-foto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
-  .socio-citacao { position: relative; padding: 30px 24px 22px; border-radius: 24px 24px 36px 24px;
+  .socio-citacao { position: relative; isolation: isolate; padding: 30px 24px 22px; border-radius: 24px 24px 36px 24px;
     background: linear-gradient(135deg, var(--color-coral-c) 0%, #FFF4F1 55%, #fff 100%); box-shadow: inset 0 0 0 1px rgb(255 101 88 / .18); }
   @media (min-width: 768px) { .socio-citacao { padding: 36px 34px 28px; } }
   .socio-citacao .socio-aspas { position: absolute; top: -14px; left: 20px; width: 44px; height: auto; color: var(--color-coral); rotate: 180deg; } /* aspas de abertura (66) */
+  .socio-citacao .socio-canto { position: absolute; inset: 0; z-index: -1; overflow: hidden; border-radius: inherit; pointer-events: none; }
+  .socio-citacao .socio-canto svg { position: absolute; right: -38px; bottom: -44px; width: 132px; height: auto; opacity: .32; transition: rotate .7s cubic-bezier(.2, .8, .3, 1); }
 }
+@media (hover: hover) { @layer components { .socio-citacao:hover .socio-canto svg { rotate: 60deg; } } }

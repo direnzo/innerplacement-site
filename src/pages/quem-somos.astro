@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
+import Svg from '../components/Svg.astro';
 import ilustracao from '../../docs/ilustracao/bloco-5/P10-quem-somos.svg?raw';
 import { abertura, socios } from '../data/socios';
 // Quem somos: conteúdo da página do WordPress (src/data/socios.ts), no layout da v2.
@@ -11,8 +12,8 @@ import { abertura, socios } from '../data/socios';
     {socios.map((s) => (
       <article id={s.id} class="card grid scroll-mt-24 gap-6 p-6 md:grid-cols-[220px_minmax(0,1fr)] md:gap-12 md:p-10" aria-labelledby={`${s.id}-nome`}>
         <div class="flex items-center gap-5 md:flex-col md:items-start md:gap-4">
-          <!-- Moldura da foto do site antigo (pedido dos sócios): fundo areia, arco em degradê areia → coral e
-               canto inferior direito arredondado; o recorte da pessoa por cima. -->
+          <!-- Moldura da foto do site antigo (pedido dos sócios): o arco em degradê coral, arredondado embaixo,
+               por trás do recorte da pessoa; sem fundo, para funcionar sobre qualquer cor. -->
           <div class="socio-moldura w-[124px] shrink-0 md:w-[220px]">
             <img src={s.foto} alt={`Foto de ${s.nome}`} width="220" height="220" loading="lazy" decoding="async" class="socio-foto" />
           </div>
@@ -27,6 +28,7 @@ import { abertura, socios } from '../data/socios';
         <div class="flex flex-col gap-5">
           <!-- A frase de cada sócio em destaque, numa moldura própria (pedido do dono) -->
           <blockquote class="socio-citacao text-[19px] font-light leading-[1.45] tracking-[-.01em] md:text-[23px]">
+            <span class="socio-canto" aria-hidden="true"><Svg name="rosacea_coral" w={120} /></span>
             <svg class="socio-aspas" viewBox="0 0 48 36" aria-hidden="true"><path d="M8,26 a8,8 0 1 1 8,-8 q0,12 -10.7,17.3 l-2,-2.7 q5.4,-3.5 6.2,-7.2 a8,8 0 0 1 -1.5,.6 z M32,26 a8,8 0 1 1 8,-8 q0,12 -10.7,17.3 l-2,-2.7 q5.4,-3.5 6.2,-7.2 a8,8 0 0 1 -1.5,.6 z" fill="currentColor"/></svg>
             {s.citacao}
           </blockquote>
