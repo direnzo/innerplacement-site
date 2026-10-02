@@ -2,23 +2,12 @@
 import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
 import Svg from '../components/Svg.astro';
-import FormaFundo from '../components/FormaFundo.astro';
-import fBola from '../../imagens/inner-F01-bola-v1.svg?raw';
-import fArcos from '../../imagens/inner-F02-arcos-v1.svg?raw';
-import fSetas from '../../imagens/inner-F03-chevrons-v1.svg?raw';
-import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
-import ilustracao from '../../docs/ilustracao/bloco-5/P10-quem-somos.svg?raw';
+import ilustracao from '../../imagens/inner-P10-topo-quem-somos-v1.svg?raw';
 import { abertura, socios } from '../data/socios';
 // Quem somos: conteúdo da página do WordPress (src/data/socios.ts), no layout da v2.
 ---
 <Base titulo="Quem somos" fechamento descricao={abertura}>
   <TopoPagina titulo="Quem somos" trilha="Inner" intro={abertura} ilustracao={ilustracao} />
-  <!-- Formas da marca flutuando nas bordas, atrás dos cartões (como na home) -->
-  <div class="relative isolate overflow-x-clip">
-  <FormaFundo svg={fBola} viewBox="0 0 400 400" class="-right-40 top-6 w-[340px] md:-right-32 md:w-[520px]" />
-  <FormaFundo svg={fOval} viewBox="0 0 200 280" class="-left-24 top-[30%] w-[150px] opacity-50 md:-left-16 md:w-[210px]" />
-  <FormaFundo svg={fSetas} viewBox="0 0 240 120" class="-left-10 top-[62%] w-[160px] opacity-30 md:w-[230px]" />
-  <FormaFundo svg={fArcos} viewBox="0 0 400 400" class="-right-24 bottom-0 w-[280px] md:-right-16 md:w-[420px]" />
   <section class="wrap flex flex-col gap-5 md:gap-7" aria-label="Sócios da Inner">
     {socios.map((s) => (
       <article id={s.id} class="card grid scroll-mt-24 gap-6 p-6 md:grid-cols-[220px_minmax(0,1fr)] md:gap-12 md:p-10" aria-labelledby={`${s.id}-nome`}>
@@ -49,5 +38,4 @@ import { abertura, socios } from '../data/socios';
       </article>
     ))}
   </section>
-  </div>
 </Base>

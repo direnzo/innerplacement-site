@@ -1,0 +1,9 @@
+PEÇA: P-10 · Topo de Quem somos (fora do guia original: a página foi mantida com o conteúdo do WordPress)
+STATUS: APROVADA (dono, 01/10/2026)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco5.mts (peça 'P10-quem-somos'); cópia de docs/ilustracao/bloco-5/P10-quem-somos.svg
+
+Conceito: os três sócios como três figuras da marca entrelaçadas (o "par" da marca virando um trio, com os
+papéis complementares da F05) sob a rosácea, sobre a bola translúcida.
+
+Cena 420 × 300 à direita do título (TopoPagina); oculta no celular, como os demais topos.

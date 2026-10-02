@@ -5,9 +5,16 @@ import Footer from '../components/Footer.astro';
 import Fechamento from '../components/Fechamento.astro';
 import WhatsFlutuante from '../components/WhatsFlutuante.astro';
 import Sprite from '../components/Sprite.astro';
+import FormaFundo from '../components/FormaFundo.astro';
+import fBola from '../../imagens/inner-F01-bola-v1.svg?raw';
+import fArcos from '../../imagens/inner-F02-arcos-v1.svg?raw';
+import fSetas from '../../imagens/inner-F03-chevrons-v1.svg?raw';
+import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
 import { EMAIL, WHATSAPP_TXT } from '../data/site';
-interface Props { titulo: string; descricao: string; fechamento?: boolean; schema?: object }
-const { titulo, descricao, fechamento = false, schema } = Astro.props;
+// fundo: formas da marca flutuando nas bordas de todas as páginas (pedido do dono, 01/10); a home desliga
+// (fundo={false}) porque tem as suas, posicionadas à mão no bloco 2.
+interface Props { titulo: string; descricao: string; fechamento?: boolean; schema?: object; fundo?: boolean }
+const { titulo, descricao, fechamento = false, schema, fundo = true } = Astro.props;
 const tituloCompleto = Astro.url.pathname === '/' ? `Inner Placement · ${titulo}` : `${titulo} · Inner Placement`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // Imagem de compartilhamento (public/og/, gerada por tools/compartilhamento.mts). Páginas sem imagem
@@ -55,7 +62,13 @@ const org = {
   <Sprite />
   <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-5 focus:py-3">Pular para o conteúdo</a>
   <Header />
-  <main id="conteudo" class="flex flex-col gap-6 pb-6 md:gap-8">
+  <main id="conteudo" class="relative isolate flex flex-col gap-6 overflow-clip pb-6 md:gap-8">
+    {fundo && <>
+      <FormaFundo svg={fBola} viewBox="0 0 400 400" class="-right-40 top-[16%] w-[340px] md:-right-32 md:w-[520px]" />
+      <FormaFundo svg={fOval} viewBox="0 0 200 280" class="-left-24 top-[36%] w-[150px] opacity-50 md:-left-16 md:w-[210px]" />
+      <FormaFundo svg={fSetas} viewBox="0 0 240 120" class="-left-10 top-[62%] w-[160px] opacity-30 md:w-[230px]" />
+      <FormaFundo svg={fArcos} viewBox="0 0 400 400" class="-right-24 top-[76%] w-[280px] md:-right-16 md:w-[420px]" />
+    </>}
     <slot />
     {fechamento && <Fechamento />}
   </main>

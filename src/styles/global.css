@@ -43,7 +43,9 @@
   .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
   @media (min-width: 768px) { .wrap { width: min(1120px, 100% - 48px); } }
 
-  .bloco { margin-inline: 16px; border-radius: var(--radius-bloco); overflow: hidden; }
+  /* overflow: clip corta os cantos sem virar contêiner de rolagem (mantém position: sticky dentro do bloco,
+     como a ilustração do Manifesto); hidden fica de reserva para navegadores antigos. */
+  .bloco { margin-inline: 16px; border-radius: var(--radius-bloco); overflow: hidden; overflow: clip; }
   @media (min-width: 768px) { .bloco { margin-inline: 24px; } }
 
   .h1-hero { font-size: 24px; line-height: 1.22; font-weight: 300; letter-spacing: -0.02em; }
