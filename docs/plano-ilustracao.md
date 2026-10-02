@@ -82,7 +82,7 @@ fora, como o guia pede.
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | concluído (30/09), no site com movimento |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | concluído (01/10), no site com movimento |
-| 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | topos em revisão; compartilhamento a fazer |
+| 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | topos concluídos (01/10); compartilhamento a fazer |
 
 As outras 50 peças do "plano completo" do guia (ícones de etapa, padrões) entram só onde um bloco
 mostrar que fazem falta.
@@ -311,4 +311,8 @@ Revisão: https://claude.ai/artifact/FCC8h1mebs8HDjhceGQRDB
 
 `TopoPagina` com ilustração: altura mínima de 380 px (a cena cabe inteira) e reserva à direita também
 no computador (antes ia a zero a partir de 1024 px e as etiquetas do FAQ passavam por baixo da cena).
+
+Fechamento dos topos do bloco 5 (01/10): aprovados na rodada 1, sem ajustes. Em `imagens/`:
+`inner-P05-topo-depoimentos-v1`, `inner-P06-topo-faq-v1`, `inner-P07-manifesto-v1`, `inner-P08-contato-v1`,
+`inner-P09-obrigado-v1`.
 

@@ -1,0 +1,9 @@
+PEÇA: P-08 · Contato, abaixo dos contatos (computador)
+STATUS: APROVADA (dono, 01/10/2026, bloco 5)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco5.mts (peça 'P08-contato'); cópia de docs/ilustracao/bloco-5/P08-contato.svg
+
+Conceito: O envelope aberto, a carta coral com a rosácea saindo e o cadeado discreto ("nenhum contato sem a sua autorização"). Formato 360 × 250.
+
+Oculta no celular, como os demais topos. Gradientes e sombras moderados; ~3.7 KB.
+Movimento: CSS "Bloco 4 · movimento" e "Bloco 5 · movimento".

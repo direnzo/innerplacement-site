@@ -66,7 +66,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 ### Imagens
 
 1. **Blocos 1 a 4 concluídos** com a abordagem híbrida (`docs/plano-ilustracao.md`): as peças do site são SVG desenhado a partir do kit. Os 8 PNGs aprovados antes no ChatGPT ficam em `imagens/` só como referência; nenhum está no site. A P-03 em PNG (`imagens/pendente/`) foi superada pela versão em SVG.
-2. **Bloco 5 a fazer:** topos das demais páginas (P-05 a P-09) e imagens de compartilhamento (G-03, G-05).
+2. **Bloco 5:** topos das demais páginas (P-05 a P-09) concluídos; faltam as imagens de compartilhamento (G-03, G-05).
 3. **Capas dos outros vídeos (G-02):** usar a moldura `inner-H06-moldura-video-v1` sobre a miniatura de cada vídeo, quando as URLs chegarem.
 
 ## Estado das imagens
@@ -91,4 +91,5 @@ Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/
 | P-02 | Desenvolvimento de Carreira | aprovada: topo v2 em SVG no site; o PNG v1 fica como referência |
 | P-03 | Desenvolvimento de Executivos | aprovada: topo v1 em SVG no site (a proposta em PNG do ChatGPT foi superada) |
 | P-04 | Outplacement | aprovada: topo v1 em SVG no site |
-| demais | ver `docs/guia-imagens.md` | não iniciadas |
+| P-05 a P-09 | Depoimentos, FAQ, Manifesto, Contato, Agradecimento | aprovadas: v1 em SVG no site |
+| G-03, G-05 | Imagens de compartilhamento | a fazer |
