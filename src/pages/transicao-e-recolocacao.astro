@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
+import ilustracao from '../../imagens/inner-P01-topo-transicao-v2.svg?raw';
 import Programa from '../components/Programa.astro';
 import DepoCard from '../components/DepoCard.astro';
 import DepoVideo from '../components/DepoVideo.astro';
@@ -8,7 +9,7 @@ import { depoimentos as D } from '../data/depoimentos';
 ---
 <Base titulo="Transição e Recolocação" fechamento
   descricao="Transição de carreira com decisão fundamentada e execução precisa: programas Platinum e Focus, mesmo método, formatos distintos.">
-  <TopoPagina titulo="Transição e Recolocação" trilha="Para você" acento="card_degrade" acentoClass="-right-16 -top-12 opacity-90"
+  <TopoPagina titulo="Transição e Recolocação" trilha="Para você" ilustracao={ilustracao}
     intro="Uma transição de carreira bem conduzida combina decisão fundamentada e execução precisa. A Inner estrutura esse trabalho em dois programas, Platinum e Focus — mesmo método, formatos distintos." />
   <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
     <Programa rotulo="Transição" nome="Platinum">Para transições que exigem maior complexidade, profundidade e acompanhamento próximo. O Platinum combina reflexão, posicionamento e execução, com suporte individual e exclusivo em todas as etapas: leitura da sua trajetória com os sócios da Inner, definição de direcionamento, currículo e LinkedIn, ativação de network, job hunting e preparação para entrevistas. Uma consultora dedicada garante ritmo, organização e continuidade até a recolocação.</Programa>

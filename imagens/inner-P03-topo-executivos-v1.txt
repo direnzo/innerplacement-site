@@ -1,0 +1,9 @@
+PEÇA: P-03 · Topo de Desenvolvimento de Executivos
+STATUS: APROVADA (dono, 01/10/2026, bloco 4)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco4.mts (peça 'P03-executivos'); cópia de docs/ilustracao/bloco-4/P03-executivos.svg
+
+Conceito: Empresa (prédio), executivo num patamar coral e Inner (rosácea num selo), ligados por um arco: o objetivo alinhado a três ("contratado pela empresa, construído com o executivo").
+
+Cena 420 × 300 à direita do título (TopoPagina, prop ilustracao); oculta no celular, como no guia
+(aprovado assim pelo dono). Gradientes e sombras moderados; ~4.8 KB. Movimento: CSS "Bloco 4 · movimento".

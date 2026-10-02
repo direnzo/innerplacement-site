@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
+import ilustracao from '../../imagens/inner-P02-topo-carreira-v2.svg?raw';
 import Programa from '../components/Programa.astro';
 import DepoCard from '../components/DepoCard.astro';
 import DepoVideo from '../components/DepoVideo.astro';
@@ -8,7 +9,7 @@ import { depoimentos as D } from '../data/depoimentos';
 ---
 <Base titulo="Desenvolvimento de Carreira" fechamento
   descricao="Next Level: desenvolvimento e estratégia de carreira para quem quer chegar ao próximo nível, com acompanhamento até acontecer.">
-  <TopoPagina titulo="Desenvolvimento de Carreira" trilha="Para você" acento="oval_grad" acentoClass="right-20 -top-16 rotate-[16deg] w-[240px]!"
+  <TopoPagina titulo="Desenvolvimento de Carreira" trilha="Para você" ilustracao={ilustracao}
     intro="Crescer na carreira é uma decisão — e, como toda decisão de carreira, pede clareza, estratégia e acompanhamento. O Next Level é o programa da Inner para quem quer chegar ao próximo nível: assumir mais, ganhar relevância no que já faz ou preparar o próximo movimento." />
   <section class="wrap">
     <Programa rotulo="Desenvolvimento" nome="Next Level">O Next Level une desenvolvimento e estratégia de carreira. Começa pelo impacto que você quer ter, na sua carreira e na organização; a partir dele, construímos a estratégia de desenvolvimento — pode ser uma competência, um comportamento, a forma de se posicionar, ou o que só aparece no caminho. Encontros individuais que se ajustam ao seu dia a dia, fora da hierarquia da empresa: um espaço profissional e confidencial para trabalhar o que lá dentro não dá para expor. Método completo, no seu ritmo, até o próximo nível chegar.</Programa>

@@ -42,6 +42,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 | `docs/ilustracao/` | Propostas em SVG de cada bloco, aguardando escolha | sim |
 | `tools/ilustracao/` | Geradores das ilustrações em SVG a partir do kit (`node --experimental-strip-types tools/ilustracao/<bloco>.mts`); `sincronizar.py` atualiza as cópias aprovadas em `imagens/` | sim |
 | `tools/versao-teste.py` | Gera a versão de testes num HTML único a partir de `dist/` | sim |
+| `tools/navegador.mjs` | Driver do Chromium para conferir animações, rolagem e hover em tempo real (`HOVER=1` para telas com mouse) | sim |
 | `tools/imagem/` | Acabamento das imagens com `sharp` (WebP, AVIF, PNG, SVG). Rodar `npm install` na pasta | sim |
 | `referencia-v2-teste/` | Espelho do HTML publicado em `/v2-teste/`, só para consulta | não |
 | `docs/README-original-desktop.md` | README como veio da sessão do Claude Desktop | sim |
@@ -64,8 +65,9 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 
 ### Imagens
 
-1. **Revisar as 8 peças aprovadas contra o checklist do guia.** Várias têm brilho/sombra, figuras em silhueta e skyline genérico, que o checklist proíbe. Todas têm uma franja de artefato na borda do recorte (defeito técnico, corrigível no acabamento). Detalhes no `.txt` de cada peça.
-2. **P-03** aguarda aprovação (`imagens/pendente/`).
+1. **Blocos 1 a 4 concluídos** com a abordagem híbrida (`docs/plano-ilustracao.md`): as peças do site são SVG desenhado a partir do kit. Os 8 PNGs aprovados antes no ChatGPT ficam em `imagens/` só como referência; nenhum está no site. A P-03 em PNG (`imagens/pendente/`) foi superada pela versão em SVG.
+2. **Bloco 5 a fazer:** topos das demais páginas (P-05 a P-09) e imagens de compartilhamento (G-03, G-05).
+3. **Capas dos outros vídeos (G-02):** usar a moldura `inner-H06-moldura-video-v1` sobre a miniatura de cada vídeo, quando as URLs chegarem.
 
 ## Estado das imagens
 
@@ -85,7 +87,8 @@ Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/
 | G-01 | Fechamento | aprovada: v2 em SVG (a conversa) no site; o PNG v1 fica como referência |
 | H-09 | Perguntas, ícone do título | aprovada (balões) |
 | H-10 | Manifesto | aprovada (oval lapidado com a rolagem) |
-| P-01 | Transição e Recolocação | aprovada |
-| P-02 | Desenvolvimento de Carreira | aprovada |
-| P-03 | Desenvolvimento de Executivos | pendente |
+| P-01 | Transição e Recolocação | aprovada: topo v2 em SVG no site; o PNG v1 fica como referência |
+| P-02 | Desenvolvimento de Carreira | aprovada: topo v2 em SVG no site; o PNG v1 fica como referência |
+| P-03 | Desenvolvimento de Executivos | aprovada: topo v1 em SVG no site (a proposta em PNG do ChatGPT foi superada) |
+| P-04 | Outplacement | aprovada: topo v1 em SVG no site |
 | demais | ver `docs/guia-imagens.md` | não iniciadas |
