@@ -49,7 +49,7 @@ A **Metodologia Inner** se fundamenta em quatro pilares principais:
 
 Esses quatro pilares se mostram fundamentais quando se tem ao lado um serviço de recolocação profissional, onde a identificação de competências, o entendimento do contexto atual e a adaptação às tendências do mercado são elementos decisivos para orientar escolhas. 
 
-A **Metodologia Inner** combina esses princípios com profundidade, indo além do tradicional, ao utilizar uma abordagem que integra análise narrativa, objetivos estratégicos e compreensão emocional — conjunto raro mesmo entre empresas especializadas em recolocação profissional.
+A **Metodologia Inner** combina esses princípios com profundidade, indo além do tradicional, ao utilizar uma abordagem que integra análise narrativa, objetivos estratégicos e compreensão emocional, conjunto raro mesmo entre empresas especializadas em recolocação profissional.
 
 ## **O Papel da Realização**
 

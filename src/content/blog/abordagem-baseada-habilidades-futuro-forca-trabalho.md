@@ -38,7 +38,7 @@ Um exemplo prático é apresentado pelas experiências de profissionais que, ao 
 
 Essa dificuldade em reconhecer o valor da versatilidade pode complicar a validação das competências em processos seletivos. Entretanto, com a crescente aceitação de candidatos que demonstram adaptabilidade e diversidade de habilidades, observa-se uma mudança positiva na forma como as empresas avaliam talentos, desafiando os antigos paradigmas e incentivando um ambiente de trabalho mais inclusivo e dinâmico.
 
-Esses desafios também aparecem entre pessoas que passam por processos formais de recolocação profissional, especialmente aqueles que dependem de um serviço de recolocação profissional estruturado – por exemplo, profissionais C-Level ou que passam muitos anos na mesma empresa e têm dificuldade de se recolocar no mercado de trabalho.
+Esses desafios também aparecem entre pessoas que passam por processos formais de recolocação profissional, especialmente aqueles que dependem de um serviço de recolocação profissional estruturado, por exemplo, profissionais C-Level ou que passam muitos anos na mesma empresa e têm dificuldade de se recolocar no mercado de trabalho.
 
 Durante essa jornada, muitos aprendem a traduzir suas habilidades em resultados concretos, uma etapa vital para se destacar nas entrevistas e demonstrar preparo diante das novas exigências das empresas. 
 

@@ -12,7 +12,7 @@ rascunho: false
 
 A transição de carreira é um processo mais amplo, que envolve fatores como áreas de interesse, experiências prévias, formação e competências, estrutura de valores e aspirações profissionais, dentre outros. Este panorama reforça que não se trata apenas de mudar de emprego, mas de um olhar estruturado para a carreira, tanto no presente quanto para desenhar o futuro.
 
-Para saber a melhor forma de lidar com este momento, é necessário entender e diferenciar transição de carreira e recolocação profissional. Embora muita gente os use como sinônimos, eles têm significados — e impactos — bem diferentes. É comum que momentos de mudança tragam questionamentos sobre a trajetória profissional, e entender o que cada etapa representa é essencial para movimentações assertivas e construção de um plano realista e coerente com seus objetivos. 
+Para saber a melhor forma de lidar com este momento, é necessário entender e diferenciar transição de carreira e recolocação profissional. Embora muita gente os use como sinônimos, eles têm significados, e impactos, bem diferentes. É comum que momentos de mudança tragam questionamentos sobre a trajetória profissional, e entender o que cada etapa representa é essencial para movimentações assertivas e construção de um plano realista e coerente com seus objetivos. 
 
 Tanto a transição quanto a recolocação envolvem planejamento, mas com foco e profundidade diferentes.Ambas, se bem estruturadas, podem ser ágeis e eficazes, porém se forem realizadas sem uma estruturação podem levar a escolhas equivocadas, gerando ainda mais desgaste. 
 
@@ -24,7 +24,7 @@ Já a transição de carreira é mais ampla e estratégica. Carreira envolve ana
 
 Segundo a Forbes, profissionais que fazem uma transição de carreira com acompanhamento estruturado aumentam em até 2,5 vezes sua clareza de objetivos profissionais e assertividade em decisões futuras, gerando mais satisfação e realização.
 
-Nesses casos, é comum que surja o desejo por uma promoção assertiva no sentido mais amplo — não necessariamente um cargo mais alto, mas uma função mais conectada com propósito e habilidades. 
+Nesses casos, é comum que surja o desejo por uma promoção assertiva no sentido mais amplo, não necessariamente um cargo mais alto, mas uma função mais conectada com propósito e habilidades. 
 
 O desenvolvimento de lideranças também pode surgir como uma nova rota para quem busca crescer com significado.
 
@@ -32,7 +32,7 @@ Ambos os caminhos partem de uma mesma realidade: a necessidade de mudança.
 
 Porém, devemos olhar a profundidade desta necessidade de mudanças. 
 
-Em alguns casos, só mudar de emprego e ou trabalho resolve esta angústia – neste caso, só um trabalho de recolocação atenderia este problema. 
+Em alguns casos, só mudar de emprego e ou trabalho resolve esta angústia, neste caso, só um trabalho de recolocação atenderia este problema. 
 
 Já quando se trata de uma necessidade mais profunda de mudança, que envolve desde a insatisfação com suas atividades, sentido de realização e mudanças de rotas, o mais indicado é a transição de carreira, que além do trabalho tático, possui uma etapa anterior de identificação dos novos rumos de carreira e de vida.
 

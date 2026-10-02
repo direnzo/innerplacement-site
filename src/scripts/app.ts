@@ -140,6 +140,8 @@ if (itensDestaque.length) {
   });
 }
 document.querySelectorAll<HTMLElement>('[data-carrossel]').forEach((trilho) => {
+  // data-sem-embaralhar (carrossel de logos): mantém a ordem oficial.
+  if (trilho.hasAttribute('data-sem-embaralhar')) return;
   const cartoes = [...trilho.children];
   for (let i = cartoes.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -153,9 +155,10 @@ document.querySelectorAll<HTMLElement>('[data-carrossel-caixa]').forEach((caixa)
   const proximo = caixa.querySelector<HTMLButtonElement>('[data-carrossel-proximo]');
   if (!trilho || !anterior || !proximo) return;
   const primeiroVisivel = () => [...trilho.children].find((el) => !el.classList.contains('hidden')) as HTMLElement | undefined;
-  const passo = () => primeiroVisivel()?.getBoundingClientRect().width ?? 320;
-  anterior.addEventListener('click', () => trilho.scrollBy({ left: -(passo() + 24), behavior: 'smooth' }));
-  proximo.addEventListener('click', () => trilho.scrollBy({ left: passo() + 24, behavior: 'smooth' }));
+  const folga = () => parseFloat(getComputedStyle(trilho).columnGap) || 0;
+  const passo = () => (primeiroVisivel()?.getBoundingClientRect().width ?? 320) + folga();
+  anterior.addEventListener('click', () => trilho.scrollBy({ left: -passo(), behavior: 'smooth' }));
+  proximo.addEventListener('click', () => trilho.scrollBy({ left: passo(), behavior: 'smooth' }));
   const atualiza = () => {
     anterior.disabled = trilho.scrollLeft < 4;
     proximo.disabled = trilho.scrollLeft > trilho.scrollWidth - trilho.clientWidth - 4;
@@ -163,6 +166,28 @@ document.querySelectorAll<HTMLElement>('[data-carrossel-caixa]').forEach((caixa)
   trilho.addEventListener('scroll', atualiza, { passive: true });
   addEventListener('resize', atualiza);
   atualiza();
+  // Avanço automático (data-auto, carrossel de logos): anda um cartão a cada 3,5 s e volta ao
+  // começo no fim. Nunca com "reduzir movimento"; pausa com o mouse em cima, com o foco dentro
+  // ou ao tocar, e com a aba escondida.
+  if (trilho.hasAttribute('data-auto') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let pausa = false, timer = 0;
+    const avanca = () => {
+      if (pausa || document.hidden) return;
+      const max = trilho.scrollWidth - trilho.clientWidth - 4;
+      if (trilho.scrollLeft >= max) trilho.scrollTo({ left: 0, behavior: 'smooth' });
+      else trilho.scrollBy({ left: passo(), behavior: 'smooth' });
+    };
+    const liga = () => { if (!timer) timer = window.setInterval(avanca, 3500); };
+    const desliga = () => { clearInterval(timer); timer = 0; };
+    caixa.addEventListener('pointerenter', () => { pausa = true; });
+    caixa.addEventListener('pointerleave', () => { pausa = false; });
+    caixa.addEventListener('focusin', () => { pausa = true; });
+    caixa.addEventListener('focusout', () => { pausa = false; });
+    caixa.addEventListener('touchstart', () => { pausa = true; }, { passive: true });
+    caixa.addEventListener('touchend', () => { pausa = false; }, { passive: true });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) desliga(); else liga(); });
+    liga();
+  }
 });
 
 // Reabre o aviso de cookies (CookieConsent.astro) pelo link do rodapé, para quem quiser rever a escolha.
