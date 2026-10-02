@@ -7,6 +7,7 @@
 #   SSH_CHAVE_PUBLICACAO  chave privada dedicada a esta publicação (sem senha; só existe aqui e no cPanel)
 #   SSH_KNOWN_HOSTS       linha(s) de `ssh-keyscan -p 22 innerplacement.com.br` conferidas pelo dono
 # Sem esses segredos o job para logo no início, sem publicar nada.
+# A conexão exige uma chave do servidor já registrada em SSH_KNOWN_HOSTS; não aceita chaves novas.
 name: Publicar v2-teste
 
 on:
@@ -54,7 +55,7 @@ jobs:
               Port 22
               IdentityFile ~/.ssh/publicacao
               IdentitiesOnly yes
-              StrictHostKeyChecking accept-new
+              StrictHostKeyChecking yes
               UserKnownHostsFile ~/.ssh/known_hosts
           CFG
           command -v rsync >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq rsync; }
