@@ -13,6 +13,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 - `npm run dev` — servidor local
 - `npm run build` — gera o site estático em `dist/` (é o conteúdo de `dist/` que sobe para a hospedagem)
 - `python3 tools/versao-teste.py` — gera `teste/index.html`, a versão de testes num arquivo só
+- `node --experimental-strip-types tools/compartilhamento.mts` — gera as imagens de compartilhamento em `public/og/` (rodar de novo quando mudar título ou ilustração de uma página)
 - `python3 tools/build-v2-teste.py` — depois do `npm run build`, gera `dist-v2-teste/` (e `.zip`) para a subpasta `/v2-teste/`: links com prefixo, `noindex, nofollow` em todas as páginas, sem canonical e sem o `.htaccess` de produção. É o que sobe para `~/innerplacement/v2-teste/` no servidor (a raiz do site é `~/innerplacement`, não `public_html`)
 - `tools/publicar-v2-teste.sh [--simular]` — build + variante + backup no servidor (`~/backups-v2-teste/`) + envio só para `v2-teste/` + conferência das 10 páginas online. Exige a chave `inner-v2` destravada (comando no topo do script)
 

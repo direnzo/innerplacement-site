@@ -316,3 +316,15 @@ Fechamento dos topos do bloco 5 (01/10): aprovados na rodada 1, sem ajustes. Em 
 `inner-P05-topo-depoimentos-v1`, `inner-P06-topo-faq-v1`, `inner-P07-manifesto-v1`, `inner-P08-contato-v1`,
 `inner-P09-obrigado-v1`.
 
+## Bloco 5 · Imagens de compartilhamento (G-03, G-05)
+
+Branch `imagens/compartilhamento`. Gerador: `tools/compartilhamento.mts` → `public/og/<página>.jpg`
+(1200 × 630, JPG, 32–40 KB). Modelo único, renderizado pelo Chromium (fonte Hanken Grotesk): logo
+oficial do kit, título exato da página (o mesmo do `<Base titulo>`), selo "Consultoria de carreira · até
+acontecer" afastado do logo, endereço e a ilustração aprovada da página. Ao mudar uma ilustração ou um
+título, rode o gerador de novo. Revisão: https://claude.ai/artifact/EPRZ6sngWe4DoJcLHDfGKo
+
+- `Base.astro`: `og:image` (+ largura, altura, alt), `og:site_name` e `twitter:card`. O Agradecimento
+  usa a imagem da home.
+- `tools/build-v2-teste.py`: `og:url` e `og:image` apontam para a `/v2-teste/` na versão de teste.
+
