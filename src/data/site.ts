@@ -2,9 +2,9 @@
 export const CTA = 'Conversar com um especialista';
 export const WHATSAPP_URL = 'https://wa.me/5511984311675';
 export const WHATSAPP_TXT = '+55 11 98431-1675';
+export const TELEFONE_LINK = 'tel:+5511984311675'; // mesmo número do WhatsApp, para quem prefere ligar
 export const EMAIL = 'contato@innerplacement.com.br';
 export const CIDADES = 'São Paulo · Curitiba';
-export const SITE_ATUAL = 'https://innerplacement.com.br';
 
 export const rotas = {
   inicio: '/',
@@ -19,7 +19,8 @@ export const rotas = {
   obrigado: '/obrigado/',
   quemSomos: '/quem-somos/',
   blog: '/blog/',
-  privacidade: `${SITE_ATUAL}/politica-de-privacidade/`,
+  // Migrada do WordPress para a v2 em 02/10/2026 (era um link externo para o site antigo).
+  privacidade: '/politica-de-privacidade/',
 } as const;
 
 export const servicos = [
@@ -35,6 +36,7 @@ export const servicos = [
 
 export const menu = [
   { nome: 'Depoimentos', href: rotas.depoimentos },
+  { nome: 'Perguntas frequentes', href: rotas.faq },
   { nome: 'Manifesto', href: rotas.manifesto },
   { nome: 'Quem somos', href: rotas.quemSomos },
   { nome: 'Blog', href: rotas.blog },

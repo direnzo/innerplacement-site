@@ -62,6 +62,7 @@ sprite = trecho(home, '<svg width="0" height="0"', '</svg>')
 header = rotas(trecho(home, '<header', '</header>'))
 footer = rotas(trecho(home, '<footer', '</footer>'))
 zap = re.search(r'<a href="https://wa\.me/[^"]*" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp".*?</a>', home, re.S).group(0)
+cookies = rotas(trecho(home, '<aside', '</aside>'))
 
 secoes = []
 for token, pasta, titulo in PAGINAS:
@@ -209,6 +210,8 @@ document.querySelectorAll('[data-carrossel-caixa]').forEach(function (caixa) {
   addEventListener('resize', atualiza);
   atualiza();
 });
+// Reabre o aviso de cookies: cópia de src/scripts/app.ts (manter as duas iguais).
+document.getElementById('abrir-cookies') && document.getElementById('abrir-cookies').addEventListener('click', function () { dispatchEvent(new Event('cookies-reabrir')); });
 </script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.9/cdn.min.js"></script>
 """
@@ -234,6 +237,7 @@ header.sticky {{ top: env(safe-area-inset-top, 0px); }}
 <main id="conteudo" style="padding-top:16px">{''.join(secoes)}</main>
 {footer}
 {zap}
+{cookies}
 {roteador}"""
 
 (SAIDA / 'index.html').write_text(pagina, encoding='utf-8')
