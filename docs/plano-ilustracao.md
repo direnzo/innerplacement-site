@@ -82,7 +82,7 @@ fora, como o guia pede.
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | concluído (30/09), no site com movimento |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | concluído (01/10), no site com movimento |
-| 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | topos concluídos (01/10); compartilhamento a fazer |
+| 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | concluído (01/10) |
 
 As outras 50 peças do "plano completo" do guia (ícones de etapa, padrões) entram só onde um bloco
 mostrar que fazem falta.
@@ -315,4 +315,18 @@ no computador (antes ia a zero a partir de 1024 px e as etiquetas do FAQ passava
 Fechamento dos topos do bloco 5 (01/10): aprovados na rodada 1, sem ajustes. Em `imagens/`:
 `inner-P05-topo-depoimentos-v1`, `inner-P06-topo-faq-v1`, `inner-P07-manifesto-v1`, `inner-P08-contato-v1`,
 `inner-P09-obrigado-v1`.
+
+## Bloco 5 · Imagens de compartilhamento (G-03, G-05)
+
+Branch `imagens/compartilhamento`. Gerador: `tools/compartilhamento.mts` → `public/og/<página>.jpg`
+(1200 × 630, JPG, 32–40 KB). Modelo único, renderizado pelo Chromium (fonte Hanken Grotesk): logo
+oficial do kit, título exato da página (o mesmo do `<Base titulo>`), selo "Consultoria de carreira · até
+acontecer" afastado do logo, endereço e a ilustração aprovada da página. Ao mudar uma ilustração ou um
+título, rode o gerador de novo. Revisão: https://claude.ai/artifact/EPRZ6sngWe4DoJcLHDfGKo
+
+**Aprovadas pelo dono em 01/10.** Com isso, os cinco blocos do plano de ilustração estão concluídos.
+
+- `Base.astro`: `og:image` (+ largura, altura, alt), `og:site_name` e `twitter:card`. O Agradecimento
+  usa a imagem da home.
+- `tools/build-v2-teste.py`: `og:url` e `og:image` apontam para a `/v2-teste/` na versão de teste.
 

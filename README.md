@@ -13,6 +13,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 - `npm run dev` — servidor local
 - `npm run build` — gera o site estático em `dist/` (é o conteúdo de `dist/` que sobe para a hospedagem)
 - `python3 tools/versao-teste.py` — gera `teste/index.html`, a versão de testes num arquivo só
+- `node --experimental-strip-types tools/compartilhamento.mts` — gera as imagens de compartilhamento em `public/og/` (rodar de novo quando mudar título ou ilustração de uma página)
 - `python3 tools/build-v2-teste.py` — depois do `npm run build`, gera `dist-v2-teste/` (e `.zip`) para a subpasta `/v2-teste/`: links com prefixo, `noindex, nofollow` em todas as páginas, sem canonical e sem o `.htaccess` de produção. É o que sobe para `~/innerplacement/v2-teste/` no servidor (a raiz do site é `~/innerplacement`, não `public_html`)
 - `tools/publicar-v2-teste.sh [--simular]` — build + variante + backup no servidor (`~/backups-v2-teste/`) + envio só para `v2-teste/` + conferência das 10 páginas online. Exige a chave `inner-v2` destravada (comando no topo do script)
 
@@ -66,7 +67,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 ### Imagens
 
 1. **Blocos 1 a 4 concluídos** com a abordagem híbrida (`docs/plano-ilustracao.md`): as peças do site são SVG desenhado a partir do kit. Os 8 PNGs aprovados antes no ChatGPT ficam em `imagens/` só como referência; nenhum está no site. A P-03 em PNG (`imagens/pendente/`) foi superada pela versão em SVG.
-2. **Bloco 5:** topos das demais páginas (P-05 a P-09) concluídos; faltam as imagens de compartilhamento (G-03, G-05).
+2. **Bloco 5 concluído:** topos das demais páginas (P-05 a P-09) e imagens de compartilhamento (G-03, G-05, em `public/og/`).
 3. **Capas dos outros vídeos (G-02):** usar a moldura `inner-H06-moldura-video-v1` sobre a miniatura de cada vídeo, quando as URLs chegarem.
 
 ## Estado das imagens
@@ -92,4 +93,4 @@ Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/
 | P-03 | Desenvolvimento de Executivos | aprovada: topo v1 em SVG no site (a proposta em PNG do ChatGPT foi superada) |
 | P-04 | Outplacement | aprovada: topo v1 em SVG no site |
 | P-05 a P-09 | Depoimentos, FAQ, Manifesto, Contato, Agradecimento | aprovadas: v1 em SVG no site |
-| G-03, G-05 | Imagens de compartilhamento | a fazer |
+| G-03, G-05 | Imagens de compartilhamento | aprovadas: `public/og/<página>.jpg` (`tools/compartilhamento.mts`) |

@@ -4,6 +4,7 @@ O que muda em relação a dist/:
 - caminhos absolutos do site (href, src, action, data-obrigado) ganham o prefixo /v2-teste;
 - todas as páginas recebem <meta name="robots" content="noindex, nofollow"> e perdem a canonical,
   para a versão de teste não competir com o site oficial nas buscas;
+- og:url e og:image apontam para a /v2-teste/, para a prévia de compartilhamento do teste funcionar;
 - o .htaccess de produção (301 das URLs do WordPress) fica de fora: ele só vale na raiz do domínio.
 
 Uso: npm run build && python3 tools/build-v2-teste.py  ->  dist-v2-teste/ (e dist-v2-teste.zip)
@@ -31,6 +32,9 @@ for arq in SAIDA.rglob('*.html'):
     html = arq.read_text(encoding='utf-8')
     html = ATRIBUTO.sub(lambda m: f'{m.group(1)}="{PREFIXO}/', html)
     html = re.sub(r'<link rel="canonical"[^>]*>', '', html)
+    # Prévia de compartilhamento do teste: og:url e og:image apontam para a própria /v2-teste/
+    # (senão o WhatsApp/LinkedIn buscaria a página e a imagem no site oficial, ainda o WordPress).
+    html = re.sub(r'(<meta property="og:(?:url|image)" content="https://innerplacement\.com\.br)/', r'\1' + PREFIXO + '/', html)
     html = re.sub(r'<meta name="robots"[^>]*>', '', html)
     html = html.replace('<head>', '<head>' + ROBOTS, 1)
     arq.write_text(html, encoding='utf-8')

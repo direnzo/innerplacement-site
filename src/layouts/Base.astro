@@ -10,6 +10,11 @@ interface Props { titulo: string; descricao: string; fechamento?: boolean; schem
 const { titulo, descricao, fechamento = false, schema } = Astro.props;
 const tituloCompleto = Astro.url.pathname === '/' ? `Inner Placement · ${titulo}` : `${titulo} · Inner Placement`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// Imagem de compartilhamento (public/og/, gerada por tools/compartilhamento.mts). Páginas sem imagem
+// própria (o Agradecimento) usam a da home.
+const pagina = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'inicio';
+const comImagem = ['inicio', 'transicao-e-recolocacao', 'desenvolvimento-de-carreira', 'desenvolvimento-de-executivos', 'outplacement', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato'];
+const ogImagem = new URL(`/og/${comImagem.includes(pagina) ? pagina : 'inicio'}.jpg`, Astro.site).href;
 const org = {
   '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Inner Placement',
   url: 'https://innerplacement.com.br/', email: EMAIL, telephone: WHATSAPP_TXT,
@@ -32,6 +37,12 @@ const org = {
   <meta property="og:title" content={tituloCompleto} />
   <meta property="og:description" content={descricao} />
   <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content="Inner Placement" />
+  <meta property="og:image" content={ogImagem} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={`${titulo} · Inner Placement`} />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
