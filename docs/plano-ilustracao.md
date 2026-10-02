@@ -330,3 +330,14 @@ título, rode o gerador de novo. Revisão: https://claude.ai/artifact/EPRZ6sngWe
   usa a imagem da home.
 - `tools/build-v2-teste.py`: `og:url` e `og:image` apontam para a `/v2-teste/` na versão de teste.
 
+## Quem somos e formas de fundo em todas as páginas (01/10)
+
+- Página Quem somos aprovada: conteúdo literal do WordPress, topo P-10 (trio de sócios), fotos com o arco
+  em degradê coral do site antigo (sem o contêiner areia, para funcionar sobre qualquer fundo), frase de
+  cada sócio numa moldura com a rosácea cortada no canto, botão do LinkedIn em pílula coral.
+- **Formas de fundo em todas as páginas** (pedido do dono): `Base.astro` põe as quatro formas (F-01 a F-04)
+  nas bordas de toda página, via `src/components/FormaFundo.astro`; a home usa `fundo={false}` porque tem as
+  suas, posicionadas à mão. O `<main>` recorta as formas (`overflow: clip`).
+- `.bloco` passou a usar `overflow: clip` (antes `hidden`): `hidden` desligava o `position: sticky` da
+  ilustração do Manifesto.
+

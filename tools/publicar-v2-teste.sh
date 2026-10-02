@@ -48,7 +48,7 @@ echo '==> Envio'
 
 echo '==> Conferência online'
 falhas=0
-for p in '' contato/ depoimentos/ desenvolvimento-de-carreira/ desenvolvimento-de-executivos/ manifesto/ obrigado/ outplacement/ perguntas-frequentes/ transicao-e-recolocacao/; do
+for p in '' contato/ depoimentos/ desenvolvimento-de-carreira/ desenvolvimento-de-executivos/ manifesto/ obrigado/ outplacement/ perguntas-frequentes/ quem-somos/ transicao-e-recolocacao/; do
   cod=$(curl -s -o /tmp/v2-teste-pagina.html -w '%{http_code}' "$URL/$p?v=$CARIMBO")
   robots=$(grep -c 'content="noindex, nofollow"' /tmp/v2-teste-pagina.html || true)
   echo "  $cod  noindex=$robots  /v2-teste/$p"

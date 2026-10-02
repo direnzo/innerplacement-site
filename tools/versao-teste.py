@@ -20,6 +20,7 @@ PAGINAS = [  # (token da âncora, pasta no dist, título da aba)
     ('depoimentos', 'depoimentos', 'Depoimentos'),
     ('perguntas-frequentes', 'perguntas-frequentes', 'Perguntas frequentes'),
     ('manifesto', 'manifesto', 'Manifesto'),
+    ('quem-somos', 'quem-somos', 'Quem somos'),
     ('contato', 'contato', 'Contato'),
     ('obrigado', 'obrigado', 'Recebemos a sua mensagem'),
 ]

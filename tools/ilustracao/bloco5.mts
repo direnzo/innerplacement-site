@@ -84,6 +84,23 @@ pecas['P09-obrigado'] = svg(420, 300, 'Agradecimento: a mensagem chegou', [
   `<g class="p-selo" filter="url(#p09-s)">${checkCoral(210, 196, 26)}</g>`,
 ].join(''));
 
+// ── P-10 · Quem somos (fora do guia original; página mantida com o conteúdo do WordPress) ─────────
+// Os três sócios como três figuras da marca entrelaçadas — o "par" da marca virando um trio, com os
+// papéis complementares (F05) — sob a rosácea.
+const TRIO_LACO = 'c0,4.03-3.27,7.3-7.3,7.3s-7.3-3.27-7.3-7.3';
+const TRIO_ARCO = 'c0-15.17,12.3-27.47,27.47-27.47h2.32c15.17,0,27.47,12.3,27.47,27.47';
+const trio = (x: number, base: number, s: number, cabecas: string[], traco = 3) =>
+  `<g transform="translate(${x - 48.33 * s},${base - 106.08 * s}) scale(${s})">`
+  + `<path d="M48.33,106.08v-43.02c0-15.17,12.3-27.47,27.47-27.47s27.47,12.3,27.47,27.47v35.72${TRIO_LACO}v-35.72${TRIO_ARCO}v35.72${TRIO_LACO}v-35.72${TRIO_ARCO}v43.02" fill="none" stroke="${C.tinta}" stroke-width="${(traco / s).toFixed(2)}" stroke-linejoin="bevel"/>`
+  + [75.62, 117.3, 159.96].map((cx, i) => `<circle cx="${cx}" cy="15.15" r="15.15" fill="${cabecas[i]}"/>`).join('') + `</g>`;
+pecas['P10-quem-somos'] = svg(420, 300, 'Quem somos: os três sócios', [
+  `<defs>${bolaG('p10-b')}</defs>`,
+  `<circle class="p-bola" cx="214" cy="150" r="138" fill="url(#p10-b)"/>`,
+  `<g class="p-rosa">${ROSA(214, 80, 92)}</g>`,
+  `<line x1="40" y1="262" x2="388" y2="262" stroke="${C.tinta}" stroke-opacity=".14" stroke-width="2" stroke-linecap="round"/>`,
+  `<g class="p-quem">${trio(214 - 70.13 * .95, 262, .95, [C.areia, C.coral, C.ambar])}</g>`,
+].join(''));
+
 const dir = new URL('../../docs/ilustracao/bloco-5/', import.meta.url);
 mkdirSync(dir, { recursive: true });
 for (const [nome, conteudo] of Object.entries(pecas)) {

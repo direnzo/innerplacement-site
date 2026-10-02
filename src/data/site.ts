@@ -17,7 +17,7 @@ export const rotas = {
   manifesto: '/manifesto/',
   contato: '/contato/',
   obrigado: '/obrigado/',
-  quemSomos: `${SITE_ATUAL}/quem-somos/`,
+  quemSomos: '/quem-somos/',
   blog: `${SITE_ATUAL}/blog/`,
   privacidade: `${SITE_ATUAL}/politica-de-privacidade/`,
 } as const;
@@ -46,16 +46,17 @@ export const numeros = [
   { n: '86%', t: 'recolocados, em média, em 4,5 meses' },
 ];
 
-// Logos: a documentação autoriza hoje só Mosaic, BCG e Santillana. Os demais aguardam autorização de marca.
+// Logos de clientes: todos autorizados (confirmação do dono em 01/10/2026; a documentação funcional citava
+// só Mosaic, BCG e Santillana).
 export const logos = [
   { id: 'bcg', nome: 'BCG', h: 44, autorizado: true },
   { id: 'mosaic', nome: 'Mosaic', h: 50, autorizado: true },
   { id: 'santillana', nome: 'Santillana', h: 54, autorizado: true },
-  { id: 'certisign', nome: 'CertiSign', h: 38, autorizado: false },
-  { id: 'symrise', nome: 'Symrise', h: 40, autorizado: false },
-  { id: 'emais', nome: 'E+ Transição Energética', h: 44, autorizado: false },
-  { id: 'borkar', nome: 'Borkar', h: 50, autorizado: false },
-  { id: 'goodstorage', nome: 'GoodStorage', h: 28, autorizado: false },
-  { id: 'phisalia', nome: 'Phisalia', h: 52, autorizado: false },
-  { id: 'tb', nome: 'TB', h: 48, autorizado: false },
+  { id: 'certisign', nome: 'CertiSign', h: 38, autorizado: true },
+  { id: 'symrise', nome: 'Symrise', h: 40, autorizado: true },
+  { id: 'emais', nome: 'E+ Transição Energética', h: 44, autorizado: true },
+  { id: 'borkar', nome: 'Borkar', h: 50, autorizado: true },
+  { id: 'goodstorage', nome: 'GoodStorage', h: 28, autorizado: true },
+  { id: 'phisalia', nome: 'Phisalia', h: 52, autorizado: true },
+  { id: 'tb', nome: 'TB', h: 48, autorizado: true },
 ];
