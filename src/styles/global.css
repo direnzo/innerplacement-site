@@ -338,3 +338,35 @@
   .prog-logo[data-para="empresa"] .pl-ros { filter: grayscale(1) brightness(.35); opacity: .22; }
 }
 @media (hover: hover) { @layer components { article:hover .prog-logo .pl-ros { rotate: 60deg; } } }
+
+/* Bloco 4 · movimento (topos das páginas de serviço, ganchos p-* de tools/ilustracao/bloco4.mts).
+   Entrada por [data-entrada]; no hover a cena cresce de leve (sem girar, por ser grande) e cada
+   peça faz o seu gesto: o par avança, a pessoa sobe, o cartão se ergue, a seta aponta, a luz acende. */
+@layer components {
+  .il-anim :is(.p-arco, .p-pilar, .p-rosa, .p-selo) { transform-box: fill-box; }
+  .il-anim .p-bola { animation: b2-surge .9s ease-out both paused; }
+  .il-anim .p-arco { transform-origin: bottom; animation: b2-cresce .7s .1s cubic-bezier(.2, .9, .3, 1) both paused; }
+  .il-anim .p-pilar { transform-origin: bottom; animation: b2-cresce .65s .15s cubic-bezier(.2, .9, .3, 1) both paused; }
+  .il-anim .p-rosa { transform-origin: center; animation: il-floresce .6s .75s cubic-bezier(.2, 1.3, .4, 1) both paused; }
+  .il-anim .p-selo { transform-origin: center; animation: il-pop .5s .55s cubic-bezier(.3, 1.5, .5, 1) both paused; }
+  .il-anim .p-quem { animation: il-chega .55s .35s ease-out both paused; }
+  .il-anim .p-card { animation: t-cai .5s .5s cubic-bezier(.3, 1.3, .5, 1) both paused; }
+  .il-anim :is(.p-org, .p-elo, .p-elo-nos, .p-luz) { animation: b2-surge .7s .3s ease-out both paused; }
+  .il-anim .p-predio { animation: b2-sobe .55s ease-out both paused; }
+  .il-anim .p-seta { animation: b2-sobe .45s .8s cubic-bezier(.2, .9, .3, 1) both paused; }
+  .il-anim .p-oval { animation: b2-da-dir .7s .3s cubic-bezier(.2, .8, .3, 1) both paused; }
+  .p-luz { opacity: .75; }
+  .il-anim.visto :is(.p-bola, .p-arco, .p-pilar, .p-rosa, .p-selo, .p-quem, .p-card, .p-org, .p-elo, .p-elo-nos, .p-luz, .p-predio, .p-seta, .p-oval) { animation-play-state: running; }
+}
+@media (hover: hover) {
+  @layer components {
+    svg.topo-ilus[data-entrada]:hover { scale: 1.02; rotate: 0deg; }
+    :is(.p-quem, .p-card, .p-seta) > * { transition: translate .45s cubic-bezier(.2, .8, .3, 1); }
+    .p-luz { transition: opacity .45s ease; }
+    svg:hover .p-quem > * { translate: 10px 0; }
+    svg:hover .p-sobe > * { translate: 0 -8px; }
+    svg:hover .p-card > * { translate: -3px -6px; }
+    svg:hover .p-seta > * { translate: 5px -5px; }
+    svg:hover .p-luz { opacity: 1; }
+  }
+}

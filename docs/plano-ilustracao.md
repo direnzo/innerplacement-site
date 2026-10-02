@@ -81,7 +81,7 @@ fora, como o guia pede.
 | 1 | Home, primeira tela: Hero e Caminhos | H-01, H-02/H-03 | concluído (29/09), no site com movimento |
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | concluído (30/09), no site com movimento |
-| 4 | Topos das páginas de serviço | P-01 a P-04 | não iniciado |
+| 4 | Topos das páginas de serviço | P-01 a P-04 | rodada 1 em revisão |
 | 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | não iniciado |
 
 As outras 50 peças do "plano completo" do guia (ícones de etapa, padrões) entram só onde um bloco
@@ -269,4 +269,25 @@ hover. Revisão (home inteira): https://claude.ai/artifact/6duhBb51AQ78Nf6k3Gc6a
   `~/projetos/innerplacement/wp-content/uploads/2025/0{4,5}/` (`*_logo.png`, `emp-*.png`, `dep_*.png`).
 - **Fechamento (30/09):** os 13 ícones aprovados em `imagens/inner-T-<assunto>-v1.svg` (+ `.txt`); as
   páginas importam de `imagens/`. Logotipo dos programas e hovers aprovados.
+
+## Bloco 4 · Topos das páginas de serviço
+
+Branch `imagens/bloco-4`. Gerador: `tools/ilustracao/bloco4.mts` → `docs/ilustracao/bloco-4/`. Cenas
+420 × 300 à direita do título; o componente `TopoPagina` recebe `ilustracao` (no celular a cena some,
+como no guia). Revisão: https://claude.ai/artifact/K725qBf6gcdaqEkw9t8sZx
+
+| Arquivo | Página | Cena |
+| --- | --- | --- |
+| `P01-transicao.svg` | Transição e Recolocação | Arco-portal coral com a rosácea branca (nova posição), o par caminhando até ele, cartão de plano com checklist |
+| `P02-carreira.svg` | Desenvolvimento de Carreira | A organização em cabeças; a pessoa sobre um pilar coral, com a seta da marca |
+| `P03-executivos.svg` | Desenvolvimento de Executivos | Empresa (prédio), executivo num patamar coral e Inner (rosácea), ligados por um arco: objetivo alinhado a três |
+| `P04-outplacement.svg` | Outplacement | Prédio com a porta aberta e a luz coral saindo; o par sai acompanhado rumo ao horizonte |
+
+Movimento: entrada por `data-entrada`; hover com gestos (CSS "Bloco 4 · movimento").
+
+## Ferramenta de verificação no navegador
+
+`tools/navegador.mjs` (Chromium via DevTools Protocol): rola, passa o mouse, mede e fotografa em tempo
+real. Para testar hover, `HOVER=1` (o Chromium sem tela se declara sem mouse). Ex.:
+`HOVER=1 node tools/navegador.mjs http://localhost:4399/ /tmp/foto 1280 800 '[{"hover":".topo-ilus","foto":"a"}]'`.
 

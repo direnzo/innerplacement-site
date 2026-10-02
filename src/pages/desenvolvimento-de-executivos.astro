@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
+import ilustracao from '../../docs/ilustracao/bloco-4/P03-executivos.svg?raw';
 import Programa from '../components/Programa.astro';
 import DepoCard from '../components/DepoCard.astro';
 import Badge from '../components/Badge.astro';
@@ -8,7 +9,7 @@ import { depoimentos as D } from '../data/depoimentos';
 ---
 <Base titulo="Desenvolvimento de Executivos" fechamento
   descricao="Next Level para empresas: desenvolvimento de executivos que precisam chegar a um novo patamar, em espaço profissional e confidencial.">
-  <TopoPagina titulo="Desenvolvimento de Executivos" trilha="Para sua empresa" acento="pessoas" acentoClass="right-16 bottom-6 w-[300px]!"
+  <TopoPagina titulo="Desenvolvimento de Executivos" trilha="Para sua empresa" ilustracao={ilustracao}
     intro="Há executivos que a empresa não quer perder — e que precisam chegar a um novo patamar: assumir uma área maior, ganhar peso nas decisões, mudar a forma de liderar. O Next Level é o programa da Inner para esse movimento: contratado pela empresa, construído com o executivo." />
   <section class="wrap grid gap-3.5 md:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] md:gap-6">
     <Programa para="empresa" rotulo="Desenvolvimento" nome="Next Level">Começa pelo impacto esperado, na carreira do executivo e na organização — definido com ele e alinhado com a empresa. A partir daí, construímos a estratégia de desenvolvimento para chegar lá: pode ser uma competência, um comportamento, a forma de se posicionar, ou o que só aparece no caminho. O programa se ajusta ao dia a dia do executivo: um espaço profissional e confidencial, adaptado ao contexto de cada um, para refletir, testar decisões e se preparar para os próximos movimentos.</Programa>

@@ -42,6 +42,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 | `docs/ilustracao/` | Propostas em SVG de cada bloco, aguardando escolha | sim |
 | `tools/ilustracao/` | Geradores das ilustrações em SVG a partir do kit (`node --experimental-strip-types tools/ilustracao/<bloco>.mts`); `sincronizar.py` atualiza as cópias aprovadas em `imagens/` | sim |
 | `tools/versao-teste.py` | Gera a versão de testes num HTML único a partir de `dist/` | sim |
+| `tools/navegador.mjs` | Driver do Chromium para conferir animações, rolagem e hover em tempo real (`HOVER=1` para telas com mouse) | sim |
 | `tools/imagem/` | Acabamento das imagens com `sharp` (WebP, AVIF, PNG, SVG). Rodar `npm install` na pasta | sim |
 | `referencia-v2-teste/` | Espelho do HTML publicado em `/v2-teste/`, só para consulta | não |
 | `docs/README-original-desktop.md` | README como veio da sessão do Claude Desktop | sim |
