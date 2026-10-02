@@ -28,6 +28,7 @@ const paginas: Record<string, [string, string]> = {
   'perguntas-frequentes': ['Perguntas frequentes', 'inner-P06-topo-faq-v1'],
   manifesto: ['Manifesto', 'inner-P07-manifesto-v1'],
   contato: ['Contato', 'inner-P08-contato-v1'],
+  'quem-somos': ['Quem somos', 'inner-P10-topo-quem-somos-v1'],
 };
 
 const logo = `<svg viewBox="0 0 ${kit.logo.w} ${kit.logo.h}" height="76">${kit.logo.inner}</svg>`;

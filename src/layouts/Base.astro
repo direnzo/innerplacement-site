@@ -13,7 +13,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // Imagem de compartilhamento (public/og/, gerada por tools/compartilhamento.mts). Páginas sem imagem
 // própria (o Agradecimento) usam a da home.
 const pagina = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'inicio';
-const comImagem = ['inicio', 'transicao-e-recolocacao', 'desenvolvimento-de-carreira', 'desenvolvimento-de-executivos', 'outplacement', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato'];
+const comImagem = ['inicio', 'transicao-e-recolocacao', 'desenvolvimento-de-carreira', 'desenvolvimento-de-executivos', 'outplacement', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato', 'quem-somos'];
 const ogImagem = new URL(`/og/${comImagem.includes(pagina) ? pagina : 'inicio'}.jpg`, Astro.site).href;
 const org = {
   '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Inner Placement',

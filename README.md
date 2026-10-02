@@ -60,8 +60,8 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 
 - Formulário: `public/enviar.php` envia como o WordPress fazia (para `contato@innerplacement.com.br`, remetente e assunto iguais; registro em `~/inner-mensagens/` no servidor). Na `/v2-teste/` o e-mail sai para o `destino_teste` de `~/inner-formulario.php` no servidor (configurado em 01/10 para `contato@innerplacement.com.br`, com "[teste]" no assunto); sem ele, a mensagem fica só registrada. A P13 (destino com a Paula) segue registrada na documentação funcional.
 - Vídeos de depoimento: faltam as URLs publicadas.
-- Logos: só Mosaic, BCG e Santillana estão autorizados na documentação.
-- Quem somos e Blog continuam apontando para o WordPress atual.
+- Logos: todos autorizados (confirmação do dono em 01/10/2026).
+- Quem somos: página da v2 com o conteúdo da página do WordPress (`src/data/socios.ts`, fotos em `public/equipe/`); em revisão. Blog continua apontando para o WordPress atual.
 - Indexação: a fonte já está pronta para produção (só `/obrigado/` tem `noindex`, sem `robots.txt`). O build `build/v0.9/` tem `robots.txt` bloqueando tudo e `noindex` na home porque foi preparado como teste — não reaproveitar esses dois arquivos no deploy final.
 
 ### Imagens

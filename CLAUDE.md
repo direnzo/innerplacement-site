@@ -85,8 +85,8 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 
 ## Antes de publicar em produção
 
-Pendências listadas no `README.md` (destino do formulário P13, URLs dos vídeos, autorização de
-logos, Quem somos/Blog ainda no WordPress). Além delas:
+Pendências listadas no `README.md` (URLs dos vídeos, Quem somos/Blog ainda no WordPress; logos
+todos autorizados pelo dono em 01/10/2026). Além delas:
 - Não reaproveitar `robots.txt` nem o `noindex` da home de `build/v0.9/`: eram bloqueios de teste. A
   fonte já está certa (só `/obrigado/` tem `noindex`).
 - O deploy troca o WordPress na raiz do domínio: planejar com backup e rollback, e conferir os 301
