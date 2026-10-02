@@ -127,5 +127,33 @@ document.querySelectorAll<HTMLButtonElement>('[data-yt]').forEach((b) => b.addEv
   f.focus();
 }));
 
+// Carrossel de depoimentos da home (Prova): embaralha a ordem dos cartões a cada carregamento da página
+// (puxa a lista oficial de src/data/depoimentos.ts; nada fixo aqui) e liga as setas de navegação. Sem
+// JavaScript, os cartões aparecem na ordem do arquivo e dá para arrastar — o carrossel ainda funciona.
+document.querySelectorAll<HTMLElement>('[data-carrossel]').forEach((trilho) => {
+  const cartoes = [...trilho.children];
+  for (let i = cartoes.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cartoes[i], cartoes[j]] = [cartoes[j], cartoes[i]];
+  }
+  trilho.append(...cartoes);
+});
+document.querySelectorAll<HTMLElement>('[data-carrossel-caixa]').forEach((caixa) => {
+  const trilho = caixa.querySelector<HTMLElement>('[data-carrossel]');
+  const anterior = caixa.querySelector<HTMLButtonElement>('[data-carrossel-anterior]');
+  const proximo = caixa.querySelector<HTMLButtonElement>('[data-carrossel-proximo]');
+  if (!trilho || !anterior || !proximo) return;
+  const passo = () => (trilho.firstElementChild as HTMLElement)?.getBoundingClientRect().width ?? 320;
+  anterior.addEventListener('click', () => trilho.scrollBy({ left: -(passo() + 24), behavior: 'smooth' }));
+  proximo.addEventListener('click', () => trilho.scrollBy({ left: passo() + 24, behavior: 'smooth' }));
+  const atualiza = () => {
+    anterior.disabled = trilho.scrollLeft < 4;
+    proximo.disabled = trilho.scrollLeft > trilho.scrollWidth - trilho.clientWidth - 4;
+  };
+  trilho.addEventListener('scroll', atualiza, { passive: true });
+  addEventListener('resize', atualiza);
+  atualiza();
+});
+
 (window as any).Alpine = Alpine;
 Alpine.start();
