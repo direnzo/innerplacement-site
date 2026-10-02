@@ -37,6 +37,17 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 - Cada commit na `main` publica a `/v2-teste/` pelo GitHub Actions (chave dedicada sem senha, só nos
   segredos do GitHub e no cPanel; o dono a cria — ela nunca passa pelo agente).
 
+## LGPD, cookies e analytics
+
+- Desde 02/10/2026 o site tem aviso de cookies por categoria (`CookieConsent.astro`) e o Gerenciador de
+  Tags do Google (`GTM_ID` em `src/data/site.ts`), com o Consent Mode do Google: só mede com a permissão
+  dada no aviso. **`GTM_ID` é o mesmo contêiner que o WordPress atual usa** (decisão deliberada, para não
+  perder o histórico do Analytics na troca de site) — não trocar por um novo sem avisar o dono, porque
+  isso quebra a continuidade dos dados.
+- A Política de Privacidade (`src/pages/politica-de-privacidade.astro`) tem dois campos pendentes que só
+  o dono pode preencher (CNPJ e o encarregado de dados/DPO) — a própria página avisa isso. Não inventar
+  esses valores.
+
 ## Imagens — regras que já custaram retrabalho
 
 - **Abordagem atual (decisão do dono, 29/09/2026): híbrida e por blocos.** Ilustrações, ícones e
@@ -98,7 +109,8 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 
 Pendências listadas no `README.md` (URLs dos vídeos, Quem somos/Blog ainda no WordPress; logos
 todos autorizados pelo dono em 01/10/2026). Além delas:
-- Não reaproveitar `robots.txt` nem o `noindex` da home de `build/v0.9/`: eram bloqueios de teste. A
-  fonte já está certa (só `/obrigado/` tem `noindex`).
+- Não reaproveitar o `robots.txt` nem o `noindex` da home de `build/v0.9/`: eram bloqueios de teste.
+  `public/robots.txt` (desde 02/10/2026) já é o certo para produção. A fonte já está certa (só
+  `/obrigado/` tem `noindex`).
 - O deploy troca o WordPress na raiz do domínio: planejar com backup e rollback, e conferir os 301
   de `public/.htaccess` contra as URLs reais do WordPress.

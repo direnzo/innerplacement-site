@@ -37,7 +37,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 | --- | --- | --- |
 | `src/` | Código-fonte Astro: `pages/` (10 páginas), `components/`, `layouts/`, `data/` (conteúdo), `styles/`, `scripts/` | sim |
 | `src/content/blog/` | Posts do blog em Markdown | sim |
-| `public/` | Arquivos servidos como estão (`favicon.svg`, `.htaccess`, `enviar.php`, `admin/`, `blog/imagens/`) | sim |
+| `public/` | Arquivos servidos como estão (`favicon.svg`, `.htaccess`, `enviar.php`, `admin/`, `blog/imagens/`, `robots.txt`) | sim |
 | `.github/workflows/` | Publicação automática da `/v2-teste/` a cada commit na `main` | sim |
 | `build/v0.9/` | Site compilado v0.9, exportado do Claude Desktop em 29/09: 10 páginas (inclui `/obrigado/`), links na raiz do domínio, `.htaccess` com 301 das URLs do WordPress, `robots.txt` bloqueando tudo e `noindex` (ainda é teste). Referência para conferir que a fonte reproduz o que foi exportado | sim |
 | `imagens/` | Peças de ilustração **aprovadas**, no padrão `inner-<código>-<assunto>-v<n>.png` + `.txt` com prompt e ferramenta | sim |
@@ -69,7 +69,9 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 - Dois vídeos do WordPress ficaram de fora, por decisão do dono (02/10/2026): `bFoSEb7KJyM` (Ricardo Mazzei, não está na lista de depoimentos da v2) e `NN5R0YdessA` (Luciano Silva — é dele, mas falta o texto/cargo/seção para criar o depoimento; não está em `depoimentos.json`).
 - Blog: migrado para a v2 em 01/10 (9 posts). No deploy na raiz, acrescentar 301 para `/profissionais/`, `/category/*`, `/depoimento/*` e `/author/*` em `public/.htaccess`.
 - Painel `/admin`: falta o login "Entrar com GitHub" (OAuth App + Cloudflare Worker `sveltia-cms-auth`, depois `base_url` no `config.yml`); até lá, entrar com token pessoal do GitHub.
-- Política de privacidade: o texto é o mesmo já publicado no WordPress (migrado em 02/10/2026, sem alteração). O aviso de cookies é novo nessa data; o texto da política ainda fala em termos genéricos ("pode utilizar cookies") — decisão do dono se vale atualizar para descrever o aviso e as categorias de cookies de fato usadas hoje (hoje, nenhum cookie de terceiro, só a preferência salva no navegador).
+- Política de privacidade: revisada em 02/10/2026 para a LGPD (bases legais, categorias de cookies, compartilhamento com o Google, prazo de guarda, os 9 direitos do art. 18, canal da ANPD). **Faltam o CNPJ e o nome/contato do encarregado de dados (DPO)** — a página tem um aviso visível sobre isso (seções 1 e 10); preencher antes de publicar em produção.
+- Analytics e tags: ligado o mesmo contêiner do Google Tag Manager que o site atual usa (`GTM-ND356DQM`, em `src/data/site.ts`), com o Consent Mode do Google — só mede com a permissão dada no aviso de cookies, por categoria (Estatísticas/Marketing). Mantém o histórico do Analytics ao trocar de site. Verificar no Google Search Console, depois do deploy em produção, se a verificação de propriedade (hoje provavelmente pelo próprio Tag Manager) segue valendo.
+- SEO/GEO: `sitemap-index.xml` gerado automaticamente (`@astrojs/sitemap`; o site antigo tinha pelo Yoast, a v2 não tinha nenhum). `public/robots.txt` com a mesma política do site antigo: libera os rastreadores de IA (GPTBot, ClaudeBot, PerplexityBot etc.) e bloqueia o AdsBot. Metatags `geo.*` (São Paulo) e `twitter:site` adicionadas, no padrão do site antigo.
 - Logos: todos autorizados (confirmação do dono em 01/10/2026).
 - Quem somos: página da v2 com o conteúdo da página do WordPress (`src/data/socios.ts`, fotos em `public/equipe/`), aprovada em 01/10.
 - Indexação: a fonte já está pronta para produção (só `/obrigado/` tem `noindex`, sem `robots.txt`). O build `build/v0.9/` tem `robots.txt` bloqueando tudo e `noindex` na home porque foi preparado como teste — não reaproveitar esses dois arquivos no deploy final.

@@ -4,6 +4,10 @@ export const WHATSAPP_URL = 'https://wa.me/5511984311675';
 export const WHATSAPP_TXT = '+55 11 98431-1675';
 export const TELEFONE_LINK = 'tel:+5511984311675'; // mesmo número do WhatsApp, para quem prefere ligar
 export const EMAIL = 'contato@innerplacement.com.br';
+// Mesmo contêiner do Gerenciador de Tags do Google que o site atual usa (confirmado no código-fonte
+// público de innerplacement.com.br em 02/10/2026), para manter o histórico do Analytics ao trocar de
+// site. Ligado com o Consent Mode do Google: só mede com a permissão dada no aviso de cookies.
+export const GTM_ID = 'GTM-ND356DQM';
 export const CIDADES = 'São Paulo · Curitiba';
 
 export const rotas = {

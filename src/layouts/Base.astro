@@ -11,7 +11,7 @@ import fBola from '../../imagens/inner-F01-bola-v1.svg?raw';
 import fArcos from '../../imagens/inner-F02-arcos-v1.svg?raw';
 import fSetas from '../../imagens/inner-F03-chevrons-v1.svg?raw';
 import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
-import { EMAIL, WHATSAPP_TXT } from '../data/site';
+import { EMAIL, WHATSAPP_TXT, GTM_ID } from '../data/site';
 // fundo: formas da marca flutuando nas bordas de todas as páginas (pedido do dono, 01/10); a home desliga
 // (fundo={false}) porque tem as suas, posicionadas à mão no bloco 2.
 // ogImagem: caminho de uma imagem de compartilhamento própria (posts do blog: a capa). tipo: og:type.
@@ -38,6 +38,23 @@ const org = {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <!-- Consent Mode do Google: nega a medição por padrão: só o aviso de cookies (CookieConsent.astro) libera,
+       por categoria, guardando a escolha para as próximas páginas. O Gerenciador de Tags (GTM_ID em
+       src/data/site.ts) carrega sempre, mas sem medir nada até a permissão ser dada. -->
+  <script is:inline define:vars={{ GTM_ID }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
+    try {
+      var p = JSON.parse(localStorage.getItem('cookies-inner') || 'null');
+      if (p) gtag('consent', 'update', { analytics_storage: p.estatisticas ? 'granted' : 'denied', ad_storage: p.marketing ? 'granted' : 'denied', ad_user_data: p.marketing ? 'granted' : 'denied', ad_personalization: p.marketing ? 'granted' : 'denied' });
+    } catch (e) {}
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', GTM_ID);
+  </script>
   <title>{tituloCompleto}</title>
   <meta name="description" content={descricao} />
   <link rel="canonical" href={canonical} />
@@ -52,6 +69,11 @@ const org = {
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content={`${titulo} · Inner Placement`} />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@innerplacement" />
+  <!-- Selo de localização (SEO local), igual ao que o site antigo tinha: endereço de São Paulo. -->
+  <meta name="geo.placename" content="São Paulo" />
+  <meta name="geo.position" content="-23.5829239;-46.6781108" />
+  <meta name="geo.region" content="BR-SP" />
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,6 +83,7 @@ const org = {
   <slot name="head" />
 </head>
 <body class="min-h-dvh">
+  <noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`} height="0" width="0" style="display:none;visibility:hidden" title="Gerenciador de Tags do Google"></iframe></noscript>
   <Sprite />
   <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-white focus:px-5 focus:py-3">Pular para o conteúdo</a>
   <Header />
