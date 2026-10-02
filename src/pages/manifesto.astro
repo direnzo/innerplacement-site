@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import ilustracao from '../../imagens/inner-P07-manifesto-v1.svg?raw';
 import { miolo } from '../lib/svg';
+import Svg from '../components/Svg.astro';
 const paragrafos = [
   'Acompanhar pessoas e empresas nos seus movimentos de carreira é um privilégio — e uma responsabilidade que levamos até o fim.',
   'Aprendemos que nenhuma ferramenta substitui a atuação humana: é na relação, com método, que um movimento difícil ganha clareza e vira resultado.',
@@ -10,7 +11,11 @@ const paragrafos = [
 ];
 ---
 <Base titulo="Manifesto" fechamento descricao="O manifesto da Inner Placement: não reinventamos ninguém, lapidamos o que cada pessoa já construiu. Caminhar junto até acontecer.">
-  <section class="bloco relative bg-white">
+  <!-- Quadro branco levemente transparente, com a rosácea grande aparecendo por trás (pedido do dono);
+       o desfoque leve mantém a leitura. -->
+  <div class="relative isolate">
+    <Svg name="rosacea_coral" w={620} class="pointer-events-none absolute -right-24 top-6 -z-10 h-auto w-[360px] opacity-45 md:-right-16 md:w-[620px]" />
+  <section class="bloco relative bg-white/80 backdrop-blur-[5px]">
     <div class="wrap relative grid gap-6 py-10 md:py-16 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
       <!-- P-07: "caminhar junto até acontecer"; fica fixa na coluna do título durante a leitura -->
       <div class="flex flex-col gap-6 lg:sticky lg:top-28 lg:self-start">
@@ -19,9 +24,10 @@ const paragrafos = [
       </div>
       <div class="flex flex-col">
         {paragrafos.map((p, i) => (
-          <p class:list={['py-5 text-[19px] font-light leading-[1.5] tracking-[-.005em] md:text-[23px]', i > 0 && 'border-t border-linha']}>{p}</p>
+          <p class:list={['py-5 text-[16px] leading-[1.65] text-texto md:text-[17px]', i > 0 && 'border-t border-linha']}>{p}</p>
         ))}
       </div>
     </div>
   </section>
+  </div>
 </Base>
