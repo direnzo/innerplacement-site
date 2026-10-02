@@ -1,26 +1,42 @@
 import Alpine from 'alpinejs';
 
 // Formulário de contato: validação mínima da documentação (nome e mensagem obrigatórios; e-mail ou WhatsApp).
+// Envia para enviar.php (public/enviar.php) e, com a confirmação, vai para o Agradecimento. Sem JavaScript
+// o envio comum também funciona (o servidor redireciona). Só a versão de testes num arquivo único
+// (tools/versao-teste.py, window.INNER_TESTE = true) não envia: ela não tem servidor.
+const ERRO_ENVIO = 'Não foi possível enviar agora. Tente de novo em instantes ou chame a Inner no WhatsApp.';
 Alpine.data('contato', () => ({
   f: { nome: '', email: '', whatsapp: '', mensagem: '' },
   erros: {} as Record<string, string>,
   enviando: false,
-  enviar(e: SubmitEvent) {
+  t: Date.now(), // tempo de abertura da página: o servidor recusa envios rápidos demais (robôs)
+  init() {
+    // Volta do envio sem JavaScript com erro: /contato/?erro=…
+    const erro = new URLSearchParams(location.search).get('erro');
+    if (erro) this.erros = { envio: erro === 'envio' ? ERRO_ENVIO : erro };
+  },
+  async enviar(e: SubmitEvent) {
     const erros: Record<string, string> = {};
     if (!this.f.nome.trim()) erros.nome = 'Escreva o seu nome.';
     if (!this.f.email.trim() && !this.f.whatsapp.trim()) erros.contato = 'Deixe um e-mail ou um WhatsApp para a Inner responder.';
     else if (this.f.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.f.email.trim())) erros.contato = 'Confira o e-mail. Parece faltar alguma parte.';
     if (!this.f.mensagem.trim()) erros.mensagem = 'Conte, em poucas palavras, o que você deseja.';
     this.erros = erros;
-    if (Object.keys(erros).length) { e.preventDefault(); return; }
-    // Versão de testes: o destino do envio (pendência P13) ainda não foi definido; o formulário só leva ao Agradecimento.
-    if ((window as any).INNER_TESTE !== false) {
-      e.preventDefault();
-      const form = e.target as HTMLFormElement;
-      location.href = form.dataset.obrigado || '/obrigado/';
-      return;
-    }
+    e.preventDefault();
+    if (Object.keys(erros).length || this.enviando) return;
+    const form = e.target as HTMLFormElement;
+    const obrigado = form.dataset.obrigado || '/obrigado/';
+    if ((window as any).INNER_TESTE === true) { location.href = obrigado; return; }
     this.enviando = true;
+    try {
+      const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const dados = await r.json().catch(() => ({}));
+      if (r.ok && dados.ok) { location.href = dados.destino || obrigado; return; }
+      this.erros = dados.erro ? { envio: dados.erro } : { envio: ERRO_ENVIO };
+    } catch {
+      this.erros = { envio: ERRO_ENVIO };
+    }
+    this.enviando = false;
   },
 }));
 

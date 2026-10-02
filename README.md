@@ -58,7 +58,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 
 ### Antes de publicar em produção (vindas da fonte)
 
-- Formulário: definir o destino do envio (P13). Enquanto isso ele só leva ao Agradecimento.
+- Formulário: `public/enviar.php` envia como o WordPress fazia (para `contato@innerplacement.com.br`, remetente e assunto iguais; registro em `~/inner-mensagens/` no servidor). Na `/v2-teste/` o e-mail só sai com `destino_teste` em `~/inner-formulario.php` no servidor; sem ele, a mensagem fica só registrada. A P13 (destino com a Paula) segue registrada na documentação funcional.
 - Vídeos de depoimento: faltam as URLs publicadas.
 - Logos: só Mosaic, BCG e Santillana estão autorizados na documentação.
 - Quem somos e Blog continuam apontando para o WordPress atual.
