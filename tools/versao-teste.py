@@ -157,6 +157,16 @@ document.addEventListener('alpine:init', function () {
   document.querySelectorAll('[data-entrada]').forEach(function (el) { el.classList.add('il-anim'); io.observe(el); });
   document.querySelectorAll('[data-conta]').forEach(function (el) { io.observe(el); });
 })();
+// Vídeos de depoimento: cópia de src/scripts/app.ts (manter as duas iguais).
+document.querySelectorAll('[data-yt]').forEach(function (b) { b.addEventListener('click', function () {
+  var caixa = document.createElement('div'); caixa.className = b.className.replace('cursor-pointer', '');
+  var f = document.createElement('iframe');
+  f.src = 'https://www.youtube-nocookie.com/embed/' + b.dataset.yt + '?autoplay=1&rel=0';
+  f.title = b.dataset.titulo || 'Vídeo';
+  f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  f.allowFullscreen = true; f.className = 'absolute inset-0 size-full';
+  caixa.appendChild(f); b.parentNode.replaceChild(caixa, b); f.focus();
+}); });
 // Discos de Caminhos: cópia de src/scripts/app.ts (manter as duas iguais).
 (function () {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;

@@ -1,24 +1,37 @@
 ---
 import Svg from './Svg.astro';
 import type { Depoimento } from '../data/depoimentos';
-import { assinatura } from '../data/depoimentos';
+import { assinatura, idYoutube } from '../data/depoimentos';
 import { miolo } from '../lib/svg';
-// capa: SVG de tools/ilustracao/ (texto cru). Com miniatura (thumb, a imagem do vídeo), a capa vira
-// moldura por cima dela (use a versão sem fundo, H06-sobre). Sem capa, o oval do kit.
-interface Props { d: Depoimento; grande?: boolean; lado?: boolean; capa?: string; thumb?: string }
-const { d, grande = false, lado = true, capa, thumb } = Astro.props;
+import moldura from '../../imagens/inner-H06-moldura-video-v1.svg?raw';
+// Com link do YouTube (d.videoUrl): a miniatura do vídeo com a moldura coral por cima (H06-sobre) e o play;
+// ao clicar, o vídeo carrega ali mesmo, pelo youtube-nocookie (script em app.ts, [data-yt]). Antes do clique
+// a página não carrega nada do YouTube além da imagem.
+// Sem link: capa (SVG de tools/ilustracao/, texto cru) ou o oval do kit, sem ação de clique.
+interface Props { d: Depoimento; grande?: boolean; lado?: boolean; capa?: string }
+const { d, grande = false, lado = true, capa } = Astro.props;
+const yt = idYoutube(d.videoUrl);
+const caixa = 'relative flex h-[200px] w-full items-center justify-center overflow-hidden rounded-[20px] bg-areia-c md:h-[260px]';
 ---
 <div class:list={['grid items-center gap-5', lado ? 'md:grid-cols-2 md:gap-8' : '']}>
-  <div class="relative flex h-[200px] items-center justify-center overflow-hidden rounded-[20px] bg-areia-c md:h-[260px]" role="img" aria-label={`Vídeo do depoimento de ${d.nome}`}>
-    {thumb && <img src={thumb} alt="" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async" />}
-    {capa
-      ? <svg viewBox="0 0 520 260" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 size-full" aria-hidden="true" set:html={miolo(capa)} />
-      : <Svg name="oval_grad" h={300} class="absolute -bottom-16 -right-10 rotate-[-12deg] opacity-60" />}
-    <span class="relative flex size-[68px] items-center justify-center rounded-full bg-coral text-tinta shadow-[0_8px_24px_rgba(35,31,32,.15)]">
-      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
-    </span>
-    <span class="absolute bottom-3.5 left-4 rounded-full bg-white/70 px-3 py-1 text-[12.5px] text-texto">Vídeo · {d.nome}</span>
-  </div>
+  {yt
+    ? <button type="button" class={`${caixa} group cursor-pointer`} data-yt={yt} data-titulo={`Depoimento de ${d.nome}`} aria-label={`Assistir ao vídeo do depoimento de ${d.nome}`}>
+        <img src={`https://i.ytimg.com/vi/${yt}/hqdefault.jpg`} alt="" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async" />
+        <svg viewBox="0 0 520 260" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 size-full" aria-hidden="true" set:html={miolo(moldura)} />
+        <span class="relative flex size-[68px] items-center justify-center rounded-full bg-coral text-tinta shadow-[0_8px_24px_rgba(35,31,32,.15)] transition-transform duration-300 group-hover:scale-110">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        </span>
+        <span class="absolute bottom-3.5 left-4 rounded-full bg-white/80 px-3 py-1 text-[12.5px] text-texto">Vídeo · {d.nome}</span>
+      </button>
+    : <div class={caixa} role="img" aria-label={`Vídeo do depoimento de ${d.nome}`}>
+        {capa
+          ? <svg viewBox="0 0 520 260" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 size-full" aria-hidden="true" set:html={miolo(capa)} />
+          : <Svg name="oval_grad" h={300} class="absolute -bottom-16 -right-10 rotate-[-12deg] opacity-60" />}
+        <span class="relative flex size-[68px] items-center justify-center rounded-full bg-coral text-tinta shadow-[0_8px_24px_rgba(35,31,32,.15)]">
+          <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+        </span>
+        <span class="absolute bottom-3.5 left-4 rounded-full bg-white/70 px-3 py-1 text-[12.5px] text-texto">Vídeo · {d.nome}</span>
+      </div>}
   <figure class="flex flex-col gap-3">
     <blockquote class:list={[grande ? 'text-[20px] font-light leading-[1.4] tracking-[-.01em] md:text-[26px]' : 'text-[17px] font-light leading-[1.5] md:text-[20px]']}>“{d.texto}”</blockquote>
     <figcaption class="assina"><b>{d.nome}</b>{assinatura(d) && <> · {assinatura(d)}</>}</figcaption>
