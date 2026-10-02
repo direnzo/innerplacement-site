@@ -30,7 +30,7 @@ Quando os processos de movimentação de carreira não são conduzidos de forma 
 
 Ao pensar na sucessão, o foco deve estar na preparação ampla do sucessor, envolvendo uma construção de autoconhecimento, alinhamento de valores e desenvolvimento emocional. 
 
-Liderar com autenticidade, empatia e coragem requer mais que habilidades técnicas — exige maturidade e um olhar atento às nossas emoções e particularidades. É nesse contexto que a promoção assertiva ganha relevância. 
+Liderar com autenticidade, empatia e coragem requer mais que habilidades técnicas, exige maturidade e um olhar atento às nossas emoções e particularidades. É nesse contexto que a promoção assertiva ganha relevância. 
 
 Garantir que os colaboradores estejam preparados não apenas tecnicamente, mas também emocionalmente para assumir novos desafios, é crucial para evitar falhas em processos de sucessão e fortalecer o desenvolvimento de lideranças.
 
@@ -52,7 +52,7 @@ Isso fortalece a percepção de justiça e reconhecimento, pilares fundamentais 
 
 ## **Quer conversar sobre o desenvolvimento de lideranças na sua empresa?**
 
-A sucessão eficaz e o crescimento sustentável de uma organização exigem mais do que processos estruturados — exigem sensibilidade, estratégia e assertividade.
+A sucessão eficaz e o crescimento sustentável de uma organização exigem mais do que processos estruturados, exigem sensibilidade, estratégia e assertividade.
 
 É nesse ponto que a [Inner Placement atua com excelência](/).
 
@@ -66,4 +66,4 @@ Isso proporcionou movimentações assertivas e transições de carreira com sign
 
 Se sua empresa está crescendo, quer fortalecer a liderança ou deseja criar um plano sólido de promoção e desenvolvimento profissional, [podemos ajudar](/contato/).
 
-Na Inner Placement, carreira, cultura e liderança evoluem juntas — de dentro para fora.
+Na Inner Placement, carreira, cultura e liderança evoluem juntas, de dentro para fora.
