@@ -15,14 +15,17 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 - `python3 tools/versao-teste.py` — gera `teste/index.html`, a versão de testes num arquivo só
 - `node --experimental-strip-types tools/compartilhamento.mts` — gera as imagens de compartilhamento em `public/og/` (rodar de novo quando mudar título ou ilustração de uma página)
 - `python3 tools/build-v2-teste.py` — depois do `npm run build`, gera `dist-v2-teste/` (e `.zip`) para a subpasta `/v2-teste/`: links com prefixo, `noindex, nofollow` em todas as páginas, sem canonical e sem o `.htaccess` de produção. É o que sobe para `~/innerplacement/v2-teste/` no servidor (a raiz do site é `~/innerplacement`, não `public_html`)
-- `tools/publicar-v2-teste.sh [--simular]` — build + variante + backup no servidor (`~/backups-v2-teste/`) + envio só para `v2-teste/` + conferência das 10 páginas online. Exige a chave `inner-v2` destravada (comando no topo do script)
+- `node tools/migracao/migrar-blog.mjs` — migração única dos posts do WordPress (já feita em 01/10; rodar de novo sobrescreve edições). `npm install` em `tools/migracao/` antes
+- `tools/publicar-v2-teste.sh [--simular]` — build + variante + backup no servidor (`~/backups-v2-teste/`) + envio só para `v2-teste/` + conferência das páginas online. Exige a chave `inner-v2` destravada (comando no topo do script). O mesmo script roda sozinho no GitHub Actions a cada commit na `main` (`.github/workflows/publicar.yml`), com uma chave de publicação própria guardada nos segredos do repositório
 
 ## Onde mexer
 
 - Conteúdo é literal da documentação funcional aprovada pelos sócios, em `src/data/`.
 - Texto do botão principal (pendência P1): `src/data/site.ts`, constante `CTA`
 - Perguntas frequentes (fonte única da home e do FAQ): `src/data/faq.ts`
-- Depoimentos: `src/data/depoimentos.ts`
+- Depoimentos: `src/data/depoimentos.json` (dados, editáveis pelo painel) e `src/data/depoimentos.ts` (montagem das seções). Vídeo: link do YouTube no campo `video`; o player só carrega no clique (youtube-nocookie)
+- Blog: um arquivo Markdown por post em `src/content/blog/<endereço>.md` (esquema em `src/content.config.ts`), capas em `public/blog/imagens/`. Os posts ficam na raiz (`/<endereço>/`), como no WordPress
+- Painel de conteúdo: `/admin` (Sveltia CMS, `public/admin/config.yml`) edita blog e depoimentos direto no GitHub; cada publicação vira commit na `main`
 - Logos de clientes e autorização de marca: `src/data/site.ts`, lista `logos`
 - Tokens da marca: `src/styles/global.css`
 - Redirecionamentos 301 das URLs do WordPress: `public/.htaccess`
@@ -32,7 +35,9 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 | Pasta | O que é | Versionado |
 | --- | --- | --- |
 | `src/` | Código-fonte Astro: `pages/` (10 páginas), `components/`, `layouts/`, `data/` (conteúdo), `styles/`, `scripts/` | sim |
-| `public/` | Arquivos servidos como estão (`favicon.svg`, `.htaccess`) | sim |
+| `src/content/blog/` | Posts do blog em Markdown | sim |
+| `public/` | Arquivos servidos como estão (`favicon.svg`, `.htaccess`, `enviar.php`, `admin/`, `blog/imagens/`) | sim |
+| `.github/workflows/` | Publicação automática da `/v2-teste/` a cada commit na `main` | sim |
 | `build/v0.9/` | Site compilado v0.9, exportado do Claude Desktop em 29/09: 10 páginas (inclui `/obrigado/`), links na raiz do domínio, `.htaccess` com 301 das URLs do WordPress, `robots.txt` bloqueando tudo e `noindex` (ainda é teste). Referência para conferir que a fonte reproduz o que foi exportado | sim |
 | `imagens/` | Peças de ilustração **aprovadas**, no padrão `inner-<código>-<assunto>-v<n>.png` + `.txt` com prompt e ferramenta | sim |
 | `imagens/pendente/` | Peças geradas aguardando aprovação | não |
@@ -59,9 +64,11 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 ### Antes de publicar em produção (vindas da fonte)
 
 - Formulário: `public/enviar.php` envia como o WordPress fazia (para `contato@innerplacement.com.br`, remetente e assunto iguais; registro em `~/inner-mensagens/` no servidor). Na `/v2-teste/` o e-mail sai para o `destino_teste` de `~/inner-formulario.php` no servidor (configurado em 01/10 para `contato@innerplacement.com.br`, com "[teste]" no assunto); sem ele, a mensagem fica só registrada. A P13 (destino com a Paula) segue registrada na documentação funcional.
-- Vídeos de depoimento: faltam as URLs publicadas.
+- Vídeos de depoimento: Thiago com vídeo (hUHq-XQ4REs); Gisele, Vinícius e Rafael ainda sem link. A Fabíola segue em texto até a versão editada (P9).
+- Blog: migrado para a v2 em 01/10 (9 posts). No deploy na raiz, acrescentar 301 para `/profissionais/`, `/category/*`, `/depoimento/*` e `/author/*` em `public/.htaccess`.
+- Painel `/admin`: falta o login "Entrar com GitHub" (OAuth App + Cloudflare Worker `sveltia-cms-auth`, depois `base_url` no `config.yml`); até lá, entrar com token pessoal do GitHub.
 - Logos: todos autorizados (confirmação do dono em 01/10/2026).
-- Quem somos: página da v2 com o conteúdo da página do WordPress (`src/data/socios.ts`, fotos em `public/equipe/`), aprovada em 01/10. Blog continua apontando para o WordPress atual.
+- Quem somos: página da v2 com o conteúdo da página do WordPress (`src/data/socios.ts`, fotos em `public/equipe/`), aprovada em 01/10.
 - Indexação: a fonte já está pronta para produção (só `/obrigado/` tem `noindex`, sem `robots.txt`). O build `build/v0.9/` tem `robots.txt` bloqueando tudo e `noindex` na home porque foi preparado como teste — não reaproveitar esses dois arquivos no deploy final.
 
 ### Imagens
