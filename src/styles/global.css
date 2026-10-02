@@ -344,7 +344,10 @@
 @layer components {
   .prog-logo { position: relative; isolation: isolate; display: inline-flex; align-items: center; padding-right: .55em; font-size: 30px; font-weight: 300; line-height: 1; letter-spacing: -.025em; }
   @media (min-width: 768px) { .prog-logo { font-size: 36px; } }
-  .prog-logo .pl-nome { position: relative; z-index: 1; mix-blend-mode: multiply; color: var(--color-tinta); }
+  /* O nome fica sólido sobre a rosácea (não mais "multiply", que embaralhava as letras que caíam em
+     cima da flor); um halo na cor do cartão (sempre branco aqui) empurra a rosácea para trás bem na
+     área do texto, sem cortar o resto da flor nem depender do comprimento de cada nome. */
+  .prog-logo .pl-nome { position: relative; z-index: 1; color: var(--color-tinta); text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 9px #fff; }
   .prog-logo .pl-ros { position: absolute; z-index: 0; right: -.25em; top: 50%; width: 1.55em; height: auto; translate: 0 -50%; opacity: .92; transition: rotate .7s cubic-bezier(.2, .8, .3, 1); }
   .prog-logo[data-para="empresa"] .pl-nome { color: var(--color-coral); font-weight: 400; }
   .prog-logo[data-para="empresa"] .pl-ros { filter: grayscale(1) brightness(.35); opacity: .22; }
@@ -428,16 +431,18 @@
    da home, grades das páginas de serviço). O selo do programa, no canto superior direito, é uma versão
    pequena do logótipo de Programa.astro (prog-logo): texto + rosácea coral meio por trás. */
 @layer components {
-  .depo-cartao { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 14px;
-    height: 100%; padding: 30px 20px 20px; border-radius: 22px 22px 30px 22px; background: #fff;
+  .depo-cartao { --card-bg: #fff; position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 14px;
+    height: 100%; padding: 30px 20px 20px; border-radius: 22px 22px 30px 22px; background: var(--card-bg);
     box-shadow: inset 0 0 0 1px var(--color-linha); }
   @media (min-width: 768px) { .depo-cartao { padding: 34px 26px 24px; } }
-  .depo-cartao.depo-cartao-areia { background: var(--color-areia-c); box-shadow: inset 0 0 0 1px rgb(35 31 32 / .06); }
+  .depo-cartao.depo-cartao-areia { --card-bg: var(--color-areia-c); box-shadow: inset 0 0 0 1px rgb(35 31 32 / .06); }
   .dc-canto { position: absolute; inset: 0; z-index: -1; overflow: hidden; border-radius: inherit; pointer-events: none; }
   .dc-canto svg { position: absolute; right: -42px; bottom: -48px; width: 140px; height: auto; opacity: .08; transition: rotate .7s cubic-bezier(.2, .8, .3, 1); }
   .dc-aspas { position: absolute; top: 20px; left: 20px; width: 30px; height: auto; color: var(--color-coral); opacity: .9; }
   .dc-selo { position: absolute; top: 18px; right: 18px; z-index: 1; display: inline-flex; align-items: center; padding-right: .5em; }
-  .dc-selo-nome { position: relative; z-index: 1; font-size: 12.5px; font-weight: 600; letter-spacing: -.01em; color: var(--color-tinta); mix-blend-mode: multiply; }
+  /* Nome sólido com halo na cor do próprio cartão (--card-bg): a rosácea fica "cortada" atrás das
+     letras, em vez de misturar cor com elas (era "multiply", difícil de ler). */
+  .dc-selo-nome { position: relative; z-index: 1; font-size: 12.5px; font-weight: 600; letter-spacing: -.01em; color: var(--color-tinta); text-shadow: 0 0 1px var(--card-bg), 0 0 3px var(--card-bg), 0 0 5px var(--card-bg); }
   .dc-selo-ros { position: absolute; z-index: 0; right: -.3em; top: 50%; translate: 0 -50%; opacity: .85; }
   .dc-citacao { position: relative; z-index: 1; flex: 1; padding-top: 14px; font-size: 15.5px; line-height: 1.6; color: var(--color-texto); }
   .dc-assina { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 2px; padding-top: 14px; margin-top: auto;
