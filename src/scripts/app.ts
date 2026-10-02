@@ -155,5 +155,8 @@ document.querySelectorAll<HTMLElement>('[data-carrossel-caixa]').forEach((caixa)
   atualiza();
 });
 
+// Reabre o aviso de cookies (CookieConsent.astro) pelo link do rodapé, para quem quiser rever a escolha.
+document.getElementById('abrir-cookies')?.addEventListener('click', () => dispatchEvent(new Event('cookies-reabrir')));
+
 (window as any).Alpine = Alpine;
 Alpine.start();

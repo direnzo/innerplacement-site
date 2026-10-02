@@ -22,6 +22,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 
 - Conteúdo é literal da documentação funcional aprovada pelos sócios, em `src/data/`.
 - Texto do botão principal (pendência P1): `src/data/site.ts`, constante `CTA`
+- Política de privacidade: `src/pages/politica-de-privacidade.astro` — texto migrado do WordPress em 02/10/2026 (era um link externo). Aviso de cookies (LGPD): `src/components/CookieConsent.astro`, em todas as páginas via `Base.astro`; guarda a escolha em localStorage, sem servidor. O link "Preferências de cookies" no rodapé reabre o aviso
 - Perguntas frequentes (fonte única da home e do FAQ): `src/data/faq.ts`
 - Depoimentos: `src/data/depoimentos.json` (dados, editáveis pelo painel) e `src/data/depoimentos.ts` (montagem das seções e, em `depoimentosHome`, a lista usada na home). Vídeo: link do YouTube no campo `video`; o player só carrega no clique (youtube-nocookie). Na home, o destaque em vídeo é sempre quem, na lista, já tem o link; o carrossel de cartões abaixo mostra o resto, embaralhado a cada visita (`data-carrossel` em `src/scripts/app.ts`, reproduzido em `tools/versao-teste.py`)
 - Blog: um arquivo Markdown por post em `src/content/blog/<endereço>.md` (esquema em `src/content.config.ts`), capas em `public/blog/imagens/`. Os posts ficam na raiz (`/<endereço>/`), como no WordPress
@@ -68,6 +69,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 - Dois vídeos do WordPress ficaram de fora, por decisão do dono (02/10/2026): `bFoSEb7KJyM` (Ricardo Mazzei, não está na lista de depoimentos da v2) e `NN5R0YdessA` (Luciano Silva — é dele, mas falta o texto/cargo/seção para criar o depoimento; não está em `depoimentos.json`).
 - Blog: migrado para a v2 em 01/10 (9 posts). No deploy na raiz, acrescentar 301 para `/profissionais/`, `/category/*`, `/depoimento/*` e `/author/*` em `public/.htaccess`.
 - Painel `/admin`: falta o login "Entrar com GitHub" (OAuth App + Cloudflare Worker `sveltia-cms-auth`, depois `base_url` no `config.yml`); até lá, entrar com token pessoal do GitHub.
+- Política de privacidade: o texto é o mesmo já publicado no WordPress (migrado em 02/10/2026, sem alteração). O aviso de cookies é novo nessa data; o texto da política ainda fala em termos genéricos ("pode utilizar cookies") — decisão do dono se vale atualizar para descrever o aviso e as categorias de cookies de fato usadas hoje (hoje, nenhum cookie de terceiro, só a preferência salva no navegador).
 - Logos: todos autorizados (confirmação do dono em 01/10/2026).
 - Quem somos: página da v2 com o conteúdo da página do WordPress (`src/data/socios.ts`, fotos em `public/equipe/`), aprovada em 01/10.
 - Indexação: a fonte já está pronta para produção (só `/obrigado/` tem `noindex`, sem `robots.txt`). O build `build/v0.9/` tem `robots.txt` bloqueando tudo e `noindex` na home porque foi preparado como teste — não reaproveitar esses dois arquivos no deploy final.

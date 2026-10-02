@@ -1,0 +1,36 @@
+---
+import { rotas } from '../data/site';
+// Aviso de cookies (LGPD): aparece no primeiro acesso e guarda a escolha em localStorage (sem servidor,
+// sem cookie de verdade para guardar a preferência). Hoje o site não carrega nenhum cookie de terceiro
+// (análise, publicidade) — só o essencial para funcionar; quando isso mudar, os novos scripts devem
+// checar essa escolha antes de carregar. O botão "Preferências de cookies" do rodapé reabre este aviso
+// a qualquer momento, para quem quiser rever ou trocar a escolha (o script fica em app.ts).
+---
+<aside x-data="{
+    aberto: false,
+    escolher(v) {
+      try { localStorage.setItem('cookies-inner', v); } catch {}
+      this.aberto = false;
+    },
+    init() {
+      let v = null;
+      try { v = localStorage.getItem('cookies-inner'); } catch {}
+      this.aberto = !v;
+    },
+  }" x-cloak x-show="aberto" x-transition.opacity.duration.200ms @cookies-reabrir.window="aberto = true"
+  class="fixed inset-x-0 bottom-0 z-50 pb-[max(16px,env(safe-area-inset-bottom))] pt-4" role="dialog" aria-live="polite" aria-label="Preferências de cookies">
+  <div class="wrap">
+    <div class="flex flex-col gap-4 rounded-[22px] bg-tinta p-5 text-white shadow-[0_18px_44px_rgba(35,31,32,.3)] md:flex-row md:items-center md:justify-between md:gap-8 md:p-6">
+      <p class="text-[13.5px] leading-[1.55] text-white/80 md:max-w-[620px] md:text-[14.5px]">
+        Usamos cookies essenciais para o site funcionar e, com a sua permissão, para entender como ele é
+        usado. Veja os detalhes na <a href={rotas.privacidade} class="text-white underline underline-offset-2 hover:text-coral-c">política de privacidade</a>.
+      </p>
+      <div class="flex shrink-0 gap-2.5">
+        <button type="button" @click="escolher('recusado')"
+          class="inline-flex min-h-[44px] flex-1 items-center justify-center rounded-full px-5 text-[14px] font-semibold text-white ring-1 ring-inset ring-white/30 transition-colors hover:ring-white/60 md:flex-none">Recusar</button>
+        <button type="button" @click="escolher('aceito')"
+          class="btn min-h-[44px] flex-1 !px-5 !text-[14px] md:flex-none">Aceitar</button>
+      </div>
+    </div>
+  </div>
+</aside>
