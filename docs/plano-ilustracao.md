@@ -82,7 +82,7 @@ fora, como o guia pede.
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | concluído (30/09), no site com movimento |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | concluído (01/10), no site com movimento |
-| 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | topos concluídos (01/10); compartilhamento a fazer |
+| 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | concluído (01/10) |
 
 As outras 50 peças do "plano completo" do guia (ícones de etapa, padrões) entram só onde um bloco
 mostrar que fazem falta.
@@ -323,6 +323,8 @@ Branch `imagens/compartilhamento`. Gerador: `tools/compartilhamento.mts` → `pu
 oficial do kit, título exato da página (o mesmo do `<Base titulo>`), selo "Consultoria de carreira · até
 acontecer" afastado do logo, endereço e a ilustração aprovada da página. Ao mudar uma ilustração ou um
 título, rode o gerador de novo. Revisão: https://claude.ai/artifact/EPRZ6sngWe4DoJcLHDfGKo
+
+**Aprovadas pelo dono em 01/10.** Com isso, os cinco blocos do plano de ilustração estão concluídos.
 
 - `Base.astro`: `og:image` (+ largura, altura, alt), `og:site_name` e `twitter:card`. O Agradecimento
   usa a imagem da home.
