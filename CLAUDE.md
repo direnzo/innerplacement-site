@@ -69,6 +69,10 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
   **com senha**. O dono destrava a chave no terminal dele (comando no topo do script) num agente com
   socket fixo `~/.ssh/agente-inner-v2.sock`, válido por 4 h. Se o script disser "Sem acesso",
   peça ao dono para destravar; nunca peça nem manipule a senha.
+- Formulário: `public/enviar.php` (envio como o WordPress fazia). No servidor, fora da pasta pública:
+  `~/inner-formulario.php` (config; `destino_teste` = contato@innerplacement.com.br) e
+  `~/inner-mensagens/` (registro de cada mensagem, com dados pessoais: não copiar para o repositório).
+  Testar envio real gera e-mail na caixa da Inner: só com o dono ciente.
 - A chave antiga `~/.ssh/innerplacement` (sem senha) é do repositório do WordPress; não usar aqui.
   Revogá-la fica para depois (decisão do dono, 29/09).
 
