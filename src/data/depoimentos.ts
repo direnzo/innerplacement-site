@@ -32,6 +32,11 @@ export const secoesDepoimentos = SECOES.map((s) => ({
   ids: itens.filter((d) => d.secao === s.chave).sort((a, b) => a.ordem - b.ordem).map((d) => d.id),
 }));
 
+// Para a home: todo depoimento oficial com seção (os mesmos das 3 seções acima, sem os de página própria,
+// como Thiago e Christian). Pega a lista de quem está em depoimentos.json agora — nada de nomes fixos no
+// código; a ordem de exibição é embaralhada no navegador (src/scripts/app.ts), então muda a cada visita.
+export const depoimentosHome = itens.filter((d) => d.secao).map((d) => d.id);
+
 export const assinatura = (d: Depoimento) => [d.cargo, d.programa].filter(Boolean).join(' · ');
 
 // ID do vídeo do YouTube a partir do link (youtu.be/ID, watch?v=ID, embed/ID, shorts/ID).

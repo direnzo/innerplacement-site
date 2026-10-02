@@ -90,6 +90,16 @@
   .btn-c { box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.6); color: #fff; }
   .btn-c:hover { background: rgba(255,255,255,.1); }
 
+  /* Setas do carrossel de depoimentos da home (data-carrossel em app.ts). No toque, o arraste já basta;
+     as setas só aparecem a partir do md, para quem navega com mouse. */
+  .carrossel-seta {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 999px;
+    border: 1.5px solid var(--color-linha); color: var(--color-tinta); transition: background .2s, color .2s, opacity .2s;
+  }
+  .carrossel-seta:hover { background: var(--color-tinta); color: #fff; }
+  .carrossel-seta:disabled { opacity: .35; pointer-events: none; }
+
   .via {
     display: flex; align-items: center; justify-content: space-between; gap: 14px;
     min-height: 52px; padding: 5px 5px 5px 20px; border-radius: 999px;

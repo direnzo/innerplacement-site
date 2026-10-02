@@ -184,6 +184,31 @@ document.querySelectorAll('[data-yt]').forEach(function (b) { b.addEventListener
     a.addEventListener('mouseleave', desliga); a.addEventListener('blur', desliga);
   });
 })();
+// Carrossel de depoimentos da home: cópia de src/scripts/app.ts (manter as duas iguais).
+document.querySelectorAll('[data-carrossel]').forEach(function (trilho) {
+  var cartoes = Array.prototype.slice.call(trilho.children);
+  for (var i = cartoes.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = cartoes[i]; cartoes[i] = cartoes[j]; cartoes[j] = tmp;
+  }
+  cartoes.forEach(function (c) { trilho.appendChild(c); });
+});
+document.querySelectorAll('[data-carrossel-caixa]').forEach(function (caixa) {
+  var trilho = caixa.querySelector('[data-carrossel]');
+  var anterior = caixa.querySelector('[data-carrossel-anterior]');
+  var proximo = caixa.querySelector('[data-carrossel-proximo]');
+  if (!trilho || !anterior || !proximo) return;
+  function passo() { return (trilho.firstElementChild && trilho.firstElementChild.getBoundingClientRect().width) || 320; }
+  anterior.addEventListener('click', function () { trilho.scrollBy({ left: -(passo() + 24), behavior: 'smooth' }); });
+  proximo.addEventListener('click', function () { trilho.scrollBy({ left: passo() + 24, behavior: 'smooth' }); });
+  function atualiza() {
+    anterior.disabled = trilho.scrollLeft < 4;
+    proximo.disabled = trilho.scrollLeft > trilho.scrollWidth - trilho.clientWidth - 4;
+  }
+  trilho.addEventListener('scroll', atualiza, { passive: true });
+  addEventListener('resize', atualiza);
+  atualiza();
+});
 </script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.9/cdn.min.js"></script>
 """

@@ -23,7 +23,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 - Conteúdo é literal da documentação funcional aprovada pelos sócios, em `src/data/`.
 - Texto do botão principal (pendência P1): `src/data/site.ts`, constante `CTA`
 - Perguntas frequentes (fonte única da home e do FAQ): `src/data/faq.ts`
-- Depoimentos: `src/data/depoimentos.json` (dados, editáveis pelo painel) e `src/data/depoimentos.ts` (montagem das seções). Vídeo: link do YouTube no campo `video`; o player só carrega no clique (youtube-nocookie)
+- Depoimentos: `src/data/depoimentos.json` (dados, editáveis pelo painel) e `src/data/depoimentos.ts` (montagem das seções e, em `depoimentosHome`, a lista usada na home). Vídeo: link do YouTube no campo `video`; o player só carrega no clique (youtube-nocookie). Na home, o destaque em vídeo é sempre quem, na lista, já tem o link; o carrossel de cartões abaixo mostra o resto, embaralhado a cada visita (`data-carrossel` em `src/scripts/app.ts`, reproduzido em `tools/versao-teste.py`)
 - Blog: um arquivo Markdown por post em `src/content/blog/<endereço>.md` (esquema em `src/content.config.ts`), capas em `public/blog/imagens/`. Os posts ficam na raiz (`/<endereço>/`), como no WordPress
 - Painel de conteúdo: `/admin` (Sveltia CMS, `public/admin/config.yml`) edita blog e depoimentos direto no GitHub; cada publicação vira commit na `main`
 - Logos de clientes e autorização de marca: `src/data/site.ts`, lista `logos`
