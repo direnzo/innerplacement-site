@@ -185,7 +185,17 @@ document.querySelectorAll('[data-yt]').forEach(function (b) { b.addEventListener
     a.addEventListener('mouseleave', desliga); a.addEventListener('blur', desliga);
   });
 })();
-// Carrossel de depoimentos da home: cópia de src/scripts/app.ts (manter as duas iguais).
+// Destaque e carrossel de depoimentos da home: cópia de src/scripts/app.ts (manter as duas iguais).
+var destaques = document.querySelector('[data-depo-destaques]');
+var itensDestaque = destaques ? Array.prototype.slice.call(destaques.querySelectorAll('[data-destaque-item]')) : [];
+if (itensDestaque.length) {
+  var selecionado = itensDestaque[Math.floor(Math.random() * itensDestaque.length)];
+  var idDestaque = selecionado.dataset.destaqueItem;
+  itensDestaque.forEach(function (item) { item.classList.toggle('hidden', item !== selecionado); });
+  document.querySelectorAll('[data-carrossel] [data-depo-id]').forEach(function (card) {
+    card.classList.toggle('hidden', card.dataset.depoId === idDestaque);
+  });
+}
 document.querySelectorAll('[data-carrossel]').forEach(function (trilho) {
   var cartoes = Array.prototype.slice.call(trilho.children);
   for (var i = cartoes.length - 1; i > 0; i--) {
@@ -199,7 +209,8 @@ document.querySelectorAll('[data-carrossel-caixa]').forEach(function (caixa) {
   var anterior = caixa.querySelector('[data-carrossel-anterior]');
   var proximo = caixa.querySelector('[data-carrossel-proximo]');
   if (!trilho || !anterior || !proximo) return;
-  function passo() { return (trilho.firstElementChild && trilho.firstElementChild.getBoundingClientRect().width) || 320; }
+  function primeiroVisivel() { return Array.prototype.slice.call(trilho.children).find(function (el) { return !el.classList.contains('hidden'); }); }
+  function passo() { var primeiro = primeiroVisivel(); return (primeiro && primeiro.getBoundingClientRect().width) || 320; }
   anterior.addEventListener('click', function () { trilho.scrollBy({ left: -(passo() + 24), behavior: 'smooth' }); });
   proximo.addEventListener('click', function () { trilho.scrollBy({ left: passo() + 24, behavior: 'smooth' }); });
   function atualiza() {

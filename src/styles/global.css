@@ -449,6 +449,17 @@
     border-top: 1.5px solid var(--color-coral); }
   .dc-nome { font-size: 15.5px; font-weight: 600; color: var(--color-tinta); }
   .dc-cargo { font-size: 13px; line-height: 1.4; color: var(--color-mudo); }
+  .depo-cartao-destaque { min-height: 100%; padding: 34px 24px 26px; }
+  .depo-cartao-destaque .dc-aspas { top: 25px; left: 24px; width: 38px; }
+  .depo-cartao-destaque .dc-selo { top: 22px; right: 24px; }
+  .depo-cartao-destaque .dc-citacao { padding-top: 22px; font-size: 17px; line-height: 1.62; }
+  .depo-cartao-destaque .dc-assina { padding-top: 17px; }
+  .depo-cartao-destaque .dc-nome { font-size: 17px; }
+  .depo-cartao-destaque .dc-cargo { font-size: 14px; }
+  .depo-trilho { align-items: stretch; }
+  .depo-trilho > .depo-cartao { height: auto; min-height: 100%; }
+  .depo-trilho > .depo-cartao[hidden] { display: none; }
+  .depo-destaque-midia { box-shadow: inset 0 0 0 1px rgb(35 31 32 / .06); }
 }
 @media (hover: hover) { @layer components { .depo-cartao:hover .dc-canto svg { rotate: 50deg; } } }
 

@@ -11,7 +11,7 @@ import fBola from '../../imagens/inner-F01-bola-v1.svg?raw';
 import fArcos from '../../imagens/inner-F02-arcos-v1.svg?raw';
 import fSetas from '../../imagens/inner-F03-chevrons-v1.svg?raw';
 import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
-import { EMAIL, WHATSAPP_TXT, GTM_ID } from '../data/site';
+import { EMAIL, WHATSAPP_TXT, GTM_ID, enderecos } from '../data/site';
 // fundo: formas da marca flutuando nas bordas de todas as páginas (pedido do dono, 01/10); a home desliga
 // (fundo={false}) porque tem as suas, posicionadas à mão no bloco 2.
 // ogImagem: caminho de uma imagem de compartilhamento própria (posts do blog: a capa). tipo: og:type.
@@ -27,10 +27,9 @@ const ogImagem = new URL(ogPropria ?? `/og/${comImagem.includes(pagina) ? pagina
 const org = {
   '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Inner Placement',
   url: 'https://innerplacement.com.br/', email: EMAIL, telephone: WHATSAPP_TXT,
-  areaServed: 'BR', address: [
-    { '@type': 'PostalAddress', streetAddress: 'Av. Tabapuã, 500, cj. 32, Itaim Bibi', addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR' },
-    { '@type': 'PostalAddress', streetAddress: 'R. Visconde do Rio Branco, 1358, cj. 703, Centro', addressLocality: 'Curitiba', addressRegion: 'PR', addressCountry: 'BR' },
-  ],
+  areaServed: 'BR', address: enderecos.map((e) => ({
+    '@type': 'PostalAddress', streetAddress: `${e.rua}, ${e.bairro}`, addressLocality: e.cidade, addressRegion: e.uf, addressCountry: 'BR',
+  })),
 };
 ---
 <!doctype html>

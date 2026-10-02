@@ -8,7 +8,23 @@ export const EMAIL = 'contato@innerplacement.com.br';
 // público de innerplacement.com.br em 02/10/2026), para manter o histórico do Analytics ao trocar de
 // site. Ligado com o Consent Mode do Google: só mede com a permissão dada no aviso de cookies.
 export const GTM_ID = 'GTM-ND356DQM';
-export const CIDADES = 'São Paulo · Curitiba';
+
+// Endereços dos dois escritórios (iguais aos do schema.org em Base.astro — fonte única). mapsHref monta
+// o link do Google Maps a partir deles, para o rodapé e qualquer outro lugar que precisar.
+export const enderecos = [
+  { cidade: 'São Paulo', uf: 'SP', rua: 'Av. Tabapuã, 500, cj. 32', bairro: 'Itaim Bibi' },
+  { cidade: 'Curitiba', uf: 'PR', rua: 'R. Visconde do Rio Branco, 1358, cj. 703', bairro: 'Centro' },
+] as const;
+export const mapsHref = (e: (typeof enderecos)[number]) =>
+  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${e.rua}, ${e.bairro}, ${e.cidade} - ${e.uf}`)}`;
+
+// Redes sociais oficiais (confirmadas no rodapé de innerplacement.com.br em 02/10/2026).
+export const redes = [
+  { nome: 'LinkedIn', href: 'https://www.linkedin.com/company/inner-placement/' },
+  { nome: 'Instagram', href: 'https://www.instagram.com/innerplacement/' },
+  { nome: 'Facebook', href: 'https://www.facebook.com/innerplacement/' },
+  { nome: 'YouTube', href: 'https://www.youtube.com/@InnerPlacement' },
+] as const;
 
 export const rotas = {
   inicio: '/',

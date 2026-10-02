@@ -5,7 +5,7 @@ import Badge from '../components/Badge.astro';
 import Caminhos from '../components/Caminhos.astro';
 import Clientes from '../components/Clientes.astro';
 import DepoCard from '../components/DepoCard.astro';
-import DepoVideo from '../components/DepoVideo.astro';
+import DepoDestaque from '../components/DepoDestaque.astro';
 import Acordeao from '../components/Acordeao.astro';
 import heroSvg from '../../imagens/inner-H01-hero-v4.svg?raw';
 // Bloco 2 (tools/ilustracao/bloco2.mts), aprovado em 30/09.
@@ -34,12 +34,8 @@ import { numeros, rotas } from '../data/site';
 // Painel do hero: H-01 aprovada (SVG gerado por tools/ilustracao/hero.mts), inline.
 const painel = miolo(heroSvg);
 
-// Prova: lista oficial da home (depoimentosHome), não nomes fixos. O destaque em vídeo é quem, nessa
-// lista, já tem o link do YouTube; sem ninguém assim, a seção mostra só o carrossel de cartões. A ordem
-// do carrossel é embaralhada no navegador (data-carrossel-aleatorio em app.ts) a cada visita.
+// Prova: destaque e carrossel usam a lista oficial, sorteados no navegador a cada visita.
 const poolProva = depoimentosHome.map((id) => D[id]);
-const videoProva = poolProva.find((d) => d.video && d.videoUrl);
-const cartoesProva = poolProva.filter((d) => d !== videoProva);
 const glifos = [nAnos, nPessoas, nPorcento];
 // Formas de fundo: decorativas, nas bordas, com leve deslocamento na rolagem (.fundo-par).
 const fundo = (svg: string, vb: string, cls: string) => `<svg viewBox="${vb}" class="fundo-par pointer-events-none absolute ${cls}" aria-hidden="true" data-rolagem="elemento">${miolo(svg)}</svg>`;
@@ -125,10 +121,12 @@ const metodo = [
       </div>
       <a href={rotas.depoimentos} class="btn-l hidden md:inline-flex">Ver todos os depoimentos</a>
     </div>
-    {videoProva && <DepoVideo d={videoProva} grande capa={h06} />}
+    <div class="flex flex-col gap-4" data-depo-destaques>
+      {poolProva.map((d, i) => <DepoDestaque d={d} capa={h06} inicial={i === 0} />)}
+    </div>
     <div data-carrossel-caixa>
-      <div class="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] md:mx-0 md:gap-6 md:px-0 [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start md:[&>*]:w-[340px]" data-carrossel>
-        {cartoesProva.map((d) => <DepoCard d={d} />)}
+      <div class="depo-trilho -mx-4 flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] md:mx-0 md:gap-6 md:px-0 [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start md:[&>*]:w-[340px]" data-carrossel>
+        {poolProva.map((d) => <DepoCard d={d} />)}
       </div>
       <div class="mt-3 hidden justify-end gap-2 md:flex">
         <button type="button" class="carrossel-seta" data-carrossel-anterior aria-label="Depoimentos anteriores">

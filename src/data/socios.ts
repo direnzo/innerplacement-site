@@ -2,15 +2,20 @@
 // substituições globais da seção 11 se algum termo aparecer" — nenhum aparece. Os textos são literais da
 // página do WordPress (innerplacement.com.br/quem-somos/, conferida em 01/10/2026). Única correção: a aspa
 // de fechamento solta no fim da frase de abertura, sem a de abertura.
+// Fotos em src/assets/equipe/ (não public/equipe/): import comum, para o <Image> (astro:assets) otimizar
+// — gerar WebP/AVIF no tamanho certo — em vez de servir o arquivo original direto, sem processar.
+import fotoCesar from '../assets/equipe/cesar-cordeiro.webp';
+import fotoDebora from '../assets/equipe/debora-ereno.webp';
+import fotoPaula from '../assets/equipe/paula-oliveira.webp';
 
 export const abertura =
   'Nosso time é formado por profissionais altamente experientes em desenvolvimento executivo e gestão de carreira, combinando expertise em liderança, negócios e transformação profissional.';
 
-export type Socio = { id: string; nome: string; foto: string; linkedin: string; citacao: string; perfil: string[]; formacao: string };
+export type Socio = { id: string; nome: string; foto: ImageMetadata; linkedin: string; citacao: string; perfil: string[]; formacao: string };
 
 export const socios: Socio[] = [
   {
-    id: 'cesar-cordeiro', nome: 'César Cordeiro', foto: '/equipe/cesar-cordeiro.webp',
+    id: 'cesar-cordeiro', nome: 'César Cordeiro', foto: fotoCesar,
     linkedin: 'https://www.linkedin.com/in/cesarcordeiro/',
     citacao: 'Todo profissional carrega mais do que imagina. Meu papel é ajudar a descobrir isso — e a comunicar da forma que o mercado precisa ouvir.',
     perfil: [
@@ -20,7 +25,7 @@ export const socios: Socio[] = [
     formacao: 'Economista. Pós-graduado em Administração pela Universitá Bocconi (Itália). Especializado em RH pela Harvard Extension School. Master in Science of Management pela Arthur D. Little (Boston). Master Coach pelo CAC e HR Agile Practitioner.',
   },
   {
-    id: 'debora-ereno', nome: 'Débora Ereno', foto: '/equipe/debora-ereno.webp',
+    id: 'debora-ereno', nome: 'Débora Ereno', foto: fotoDebora,
     linkedin: 'https://www.linkedin.com/in/debora-ereno-da-silva/',
     citacao: 'Quando alguém chega até mim num momento de transição, o que mais precisa não é de uma lista de passos. Precisa de alguém que acredite que vai dar certo — e saiba mostrar como.',
     perfil: [
@@ -30,7 +35,7 @@ export const socios: Socio[] = [
     formacao: 'Administradora. MBA em Gestão de Negócios. Master Coach certificada internacionalmente pelo CAC e Executive Coach & Trainer pela Net Profit Brasil.',
   },
   {
-    id: 'paula-oliveira', nome: 'Paula Oliveira', foto: '/equipe/paula-oliveira.webp',
+    id: 'paula-oliveira', nome: 'Paula Oliveira', foto: fotoPaula,
     linkedin: 'https://www.linkedin.com/in/paula-alessandra-oliveira/',
     citacao: 'Toda transição, por mais desafiadora que pareça no início, carrega em si a semente de algo muito maior. Meu trabalho é ajudar a encontrar essa semente — e a plantá-la no lugar certo.',
     perfil: [

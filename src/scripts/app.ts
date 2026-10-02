@@ -127,9 +127,18 @@ document.querySelectorAll<HTMLButtonElement>('[data-yt]').forEach((b) => b.addEv
   f.focus();
 }));
 
-// Carrossel de depoimentos da home (Prova): embaralha a ordem dos cartões a cada carregamento da página
-// (puxa a lista oficial de src/data/depoimentos.ts; nada fixo aqui) e liga as setas de navegação. Sem
-// JavaScript, os cartões aparecem na ordem do arquivo e dá para arrastar — o carrossel ainda funciona.
+// Destaque e carrossel de depoimentos da home: sorteia um destaque por visita, tira o selecionado do
+// carrossel e embaralha os demais. A lista oficial vem de src/data/depoimentos.ts.
+const destaques = document.querySelector<HTMLElement>('[data-depo-destaques]');
+const itensDestaque = destaques ? [...destaques.querySelectorAll<HTMLElement>('[data-destaque-item]')] : [];
+if (itensDestaque.length) {
+  const selecionado = itensDestaque[Math.floor(Math.random() * itensDestaque.length)];
+  const id = selecionado.dataset.destaqueItem;
+  itensDestaque.forEach((item) => item.classList.toggle('hidden', item !== selecionado));
+  document.querySelectorAll<HTMLElement>('[data-carrossel] [data-depo-id]').forEach((card) => {
+    card.classList.toggle('hidden', card.dataset.depoId === id);
+  });
+}
 document.querySelectorAll<HTMLElement>('[data-carrossel]').forEach((trilho) => {
   const cartoes = [...trilho.children];
   for (let i = cartoes.length - 1; i > 0; i--) {
@@ -143,7 +152,8 @@ document.querySelectorAll<HTMLElement>('[data-carrossel-caixa]').forEach((caixa)
   const anterior = caixa.querySelector<HTMLButtonElement>('[data-carrossel-anterior]');
   const proximo = caixa.querySelector<HTMLButtonElement>('[data-carrossel-proximo]');
   if (!trilho || !anterior || !proximo) return;
-  const passo = () => (trilho.firstElementChild as HTMLElement)?.getBoundingClientRect().width ?? 320;
+  const primeiroVisivel = () => [...trilho.children].find((el) => !el.classList.contains('hidden')) as HTMLElement | undefined;
+  const passo = () => primeiroVisivel()?.getBoundingClientRect().width ?? 320;
   anterior.addEventListener('click', () => trilho.scrollBy({ left: -(passo() + 24), behavior: 'smooth' }));
   proximo.addEventListener('click', () => trilho.scrollBy({ left: passo() + 24, behavior: 'smooth' }));
   const atualiza = () => {
