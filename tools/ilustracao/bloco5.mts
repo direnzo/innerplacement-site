@@ -101,6 +101,23 @@ pecas['P10-quem-somos'] = svg(420, 300, 'Quem somos: os três sócios', [
   `<g class="p-quem">${trio(214 - 70.13 * .95, 262, .95, [C.areia, C.coral, C.ambar])}</g>`,
 ].join(''));
 
+// ── P-11 · Blog: artigos sobre carreira, liderança e transformação ──────────────────────────────
+// Cartões de artigo empilhados (a capa em degradê, título e linhas) e a fita coral de marcador.
+const artigo = (x: number, y: number, rot: number, cls: string, id: string) =>
+  `<g class="${cls}" filter="url(#p11-s)"><g transform="rotate(${rot} ${x + 80} ${y + 70})"><rect x="${x}" y="${y}" width="160" height="140" rx="16" fill="${C.branco}"/>`
+  + `<rect x="${x + 12}" y="${y + 12}" width="136" height="58" rx="10" fill="url(#${id})"/>`
+  + linhas(x + 14, y + 84, [118, 96, 70]) + `</g></g>`;
+pecas['P11-blog'] = svg(420, 300, 'Blog: artigos sobre carreira', [
+  `<defs>${sombra('p11-s')}${coralV('p11-c')}${bolaG('p11-b')}<linearGradient id="p11-capa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${C.areiaC}"/><stop offset="1" stop-color="${C.areia}"/></linearGradient>`
+    + `<linearGradient id="p11-capa2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE3DE"/><stop offset="1" stop-color="#FF8A7E"/></linearGradient></defs>`,
+  `<circle class="p-bola" cx="226" cy="150" r="136" fill="url(#p11-b)"/>`,
+  artigo(70, 92, -8, 'p-acord', 'p11-capa'),
+  artigo(214, 96, 7, 'p-acord', 'p11-capa'),
+  artigo(140, 60, 0, 'p-card', 'p11-capa2'),
+  `<g class="p-selo" filter="url(#p11-s)"><path d="M262,44 h22 v46 l-11,-9 l-11,9 z" fill="url(#p11-c)"/></g>`,
+  `<g class="p-rosa">${ROSA(182, 91, 30, C.branco)}</g>`,
+].join(''));
+
 const dir = new URL('../../docs/ilustracao/bloco-5/', import.meta.url);
 mkdirSync(dir, { recursive: true });
 for (const [nome, conteudo] of Object.entries(pecas)) {
