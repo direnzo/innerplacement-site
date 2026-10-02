@@ -27,9 +27,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
@@ -57,6 +57,12 @@ jobs:
               StrictHostKeyChecking yes
           CFG
           command -v rsync >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq rsync; }
+
+      - name: Testar acesso ao servidor
+        # Só diagnóstico: mostra onde a conexão para (rede, chave do servidor ou autenticação).
+        run: |
+          ssh -o BatchMode=yes -o ConnectTimeout=20 -v inner-v2 true 2>&1 \
+            | grep -E 'Connecting|Connection|Authenticat|Offering|Server accepts|denied|refused|reset|timed out|Host key|Exit status' || true
 
       - name: Publicar
         run: tools/publicar-v2-teste.sh

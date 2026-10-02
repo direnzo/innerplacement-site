@@ -20,8 +20,9 @@ PRESERVAR=(folha-referencia-inner.png)
 cd "$(dirname "$0")/.."
 SSH=(ssh -o BatchMode=yes -o ConnectTimeout=15 "$HOST")
 
-if ! "${SSH[@]}" true 2>/dev/null; then
-  echo "Sem acesso ao $HOST. Destrave a chave no seu terminal (comando no topo deste script)." >&2
+if ! erro=$("${SSH[@]}" true 2>&1); then
+  echo "Sem acesso ao $HOST: ${erro:-sem mensagem do ssh}" >&2
+  echo "No seu terminal: destrave a chave (comando no topo deste script). No GitHub Actions: confira os segredos e se o servidor aceita a conexão." >&2
   exit 1
 fi
 
