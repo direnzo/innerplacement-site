@@ -18,8 +18,8 @@ const cap = (id: string, h: number, wmax: number) => {
     <!-- Carrossel de logos (revisão 30/09, item 6): mesma mecânica do carrossel de depoimentos
          (data-carrossel em app.ts); data-sem-embaralhar mantém a ordem oficial e data-auto liga o
          avanço automático, parado com "reduzir movimento", ao passar o mouse, ao focar ou ao tocar. -->
-    <div data-carrossel-caixa>
-      <ul class="logos -mx-1 flex snap-x snap-mandatory gap-2 overflow-x-auto px-1 pb-1 [scrollbar-width:none] md:mx-0 md:gap-3.5 md:px-0 [&::-webkit-scrollbar]:hidden" role="list" data-entrada data-carrossel data-sem-embaralhar data-auto>
+    <div data-carrossel-caixa class="overflow-visible">
+      <ul class="logos -mx-1 flex snap-x snap-mandatory gap-2 overflow-x-auto overflow-y-visible px-1 pb-3 pt-1 [scrollbar-width:none] md:mx-0 md:gap-3.5 md:px-0 [&::-webkit-scrollbar]:hidden" role="list" data-entrada data-carrossel data-sem-embaralhar data-auto>
         {logos.map((l, i) => {
           const m = cap(l.id, l.h * 0.56, 112), d = cap(l.id, l.h, 150);
           return (

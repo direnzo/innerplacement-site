@@ -50,22 +50,26 @@ const metodo = [
 <Base titulo="Consultoria de desenvolvimento de carreira" fechamento fundo={false}
   descricao="Consultoria de desenvolvimento de carreira: transição, outplacement e crescimento de executivos. Método e acompanhamento até acontecer.">
 
-  <!-- 1 · Hero -->
-  <section class="wrap grid grid-cols-[minmax(0,1fr)] items-center gap-6 pt-6 md:pt-8 lg:grid-cols-[minmax(0,1fr)_496px] lg:gap-11">
-    <div class="flex flex-col gap-3.5 md:gap-4">
+  <!-- 1 · Hero: só a frase em grande destaque, com a rosácea por trás. O painel H-01
+       (heroSvg/painel) fica preservado no código para uso futuro, sem renderizar. -->
+  <section class="relative isolate overflow-hidden">
+    <Svg name="rosacea_coral" w={560} class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-auto w-[min(130vw,560px)] -translate-x-1/2 -translate-y-1/2 opacity-[.14] md:w-[640px]" />
+    <div class="wrap flex flex-col items-center gap-4 py-12 text-center md:gap-5 md:py-16 lg:py-20 [&_.badge]:self-center">
       <Badge>Consultoria de carreira · até acontecer</Badge>
-      <h1 class="h1-hero max-w-[26ch]">Crescer na carreira ou fazer uma transição: decisões que exigem clareza, estratégia, e alguém que caminhe <strong>junto até acontecer.</strong></h1>
-      <p class="lead text-[16.5px] md:text-[19px]">Consultoria de desenvolvimento de carreira: transição, outplacement e crescimento de executivos.</p>
+      <h1 class="h1-hero max-w-[24ch] text-[30px] md:text-[38px] lg:text-[46px] lg:leading-[1.12]">Crescer na carreira ou fazer uma transição: decisões que exigem clareza, estratégia, e alguém que caminhe <strong>junto até acontecer.</strong></h1>
+      <p class="lead mx-auto max-w-[58ch] text-center text-[16.5px] md:text-[19px]">Consultoria de desenvolvimento de carreira: transição, outplacement e crescimento de executivos.</p>
     </div>
+    <!-- Futuro: painel H-01 guardado (heroSvg + painel + .hero-anim em global.css). Para reativar,
+         voltar ao grid de duas colunas com o bloco abaixo.
     <div class="hero-anim flex flex-col gap-3 rounded-[28px] bg-areia-c p-4 md:p-6" data-rolagem>
       <svg viewBox="0 0 496 280" class="h-auto w-full" aria-hidden="true" set:html={painel} />
-      <!-- Chips numa linha só, alinhados às etapas da ilustração; no celular a fonte escala com a largura do painel. -->
       <div class="@container flex justify-between gap-1.5 [&>.chip]:h-[2.6em] [&>.chip]:px-[.72em] [&>.chip]:text-[clamp(9.5px,calc(4.03cqi-0.48px),13px)]">
         <span class="chip h01-chip h01-chip-1">posicionamento</span>
         <span class="chip h01-chip h01-chip-2">network ativado</span>
         <span class="chip h01-chip h01-chip-3 !bg-tinta !text-white">até acontecer</span>
       </div>
     </div>
+    -->
   </section>
 
   <!-- 2 · Caminhos -->
@@ -139,10 +143,11 @@ const metodo = [
     </div>
     <div class="mx-auto grid w-full max-w-[820px] grid-cols-3 gap-3 border-t border-tinta/15 pt-6 md:gap-10 md:pt-8">
       {numeros.map((n, i) => (
-        <div class="flex flex-col items-center gap-2 text-center">
-          <svg viewBox="0 0 96 64" class="h-11 w-auto md:h-16" aria-hidden="true" data-entrada set:html={miolo(glifos[i])} />
-          <b data-conta class="text-[28px] font-semibold leading-none tracking-[-.02em] tabular-nums text-coral-d md:text-[44px]">{n.n}</b>
-          <span class="max-w-[190px] text-[13px] leading-[1.4] text-texto md:text-[14px]">{n.t}</span>
+        <div class="relative flex flex-col items-center gap-2 text-center">
+          <Svg name="oval_transparente" w={120} class="pointer-events-none absolute left-1/2 top-1/2 -z-0 h-auto w-[104px] -translate-x-1/2 -translate-y-1/2 opacity-60 md:w-[148px]" />
+          <svg viewBox="0 0 96 64" class="relative h-11 w-auto md:h-16" aria-hidden="true" data-entrada set:html={miolo(glifos[i])} />
+          <b data-conta class="relative text-[36px] font-semibold leading-none tracking-[-.02em] tabular-nums text-coral-d md:text-[57px]">{n.n}</b>
+          <span class="relative max-w-[190px] text-[13px] leading-[1.4] text-texto md:text-[14px]">{n.t}</span>
         </div>
       ))}
     </div>
