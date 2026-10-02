@@ -11,8 +11,11 @@ import { abertura, socios } from '../data/socios';
     {socios.map((s) => (
       <article id={s.id} class="card grid scroll-mt-24 gap-6 p-6 md:grid-cols-[220px_minmax(0,1fr)] md:gap-12 md:p-10" aria-labelledby={`${s.id}-nome`}>
         <div class="flex items-center gap-5 md:flex-col md:items-start md:gap-4">
-          <img src={s.foto} alt={`Foto de ${s.nome}`} width="220" height="220" loading="lazy" decoding="async"
-            class="socio-foto size-[112px] shrink-0 rounded-full bg-areia-c md:size-[220px]" />
+          <!-- Moldura da foto do site antigo (pedido dos sócios): fundo areia, arco em degradê areia → coral e
+               canto inferior direito arredondado; o recorte da pessoa por cima. -->
+          <div class="socio-moldura w-[124px] shrink-0 md:w-[220px]">
+            <img src={s.foto} alt={`Foto de ${s.nome}`} width="220" height="220" loading="lazy" decoding="async" class="socio-foto" />
+          </div>
           <div class="flex flex-col items-start gap-3">
             <h2 id={`${s.id}-nome`} class="text-[24px] font-semibold leading-tight tracking-[-.01em] md:text-[26px]">{s.nome}</h2>
             <a href={s.linkedin} target="_blank" rel="noopener" class="chip gap-2 hover:bg-tinta hover:text-white" aria-label={`LinkedIn de ${s.nome}`}>
@@ -22,7 +25,11 @@ import { abertura, socios } from '../data/socios';
           </div>
         </div>
         <div class="flex flex-col gap-5">
-          <blockquote class="text-[20px] font-light leading-[1.42] tracking-[-.01em] md:text-[24px]"><span class="font-semibold text-coral">“</span>{s.citacao}<span class="font-semibold text-coral">”</span></blockquote>
+          <!-- A frase de cada sócio em destaque, numa moldura própria (pedido do dono) -->
+          <blockquote class="socio-citacao text-[19px] font-light leading-[1.45] tracking-[-.01em] md:text-[23px]">
+            <svg class="socio-aspas" viewBox="0 0 48 36" aria-hidden="true"><path d="M8,26 a8,8 0 1 1 8,-8 q0,12 -10.7,17.3 l-2,-2.7 q5.4,-3.5 6.2,-7.2 a8,8 0 0 1 -1.5,.6 z M32,26 a8,8 0 1 1 8,-8 q0,12 -10.7,17.3 l-2,-2.7 q5.4,-3.5 6.2,-7.2 a8,8 0 0 1 -1.5,.6 z" fill="currentColor"/></svg>
+            {s.citacao}
+          </blockquote>
           {s.perfil.map((p) => <p class="text-[16px] leading-[1.65] text-texto md:text-[17px]">{p}</p>)}
           <p class="border-t border-linha pt-4 text-[14.5px] leading-[1.6] text-mudo md:text-[15px]">{s.formacao}</p>
         </div>
