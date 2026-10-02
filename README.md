@@ -64,7 +64,8 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 ### Antes de publicar em produção (vindas da fonte)
 
 - Formulário: `public/enviar.php` envia como o WordPress fazia (para `contato@innerplacement.com.br`, remetente e assunto iguais; registro em `~/inner-mensagens/` no servidor). Na `/v2-teste/` o e-mail sai para o `destino_teste` de `~/inner-formulario.php` no servidor (configurado em 01/10 para `contato@innerplacement.com.br`, com "[teste]" no assunto); sem ele, a mensagem fica só registrada. A P13 (destino com a Paula) segue registrada na documentação funcional.
-- Vídeos de depoimento: Thiago com vídeo (hUHq-XQ4REs); Gisele, Vinícius e Rafael ainda sem link. A Fabíola segue em texto até a versão editada (P9).
+- Vídeos de depoimento: Thiago (hUHq-XQ4REs) e Fabíola (BnlNnPS8aZs, provisório — é o vídeo que havia disponível; a documentação, P9, pedia a versão editada, ainda não enviada) no ar. Gisele, Vinícius e Rafael ficam em texto: já marcados para vídeo quando o link chegar (campo `video` vazio em `src/data/depoimentos.json`), mas sem data.
+- Dois vídeos do WordPress ficaram de fora, por decisão do dono (02/10/2026): `bFoSEb7KJyM` (Ricardo Mazzei, não está na lista de depoimentos da v2) e `NN5R0YdessA` (Luciano Silva — é dele, mas falta o texto/cargo/seção para criar o depoimento; não está em `depoimentos.json`).
 - Blog: migrado para a v2 em 01/10 (9 posts). No deploy na raiz, acrescentar 301 para `/profissionais/`, `/category/*`, `/depoimento/*` e `/author/*` em `public/.htaccess`.
 - Painel `/admin`: falta o login "Entrar com GitHub" (OAuth App + Cloudflare Worker `sveltia-cms-auth`, depois `base_url` no `config.yml`); até lá, entrar com token pessoal do GitHub.
 - Logos: todos autorizados (confirmação do dono em 01/10/2026).
