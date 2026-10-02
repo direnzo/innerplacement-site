@@ -13,15 +13,16 @@ import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
 import { EMAIL, WHATSAPP_TXT } from '../data/site';
 // fundo: formas da marca flutuando nas bordas de todas as páginas (pedido do dono, 01/10); a home desliga
 // (fundo={false}) porque tem as suas, posicionadas à mão no bloco 2.
-interface Props { titulo: string; descricao: string; fechamento?: boolean; schema?: object; fundo?: boolean }
-const { titulo, descricao, fechamento = false, schema, fundo = true } = Astro.props;
+// ogImagem: caminho de uma imagem de compartilhamento própria (posts do blog: a capa). tipo: og:type.
+interface Props { titulo: string; descricao: string; fechamento?: boolean; schema?: object; fundo?: boolean; ogImagem?: string; tipo?: 'website' | 'article' }
+const { titulo, descricao, fechamento = false, schema, fundo = true, ogImagem: ogPropria, tipo = 'website' } = Astro.props;
 const tituloCompleto = Astro.url.pathname === '/' ? `Inner Placement · ${titulo}` : `${titulo} · Inner Placement`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // Imagem de compartilhamento (public/og/, gerada por tools/compartilhamento.mts). Páginas sem imagem
 // própria (o Agradecimento) usam a da home.
 const pagina = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'inicio';
-const comImagem = ['inicio', 'transicao-e-recolocacao', 'desenvolvimento-de-carreira', 'desenvolvimento-de-executivos', 'outplacement', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato', 'quem-somos'];
-const ogImagem = new URL(`/og/${comImagem.includes(pagina) ? pagina : 'inicio'}.jpg`, Astro.site).href;
+const comImagem = ['inicio', 'transicao-e-recolocacao', 'desenvolvimento-de-carreira', 'desenvolvimento-de-executivos', 'outplacement', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato', 'quem-somos', 'blog'];
+const ogImagem = new URL(ogPropria ?? `/og/${comImagem.includes(pagina) ? pagina : 'inicio'}.jpg`, Astro.site).href;
 const org = {
   '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Inner Placement',
   url: 'https://innerplacement.com.br/', email: EMAIL, telephone: WHATSAPP_TXT,
@@ -39,7 +40,7 @@ const org = {
   <title>{tituloCompleto}</title>
   <meta name="description" content={descricao} />
   <link rel="canonical" href={canonical} />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content={tipo} />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:title" content={tituloCompleto} />
   <meta property="og:description" content={descricao} />

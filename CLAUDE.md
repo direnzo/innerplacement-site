@@ -26,6 +26,17 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 - Identidade visual: Hanken Grotesk, coral `#FF6558`, tinta `#231F20`, areia `#D3CEC4`, areia clara
   `#EFEBE4`, âmbar `#F2B45C`. Tokens em `src/styles/global.css`.
 
+## Blog, depoimentos e painel
+
+- Blog e depoimentos saíram do WordPress em 01/10/2026: posts em `src/content/blog/*.md`, depoimentos em
+  `src/data/depoimentos.json`. Os sócios editam pelo painel `/admin` (Sveltia CMS), que grava commits na
+  `main` do repositório privado. **Antes de mexer nesses arquivos, `git pull`**: pode haver edição nova
+  feita pelo painel.
+- Os textos dos posts vieram do WordPress com as trocas da seção 11 aplicadas pelo script; o termo
+  "rede" no post `quando-o-terreno-muda…` ficou para decisão do dono.
+- Cada commit na `main` publica a `/v2-teste/` pelo GitHub Actions (chave dedicada sem senha, só nos
+  segredos do GitHub e no cPanel; o dono a cria — ela nunca passa pelo agente).
+
 ## Imagens — regras que já custaram retrabalho
 
 - **Abordagem atual (decisão do dono, 29/09/2026): híbrida e por blocos.** Ilustrações, ícones e

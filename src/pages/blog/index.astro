@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import TopoPagina from '../../components/TopoPagina.astro';
+import ilustracao from '../../../docs/ilustracao/bloco-5/P11-blog.svg?raw';
+import { publicados, dataBR } from '../../lib/blog';
+// Blog: a documentação funcional manda manter o Blog sem alteração de conteúdo; a frase de abertura e a
+// descrição são as da página /blog/ do WordPress.
+const posts = await publicados();
+const abertura = 'Explore nossos artigos e aprofunde-se em insights valiosos sobre desenvolvimento de carreira, liderança e transformação.';
+---
+<Base titulo="Blog" fechamento descricao="Explore conteúdos exclusivos sobre transição de carreira, desenvolvimento profissional e estratégias para crescimento no mercado de trabalho, com insights e dicas para sua jornada.">
+  <TopoPagina titulo="Blog" trilha="Inner" intro={abertura} ilustracao={ilustracao} />
+  <section class="wrap grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3" aria-label="Artigos">
+    {posts.map((p) => (
+      <article class="post-cartao card group flex flex-col overflow-hidden">
+        <a href={`/${p.id}/`} class="flex h-full flex-col" aria-label={p.data.titulo}>
+          {p.data.imagem && <div class="aspect-[16/9] overflow-hidden bg-areia-c"><img src={p.data.imagem} alt={p.data.imagem_alt ?? ''} loading="lazy" decoding="async" class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" /></div>}
+          <div class="flex flex-1 flex-col gap-3 p-5 md:p-6">
+            <p class="flex flex-wrap gap-x-2 text-[12px] font-bold uppercase tracking-[.07em] text-coral-d">{p.data.categorias.slice(0, 2).join(' · ')}</p>
+            <h2 class="text-[19px] font-semibold leading-[1.3] tracking-[-.01em] md:text-[20px]">{p.data.titulo}</h2>
+            <p class="line-clamp-3 text-[15px] leading-[1.6] text-texto">{p.data.descricao}</p>
+            <p class="mt-auto flex items-center justify-between gap-3 pt-2 text-[13.5px] text-mudo">
+              <time datetime={p.data.data.toISOString().slice(0, 10)}>{dataBR(p.data.data)}</time>
+              <span class="font-semibold text-tinta group-hover:text-coral-d">Ler o artigo →</span>
+            </p>
+          </div>
+        </a>
+      </article>
+    ))}
+  </section>
+</Base>

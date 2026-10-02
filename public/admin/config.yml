@@ -1,0 +1,94 @@
+# Painel de conteúdo da Inner Placement (Sveltia CMS, compatível com o formato do Decap CMS).
+# O conteúdo fica no repositório privado github.com/direnzo/innerplacement-site; quem edita precisa de uma
+# conta no GitHub com acesso ao repositório. Cada publicação é um commit na main e dispara a publicação
+# automática do site (.github/workflows/publicar.yml).
+backend:
+  name: github
+  repo: direnzo/innerplacement-site
+  branch: main
+  # base_url: endereço do serviço de login com GitHub (Cloudflare Worker sveltia-cms-auth), quando
+  # configurado. Sem ele, o painel oferece "entrar com token" (token pessoal do GitHub).
+  commit_messages:
+    create: 'Painel: cria {{collection}} "{{slug}}"'
+    update: 'Painel: atualiza {{collection}} "{{slug}}"'
+    delete: 'Painel: remove {{collection}} "{{slug}}"'
+    uploadMedia: 'Painel: envia imagem "{{path}}"'
+    deleteMedia: 'Painel: remove imagem "{{path}}"'
+
+site_url: https://innerplacement.com.br
+display_url: https://innerplacement.com.br
+logo_url: /favicon.svg
+
+# Imagens enviadas pelo painel (capas do blog).
+media_folder: public/blog/imagens
+public_folder: /blog/imagens
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: Post
+    description: Artigos do blog. O nome do arquivo vira o endereço do post (innerplacement.com.br/<endereço>/).
+    folder: src/content/blog
+    extension: md
+    format: frontmatter
+    create: true
+    delete: true
+    slug: '{{slug}}'
+    identifier_field: titulo
+    summary: '{{titulo}} · {{data}}'
+    sortable_fields: [data, titulo]
+    fields:
+      - { name: titulo, label: Título, widget: string }
+      - { name: descricao, label: Descrição, widget: text, hint: 'Resumo de uma ou duas frases. Aparece no cartão do blog, no Google e nas prévias de compartilhamento.' }
+      - { name: data, label: Data de publicação, widget: datetime, format: YYYY-MM-DD, time_format: false }
+      - { name: atualizado, label: Atualizado em, widget: datetime, format: YYYY-MM-DD, time_format: false, required: false }
+      - { name: autor, label: Autor, widget: string, default: Inner Placement }
+      - name: categorias
+        label: Categorias
+        widget: select
+        multiple: true
+        required: false
+        options: [Comportamento, Desenvolvimento, Inner Placement, Sonhos, Platinum, Focus, Next Level]
+        hint: 'Nomes de programa sem sufixo (sem "Corporate", "Executivo" ou "Go Fast"), como pede a documentação.'
+      - { name: imagem, label: Capa, widget: image, required: false, hint: 'Horizontal, de preferência 1600 × 900. Também é a imagem de compartilhamento do post.' }
+      - { name: imagem_alt, label: Descrição da capa, widget: string, required: false, hint: 'Para leitores de tela: o que a imagem mostra, em uma frase.' }
+      - { name: rascunho, label: Rascunho (não publicar), widget: boolean, default: false }
+      - { name: body, label: Texto, widget: markdown }
+
+  - name: depoimentos
+    label: Depoimentos
+    description: Depoimentos da página Depoimentos e das páginas de serviço. Textos literais da fala de cada pessoa.
+    files:
+      - name: lista
+        label: Lista de depoimentos
+        file: src/data/depoimentos.json
+        format: json
+        fields:
+          - name: depoimentos
+            label: Depoimentos
+            label_singular: Depoimento
+            widget: list
+            summary: '{{fields.nome}} · {{fields.secao}} · {{fields.formato}}'
+            fields:
+              - { name: id, label: Identificador, widget: string, hint: 'Curto, sem espaços nem acentos (ex.: gisele). Não mude depois de criado: as páginas usam esse nome.' }
+              - { name: nome, label: Nome, widget: string }
+              - { name: cargo, label: Cargo, widget: string, required: false }
+              - { name: programa, label: Programa, widget: select, required: false, options: ['', Platinum, Focus, Next Level] }
+              - name: secao
+                label: Seção na página Depoimentos
+                widget: select
+                required: false
+                options:
+                  - { label: 'Não aparece na página Depoimentos', value: '' }
+                  - { label: Transição, value: transicao }
+                  - { label: Outplacement, value: outplacement }
+                  - { label: Crescimento, value: crescimento }
+              - { name: ordem, label: Ordem na seção, widget: number, value_type: int, default: 99 }
+              - name: formato
+                label: Formato
+                widget: select
+                options:
+                  - { label: Vídeo (o vídeo é o principal; o texto é a transcrição do trecho), value: video }
+                  - { label: Texto, value: texto }
+              - { name: video, label: Link do vídeo no YouTube, widget: string, required: false, hint: 'Ex.: https://youtu.be/XXXXXXXXXXX. Pode ser vídeo "não listado".' }
+              - { name: texto, label: Texto do depoimento, widget: text }

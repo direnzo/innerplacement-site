@@ -112,5 +112,20 @@ if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll<HTMLElement>('[data-conta]').forEach((el) => io.observe(el));
 }
 
+// Vídeos de depoimento: o cartão [data-yt] (DepoVideo) vira o player do YouTube só quando a pessoa clica.
+document.querySelectorAll<HTMLButtonElement>('[data-yt]').forEach((b) => b.addEventListener('click', () => {
+  const caixa = document.createElement('div');
+  caixa.className = b.className.replace('cursor-pointer', '');
+  const f = document.createElement('iframe');
+  f.src = `https://www.youtube-nocookie.com/embed/${b.dataset.yt}?autoplay=1&rel=0`;
+  f.title = b.dataset.titulo || 'Vídeo';
+  f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  f.allowFullscreen = true;
+  f.className = 'absolute inset-0 size-full';
+  caixa.append(f);
+  b.replaceWith(caixa);
+  f.focus();
+}));
+
 (window as any).Alpine = Alpine;
 Alpine.start();

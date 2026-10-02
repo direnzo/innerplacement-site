@@ -18,7 +18,7 @@ export const rotas = {
   contato: '/contato/',
   obrigado: '/obrigado/',
   quemSomos: '/quem-somos/',
-  blog: `${SITE_ATUAL}/blog/`,
+  blog: '/blog/',
   privacidade: `${SITE_ATUAL}/politica-de-privacidade/`,
 } as const;
 

@@ -1,0 +1,66 @@
+# Publicação automática da versão de teste (https://innerplacement.com.br/v2-teste/).
+# Roda a cada commit na main — inclusive os feitos pelo painel /admin (posts e depoimentos) — e pode ser
+# disparada à mão em Actions → "Publicar v2-teste" → Run workflow. Usa o mesmo script da publicação manual
+# (tools/publicar-v2-teste.sh: build, backup no servidor, envio só para v2-teste/, conferência).
+#
+# Segredos do repositório (Settings → Secrets and variables → Actions):
+#   SSH_CHAVE_PUBLICACAO  chave privada dedicada a esta publicação (sem senha; só existe aqui e no cPanel)
+#   SSH_KNOWN_HOSTS       linha(s) de `ssh-keyscan -p 22 innerplacement.com.br` conferidas pelo dono
+# Sem esses segredos o job para logo no início, sem publicar nada.
+name: Publicar v2-teste
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Uma publicação por vez; um commit novo espera a anterior terminar.
+concurrency:
+  group: publicar-v2-teste
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Acesso SSH ao servidor
+        env:
+          CHAVE: ${{ secrets.SSH_CHAVE_PUBLICACAO }}
+          HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          if [ -z "$CHAVE" ] || [ -z "$HOSTS" ]; then
+            echo "::error::Faltam os segredos SSH_CHAVE_PUBLICACAO e/ou SSH_KNOWN_HOSTS."; exit 1
+          fi
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$CHAVE" > ~/.ssh/publicacao && chmod 600 ~/.ssh/publicacao
+          printf '%s\n' "$HOSTS" > ~/.ssh/known_hosts && chmod 644 ~/.ssh/known_hosts
+          cat > ~/.ssh/config <<'CFG'
+          Host inner-v2
+              HostName innerplacement.com.br
+              User s100c354
+              Port 22
+              IdentityFile ~/.ssh/publicacao
+              IdentitiesOnly yes
+              StrictHostKeyChecking yes
+          CFG
+          command -v rsync >/dev/null || { sudo apt-get update -qq && sudo apt-get install -y -qq rsync; }
+
+      - name: Publicar
+        run: tools/publicar-v2-teste.sh
+
+      - name: Apagar a chave
+        if: always()
+        run: rm -f ~/.ssh/publicacao

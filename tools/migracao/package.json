@@ -1,0 +1,9 @@
+{
+  "name": "inner-migracao",
+  "private": true,
+  "type": "module",
+  "description": "Ferramenta de uso único: migra o blog do WordPress para src/content/blog (Markdown).",
+  "dependencies": {
+    "turndown": "^7.2.0"
+  }
+}
