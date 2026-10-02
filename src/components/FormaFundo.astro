@@ -1,0 +1,9 @@
+---
+// Forma decorativa de fundo (bola, oval, arcos, chevrons: imagens/inner-F0x-*.svg), nas bordas das seções,
+// com leve deslocamento na rolagem (.fundo-par + data-rolagem="elemento"). Posição e tamanho pela classe.
+// O contêiner pai precisa de "relative isolate" (e overflow-x-clip, se a forma passar da borda da página).
+import { miolo } from '../lib/svg';
+interface Props { svg: string; viewBox: string; class: string }
+const { svg, viewBox, class: cls } = Astro.props;
+---
+<svg viewBox={viewBox} class={`fundo-par pointer-events-none absolute -z-10 ${cls}`} aria-hidden="true" data-rolagem="elemento" set:html={miolo(svg)} />

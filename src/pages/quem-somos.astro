@@ -2,12 +2,23 @@
 import Base from '../layouts/Base.astro';
 import TopoPagina from '../components/TopoPagina.astro';
 import Svg from '../components/Svg.astro';
+import FormaFundo from '../components/FormaFundo.astro';
+import fBola from '../../imagens/inner-F01-bola-v1.svg?raw';
+import fArcos from '../../imagens/inner-F02-arcos-v1.svg?raw';
+import fSetas from '../../imagens/inner-F03-chevrons-v1.svg?raw';
+import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
 import ilustracao from '../../docs/ilustracao/bloco-5/P10-quem-somos.svg?raw';
 import { abertura, socios } from '../data/socios';
 // Quem somos: conteúdo da página do WordPress (src/data/socios.ts), no layout da v2.
 ---
 <Base titulo="Quem somos" fechamento descricao={abertura}>
   <TopoPagina titulo="Quem somos" trilha="Inner" intro={abertura} ilustracao={ilustracao} />
+  <!-- Formas da marca flutuando nas bordas, atrás dos cartões (como na home) -->
+  <div class="relative isolate overflow-x-clip">
+  <FormaFundo svg={fBola} viewBox="0 0 400 400" class="-right-40 top-6 w-[340px] md:-right-32 md:w-[520px]" />
+  <FormaFundo svg={fOval} viewBox="0 0 200 280" class="-left-24 top-[30%] w-[150px] opacity-50 md:-left-16 md:w-[210px]" />
+  <FormaFundo svg={fSetas} viewBox="0 0 240 120" class="-left-10 top-[62%] w-[160px] opacity-30 md:w-[230px]" />
+  <FormaFundo svg={fArcos} viewBox="0 0 400 400" class="-right-24 bottom-0 w-[280px] md:-right-16 md:w-[420px]" />
   <section class="wrap flex flex-col gap-5 md:gap-7" aria-label="Sócios da Inner">
     {socios.map((s) => (
       <article id={s.id} class="card grid scroll-mt-24 gap-6 p-6 md:grid-cols-[220px_minmax(0,1fr)] md:gap-12 md:p-10" aria-labelledby={`${s.id}-nome`}>
@@ -19,7 +30,7 @@ import { abertura, socios } from '../data/socios';
           </div>
           <div class="flex flex-col items-start gap-3">
             <h2 id={`${s.id}-nome`} class="text-[24px] font-semibold leading-tight tracking-[-.01em] md:text-[26px]">{s.nome}</h2>
-            <a href={s.linkedin} target="_blank" rel="noopener" class="chip gap-2 hover:bg-tinta hover:text-white" aria-label={`LinkedIn de ${s.nome}`}>
+            <a href={s.linkedin} target="_blank" rel="noopener" class="inline-flex h-10 items-center gap-2 rounded-full bg-coral px-4 text-[14px] font-semibold text-tinta transition-colors hover:bg-tinta hover:text-white" aria-label={`LinkedIn de ${s.nome}`}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.43-2.11 2.9V21H10V9Z"/></svg>
               LinkedIn
             </a>
@@ -38,4 +49,5 @@ import { abertura, socios } from '../data/socios';
       </article>
     ))}
   </section>
+  </div>
 </Base>
