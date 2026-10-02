@@ -423,6 +423,30 @@
 }
 @media (hover: hover) { @layer components { .socio-citacao:hover .socio-canto svg { rotate: 60deg; } } }
 
+/* Cartão de depoimento (DepoCard.astro): mesmo espírito do quadro de citação de Quem somos acima (aspas
+   + rosácea de canto), num cartão mais compacto, pensado para repetir várias vezes lado a lado (carrossel
+   da home, grades das páginas de serviço). O selo do programa, no canto superior direito, é uma versão
+   pequena do logótipo de Programa.astro (prog-logo): texto + rosácea coral meio por trás. */
+@layer components {
+  .depo-cartao { position: relative; isolation: isolate; display: flex; flex-direction: column; gap: 14px;
+    height: 100%; padding: 30px 20px 20px; border-radius: 22px 22px 30px 22px; background: #fff;
+    box-shadow: inset 0 0 0 1px var(--color-linha); }
+  @media (min-width: 768px) { .depo-cartao { padding: 34px 26px 24px; } }
+  .depo-cartao.depo-cartao-areia { background: var(--color-areia-c); box-shadow: inset 0 0 0 1px rgb(35 31 32 / .06); }
+  .dc-canto { position: absolute; inset: 0; z-index: -1; overflow: hidden; border-radius: inherit; pointer-events: none; }
+  .dc-canto svg { position: absolute; right: -42px; bottom: -48px; width: 140px; height: auto; opacity: .08; transition: rotate .7s cubic-bezier(.2, .8, .3, 1); }
+  .dc-aspas { position: absolute; top: 20px; left: 20px; width: 30px; height: auto; color: var(--color-coral); opacity: .9; }
+  .dc-selo { position: absolute; top: 18px; right: 18px; z-index: 1; display: inline-flex; align-items: center; padding-right: .5em; }
+  .dc-selo-nome { position: relative; z-index: 1; font-size: 12.5px; font-weight: 600; letter-spacing: -.01em; color: var(--color-tinta); mix-blend-mode: multiply; }
+  .dc-selo-ros { position: absolute; z-index: 0; right: -.3em; top: 50%; translate: 0 -50%; opacity: .85; }
+  .dc-citacao { position: relative; z-index: 1; flex: 1; padding-top: 14px; font-size: 15.5px; line-height: 1.6; color: var(--color-texto); }
+  .dc-assina { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 2px; padding-top: 14px; margin-top: auto;
+    border-top: 1.5px solid var(--color-coral); }
+  .dc-nome { font-size: 15.5px; font-weight: 600; color: var(--color-tinta); }
+  .dc-cargo { font-size: 13px; line-height: 1.4; color: var(--color-mudo); }
+}
+@media (hover: hover) { @layer components { .depo-cartao:hover .dc-canto svg { rotate: 50deg; } } }
+
 /* Texto dos posts do blog (Markdown renderizado): o corpo de texto do site, com títulos, listas, citações
    e links no padrão da marca. */
 @layer components {
