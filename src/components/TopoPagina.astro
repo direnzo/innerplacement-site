@@ -3,8 +3,8 @@ import Svg from './Svg.astro';
 import { miolo } from '../lib/svg';
 // ilustracao: cena do topo (tools/ilustracao/bloco4.mts, texto cru), à direita do título no computador
 // e no tablet; no celular some, para o título subir (guia de imagens). Sem ela, o acento do kit.
-interface Props { titulo: string; intro?: string; trilha?: string; acento?: string; acentoStyle?: string; acentoClass?: string; ilustracao?: string }
-const { titulo, intro, trilha, acento, acentoStyle, acentoClass, ilustracao } = Astro.props;
+interface Props { titulo: string; intro?: string; trilha?: string; acento?: string; acentoStyle?: string; acentoClass?: string; ilustracao?: string; umaLinha?: boolean }
+const { titulo, intro, trilha, acento, acentoStyle, acentoClass, ilustracao, umaLinha = false } = Astro.props;
 ---
 <!-- Com ilustração, o topo tem altura mínima para a cena (180 de altura) caber inteira, com o texto
      centralizado. Banner mais baixo (pedido do dono, 02/10): 60% da altura e da cena de antes. -->
@@ -16,7 +16,7 @@ const { titulo, intro, trilha, acento, acentoStyle, acentoClass, ilustracao } = 
     : acento && <Svg name={acento} w={420} class={`pointer-events-none absolute hidden h-auto md:block ${acentoClass ?? ''}`} style={acentoStyle} />}
   <div class:list={['wrap relative flex flex-col gap-3 py-9 md:gap-4 md:py-14 md:pr-[min(29%,320px)]', ilustracao ? 'lg:pr-[min(32%,350px)]' : 'lg:pr-0']}>
     {trilha && <p class="text-[14px] text-mudo"><a href="/" class="hover:text-tinta">Início</a> / {trilha}</p>}
-    <h1 class="h1-pag max-w-[20ch]"><slot name="titulo">{titulo}</slot></h1>
+    <h1 class:list={['h1-pag', umaLinha ? 'max-w-none lg:whitespace-nowrap' : 'max-w-[20ch]']}><slot name="titulo">{titulo}</slot></h1>
     {intro && <p class="lead md:max-w-[58ch]">{intro}</p>}
     <slot />
   </div>

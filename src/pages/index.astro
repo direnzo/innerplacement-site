@@ -141,7 +141,7 @@ const metodo = [
       {numeros.map((n, i) => (
         <div class="flex flex-col items-center gap-2 text-center">
           <svg viewBox="0 0 96 64" class="h-11 w-auto md:h-16" aria-hidden="true" data-entrada set:html={miolo(glifos[i])} />
-          <b data-conta class="text-[28px] font-light leading-none tracking-[-.02em] tabular-nums md:text-[44px]">{n.n}</b>
+          <b data-conta class="text-[28px] font-semibold leading-none tracking-[-.02em] tabular-nums text-coral-d md:text-[44px]">{n.n}</b>
           <span class="max-w-[190px] text-[13px] leading-[1.4] text-texto md:text-[14px]">{n.t}</span>
         </div>
       ))}
