@@ -44,3 +44,14 @@ export function par(x: number, base: number, s: number, cabecaA = C.areia, cabec
     + `<circle cx="75.62" cy="15.15" r="15.15" fill="${cabecaA}"/><circle cx="117.28" cy="15.15" r="15.15" fill="${cabecaB}"/></g>`;
 }
 
+
+// ── Auxiliares de acabamento (a partir do bloco 5; os geradores anteriores têm cópias locais) ────
+// Sombra suave (feDropShadow), degradê coral vertical, bola translúcida do kit e o "check" coral.
+export const sombra = (id: string, dy = 8, desvio = 10, op = .14) =>
+  `<filter id="${id}" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="${dy}" stdDeviation="${desvio}" flood-color="${C.tinta}" flood-opacity="${op}"/></filter>`;
+export const coralV = (id: string) =>
+  `<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A7E"/><stop offset="1" stop-color="${C.coral}"/></linearGradient>`;
+export const bolaG = (id: string) =>
+  `<radialGradient id="${id}"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".72" stop-color="#fff" stop-opacity=".35"/><stop offset=".92" stop-color="${C.coral}" stop-opacity=".12"/><stop offset="1" stop-color="${C.coral}" stop-opacity=".3"/></radialGradient>`;
+export const checkCoral = (cx: number, cy: number, r = 7) =>
+  `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${C.coral}"/><path d="M${cx - r * .43},${cy} l${r * .31},${r * .33} l${r * .57},${-r * .63}" fill="none" stroke="#fff" stroke-width="${(r * .29).toFixed(2)}" stroke-linecap="round" stroke-linejoin="round"/>`;

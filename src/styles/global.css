@@ -370,3 +370,25 @@
     svg:hover .p-luz { opacity: 1; }
   }
 }
+
+/* Bloco 5 · movimento (topos de Depoimentos, FAQ, Manifesto, Contato e Agradecimento; ganchos p-* de
+   tools/ilustracao/bloco5.mts, que também usam os do bloco 4). Balões entram em sequência, o gráfico
+   do depoimento se desenha, os acordeões chegam um a um, a carta sobe do envelope. Hover: os balões
+   se movem, a carta sobe mais, o play cresce. */
+@layer components {
+  .il-anim .p-balao { transform-box: fill-box; transform-origin: 50% 100%; animation: b3-balao .45s .35s cubic-bezier(.3, 1.4, .5, 1) both paused; }
+  .il-anim .p-balao-2 { animation-delay: .65s; }
+  .il-anim .p-linha { stroke-dasharray: 1 1; animation: il-desenha .9s 1s cubic-bezier(.45, 0, .25, 1) both paused; }
+  .il-anim .p-acord { animation: b2-sobe .45s calc(.15s + var(--i) * .12s) ease-out both paused; }
+  .il-anim .p-carta { animation: p-sobe-carta .7s .3s cubic-bezier(.2, .9, .3, 1) both paused; }
+  .il-anim.visto :is(.p-balao, .p-linha, .p-acord, .p-carta) { animation-play-state: running; }
+  @keyframes p-sobe-carta { from { opacity: 0; translate: 0 40px; } }
+}
+@media (hover: hover) {
+  @layer components {
+    :is(.p-balao, .p-carta) > * { transition: translate .45s cubic-bezier(.2, .8, .3, 1); }
+    svg:hover .p-balao-1 > * { translate: 0 -4px; }
+    svg:hover .p-balao-2 > * { translate: 0 4px; }
+    svg:hover .p-carta > * { translate: 0 -10px; }
+  }
+}

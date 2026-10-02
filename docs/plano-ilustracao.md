@@ -82,7 +82,7 @@ fora, como o guia pede.
 | 2 | Home, meio: Por que a Inner, Prova, Método | H-04, H-05, H-06, números | concluído (30/09), no site com movimento |
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | concluído (30/09), no site com movimento |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | concluído (01/10), no site com movimento |
-| 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | não iniciado |
+| 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | topos em revisão; compartilhamento a fazer |
 
 As outras 50 peças do "plano completo" do guia (ícones de etapa, padrões) entram só onde um bloco
 mostrar que fazem falta.
@@ -294,4 +294,21 @@ real. Para testar hover, `HOVER=1` (o Chromium sem tela se declara sem mouse). E
 Fechamento do bloco 4 (01/10): aprovadas na rodada 1, sem ajustes; a cena continua oculta no celular.
 Em `imagens/`: `inner-P01-topo-transicao-v2`, `inner-P02-topo-carreira-v2`, `inner-P03-topo-executivos-v1`,
 `inner-P04-topo-outplacement-v1`.
+
+## Bloco 5 · Topos das demais páginas (P-05 a P-09)
+
+Branch `imagens/bloco-5-topos`. Gerador: `tools/ilustracao/bloco5.mts` → `docs/ilustracao/bloco-5/`
+(usa os auxiliares `sombra`, `coralV`, `bolaG` e `checkCoral`, acrescentados a `base.mts`).
+Revisão: https://claude.ai/artifact/FCC8h1mebs8HDjhceGQRDB
+
+| Arquivo | Página | Onde | Cena |
+| --- | --- | --- | --- |
+| `P05-depoimentos.svg` | Depoimentos | Topo comum | Vídeo com play e balões; num deles, gráfico que desce e sobe (a parte difícil) |
+| `P06-faq.svg` | Perguntas frequentes | Topo comum | Acordeões empilhados e balão coral de conversa |
+| `P07-manifesto.svg` | Manifesto | Coluna do título, fixa (sticky) no computador | Rosácea grande e o par caminhando até ela |
+| `P08-contato.svg` | Contato | Abaixo dos contatos, no computador | Envelope aberto, carta com a rosácea, cadeado da privacidade |
+| `P09-obrigado.svg` | Agradecimento | À direita da mensagem | Envelope com selo de confirmação e a rosácea |
+
+`TopoPagina` com ilustração: altura mínima de 380 px (a cena cabe inteira) e reserva à direita também
+no computador (antes ia a zero a partir de 1024 px e as etiquetas do FAQ passavam por baixo da cena).
 

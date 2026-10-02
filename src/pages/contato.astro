@@ -1,19 +1,21 @@
 ---
+import ilustracao from '../../docs/ilustracao/bloco-5/P08-contato.svg?raw';
+import { miolo } from '../lib/svg';
 import Base from '../layouts/Base.astro';
-import Svg from '../components/Svg.astro';
 import IconeZap from '../components/IconeZap.astro';
 import { WHATSAPP_URL, WHATSAPP_TXT, EMAIL, rotas } from '../data/site';
 const campo = 'h-[52px] w-full rounded-full border-[1.5px] border-linha bg-white px-5 text-[16px] outline-none transition-colors focus:border-tinta';
 ---
 <Base titulo="Contato" descricao="Vamos conversar. Conte o que você deseja. A Inner responde.">
   <section class="relative overflow-hidden bg-areia-c">
-    <Svg name="oval_grad" h={320} class="pointer-events-none absolute -bottom-24 left-[8%] hidden rotate-[18deg] opacity-80 lg:block" />
     <div class="wrap relative grid gap-7 py-9 md:py-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14">
       <div class="flex flex-col gap-4">
         <h1 class="h1-pag">Vamos conversar.</h1>
         <p class="lead">Conte o que você deseja. A Inner responde.</p>
         <a href={WHATSAPP_URL} target="_blank" rel="noopener" class="btn-l self-start"><IconeZap size={20} />Chamar no WhatsApp</a>
         <p class="text-[14px] leading-[1.5] text-texto">WhatsApp {WHATSAPP_TXT}<br />{EMAIL}</p>
+        <!-- P-08: o envelope aberto, a carta com a rosácea e o cadeado da privacidade -->
+        <svg viewBox="0 0 360 250" class="mt-2 hidden h-auto w-full max-w-[360px] lg:block" aria-hidden="true" data-entrada set:html={miolo(ilustracao)} />
       </div>
 
       <form action="/enviar.php" method="post" novalidate class="flex flex-col gap-4 rounded-[20px] bg-white p-5 md:p-7"

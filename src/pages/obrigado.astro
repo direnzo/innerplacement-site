@@ -1,14 +1,16 @@
 ---
+import ilustracao from '../../docs/ilustracao/bloco-5/P09-obrigado.svg?raw';
+import { miolo } from '../lib/svg';
 import Base from '../layouts/Base.astro';
-import Svg from '../components/Svg.astro';
 import IconeZap from '../components/IconeZap.astro';
 import { WHATSAPP_URL, rotas } from '../data/site';
 ---
 <Base titulo="Recebemos a sua mensagem" descricao="Recebemos a sua mensagem. Vamos ler com atenção e responder em seguida.">
   <meta name="robots" content="noindex" slot="head" />
   <section class="bloco relative bg-areia-c">
-    <Svg name="rosacea_coral" w={300} class="pointer-events-none absolute -right-16 -top-16 h-auto w-[180px] md:w-[300px]" />
-    <div class="wrap relative flex flex-col gap-5 py-14 md:py-24">
+    <!-- P-09: a carta entregue, com o selo de confirmação e a rosácea -->
+    <svg viewBox="0 0 420 300" class="topo-ilus absolute right-[max(16px,calc((100%-1120px)/2))] top-1/2 hidden w-[min(40%,440px)] -translate-y-1/2 md:block" aria-hidden="true" data-entrada set:html={miolo(ilustracao)} />
+    <div class="wrap relative flex flex-col gap-5 py-14 md:py-24 md:pr-[min(42%,460px)]">
       <h1 class="h1-pag max-w-[16ch]">Recebemos a sua mensagem.</h1>
       <p class="lead">Vamos ler com atenção e responder em seguida. Se quiser adiantar a conversa, o WhatsApp está aberto.</p>
       <div class="flex flex-col gap-3 pt-2 sm:flex-row">
