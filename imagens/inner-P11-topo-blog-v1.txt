@@ -1,0 +1,9 @@
+PEÇA: P-11 · Topo do Blog (fora do guia original: o blog saiu do WordPress em 01/10/2026)
+STATUS: APROVADA (dono, 01/10/2026)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco5.mts (peça 'P11-blog'); cópia de docs/ilustracao/bloco-5/P11-blog.svg
+
+Conceito: três cartões de artigo em leque; o da frente com a rosácea na capa e um marcador coral de leitura,
+sobre o halo coral translúcido. Também compõe a imagem de compartilhamento public/og/blog.jpg.
+
+Cena 420 × 300 à direita do título (TopoPagina); oculta no celular, como os demais topos.
