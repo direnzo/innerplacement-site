@@ -9,9 +9,9 @@ const campo = 'h-[52px] w-full rounded-full border-[1.5px] border-linha bg-white
 <Base titulo="E-book" descricao="Faça o download do e-book. Preencha o formulário para ter acesso ao e-book.">
   <section class="relative overflow-hidden bg-areia-c">
     <div class="wrap relative grid items-center gap-8 py-9 md:py-14 lg:grid-cols-[minmax(0,4fr)_minmax(0,6fr)] lg:gap-14">
-      <a href={PDF} class="mx-auto block w-full max-w-[300px]" tabindex="-1" aria-hidden="true">
+      <div class="mx-auto block w-full max-w-[300px]">
         <Image src={capa} alt="" class="h-auto w-full rounded-[8px] shadow-lg" widths={[300, 548]} sizes="300px" loading="eager" />
-      </a>
+      </div>
 
       <div class="flex flex-col gap-5" x-data="ebook">
         <h1 class="h1-pag">Faça o download do e-book</h1>
@@ -40,8 +40,8 @@ const campo = 'h-[52px] w-full rounded-full border-[1.5px] border-linha bg-white
           <button type="submit" class="btn w-full sm:w-auto sm:self-start" :disabled="enviando" :aria-busy="enviando.toString()"><span x-text="enviando ? 'Enviando…' : 'Clique para ter acesso ao e-book.'">Clique para ter acesso ao e-book.</span></button>
         </form>
 
-        <div x-cloak x-show="liberado" class="flex flex-col gap-4 rounded-[20px] bg-white p-5 md:p-7" role="status">
-          <a href={PDF} class="btn self-start" download>Clique aqui para fazer o download</a>
+        <div x-cloak x-show="liberado" data-pdf={PDF} class="flex flex-col gap-4 rounded-[20px] bg-white p-5 md:p-7" role="status">
+          <a :href="liberado ? $el.parentElement.dataset.pdf : null" class="btn self-start" download>Clique aqui para fazer o download</a>
         </div>
       </div>
     </div>
