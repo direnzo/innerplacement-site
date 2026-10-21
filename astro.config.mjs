@@ -7,7 +7,17 @@ export default defineConfig({
   trailingSlash: 'always',
   compressHTML: true,
   build: { format: 'directory', inlineStylesheets: 'always' },
-  vite: { plugins: [tailwindcss()] },
+  vite: {
+    plugins: [tailwindcss()],
+    server: {
+      proxy: {
+        '/enviar.php': {
+          target: process.env.INNER_PHP_ENDPOINT || 'http://127.0.0.1:18767',
+          changeOrigin: true,
+        },
+      },
+    },
+  },
   // sitemap.xml (o WordPress tinha, pelo Yoast; a v2 não tinha nenhum). /obrigado/ fica de fora: é
   // noindex (a página de confirmação do formulário, sem conteúdo para indexar).
   integrations: [sitemap({ filter: (url) => !url.endsWith('/obrigado/') })],
