@@ -1,5 +1,6 @@
 // Migração única do blog do WordPress para a v2.
 // Uso: (cd tools/migracao && npm install) && node tools/migracao/migrar-blog.mjs
+// Para só um post novo: SLUGS=<slug> node tools/migracao/migrar-blog.mjs
 // Lê os posts publicados pela API pública da produção (innerplacement.com.br/wp-json), converte o HTML em
 // Markdown e grava src/content/blog/<slug>.md, com a capa em public/blog/imagens/<slug>.webp.
 // Os endereços continuam os mesmos (/<slug>/), para não perder posição no Google nem links compartilhados.
@@ -46,7 +47,9 @@ const yamlStr = (s) => JSON.stringify(s); // string YAML válida (aspas duplas, 
 
 async function json(url) { const r = await fetch(url); if (!r.ok) throw new Error(`${r.status} ${url}`); return r.json(); }
 
-const posts = await json(`${API}/posts?per_page=100&status=publish&_embed=wp:featuredmedia,author,wp:term`);
+// SLUGS=a,b limita a migração a esses posts (evita sobrescrever posts já editados pelo painel).
+const SLUGS = process.env.SLUGS?.split(',');
+const posts = (await json(`${API}/posts?per_page=100&status=publish&_embed=wp:featuredmedia,author,wp:term`)).filter((p) => !SLUGS || SLUGS.includes(p.slug));
 mkdirSync(RAIZ + 'src/content/blog', { recursive: true });
 mkdirSync(RAIZ + 'public/blog/imagens', { recursive: true });
 const relatorio = [];
