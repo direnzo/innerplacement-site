@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import capa from '../assets/e-book-capa.webp';
+import Base from '../layouts/Base.astro';
+import { rotas } from '../data/site';
+const PDF = '/e-book/Por-que-os-Planos-de-Sucessao-Falham-e-Como-Evitar.pdf';
+const campo = 'h-[52px] w-full rounded-full border-[1.5px] border-linha bg-white px-5 text-[16px] outline-none transition-colors focus:border-tinta';
+---
+<Base titulo="E-book" descricao="Faça o download do e-book. Preencha o formulário para ter acesso ao e-book.">
+  <section class="relative overflow-hidden bg-areia-c">
+    <div class="wrap relative grid items-center gap-8 py-9 md:py-14 lg:grid-cols-[minmax(0,4fr)_minmax(0,6fr)] lg:gap-14">
+      <div class="mx-auto block w-full max-w-[300px]">
+        <Image src={capa} alt="" class="h-auto w-full rounded-[8px] shadow-lg" widths={[300, 548]} sizes="300px" loading="eager" />
+      </div>
+
+      <div class="flex flex-col gap-5" x-data="ebook">
+        <h1 class="h1-pag">Faça o download do e-book</h1>
+        <p class="lead">Preencha o formulário para ter acesso ao e-book.</p>
+
+        <form id="formulario" action="/enviar.php" method="post" novalidate x-show="!liberado" @submit="enviar($event)"
+          class="flex scroll-mt-28 flex-col gap-4 rounded-[20px] bg-white p-5 md:p-7">
+          <input type="hidden" name="tipo" value="ebook" />
+          <!-- Antispam (public/enviar.php): campo isca, invisível para pessoas, e o tempo de abertura da página -->
+          <input type="text" name="empresa_site" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <input type="hidden" name="t" x-bind:value="t" />
+          <div class="flex flex-col gap-1.5">
+            <label for="nome" class="text-[14px] font-semibold">Nome</label>
+            <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Preencha seu nome" class={campo} x-model="f.nome" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="email" class="text-[14px] font-semibold">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="Preencha seu e-mail" class={campo} x-model="f.email" :aria-invalid="(!!erros.email).toString()" />
+            <p x-cloak x-show="erros.email" class="text-[13.5px] text-coral-d" x-text="erros.email"></p>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="whatsapp" class="text-[14px] font-semibold">Telefone</label>
+            <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" placeholder="Preencha seu telefone" class={campo} x-model="f.whatsapp" />
+          </div>
+          <p x-cloak x-show="erros.envio" role="alert" class="rounded-[14px] bg-coral-c px-4 py-3 text-[14.5px] leading-[1.5] text-coral-d" x-text="erros.envio"></p>
+          <button type="submit" class="btn w-full sm:w-auto sm:self-start" :disabled="enviando" :aria-busy="enviando.toString()"><span x-text="enviando ? 'Enviando…' : 'Clique para ter acesso ao e-book.'">Clique para ter acesso ao e-book.</span></button>
+        </form>
+
+        <div x-cloak x-show="liberado" data-pdf={PDF} class="flex flex-col gap-4 rounded-[20px] bg-white p-5 md:p-7" role="status">
+          <a :href="liberado ? $el.parentElement.dataset.pdf : null" class="btn self-start" download>Clique aqui para fazer o download</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

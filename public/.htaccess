@@ -5,4 +5,15 @@ Redirect 301 /profissionais-evolucao-de-carreira/ /desenvolvimento-de-carreira/
 Redirect 301 /empresas-desenvolvimento-de-executivos/ /desenvolvimento-de-executivos/
 Redirect 301 /empresas/ /outplacement/
 Redirect 301 /faq/ /perguntas-frequentes/
+# Depoimentos individuais do WordPress (13) agora vivem na página única
+Redirect 301 /depoimento/ /depoimentos/
+# Páginas de apoio do WordPress
+Redirect 301 /whatsapp/ https://wa.me/5511984311675
+Redirect 301 /politica-de-cookies-br/ /politica-de-privacidade/
+RedirectMatch 301 ^/endereços(/.*)?$ /contato/
+# Arquivos do blog do WordPress
+Redirect 301 /profissionais/ /blog/
+Redirect 301 /category/ /blog/
+Redirect 301 /author/ /blog/
+Redirect 301 /termos-e-condicoes/ /politica-de-privacidade/
 ErrorDocument 404 /

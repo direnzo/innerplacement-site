@@ -43,13 +43,21 @@ $padrao = [
 ];
 $cfg = $cfg + $padrao;
 
+// Modo e-book (página /e-book/): mesmo envio, sem mensagem; o e-mail vai com o assunto do WordPress
+// ('Acesso ao e-book "InnerPlacement"') e, com o envio, a página mostra o botão de download.
+$ebook = ($_POST['tipo'] ?? '') === 'ebook';
+$para  = $ebook ? '/e-book/?ok=1' : '/obrigado/';
+$volta = $ebook ? '/e-book/' : '/contato/';
+if ($ebook) { $cfg['assunto'] = 'Acesso ao e-book "InnerPlacement"'; }
+
 function responder(bool $ok, string $base, bool $querJson, string $erro = ''): never {
+  global $para, $volta;
   if ($querJson) {
     http_response_code($ok ? 200 : 422);
     header('Content-Type: application/json; charset=utf-8');
-    echo json_encode($ok ? ['ok' => true, 'destino' => $base . '/obrigado/'] : ['ok' => false, 'erro' => $erro], JSON_UNESCAPED_UNICODE);
+    echo json_encode($ok ? ['ok' => true, 'destino' => $base . $para] : ['ok' => false, 'erro' => $erro], JSON_UNESCAPED_UNICODE);
   } else {
-    header('Location: ' . ($ok ? $base . '/obrigado/' : $base . '/contato/?erro=' . rawurlencode($erro ?: 'envio') . '#formulario'), true, 303);
+    header('Location: ' . ($ok ? $base . $para : $base . $volta . '?erro=' . rawurlencode($erro ?: 'envio') . '#formulario'), true, 303);
   }
   exit;
 }
@@ -76,9 +84,10 @@ $mensagem = mb_substr(trim(str_replace("\r\n", "\n", (string) ($_POST['mensagem'
 
 // Validação da documentação (as mesmas mensagens da página).
 if ($nome === '')                       responder(false, $base, $querJson, 'Escreva o seu nome.');
+if ($ebook && $email === '')            responder(false, $base, $querJson, 'Escreva o seu e-mail para receber o e-book.');
 if ($email === '' && $whatsapp === '')  responder(false, $base, $querJson, 'Deixe um e-mail ou um WhatsApp para a Inner responder.');
 if ($email !== '' && !filter_var($email, FILTER_VALIDATE_EMAIL)) responder(false, $base, $querJson, 'Confira o e-mail. Parece faltar alguma parte.');
-if ($mensagem === '')                   responder(false, $base, $querJson, 'Conte, em poucas palavras, o que você deseja.');
+if (!$ebook && $mensagem === '')        responder(false, $base, $querJson, 'Conte, em poucas palavras, o que você deseja.');
 
 // Limite de envios por IP (por hora), guardado junto ao registro.
 $dir = rtrim((string) $cfg['registro'], '/');
@@ -101,7 +110,7 @@ $agora = new DateTimeImmutable('now', new DateTimeZone('America/Sao_Paulo'));
 $pagina = mb_substr((string) ($_SERVER['HTTP_REFERER'] ?? ''), 0, 300);
 $registro = [
   'data' => $agora->format('c'), 'ambiente' => $teste ? 'teste' : 'producao',
-  'nome' => $nome, 'email' => $email, 'whatsapp' => $whatsapp, 'mensagem' => $mensagem, 'pagina' => $pagina,
+  'nome' => $nome, 'email' => $email, 'tipo' => $ebook ? 'ebook' : 'contato', 'whatsapp' => $whatsapp, 'mensagem' => $mensagem, 'pagina' => $pagina,
 ];
 $gravou = @file_put_contents($dir . '/mensagens-' . $agora->format('Y-m') . '.jsonl', json_encode($registro, JSON_UNESCAPED_UNICODE) . "\n", FILE_APPEND | LOCK_EX) !== false;
 
@@ -114,15 +123,13 @@ if ($destino === '') {
 }
 
 $linhas = [
-  'Mensagem enviada pelo site' . ($teste ? ' (versão de teste /v2-teste/)' : '') . '.',
+  ($ebook ? 'Pedido de acesso ao e-book "Por que os Planos de Sucessão Falham e Como Evitar"' : 'Mensagem enviada pelo site') . ($teste ? ' (versão de teste /v2-teste/)' : '') . '.',
   '',
   'Nome: ' . $nome,
   'E-mail: ' . ($email !== '' ? $email : '—'),
   'WhatsApp: ' . ($whatsapp !== '' ? $whatsapp : '—'),
   '',
-  'Mensagem:',
-  $mensagem,
-  '',
+  ...($ebook ? [] : ['Mensagem:', $mensagem, '']),
   '—',
   'Enviada em ' . $agora->format('d/m/Y \à\s H:i') . ($pagina !== '' ? ' pela página ' . $pagina : '') . '.',
 ];

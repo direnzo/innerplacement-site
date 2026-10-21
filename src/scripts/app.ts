@@ -40,6 +40,42 @@ Alpine.data('contato', () => ({
   },
 }));
 
+// Formulário do e-book (/e-book/): só o e-mail é obrigatório (como no WordPress). Com o envio, mostra o botão de
+// download na própria página (?ok=1 cobre o envio sem JavaScript).
+Alpine.data('ebook', () => ({
+  f: { nome: '', email: '', whatsapp: '' },
+  erros: {} as Record<string, string>,
+  enviando: false,
+  liberado: false,
+  t: Date.now(),
+  init() {
+    const q = new URLSearchParams(location.search);
+    if (q.get('ok')) this.liberado = true;
+    const erro = q.get('erro');
+    if (erro) this.erros = { envio: erro === 'envio' ? ERRO_ENVIO : erro };
+  },
+  async enviar(e: SubmitEvent) {
+    const erros: Record<string, string> = {};
+    if (!this.f.email.trim()) erros.email = 'Escreva o seu e-mail para receber o e-book.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.f.email.trim())) erros.email = 'Confira o e-mail. Parece faltar alguma parte.';
+    this.erros = erros;
+    e.preventDefault();
+    if (Object.keys(erros).length || this.enviando) return;
+    if ((window as any).INNER_TESTE === true) { this.liberado = true; return; }
+    this.enviando = true;
+    try {
+      const form = e.target as HTMLFormElement;
+      const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      const dados = await r.json().catch(() => ({}));
+      if (r.ok && dados.ok) { this.liberado = true; this.enviando = false; return; }
+      this.erros = dados.erro ? { envio: dados.erro } : { envio: ERRO_ENVIO };
+    } catch {
+      this.erros = { envio: ERRO_ENVIO };
+    }
+    this.enviando = false;
+  },
+}));
+
 // Rolagem das ilustrações: cada elemento com [data-rolagem] recebe --rolagem, de 0 (topo da página)
 // a 1,2 (depois de rolar pouco mais de uma tela). O CSS da peça decide o que se move.
 // Só roda enquanto o elemento está visível e nunca com "reduzir movimento".
