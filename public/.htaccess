@@ -1,19 +1,21 @@
-# Redirecionamentos 301 das URLs do WordPress atual para as páginas novas
+# Redirecionamentos 301 das URLs do WordPress atual para as páginas novas.
+# RedirectMatch ancorado (^...$), não Redirect: o Redirect do Apache anexa o resto do caminho ao destino
+# (/depoimento/nome/ viraria /depoimentos/nome/, que não existe). A barra final é opcional (/?).
+# Testado em Apache 2.4 local contra as 45 URLs dos sitemaps do WordPress (docs/mapa-redirecionamentos.md).
 RewriteEngine On
-Redirect 301 /profissionais-transicao-de-carreira-outplacement/ /transicao-e-recolocacao/
-Redirect 301 /profissionais-evolucao-de-carreira/ /desenvolvimento-de-carreira/
-Redirect 301 /empresas-desenvolvimento-de-executivos/ /desenvolvimento-de-executivos/
-Redirect 301 /empresas/ /outplacement/
-Redirect 301 /faq/ /perguntas-frequentes/
-# Depoimentos individuais do WordPress (13) agora vivem na página única
-Redirect 301 /depoimento/ /depoimentos/
+RedirectMatch 301 ^/profissionais-transicao-de-carreira-outplacement/?$ /transicao-e-recolocacao/
+RedirectMatch 301 ^/profissionais-evolucao-de-carreira/?$ /desenvolvimento-de-carreira/
+RedirectMatch 301 ^/empresas-desenvolvimento-de-executivos/?$ /desenvolvimento-de-executivos/
+RedirectMatch 301 ^/empresas/?$ /outplacement/
+RedirectMatch 301 ^/faq/?$ /perguntas-frequentes/
+# Depoimentos individuais do WordPress (14) agora vivem na página única
+RedirectMatch 301 ^/depoimento(/.*)?$ /depoimentos/
 # Páginas de apoio do WordPress
-Redirect 301 /whatsapp/ https://wa.me/5511984311675
-Redirect 301 /politica-de-cookies-br/ /politica-de-privacidade/
+RedirectMatch 301 ^/whatsapp/?$ https://wa.me/5511984311675
+RedirectMatch 301 ^/politica-de-cookies-br/?$ /politica-de-privacidade/
+RedirectMatch 301 ^/termos-e-condicoes/?$ /politica-de-privacidade/
 RedirectMatch 301 ^/endereços(/.*)?$ /contato/
 # Arquivos do blog do WordPress
-Redirect 301 /profissionais/ /blog/
-Redirect 301 /category/ /blog/
-Redirect 301 /author/ /blog/
-Redirect 301 /termos-e-condicoes/ /politica-de-privacidade/
+RedirectMatch 301 ^/profissionais/?$ /blog/
+RedirectMatch 301 ^/(category|author)(/.*)?$ /blog/
 ErrorDocument 404 /
