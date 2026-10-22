@@ -11,7 +11,7 @@ import fBola from '../../imagens/inner-F01-bola-v1.svg?raw';
 import fArcos from '../../imagens/inner-F02-arcos-v1.svg?raw';
 import fSetas from '../../imagens/inner-F03-chevrons-v1.svg?raw';
 import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
-import { EMAIL, WHATSAPP_TXT, GTM_ID, enderecos } from '../data/site';
+import { EMAIL, WHATSAPP_TXT, GTM_ID, enderecos, redes } from '../data/site';
 // fundo: formas da marca flutuando nas bordas de todas as páginas (pedido do dono, 01/10); a home desliga
 // (fundo={false}) porque tem as suas, posicionadas à mão no bloco 2.
 // ogImagem: caminho de uma imagem de compartilhamento própria (posts do blog: a capa). tipo: og:type.
@@ -25,11 +25,17 @@ const pagina = Astro.url.pathname.replace(/^\/|\/$/g, '') || 'inicio';
 const comImagem = ['inicio', 'transicao-e-recolocacao', 'desenvolvimento-de-carreira', 'desenvolvimento-de-executivos', 'outplacement', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato', 'quem-somos', 'blog'];
 const ogImagem = new URL(ogPropria ?? `/og/${comImagem.includes(pagina) ? pagina : 'inicio'}.jpg`, Astro.site).href;
 const org = {
-  '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'Inner Placement',
-  url: 'https://innerplacement.com.br/', email: EMAIL, telephone: WHATSAPP_TXT,
+  '@context': 'https://schema.org', '@type': 'ProfessionalService', '@id': 'https://innerplacement.com.br/#organizacao', name: 'Inner Placement',
+  url: 'https://innerplacement.com.br/', logo: 'https://innerplacement.com.br/logo.svg', image: 'https://innerplacement.com.br/og/inicio.jpg',
+  sameAs: redes.map((r) => r.href), email: EMAIL, telephone: WHATSAPP_TXT,
   areaServed: 'BR', address: enderecos.map((e) => ({
     '@type': 'PostalAddress', streetAddress: `${e.rua}, ${e.bairro}`, addressLocality: e.cidade, addressRegion: e.uf, addressCountry: 'BR',
   })),
+};
+// A home (sem schema próprio) também declara o site, ligado à organização pelo @id.
+const site = {
+  '@context': 'https://schema.org', '@type': 'WebSite', '@id': 'https://innerplacement.com.br/#site', url: 'https://innerplacement.com.br/',
+  name: 'Inner Placement', inLanguage: 'pt-BR', publisher: { '@id': 'https://innerplacement.com.br/#organizacao' },
 };
 ---
 <!doctype html>
@@ -69,6 +75,9 @@ const org = {
   <meta property="og:image:alt" content={`${titulo} · Inner Placement`} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@innerplacement" />
+  <meta name="twitter:title" content={tituloCompleto} />
+  <meta name="twitter:description" content={descricao} />
+  <meta name="twitter:image" content={ogImagem} />
   <!-- Selo de localização (SEO local), igual ao que o site antigo tinha: endereço de São Paulo. -->
   <meta name="geo.placename" content="São Paulo" />
   <meta name="geo.position" content="-23.5829239;-46.6781108" />
@@ -78,7 +87,7 @@ const org = {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&display=swap" />
-  <script type="application/ld+json" set:html={JSON.stringify(schema ?? org)} />
+  <script type="application/ld+json" set:html={JSON.stringify(schema ?? (Astro.url.pathname === '/' ? [org, site] : org))} />
   <slot name="head" />
 </head>
 <body class="min-h-dvh">
