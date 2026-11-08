@@ -39,7 +39,7 @@ const schema = {
       <div class="grid gap-4 md:grid-cols-3 md:gap-6">
         {outros.map((o) => (
           <a href={`/${o.id}/`} class="card group flex flex-col overflow-hidden">
-            {o.data.imagem && <div class="aspect-[16/9] overflow-hidden bg-areia-c"><img src={o.data.imagem} alt="" loading="lazy" decoding="async" class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" /></div>}
+            {o.data.imagem && <div class="aspect-[16/9] overflow-hidden bg-areia-c"><img src={o.data.imagem} alt="" width="640" height="360" loading="lazy" decoding="async" class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" /></div>}
             <span class="flex flex-col gap-2 p-5"><span class="text-[17px] font-semibold leading-[1.3]">{o.data.titulo}</span><span class="text-[13.5px] text-mudo">{dataBR(o.data.data)}</span></span>
           </a>
         ))}
