@@ -3,8 +3,10 @@ import Svg from './Svg.astro';
 import { miolo } from '../lib/svg';
 // ilustracao: cena do topo (tools/ilustracao/bloco4.mts, texto cru), à direita do título no computador
 // e no tablet; no celular some, para o título subir (guia de imagens). Sem ela, o acento do kit.
-interface Props { titulo: string; intro?: string; trilha?: string; acento?: string; acentoStyle?: string; acentoClass?: string; ilustracao?: string; umaLinha?: boolean }
-const { titulo, intro, trilha, acento, acentoStyle, acentoClass, ilustracao, umaLinha = false } = Astro.props;
+// migalhas: breadcrumb das páginas por público ([nome, link], a última sem link); kicker: linha acima do h1;
+// destaque: frase de destaque (h2) das páginas de programa (doc. v2, 3.5 e 6.1).
+interface Props { titulo: string; intro?: string | string[]; trilha?: string; migalhas?: [string, string?][]; kicker?: string; destaque?: string; acento?: string; acentoStyle?: string; acentoClass?: string; ilustracao?: string; umaLinha?: boolean }
+const { titulo, intro, trilha, migalhas, kicker, destaque, acento, acentoStyle, acentoClass, ilustracao, umaLinha = false } = Astro.props;
 ---
 <!-- Com ilustração, o topo tem altura mínima para a cena (180 de altura) caber inteira, com o texto
      centralizado. Banner mais baixo (pedido do dono, 02/10): 60% da altura e da cena de antes. -->
@@ -16,8 +18,16 @@ const { titulo, intro, trilha, acento, acentoStyle, acentoClass, ilustracao, uma
     : acento && <Svg name={acento} w={420} class={`pointer-events-none absolute hidden h-auto md:block ${acentoClass ?? ''}`} style={acentoStyle} />}
   <div class:list={['wrap relative flex flex-col gap-3 py-9 md:gap-4 md:py-14 md:pr-[min(29%,320px)]', ilustracao ? 'lg:pr-[min(32%,350px)]' : 'lg:pr-0']}>
     {trilha && <p class="text-[14px] text-mudo"><a href="/" class="hover:text-tinta">Início</a> / {trilha}</p>}
+    {migalhas && (
+      <nav aria-label="Trilha" class="text-[14px] text-mudo">
+        <a href="/" class="hover:text-tinta">Início</a>
+        {migalhas.map(([n, h]) => <> › {h ? <a href={h} class="hover:text-tinta">{n}</a> : n}</>)}
+      </nav>
+    )}
+    {kicker && <p class="text-[12.5px] font-bold uppercase tracking-[.1em] text-coral-d">{kicker}</p>}
     <h1 class:list={['h1-pag', umaLinha ? 'max-w-none lg:whitespace-nowrap' : 'max-w-[20ch]']}><slot name="titulo">{titulo}</slot></h1>
-    {intro && <p class="lead md:max-w-[58ch]">{intro}</p>}
+    {destaque && <h2 class="h2 !font-semibold md:max-w-[34ch]">{destaque}</h2>}
+    {[intro ?? []].flat().map((p) => <p class="lead md:max-w-[58ch]">{p}</p>)}
     <slot />
   </div>
 </section>

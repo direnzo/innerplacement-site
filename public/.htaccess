@@ -3,10 +3,15 @@
 # (/depoimento/nome/ viraria /depoimentos/nome/, que não existe). A barra final é opcional (/?).
 # Testado em Apache 2.4 local contra as 45 URLs dos sitemaps do WordPress (docs/mapa-redirecionamentos.md).
 RewriteEngine On
-RedirectMatch 301 ^/profissionais-transicao-de-carreira-outplacement/?$ /transicao-e-recolocacao/
-RedirectMatch 301 ^/profissionais-evolucao-de-carreira/?$ /desenvolvimento-de-carreira/
-RedirectMatch 301 ^/empresas-desenvolvimento-de-executivos/?$ /desenvolvimento-de-executivos/
-RedirectMatch 301 ^/empresas/?$ /outplacement/
+RedirectMatch 301 ^/profissionais-transicao-de-carreira-outplacement/?$ /para-voce/transicao-e-recolocacao/
+RedirectMatch 301 ^/profissionais-evolucao-de-carreira/?$ /para-voce/next-level/
+RedirectMatch 301 ^/empresas-desenvolvimento-de-executivos/?$ /para-sua-empresa/next-level/
+RedirectMatch 301 ^/empresas/?$ /para-sua-empresa/outplacement/
+# Endereços anteriores das páginas de serviço (só existiram na versão de teste; doc. v2, 3.6)
+RedirectMatch 301 ^/transicao-e-recolocacao/?$ /para-voce/transicao-e-recolocacao/
+RedirectMatch 301 ^/desenvolvimento-de-carreira/?$ /para-voce/next-level/
+RedirectMatch 301 ^/desenvolvimento-de-executivos/?$ /para-sua-empresa/next-level/
+RedirectMatch 301 ^/outplacement/?$ /para-sua-empresa/outplacement/
 RedirectMatch 301 ^/faq/?$ /perguntas-frequentes/
 # Depoimentos individuais do WordPress (14) agora vivem na página única
 RedirectMatch 301 ^/depoimento(/.*)?$ /depoimentos/

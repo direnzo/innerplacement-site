@@ -1,19 +1,25 @@
 ---
 import IconeZap from './IconeZap.astro';
-import { CTA, WHATSAPP_URL, rotas } from '../data/site';
+import { CTA, CTA_EMPRESA, WHATSAPP_URL, rotas } from '../data/site';
 import { miolo } from '../lib/svg';
 import g01 from '../../imagens/inner-G01-conversa-v2.svg?raw';
+// Dois fechamentos, um por público (doc. v2, 3.3). titulo + destaque: a frase do título, com o trecho final em negrito.
+export interface Props { empresa?: boolean; titulo?: string; destaque?: string; texto?: string }
+const {
+  empresa = false, titulo = 'Todo movimento de carreira começa', destaque = 'com uma conversa.',
+  texto = empresa ? 'Uma conversa sobre a situação, sem apresentação de produto e sem compromisso.' : 'Uma conversa sobre o seu momento. Sem apresentação de produto e sem compromisso.',
+} = Astro.props;
 ---
 <section class="bloco relative bg-tinta text-white" aria-labelledby="fechamento-titulo">
   <div class="wrap relative grid items-center gap-6 py-9 md:py-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-x-12 lg:gap-y-5">
     <div class="flex max-w-[560px] flex-col gap-3">
-      <h2 id="fechamento-titulo" class="h2">Todo movimento de carreira começa <strong>com uma conversa.</strong></h2>
-      <p class="text-[16px] leading-[1.55] text-white/80 md:text-[17px]">Uma conversa sobre o seu momento. Sem apresentação de produto e sem compromisso.</p>
+      <h2 id="fechamento-titulo" class="h2">{titulo} <strong>{destaque}</strong></h2>
+      <p class="text-[16px] leading-[1.55] text-white/80 md:text-[17px]">{texto}</p>
     </div>
     <!-- G-01: a conversa (balões entre duas figuras), entra quando aparece -->
     <svg viewBox="0 0 360 220" class="h-auto w-full max-w-[340px] justify-self-center lg:row-span-2 lg:col-start-2 lg:row-start-1 lg:-my-6 lg:w-[460px] lg:max-w-none" aria-hidden="true" data-entrada set:html={miolo(g01)} />
     <div class="flex flex-col gap-3 sm:flex-row lg:col-start-1">
-      <a href={rotas.contato} class="btn">{CTA}</a>
+      <a href={rotas.contato} class="btn">{empresa ? CTA_EMPRESA : CTA}</a>
       <a href={WHATSAPP_URL} class="btn-c" target="_blank" rel="noopener"><IconeZap />Chamar no WhatsApp</a>
     </div>
   </div>

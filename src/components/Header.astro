@@ -1,51 +1,49 @@
 ---
 import Svg from './Svg.astro';
 import IconeZap from './IconeZap.astro';
-import { CTA, WHATSAPP_URL, rotas, servicos, menu } from '../data/site';
+import { CTA, WHATSAPP_URL, rotas, publicos, menu } from '../data/site';
 const atual = Astro.url.pathname;
 const ext = (h: string) => h.startsWith('http');
 ---
-<header class="sticky top-0 z-40 bg-white" x-data="{ menu: false, serv: false }" @keydown.escape.window="menu = false; serv = false">
-  <div class="wrap flex h-[68px] items-center gap-6 lg:h-[76px] lg:gap-10">
+<header class="sticky top-0 z-40 bg-white" x-data="{ menu: false, sub: null }" @keydown.escape.window="menu = false; sub = null">
+  <!-- Mais largo que o .wrap no computador: dois submenus, cinco links e o botão precisam caber numa linha. -->
+  <div class="wrap flex h-[68px] items-center gap-6 xl:h-[76px] xl:w-[min(1320px,100%-48px)] xl:gap-8">
     <a href={rotas.inicio} class="flex shrink-0 items-center" aria-label="Inner Placement, página inicial">
       <Svg name="logo" h={40} class="h-[34px] w-auto lg:h-10" />
     </a>
 
-    <nav aria-label="Principal" class="hidden flex-1 items-center gap-7 text-[15px] lg:flex">
-      <div class="relative" @mouseleave="serv = false">
-        <button type="button" class="flex min-h-11 items-center gap-1.5" :aria-expanded="serv.toString()" aria-expanded="false"
-          aria-controls="submenu-servicos" @click="serv = !serv" @mouseenter="serv = true">
-          Serviços
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform" :class="serv && 'rotate-180'"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
-        <div id="submenu-servicos" x-cloak x-show="serv" x-transition.opacity.duration.150ms @click.outside="serv = false"
-          class="absolute left-[-24px] top-full grid w-[560px] grid-cols-2 gap-8 rounded-[20px] bg-white p-7 shadow-[0_18px_44px_rgba(35,31,32,.14)]">
-          {servicos.map((g) => (
-            <div class="flex flex-col gap-1">
-              <span class="pb-2 text-[12px] font-bold uppercase tracking-[.1em] text-coral-d">{g.grupo}</span>
-              {g.itens.map((i) => (
-                <a href={i.href} class="flex min-h-11 items-center rounded-full font-semibold hover:text-coral-d" aria-current={atual === i.href ? 'page' : undefined}>{i.nome}</a>
-              ))}
-            </div>
-          ))}
+    <nav aria-label="Principal" class="hidden flex-1 items-center gap-5 whitespace-nowrap text-[15px] xl:flex">
+      {publicos.map((g, n) => (
+        <div class="relative flex items-center" x-on:mouseenter={`sub = ${n}`} x-on:mouseleave="sub = null" x-on:click.outside={`if (sub === ${n}) sub = null`}>
+          <a href={g.href} class="flex min-h-11 items-center hover:text-coral-d" aria-current={atual === g.href ? 'page' : undefined}>{g.grupo}</a>
+          <button type="button" class="flex size-7 items-center justify-center" aria-label={`Abrir o submenu ${g.grupo}`} aria-controls={`submenu-${n}`}
+            aria-expanded="false" x-bind:aria-expanded={`(sub === ${n}).toString()`} x-on:click={`sub = sub === ${n} ? null : ${n}`}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="transition-transform" x-bind:class={`sub === ${n} && 'rotate-180'`}><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div id={`submenu-${n}`} x-cloak x-show={`sub === ${n}`} x-transition.opacity.duration.150ms
+            class="absolute left-[-20px] top-full flex w-[250px] flex-col rounded-[20px] bg-white p-5 shadow-[0_18px_44px_rgba(35,31,32,.14)]">
+            {g.itens.map((i) => (
+              <a href={i.href} class="flex min-h-11 items-center rounded-full font-semibold hover:text-coral-d" aria-current={atual === i.href ? 'page' : undefined}>{i.nome}</a>
+            ))}
+          </div>
         </div>
-      </div>
+      ))}
       {menu.map((m) => (
         <a href={m.href} class="flex min-h-11 items-center hover:text-coral-d" aria-current={atual === m.href ? 'page' : undefined}
           target={ext(m.href) ? '_blank' : undefined} rel={ext(m.href) ? 'noopener' : undefined}>{m.nome}</a>
       ))}
     </nav>
 
-    <a href={rotas.contato} class="btn ml-auto hidden !min-h-[46px] !px-[22px] !text-[15px] lg:inline-flex">{CTA}</a>
+    <a href={rotas.contato} class="btn ml-auto hidden shrink-0 !min-h-[46px] !px-[22px] !text-[15px] xl:inline-flex">{CTA}</a>
 
-    <button type="button" class="ml-auto flex size-12 items-center justify-center rounded-full bg-areia-c lg:hidden"
+    <button type="button" class="ml-auto flex size-12 items-center justify-center rounded-full bg-areia-c xl:hidden"
       aria-controls="menu-celular" :aria-expanded="menu.toString()" aria-expanded="false" @click="menu = true">
       <span class="sr-only">Abrir menu</span>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
 
-  <div id="menu-celular" x-cloak x-show="menu" x-transition.opacity class="fixed inset-0 z-50 flex flex-col bg-white lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
+  <div id="menu-celular" x-cloak x-show="menu" x-transition.opacity class="fixed inset-0 z-50 flex flex-col bg-white xl:hidden" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="wrap flex h-[68px] shrink-0 items-center justify-between">
       <Svg name="logo" h={34} />
       <button type="button" class="flex size-12 items-center justify-center rounded-full bg-areia-c" @click="menu = false">
@@ -54,9 +52,9 @@ const ext = (h: string) => h.startsWith('http');
       </button>
     </div>
     <nav aria-label="Principal no celular" class="wrap flex flex-1 flex-col overflow-y-auto pb-4">
-      {servicos.map((g) => (
+      {publicos.map((g) => (
         <>
-          <span class="pb-1 pt-4 text-[12px] font-bold uppercase tracking-[.1em] text-coral-d">{g.grupo}</span>
+          <a href={g.href} class="pb-1 pt-4 text-[12px] font-bold uppercase tracking-[.1em] text-coral-d" @click="menu = false">{g.grupo}</a>
           {g.itens.map((i) => <a href={i.href} class="flex min-h-12 items-center text-[17px] font-semibold" @click="menu = false">{i.nome}</a>)}
         </>
       ))}

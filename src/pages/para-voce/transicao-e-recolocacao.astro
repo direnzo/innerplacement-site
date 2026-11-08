@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import TopoPagina from '../../components/TopoPagina.astro';
+import ilustracao from '../../../imagens/inner-P01-topo-transicao-v2.svg?raw';
+import Programa from '../../components/Programa.astro';
+import DepoCard from '../../components/DepoCard.astro';
+import Numeros from '../../components/Numeros.astro';
+import PerguntasPagina from '../../components/PerguntasPagina.astro';
+import { depoimentos as D } from '../../data/depoimentos';
+import { linksVoce } from '../../data/faq';
+import { rotas } from '../../data/site';
+---
+<Base titulo="Transition · Transição e Recolocação" fechamento
+  descricao="Quando um ciclo termina, o próximo movimento precisa ser construído.">
+  <TopoPagina titulo="Transition" migalhas={[['Para você', rotas.paraVoce], ['Transition']]} kicker="Transitar · Transição e Recolocação" ilustracao={ilustracao}
+    destaque="Quando um ciclo termina, o próximo movimento precisa ser construído."
+    intro={['A transição pode começar depois de uma saída ou ainda dentro da empresa, quando você já sabe que o ciclo está chegando ao fim. Nesse caso, o processo acontece com a confidencialidade necessária para preservar o movimento até que seja o momento certo de torná-lo público.', 'Em ambos os cenários, o trabalho combina clareza sobre a direção, posicionamento e execução.', 'A Inner oferece dois formatos, com o mesmo método e diferentes níveis de acompanhamento.']} />
+  <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
+    <Programa rotulo="Transição" nome="Transition Platinum" destaque="Para transições de maior complexidade, que pedem profundidade e acompanhamento próximo.">
+      <p>O processo percorre direção de carreira, posicionamento, currículo e LinkedIn, network, job hunting e preparação para processos seletivos. Uma consultora dedicada acompanha o movimento e dá ritmo e continuidade até a recolocação.</p>
+    </Programa>
+    <Programa rotulo="Transição" nome="Transition Focus" destaque="Para quem quer conduzir a própria transição com estrutura e autonomia.">
+      <p>Uma trilha estruturada combina direcionamento, posicionamento, currículo e LinkedIn, network, busca de oportunidades e preparação para entrevistas, com encontros individuais nos momentos decisivos.</p>
+      <p>Você conduz o processo e conta com suporte onde a decisão e a preparação exigem mais atenção.</p>
+    </Programa>
+  </section>
+  <section class="wrap flex flex-col gap-5 pt-2" aria-labelledby="prova">
+    <h2 id="prova" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+    <div class="grid gap-3.5 md:grid-cols-2 md:gap-6">
+      <DepoCard d={D.rafael} />
+      <DepoCard d={D.bruno} />
+    </div>
+    <Numeros />
+  </section>
+  <PerguntasPagina ids={['sigilo', 'platinum-focus', 'mercado-oculto', 'tempo-recolocacao']} links={linksVoce} />
+</Base>

@@ -11,12 +11,10 @@ import tTransicao from '../../imagens/inner-T-transicao-v1.svg?raw';
 import tEmpresas from '../../imagens/inner-T-empresas-v1.svg?raw';
 import tInvestimento from '../../imagens/inner-T-investimento-v1.svg?raw';
 // Ícone de cada seção (tools/ilustracao/titulos.mts); Transição e Crescimento são os mesmos de Depoimentos.
-const icones: Record<string, string> = { 'para-comecar': tComecar, 'para-quem-quer-crescer': tCrescimento, 'para-quem-esta-em-transicao': tTransicao, 'para-empresas': tEmpresas, 'investimento-e-condicoes': tInvestimento };
-const schema = { '@context': 'https://schema.org', '@type': 'FAQPage',
-  mainEntity: secoesFaq.flatMap((s) => s.perguntas).map((p) => ({ '@type': 'Question', name: p.q, acceptedAnswer: { '@type': 'Answer', text: p.a } })) };
+const icones: Record<string, string> = { 'para-comecar': tComecar, 'para-quem-quer-avancar': tCrescimento, 'para-quem-esta-em-transicao': tTransicao, 'para-sua-empresa': tEmpresas, 'investimento-e-condicoes': tInvestimento };
 ---
-<Base titulo="Perguntas frequentes" fechamento schema={schema}
-  descricao="Perguntas frequentes sobre os programas da Inner Placement: primeira conversa, sigilo, Next Level, transição, outplacement e investimento.">
+<Base titulo="Perguntas frequentes" fechamento
+  descricao="Perguntas frequentes sobre os programas da Inner Placement: primeira conversa, sigilo, Next Level, Executive Alignment, transição, outplacement e investimento.">
   <TopoPagina titulo="Perguntas frequentes" ilustracao={ilustracao}>
     <nav aria-label="Seções" class="flex flex-wrap gap-2 pt-1">
       {secoesFaq.map((s) => <a href={`#${s.id}`} class="chip hover:bg-tinta hover:text-white">{s.titulo}</a>)}
@@ -25,7 +23,14 @@ const schema = { '@context': 'https://schema.org', '@type': 'FAQPage',
   {secoesFaq.map((s, i) => (
     <section id={s.id} class="wrap grid scroll-mt-24 gap-4 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14" aria-labelledby={`${s.id}-t`}>
       <ComIcone svg={icones[s.id]} class="lg:flex-col lg:items-start lg:pt-4"><h2 id={`${s.id}-t`} class="h2 !font-semibold">{s.titulo}</h2></ComIcone>
-      <Acordeao itens={s.perguntas} abrirPrimeira={i === 0} prefixo={s.id} />
+      <div class="flex flex-col gap-4">
+        {s.grupos.map((g, j) => (
+          <div class="flex flex-col gap-2">
+            {g.titulo && <a href={g.href} class="text-[12.5px] font-bold uppercase tracking-[.1em] text-coral-d hover:underline">{g.titulo}</a>}
+            <Acordeao itens={g.perguntas} abrirPrimeira={i === 0 && j === 0} prefixo={`${s.id}-${j}`} />
+          </div>
+        ))}
+      </div>
     </section>
   ))}
 </Base>

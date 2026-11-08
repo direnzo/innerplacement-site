@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import TopoPagina from '../../components/TopoPagina.astro';
+import ilustracao from '../../../imagens/inner-P03-topo-executivos-v1.svg?raw';
+import CardEtiqueta from '../../components/CardEtiqueta.astro';
+import Acompanha from '../../components/Acompanha.astro';
+import DepoCard from '../../components/DepoCard.astro';
+import PerguntasPagina from '../../components/PerguntasPagina.astro';
+import { depoimentos as D } from '../../data/depoimentos';
+import { linksEmpresa } from '../../data/faq';
+import { rotas } from '../../data/site';
+---
+<Base titulo="Next Level · Desenvolvimento de Executivos" fechamento={{ empresa: true, titulo: 'Existe um executivo que', destaque: 'precisa estar pronto para mais?' }}
+  descricao="Quando o executivo precisa estar pronto para mais.">
+  <TopoPagina titulo="Next Level" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Next Level']]} kicker="Avançar · Desenvolvimento de Executivos" ilustracao={ilustracao}
+    destaque="Quando o executivo precisa estar pronto para mais."
+    intro={['Uma promoção, ampliação de escopo, sucessão ou novo nível de exposição pode exigir repertórios diferentes dos que trouxeram o executivo até aqui.', 'O Next Level prepara esse movimento: contratado pela empresa, construído com o executivo.']} />
+  <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
+    <CardEtiqueta etiqueta="Como trabalhamos">
+      <p>Partimos do impacto esperado na atuação do executivo e na organização. A partir daí, identificamos o que precisa ser preservado, ampliado ou ajustado para responder ao novo nível de complexidade.</p>
+      <p>O processo é confidencial e conectado às situações reais do executivo.</p>
+    </CardEtiqueta>
+    <CardEtiqueta etiqueta="Quando faz sentido" itens={[
+      'promoção ou preparação para um nível de maior complexidade;',
+      'sucessão;',
+      'ampliação de escopo ou exposição;',
+      'passagem de uma atuação técnica para uma atuação mais estratégica;',
+      'necessidade de ampliar influência, posicionamento ou relevância.',
+    ]} />
+  </section>
+  <Acompanha etiqueta="Como a empresa acompanha">
+    <p>Empresa, executivo e Inner alinham o objetivo do trabalho. A empresa acompanha a evolução em relação a esse objetivo, preservando a confidencialidade do processo.</p>
+  </Acompanha>
+  <section class="wrap flex flex-col gap-5 pt-2" aria-labelledby="prova">
+    <h2 id="prova" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+    <DepoCard d={D.christian} />
+  </section>
+  <PerguntasPagina ids={['e-nl-quando', 'nl-como-funciona', 'empresa-acompanha', 'nl-ea-diferenca']} links={linksEmpresa} />
+</Base>

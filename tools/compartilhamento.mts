@@ -20,10 +20,10 @@ const chromium = process.env.CHROME_SHELL || (() => {
 // página → [título (o mesmo do <Base titulo>), ilustração aprovada em imagens/]
 const paginas: Record<string, [string, string]> = {
   inicio: ['Consultoria de desenvolvimento de carreira', 'inner-H01-hero-v4'],
-  'transicao-e-recolocacao': ['Transição e Recolocação', 'inner-P01-topo-transicao-v2'],
-  'desenvolvimento-de-carreira': ['Desenvolvimento de Carreira', 'inner-P02-topo-carreira-v2'],
-  'desenvolvimento-de-executivos': ['Desenvolvimento de Executivos', 'inner-P03-topo-executivos-v1'],
-  outplacement: ['Outplacement', 'inner-P04-topo-outplacement-v1'],
+  'para-voce--transicao-e-recolocacao': ['Transition · Transição e Recolocação', 'inner-P01-topo-transicao-v2'],
+  'para-voce--next-level': ['Next Level · Desenvolvimento de Carreira', 'inner-P02-topo-carreira-v2'],
+  'para-sua-empresa--next-level': ['Next Level · Desenvolvimento de Executivos', 'inner-P03-topo-executivos-v1'],
+  'para-sua-empresa--outplacement': ['Transition · Outplacement', 'inner-P04-topo-outplacement-v1'],
   depoimentos: ['Depoimentos', 'inner-P05-topo-depoimentos-v1'],
   'perguntas-frequentes': ['Perguntas frequentes', 'inner-P06-topo-faq-v1'],
   manifesto: ['Manifesto', 'inner-P07-manifesto-v1'],

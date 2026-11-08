@@ -20,7 +20,7 @@ Essa evidência se conecta diretamente a um dos maiores desafios que destacamos 
 
 Sem um ambiente de confiança, a transição se torna mais arriscada e desgastante. Isso afeta tanto o novo líder quanto a organização.
 
-A boa notícia é que **segurança psicológica pode ser desenvolvida**. E líderes preparados para fomentá-la transformam não apenas a sua própria performance, mas também a efetividade de todo o time. É aqui que programas como o [Next Level](/desenvolvimento-de-carreira/) da Inner Placement fazem a diferença: nossa abordagem leva executivos e gestores a um **próximo patamar profissional**, fortalecendo competências comportamentais, inteligência emocional e a habilidade de criar espaços de diálogo e inovação.
+A boa notícia é que **segurança psicológica pode ser desenvolvida**. E líderes preparados para fomentá-la transformam não apenas a sua própria performance, mas também a efetividade de todo o time. É aqui que programas como o [Next Level](/para-voce/next-level/) da Inner Placement fazem a diferença: nossa abordagem leva executivos e gestores a um **próximo patamar profissional**, fortalecendo competências comportamentais, inteligência emocional e a habilidade de criar espaços de diálogo e inovação.
 
 ## **O que significa segurança psicológica no ambiente corporativo**
 
@@ -32,7 +32,7 @@ Em espaços assim, erros deixam de ser ameaças e passam a ser oportunidades de 
 
 A boa notícia é que a segurança psicológica **pode ser desenvolvida**. Líderes preparados para fomentá-la transformam não apenas a sua própria performance, mas também a efetividade de todo o time.
 
-É nesse ponto que programas como o [Next Level](/desenvolvimento-de-carreira/), da Inner Placement, fazem a diferença. Nossa abordagem leva executivos e gestores a um **novo patamar**, fortalecendo competências comportamentais, inteligência emocional e a habilidade de criar espaços de diálogo e inovação.
+É nesse ponto que programas como o [Next Level](/para-voce/next-level/), da Inner Placement, fazem a diferença. Nossa abordagem leva executivos e gestores a um **novo patamar**, fortalecendo competências comportamentais, inteligência emocional e a habilidade de criar espaços de diálogo e inovação.
 
 ## **Por que investir em segurança psicológica**
 

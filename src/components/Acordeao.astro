@@ -1,5 +1,6 @@
 ---
 import type { Pergunta } from '../data/faq';
+import { paragrafos } from '../data/faq';
 interface Props { itens: Pergunta[]; abrirPrimeira?: boolean; prefixo: string }
 const { itens, abrirPrimeira = false, prefixo } = Astro.props;
 ---
@@ -19,7 +20,7 @@ const { itens, abrirPrimeira = false, prefixo } = Astro.props;
       </h3>
       <div id={`${prefixo}-${p.id}`} role="region" aria-labelledby={`${prefixo}-${p.id}-b`}
         x-show={`aberta === '${p.id}'`} x-transition.opacity.duration.200ms style={abrirPrimeira && i === 0 ? undefined : 'display:none'}>
-        <p class="pb-5 pr-2 text-[15px] leading-[1.62] text-texto md:pr-12 md:text-[15.5px]">{p.a}</p>
+        <div class="flex flex-col gap-2.5 pb-5 pr-2 text-[15px] leading-[1.62] text-texto md:pr-12 md:text-[15.5px]">{paragrafos(p, Astro.url.pathname).map((par) => <p set:html={par} />)}</div>
       </div>
     </div>
   ))}

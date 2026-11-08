@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import TopoPagina from '../../components/TopoPagina.astro';
+import CardSituacao from '../../components/CardSituacao.astro';
+import Acompanha from '../../components/Acompanha.astro';
+import DepoCard from '../../components/DepoCard.astro';
+import { depoimentos as D } from '../../data/depoimentos';
+import { rotas } from '../../data/site';
+---
+<Base titulo="Para sua empresa" fechamento={{ empresa: true }}
+  descricao="Há executivos que a empresa não quer perder. A Inner atua nos três momentos: quando alguém precisa estar pronto para mais, quando precisa mudar algo relevante e quando um ciclo termina.">
+  <TopoPagina titulo="Para sua empresa" migalhas={[['Para sua empresa']]} acento="rosacea_coral" acentoClass="right-[8%] top-1/2 w-[200px] -translate-y-1/2 opacity-30 lg:w-[260px]"
+    intro="Há executivos que a empresa não quer perder. Alguns precisam chegar a um novo patamar. Outros precisam mudar alguma coisa para ficar. E há momentos em que a saída é a decisão, e a forma como ela acontece também importa. A Inner atua nos três momentos. Identifique o que corresponde à situação da sua empresa." />
+  <section class="wrap grid gap-3.5 md:grid-cols-3 md:gap-6">
+    <CardSituacao etiqueta="Avançar" titulo="Quando alguém precisa estar pronto para mais." href={rotas.empresaNextLevel} link="Next Level">Um executivo assume um novo nível, amplia escopo ou precisa desenvolver novos repertórios.</CardSituacao>
+    <CardSituacao etiqueta="Ajustar" titulo="Quando um executivo importante precisa mudar algo relevante." href={rotas.executiveAlignment} link="Executive Alignment">Existe valor, capacidade de entrega e interesse em preservá-lo, mas algum comportamento, posicionamento ou relação precisa evoluir.</CardSituacao>
+    <CardSituacao etiqueta="Transitar" titulo="Quando um ciclo termina e o próximo precisa ser construído." href={rotas.empresaTransition} link="Transition">A empresa e o executivo precisam conduzir uma transição de forma estruturada, respeitosa e estrategicamente consistente.</CardSituacao>
+  </section>
+  <!-- Pendência P17: "No Outplacement" ou "No Transition"; copiado como está na documentação. -->
+  <Acompanha etiqueta="O que a empresa acompanha">
+    <p>A empresa acompanha o andamento e a evolução do processo, sem acesso ao conteúdo das conversas individuais, que permanece confidencial.</p>
+    <p>No Outplacement, acompanha a evolução da transição e os principais marcos do processo, até seu encerramento.</p>
+    <p>No Next Level e no Executive Alignment, o ponto de partida é um objetivo construído em conjunto entre executivo, empresa e Inner. Ao longo do processo, a empresa acompanha a evolução em relação a esse objetivo, preservando o espaço confidencial de trabalho com o executivo.</p>
+  </Acompanha>
+  <section class="wrap flex flex-col gap-5 pt-2" aria-labelledby="prova">
+    <h2 id="prova" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+    <DepoCard d={D.christian} />
+  </section>
+</Base>

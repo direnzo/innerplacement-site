@@ -1,5 +1,6 @@
 // Constantes globais. O texto do CTA fica num lugar só (pendência P1 da documentação).
 export const CTA = 'Conversar com um especialista';
+export const CTA_EMPRESA = 'Quero conversar sobre uma situação executiva'; // fechamento das páginas de empresa (doc. v2, 3.3)
 export const WHATSAPP_URL = 'https://wa.me/5511984311675';
 export const WHATSAPP_TXT = '+55 11 98431-1675';
 export const TELEFONE_LINK = 'tel:+5511984311675'; // mesmo número do WhatsApp, para quem prefere ligar
@@ -28,10 +29,13 @@ export const redes = [
 
 export const rotas = {
   inicio: '/',
-  carreira: '/desenvolvimento-de-carreira/',
-  transicao: '/transicao-e-recolocacao/',
-  executivos: '/desenvolvimento-de-executivos/',
-  outplacement: '/outplacement/',
+  paraEmpresa: '/para-sua-empresa/',
+  empresaNextLevel: '/para-sua-empresa/next-level/',
+  executiveAlignment: '/para-sua-empresa/executive-alignment/',
+  empresaTransition: '/para-sua-empresa/outplacement/',
+  paraVoce: '/para-voce/',
+  voceNextLevel: '/para-voce/next-level/',
+  voceTransition: '/para-voce/transicao-e-recolocacao/',
   depoimentos: '/depoimentos/',
   faq: '/perguntas-frequentes/',
   manifesto: '/manifesto/',
@@ -43,14 +47,18 @@ export const rotas = {
   privacidade: '/politica-de-privacidade/',
 } as const;
 
-export const servicos = [
-  { grupo: 'Para você', itens: [
-    { nome: 'Desenvolvimento de Carreira', href: rotas.carreira },
-    { nome: 'Transição e Recolocação', href: rotas.transicao },
+// Os dois públicos do menu e do rodapé (doc. v2, 3.1 e 3.4); o item pai leva ao hub.
+export const publicos = [
+  { grupo: 'Para sua empresa', href: rotas.paraEmpresa, itens: [
+    { nome: 'Visão geral', href: rotas.paraEmpresa },
+    { nome: 'Next Level', href: rotas.empresaNextLevel },
+    { nome: 'Executive Alignment', href: rotas.executiveAlignment },
+    { nome: 'Transition', href: rotas.empresaTransition },
   ]},
-  { grupo: 'Para sua empresa', itens: [
-    { nome: 'Desenvolvimento de Executivos', href: rotas.executivos },
-    { nome: 'Outplacement', href: rotas.outplacement },
+  { grupo: 'Para você', href: rotas.paraVoce, itens: [
+    { nome: 'Visão geral', href: rotas.paraVoce },
+    { nome: 'Next Level', href: rotas.voceNextLevel },
+    { nome: 'Transition', href: rotas.voceTransition },
   ]},
 ];
 
@@ -68,17 +76,9 @@ export const numeros = [
   { n: '86%', t: 'recolocados, em média, em 4,5 meses' },
 ];
 
-// Logos de clientes: todos autorizados (confirmação do dono em 01/10/2026; a documentação funcional citava
-// só Mosaic, BCG e Santillana).
+// Logos de clientes: a documentação v2 (8/11/2026) reduziu aos três abaixo.
 export const logos = [
-  { id: 'bcg', nome: 'BCG', h: 44, autorizado: true },
   { id: 'mosaic', nome: 'Mosaic', h: 50, autorizado: true },
+  { id: 'bcg', nome: 'BCG', h: 44, autorizado: true },
   { id: 'santillana', nome: 'Santillana', h: 54, autorizado: true },
-  { id: 'certisign', nome: 'CertiSign', h: 38, autorizado: true },
-  { id: 'symrise', nome: 'Symrise', h: 40, autorizado: true },
-  { id: 'emais', nome: 'E+ Transição Energética', h: 44, autorizado: true },
-  { id: 'borkar', nome: 'Borkar', h: 50, autorizado: true },
-  { id: 'goodstorage', nome: 'GoodStorage', h: 28, autorizado: true },
-  { id: 'phisalia', nome: 'Phisalia', h: 52, autorizado: true },
-  { id: 'tb', nome: 'TB', h: 48, autorizado: true },
 ];

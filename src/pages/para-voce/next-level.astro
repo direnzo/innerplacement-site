@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import TopoPagina from '../../components/TopoPagina.astro';
+import ilustracao from '../../../imagens/inner-P02-topo-carreira-v2.svg?raw';
+import CardEtiqueta from '../../components/CardEtiqueta.astro';
+import DepoCard from '../../components/DepoCard.astro';
+import DepoVideo from '../../components/DepoVideo.astro';
+import PerguntasPagina from '../../components/PerguntasPagina.astro';
+import { depoimentos as D } from '../../data/depoimentos';
+import { linksVoce } from '../../data/faq';
+import { rotas } from '../../data/site';
+---
+<Base titulo="Next Level · Desenvolvimento de Carreira" fechamento
+  descricao="Para quem construiu uma carreira sólida e quer chegar ao próximo nível.">
+  <TopoPagina titulo="Next Level" migalhas={[['Para você', rotas.paraVoce], ['Next Level']]} kicker="Avançar e ajustar · Desenvolvimento de Carreira" ilustracao={ilustracao}
+    destaque="Para quem construiu uma carreira sólida e quer chegar ao próximo nível."
+    intro="O Next Level é para quem quer se preparar para um próximo nível de carreira, ampliar impacto no papel atual ou reconhece que algum aspecto da própria atuação precisa evoluir." />
+  <section class="wrap">
+    <CardEtiqueta etiqueta="Como trabalhamos">
+      <p>Partimos do impacto que você quer ter na carreira e na organização. A partir daí, identificamos o que precisa ser preservado, ampliado ou ajustado e construímos uma estratégia de desenvolvimento conectada à sua realidade.</p>
+      <p>O processo é individual, confidencial e acompanha os desafios que surgem no seu dia a dia: um espaço profissional, fora da hierarquia da empresa, para ampliar repertório, testar decisões e trabalhar o que nem sempre é possível expor internamente.</p>
+    </CardEtiqueta>
+  </section>
+  <section class="wrap flex flex-col gap-5 pt-2" aria-labelledby="prova">
+    <h2 id="prova" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+    <DepoVideo d={D.thiago} />
+    <DepoCard d={D.marcia} />
+  </section>
+  <PerguntasPagina ids={['nl-como-funciona', 'nl-por-conta-propria', 'nl-empresa-sabe', 'nl-duracao']} links={linksVoce} />
+</Base>

@@ -1,0 +1,12 @@
+---
+import Badge from './Badge.astro';
+// Card escuro "O que a empresa acompanha" / "Como a empresa acompanha" (doc. v2, 5.2 e 6.1); parágrafos no slot.
+interface Props { etiqueta: string }
+const { etiqueta } = Astro.props;
+---
+<section class="wrap">
+  <aside class="flex flex-col items-start gap-3 rounded-[20px] bg-tinta p-5 text-white md:flex-row md:gap-10 md:p-8">
+    <div class="shrink-0"><Badge variante="coral">{etiqueta}</Badge></div>
+    <div class="flex flex-col gap-3 text-[16.5px] leading-[1.55] md:text-[18px]"><slot /></div>
+  </aside>
+</section>

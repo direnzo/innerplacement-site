@@ -1,0 +1,17 @@
+---
+import Badge from './Badge.astro';
+// Card das páginas de programa (doc. v2, 6.1): "Como trabalhamos" (parágrafos no slot) ou "Quando faz sentido" (itens).
+interface Props { etiqueta: string; itens?: string[] }
+const { etiqueta, itens } = Astro.props;
+---
+<article class="card flex flex-col gap-3 p-5 md:p-7">
+  <h2 class="contents"><Badge>{etiqueta}</Badge></h2>
+  <div class="flex flex-col gap-3 text-[15.5px] leading-[1.62] text-texto md:text-[16px]">
+    <slot />
+    {itens && (
+      <ul class="flex flex-col gap-2" role="list">
+        {itens.map((i) => <li class="relative pl-5 before:absolute before:left-0 before:top-[.62em] before:size-2 before:rounded-full before:bg-coral">{i}</li>)}
+      </ul>
+    )}
+  </div>
+</article>
