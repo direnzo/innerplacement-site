@@ -83,7 +83,7 @@ fora, como o guia pede.
 | 3 | Home, fim e global: Perguntas, Manifesto, Fechamento | H-09, H-10, G-01 | concluído (30/09), no site com movimento |
 | 4 | Topos das páginas de serviço | P-01 a P-04 | concluído (01/10), no site com movimento |
 | 5 | Demais páginas e compartilhamento | P-05 a P-09, G-03, G-05 | concluído (01/10) |
-| 6 | Topos dos hubs e da Executive Alignment | P-12 a P-14 | propostas em revisão (08/11) |
+| 6 | Topos dos hubs e da Executive Alignment | P-12 a P-14 | concluído (08/11) |
 
 As outras 50 peças do "plano completo" do guia (ícones de etapa, padrões) entram só onde um bloco
 mostrar que fazem falta.
@@ -352,3 +352,5 @@ página, com os ganchos `p-*` do bloco 4. Revisão: https://claude.ai/artifact/E
 | `P12a-empresa-tres-momentos.svg` / `P12b-empresa-quadro.svg` | Para sua empresa | A empresa e os três momentos à frente / três cartões de situação |
 | `P13a-voce-dois-movimentos.svg` / `P13b-voce-bussola.svg` | Para você | A pessoa entre o pilar e o arco / bússola com a rosácea |
 | `P14a-alignment-realinhar.svg` / `P14b-alignment-nivel.svg` | Executive Alignment | O executivo volta à linha do grupo / nível de bolha entre empresa e Inner |
+
+Fechamento (08/11): o dono escolheu **P12a** (Para sua empresa), **P13b** (Para você) e **P14b** (Executive Alignment), sem ajustes. Em `imagens/`: `inner-P12-topo-empresa-v1`, `inner-P13-topo-voce-v1`, `inner-P14-topo-executive-alignment-v1`.

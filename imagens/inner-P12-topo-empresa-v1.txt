@@ -1,0 +1,9 @@
+PEÇA: P-12 · Topo de Para sua empresa
+STATUS: APROVADA (dono, 08/11/2026, bloco 6)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco6.mts (peça 'P12a-empresa-tres-momentos'); cópia de docs/ilustracao/bloco-6/P12a-empresa-tres-momentos.svg
+
+Conceito: Três momentos: a empresa ao fundo e, à frente, quem sobe, quem se ajusta e quem sai acompanhado.
+
+Cena 420 × 300 à direita do título (TopoPagina, prop ilustracao); oculta no celular, como nas demais páginas.
+Movimento: CSS "Bloco 4 · movimento".

@@ -1,0 +1,9 @@
+PEÇA: P-13 · Topo de Para você
+STATUS: APROVADA (dono, 08/11/2026, bloco 6)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco6.mts (peça 'P13b-voce-bussola'); cópia de docs/ilustracao/bloco-6/P13b-voce-bussola.svg
+
+Conceito: Bússola: a direção da carreira, com a rosácea no centro e a agulha apontando o próximo passo.
+
+Cena 420 × 300 à direita do título (TopoPagina, prop ilustracao); oculta no celular, como nas demais páginas.
+Movimento: CSS "Bloco 4 · movimento".

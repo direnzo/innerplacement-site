@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import TopoPagina from '../../components/TopoPagina.astro';
+import ilustracao from '../../../imagens/inner-P14-topo-executive-alignment-v1.svg?raw';
 import CardEtiqueta from '../../components/CardEtiqueta.astro';
 import Acompanha from '../../components/Acompanha.astro';
 import PerguntasPagina from '../../components/PerguntasPagina.astro';
@@ -10,7 +11,7 @@ import { rotas } from '../../data/site';
 <Base titulo="Executive Alignment · Preservar quem precisa mudar"
   fechamento={{ empresa: true, titulo: 'Existe uma situação executiva que', destaque: 'merece uma leitura mais cuidadosa?', texto: 'Uma conversa sobre a situação, que pode começar sem identificar a pessoa. Sem apresentação de produto e sem compromisso.' }}
   descricao="Quando um executivo entrega, mas alguma coisa precisa mudar.">
-  <TopoPagina titulo="Executive Alignment" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Executive Alignment']]} kicker="Ajustar · Preservar quem precisa mudar" acento="rosacea_coral" acentoClass="right-[8%] top-1/2 w-[200px] -translate-y-1/2 opacity-30 lg:w-[260px]"
+  <TopoPagina titulo="Executive Alignment" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Executive Alignment']]} kicker="Ajustar · Preservar quem precisa mudar" ilustracao={ilustracao}
     destaque="Quando um executivo entrega, mas alguma coisa precisa mudar."
     intro="Há valor, capacidade de entrega e interesse em preservá-lo, mas um aspecto de comportamento, posicionamento, liderança ou relação começou a representar risco." />
   <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">

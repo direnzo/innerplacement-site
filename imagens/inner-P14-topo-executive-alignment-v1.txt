@@ -1,0 +1,9 @@
+PEÇA: P-14 · Topo de Executive Alignment
+STATUS: APROVADA (dono, 08/11/2026, bloco 6)
+FERRAMENTA: SVG desenhado no código a partir do kit oficial
+GERADOR: tools/ilustracao/bloco6.mts (peça 'P14b-alignment-nivel'); cópia de docs/ilustracao/bloco-6/P14b-alignment-nivel.svg
+
+Conceito: Nível de bolha: empresa e Inner nas pontas, o executivo no centro e a bolha chegando ao meio (objetivo alinhado).
+
+Cena 420 × 300 à direita do título (TopoPagina, prop ilustracao); oculta no celular, como nas demais páginas.
+Movimento: CSS "Bloco 4 · movimento".

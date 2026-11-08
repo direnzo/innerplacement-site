@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import TopoPagina from '../../components/TopoPagina.astro';
+import ilustracao from '../../../imagens/inner-P12-topo-empresa-v1.svg?raw';
 import CardSituacao from '../../components/CardSituacao.astro';
 import Acompanha from '../../components/Acompanha.astro';
 import DepoCard from '../../components/DepoCard.astro';
@@ -9,7 +10,7 @@ import { rotas } from '../../data/site';
 ---
 <Base titulo="Para sua empresa" fechamento={{ empresa: true }}
   descricao="Há executivos que a empresa não quer perder. A Inner atua nos três momentos: quando alguém precisa estar pronto para mais, quando precisa mudar algo relevante e quando um ciclo termina.">
-  <TopoPagina titulo="Para sua empresa" migalhas={[['Para sua empresa']]} acento="rosacea_coral" acentoClass="right-[8%] top-1/2 w-[200px] -translate-y-1/2 opacity-30 lg:w-[260px]"
+  <TopoPagina titulo="Para sua empresa" migalhas={[['Para sua empresa']]} ilustracao={ilustracao}
     intro="Há executivos que a empresa não quer perder. Alguns precisam chegar a um novo patamar. Outros precisam mudar alguma coisa para ficar. E há momentos em que a saída é a decisão, e a forma como ela acontece também importa. A Inner atua nos três momentos. Identifique o que corresponde à situação da sua empresa." />
   <section class="wrap grid gap-3.5 md:grid-cols-3 md:gap-6">
     <CardSituacao etiqueta="Avançar" titulo="Quando alguém precisa estar pronto para mais." href={rotas.empresaNextLevel} link="Next Level">Um executivo assume um novo nível, amplia escopo ou precisa desenvolver novos repertórios.</CardSituacao>
