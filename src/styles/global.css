@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source not "../../iqa"; /* cópia de outra aplicação (docs/iqa.md): as classes dela não entram no CSS do site */
 
 /* Tokens da marca Inner Placement. Regra de forma: nenhum canto reto. */
 @theme {

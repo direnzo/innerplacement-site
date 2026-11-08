@@ -1,0 +1,563 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__ . '/src/questions.php';
+require_once __DIR__ . '/src/eventos.php';
+
+// Evento vindo da URL: /?e=slug
+$slugPedido = isset($_GET['e']) ? (string) $_GET['e'] : null;
+$evento     = $slugPedido === null ? iqa_evento_padrao() : iqa_evento($slugPedido);
+$eventoErro = null;
+if ($evento === null) { $eventoErro = 'invalido'; $evento = iqa_evento_padrao(); }
+elseif (empty($evento['ativo'])) { $eventoErro = 'encerrado'; }
+if ($eventoErro !== null) { require __DIR__ . '/src/evento-invalido.php'; exit; }
+
+$cfgApp = ['site' => 'https://www.innerplacement.com.br'];
+if (is_file(__DIR__ . '/src/config.php')) {
+    $cfgApp = (require __DIR__ . '/src/config.php')['app'] + $cfgApp;
+}
+
+/** Uma cor da marca por dimensao. A pessoa atravessa cinco territorios. */
+$cores = [
+    'perguntar'    => ['bg' => '#81DFD8', 'fg' => '#221F20'],
+    'discordar'    => ['bg' => '#FFFF93', 'fg' => '#221F20'],
+    'erros'        => ['bg' => '#F07060', 'fg' => '#221F20'],
+    'ajuda'        => ['bg' => '#7E3E98', 'fg' => '#FFFFFF'],
+    'mas_noticias' => ['bg' => '#221F20', 'fg' => '#FFFFFF'],
+];
+
+$itens = array_map(fn($i) => [
+    'id'    => $i['id'],
+    'chave' => $i['dim'],
+    'dim'   => IQA_DIMENSOES[$i['dim']],
+    'curto' => IQA_DIMENSOES_CURTAS[$i['dim']],
+    'texto' => $i['texto'],
+    'cor'   => $cores[$i['dim']]['bg'],
+    'sobre' => $cores[$i['dim']]['fg'],
+], IQA_ITENS);
+
+$bootstrap = [
+    'itens'  => $itens,
+    'curtos' => IQA_DIMENSOES_CURTAS,
+    'cores'  => $cores,
+    'evento' => iqa_evento_rotulo($evento),
+    'slug'   => $evento['slug'],
+];
+?>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#221F20">
+<title>IQA — Índice de Qualidade do Ambiente · InnerPlacement</title>
+<meta name="description" content="Autoavaliação de 15 itens sobre o ambiente que você, como líder, produz para a sua equipe. Cinco minutos, resultado no seu e-mail.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="IQA — Índice de Qualidade do Ambiente">
+<meta property="og:description" content="Quinze afirmações sobre o ambiente que sua liderança produz.">
+<meta property="og:locale" content="pt_BR">
+
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:      '#221F20',
+        papel:    '#EFEDE8',
+        neutro:   '#D1CDC4',
+        roxo:     '#7E3E98',
+        coral:    '#F07060',
+        turquesa: '#81DFD8',
+        amarelo:  '#FFFF93',
+      },
+      fontFamily: { sans: ['Delight', 'system-ui', 'sans-serif'] },
+    },
+  },
+};
+</script>
+
+<style>
+  @font-face { font-family:'Delight'; src:url('assets/fontes/Delight-ExtraLight.woff2') format('woff2'); font-weight:200; font-display:swap; }
+  @font-face { font-family:'Delight'; src:url('assets/fontes/Delight-Regular.woff2')    format('woff2'); font-weight:400; font-display:swap; }
+  @font-face { font-family:'Delight'; src:url('assets/fontes/delight-semibold.woff')    format('woff');  font-weight:600; font-display:swap; }
+  @font-face { font-family:'Delight'; src:url('assets/fontes/Delight-Bold.woff')        format('woff');  font-weight:700; font-display:swap; }
+  @font-face { font-family:'Delight'; src:url('assets/fontes/Delight-ExtraBold.woff2')  format('woff2'); font-weight:800; font-display:swap; }
+
+  [x-cloak] { display: none !important; }
+  :root { color-scheme: light; }
+  body { -webkit-tap-highlight-color: transparent; }
+
+  .rotulo { font-weight:600; text-transform:uppercase; letter-spacing:.16em; font-size:10px; }
+  .titulo { font-weight:800; letter-spacing:-.035em; line-height:1.02; }
+  .numeral{ font-weight:200; letter-spacing:-.04em; font-variant-numeric:tabular-nums; }
+
+  .aparece { animation: aparece .34s cubic-bezier(.2,.7,.3,1) both; }
+  @keyframes aparece { from { opacity:0; transform:translateY(12px); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aparece { animation: none; }
+    * { transition-duration: .01ms !important; }
+  }
+  @media print { .sem-impressao { display:none !important; } body { background:#fff; } }
+</style>
+</head>
+
+<body class="bg-papel text-ink font-sans antialiased">
+<div
+  x-data="iqa(<?= htmlspecialchars(json_encode($bootstrap, JSON_UNESCAPED_UNICODE), ENT_QUOTES) ?>)"
+  x-cloak
+  class="min-h-dvh flex flex-col"
+>
+
+  <header class="sticky top-0 z-20 bg-papel/95 backdrop-blur-sm sem-impressao">
+    <div class="mx-auto w-full max-w-2xl px-5 pt-4 pb-3">
+      <div class="flex items-center justify-between gap-4">
+        <img src="assets/logo.svg" alt="InnerPlacement" class="h-12 w-auto">
+        <span x-show="tela === 'perguntas'" class="rotulo opacity-60">
+          <span x-text="String(passo).padStart(2,'0')"></span> / 15
+        </span>
+      </div>
+
+      <div x-show="tela === 'perguntas'" class="mt-3.5">
+        <div class="flex items-center gap-[5px]" role="progressbar" :aria-valuenow="respondidos" aria-valuemin="0" aria-valuemax="15" aria-label="Progresso">
+          <template x-for="it in itens" :key="it.id">
+            <div class="flex-1 flex justify-center">
+              <span
+                class="block rounded-full transition-all duration-300"
+                :class="it.id === passo ? 'w-3 h-3' : 'w-2 h-2'"
+                :style="completo(it.id) || it.id === passo
+                        ? 'background:' + (it.cor) + '; box-shadow:' + (it.id === passo ? '0 0 0 2px #221F20' : 'none')
+                        : 'background:#D1CDC4'"
+              ></span>
+            </div>
+          </template>
+        </div>
+        <p class="mt-2.5 rotulo" x-text="itemAtual.dim"></p>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 mx-auto w-full max-w-2xl px-5">
+
+    <section x-show="tela === 'inicio'" class="py-8 sm:py-12">
+
+      <div class="flex items-center gap-2 mb-7">
+        <template x-for="(c, k) in cores" :key="k">
+          <span class="block w-7 h-7 rounded-full" :style="'background:' + (c.bg)"></span>
+        </template>
+      </div>
+
+      <h1 class="titulo text-[2.6rem] sm:text-[2rem]">
+        Índice de<br>Qualidade do<br>Ambiente
+      </h1>
+
+      <p class="mt-6 text-[1.05rem] leading-relaxed max-w-prose">
+        Quinze afirmações sobre o ambiente que <strong class="font-semibold">você produz para a sua equipe</strong>.
+        Não é sobre como você é liderado. Em cada item você dá duas notas: a sua, e a que
+        acredita que sua equipe daria.
+      </p>
+
+      <div class="mt-8 grid grid-cols-3 border-y border-neutro divide-x divide-neutro">
+        <div class="py-3 pr-3"><p class="numeral text-3xl">15</p><p class="rotulo mt-1 opacity-60">itens</p></div>
+        <div class="py-3 px-3"><p class="numeral text-3xl">5</p><p class="rotulo mt-1 opacity-60">minutos</p></div>
+        <div class="py-3 pl-3"><p class="numeral text-3xl">1</p><p class="rotulo mt-1 opacity-60">e-mail</p></div>
+      </div>
+
+      <form class="mt-9" @submit.prevent="comecar()" novalidate>
+        <div class="space-y-5">
+          <div>
+            <label for="nome" class="rotulo block mb-2 opacity-60">Nome</label>
+            <input id="nome" type="text" x-model.trim="nome" autocomplete="name" required
+              class="w-full border-0 border-b-2 border-neutro bg-transparent px-0 py-2.5 text-lg focus:border-ink focus:ring-0 placeholder:text-neutro"
+              placeholder="Como você assina">
+          </div>
+          <div>
+            <label for="email" class="rotulo block mb-2 opacity-60">E-mail</label>
+            <input id="email" type="email" x-model.trim="email" autocomplete="email" inputmode="email" required
+              class="w-full border-0 border-b-2 border-neutro bg-transparent px-0 py-2.5 text-lg focus:border-ink focus:ring-0 placeholder:text-neutro"
+              placeholder="Para onde mandamos o resultado">
+          </div>
+          <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="cargo" class="rotulo block mb-2 opacity-60">Cargo (opcional)</label>
+              <input id="cargo" type="text" x-model.trim="cargo" autocomplete="organization-title"
+                class="w-full border-0 border-b-2 border-neutro bg-transparent px-0 py-2.5 text-lg focus:border-ink focus:ring-0">
+            </div>
+            <div>
+              <label for="empresa" class="rotulo block mb-2 opacity-60">Empresa (opcional)</label>
+              <input id="empresa" type="text" x-model.trim="empresa" autocomplete="organization"
+                class="w-full border-0 border-b-2 border-neutro bg-transparent px-0 py-2.5 text-lg focus:border-ink focus:ring-0">
+            </div>
+          </div>
+
+          <div aria-hidden="true" class="absolute -left-[9999px]">
+            <label>Website<input type="text" x-model="website" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <label class="flex gap-3 pt-2 cursor-pointer">
+            <input type="checkbox" x-model="consentimento"
+              class="mt-0.5 h-5 w-5 shrink-0 rounded-full border-2 border-ink text-ink focus:ring-ink focus:ring-offset-0">
+            <span class="text-[13px] leading-snug opacity-80">
+              Autorizo o envio do meu resultado por e-mail e o armazenamento das minhas respostas
+              pela InnerPlacement. Elas não são compartilhadas com a minha empresa.
+            </span>
+          </label>
+
+          <p x-show="erro" x-text="erro" class="text-[13px] font-semibold bg-coral text-ink px-4 py-3 rounded-full text-center"></p>
+
+          <button type="submit"
+            class="w-full bg-ink text-white font-semibold text-[1.05rem] py-4 rounded-full hover:bg-roxo transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
+            Começar
+          </button>
+        </div>
+      </form>
+
+      <p class="mt-8 rotulo opacity-50" x-text="evento"></p>
+    </section>
+
+    <section x-show="tela === 'perguntas'" class="py-6 sm:py-9">
+      <template x-for="item in itens" :key="item.id">
+        <div x-show="passo === item.id" class="aparece">
+
+          <h2 class="titulo text-[1.6rem] sm:text-[2rem] leading-[1.18]" x-text="item.texto"></h2>
+
+          <div class="mt-9 space-y-8">
+
+            <fieldset>
+              <legend class="flex items-center gap-2.5 mb-4">
+                <span class="w-4 h-4 rounded-full" :style="'background:' + (item.cor)"></span>
+                <span class="rotulo">Minha nota</span>
+              </legend>
+              <div class="grid grid-cols-5 gap-2">
+                <template x-for="n in 5" :key="n">
+                  <label class="block">
+                    <input type="radio" class="peer sr-only"
+                      :name="'eu-' + item.id" :value="n"
+                      x-model.number="respostas[item.id].eu"
+                      @change="registrou(item.id)">
+                    <span class="flex aspect-square items-center justify-center rounded-full border-2 border-neutro bg-white text-xl font-semibold cursor-pointer transition-all hover:border-ink peer-checked:border-transparent peer-checked:scale-105 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink"
+                          :style="respostas[item.id].eu === n ? 'background:' + (item.cor) + '; color:' + (item.sobre) : ''"
+                          x-text="n"></span>
+                  </label>
+                </template>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="flex items-center gap-2.5 mb-4">
+                <span class="w-4 h-4 rounded-full border-[3px] bg-transparent" :style="'border-color:' + (item.cor)"></span>
+                <span class="rotulo">Nota que minha equipe daria</span>
+              </legend>
+              <div class="grid grid-cols-5 gap-2">
+                <template x-for="n in 5" :key="n">
+                  <label class="block">
+                    <input type="radio" class="peer sr-only"
+                      :name="'equipe-' + item.id" :value="n"
+                      x-model.number="respostas[item.id].equipe"
+                      @change="registrou(item.id)">
+                    <span class="flex aspect-square items-center justify-center rounded-full border-2 border-neutro bg-white text-xl font-semibold cursor-pointer transition-all hover:border-ink peer-checked:scale-105 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-ink"
+                          :style="respostas[item.id].equipe === n ? 'border-color:' + (item.cor) + '; border-width:5px' : ''"
+                          x-text="n"></span>
+                  </label>
+                </template>
+              </div>
+            </fieldset>
+
+            <div class="flex justify-between rotulo opacity-50 border-t border-neutro pt-3">
+              <span>1 · Discordo totalmente</span>
+              <span>5 · Concordo totalmente</span>
+            </div>
+          </div>
+
+          <div class="mt-9 flex items-center gap-3 sem-impressao">
+            <button type="button" @click="voltar()" x-show="passo > 1"
+              class="px-6 py-3.5 border-2 border-ink rounded-full font-semibold hover:bg-ink hover:text-white transition-colors">
+              Voltar
+            </button>
+            <button type="button" @click="avancar()" :disabled="!completo(item.id)"
+              class="flex-1 py-3.5 rounded-full bg-ink text-white font-semibold text-[1.05rem] transition-colors hover:bg-roxo disabled:bg-neutro disabled:text-ink/40 disabled:cursor-not-allowed">
+              <span x-text="passo === 15 ? 'Ver meu resultado' : 'Próximo'"></span>
+            </button>
+          </div>
+        </div>
+      </template>
+    </section>
+
+    <section x-show="tela === 'revisao'" class="py-12">
+      <div class="flex items-center gap-2 mb-7">
+        <template x-for="(c, k) in cores" :key="k">
+          <span class="block w-7 h-7 rounded-full" :style="'background:' + (c.bg)"></span>
+        </template>
+      </div>
+      <h2 class="titulo text-[2.2rem] sm:text-[3rem]">Tudo respondido.</h2>
+      <p class="mt-5 text-[1.05rem] leading-relaxed max-w-prose">
+        Vamos calcular as médias por dimensão, a soma dos 15 itens e a distância entre as duas
+        leituras. O resultado aparece aqui e vai para
+        <strong class="font-semibold break-all" x-text="email"></strong>.
+      </p>
+
+      <p x-show="erro" x-text="erro" class="mt-6 text-[13px] font-semibold bg-coral text-ink px-4 py-3 rounded-full text-center"></p>
+
+      <div class="mt-9 space-y-3">
+        <button type="button" @click="enviar()" :disabled="enviando"
+          class="w-full bg-ink text-white font-semibold text-[1.05rem] py-4 rounded-full hover:bg-roxo disabled:bg-neutro disabled:text-ink/40 transition-colors">
+          <span x-show="!enviando">Calcular e enviar para meu e-mail</span>
+          <span x-show="enviando">Calculando…</span>
+        </button>
+        <button type="button" @click="tela = 'perguntas'; passo = 15" :disabled="enviando"
+          class="w-full py-3 rotulo opacity-60 hover:opacity-100">
+          Revisar respostas
+        </button>
+      </div>
+    </section>
+
+    <section x-show="tela === 'resultado'" class="py-10">
+      <template x-if="resultado">
+        <div class="aparece">
+
+          <h2 class="titulo text-[2.3rem] sm:text-[3.2rem]">
+            O ambiente que<br>você desenha hoje
+          </h2>
+
+          <p x-show="emailEnviado" class="mt-6 text-[13px] leading-relaxed border-l-4 border-turquesa pl-4">
+            Uma cópia completa foi enviada para <strong class="font-semibold" x-text="email"></strong>.
+            Se não aparecer em alguns minutos, confira o spam.
+          </p>
+          <p x-show="!emailEnviado" class="mt-6 text-[13px] leading-relaxed bg-coral text-ink px-4 py-3 rounded-2xl">
+            Não conseguimos enviar o e-mail agora. Seu resultado está registrado e aparece abaixo.
+            Use o botão de imprimir para guardar uma cópia.
+          </p>
+
+          <div class="mt-9 grid grid-cols-2 gap-3">
+            <div class="bg-white rounded-3xl p-5">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-ink"></span>
+                <p class="rotulo opacity-60">Sua percepção</p>
+              </div>
+              <p class="mt-3 numeral text-5xl">
+                <span x-text="resultado.soma_eu"></span><span class="text-lg opacity-50">/75</span>
+              </p>
+              <p class="mt-3 text-[12px] leading-snug font-semibold" x-text="resultado.faixa_eu"></p>
+            </div>
+            <div class="bg-white rounded-3xl p-5">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full border-[3px] border-ink"></span>
+                <p class="rotulo opacity-60">Provável, na equipe</p>
+              </div>
+              <p class="mt-3 numeral text-5xl">
+                <span x-text="resultado.soma_equipe"></span><span class="text-lg opacity-50">/75</span>
+              </p>
+              <p class="mt-3 text-[12px] leading-snug font-semibold" x-text="resultado.faixa_equipe"></p>
+            </div>
+          </div>
+
+          <div class="mt-3 bg-ink text-white rounded-3xl p-5">
+            <p class="rotulo opacity-60">Distância entre as leituras</p>
+            <p class="mt-2 numeral text-4xl">
+              <span x-text="(resultado.gap > 0 ? '+' : '') + resultado.gap"></span>
+              <span class="text-base opacity-60"> pontos</span>
+            </p>
+            <p class="mt-3 text-[13px] leading-relaxed opacity-80" x-text="resultado.leitura_gap"></p>
+          </div>
+
+          <div class="mt-10">
+            <p class="rotulo opacity-60">Por dimensão · cheio é você, vazado é a equipe</p>
+            <div class="mt-5 space-y-3">
+              <template x-for="d in resultado.dimensoes" :key="d.chave">
+                <div class="bg-white rounded-3xl p-4 flex items-center gap-4">
+                  <div class="flex items-center gap-2 shrink-0" style="width:104px">
+                    <span class="rounded-full transition-all" :style="'background:' + (cores[d.chave].bg) + '; width:' + (20 + d.media_eu * 8) + 'px; height:' + (20 + d.media_eu * 8) + 'px'"></span>
+                    <span class="rounded-full border-[3px] transition-all" :style="'border-color:' + (cores[d.chave].bg) + '; width:' + (20 + d.media_equipe * 8) + 'px; height:' + (20 + d.media_equipe * 8) + 'px'"></span>
+                  </div>
+                  <div class="min-w-0 flex-1">
+                    <p class="font-semibold text-[14px] leading-tight" x-text="d.rotulo"></p>
+                    <p class="mt-1 rotulo opacity-50">
+                      <span x-text="fmt(d.media_eu)"></span> · <span x-text="fmt(d.media_equipe)"></span>
+                    </p>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <div class="mt-4 bg-amarelo rounded-3xl p-6">
+            <p class="rotulo opacity-70">Por onde começar</p>
+            <p class="mt-3 text-[15px] leading-relaxed">
+              A dimensão mais frágil na leitura da sua equipe é
+              <strong class="font-bold" x-text="resultado['ponto_frágil']"></strong>.
+              A maior distância entre as duas leituras está em
+              <strong class="font-bold" x-text="resultado.maior_gap"></strong>.
+            </p>
+            <p class="mt-3 text-[14px] leading-relaxed opacity-80">
+              Leve as três afirmações dessa dimensão para a sua próxima reunião e peça que a
+              equipe responda de verdade. A diferença entre o que você marcou e o que eles
+              marcarem é a sua pauta.
+            </p>
+          </div>
+
+          <div class="mt-8" x-data="{ aberto: false }">
+            <button type="button" @click="aberto = !aberto"
+              class="w-full flex items-center justify-between border-y border-neutro py-4 rotulo opacity-60 hover:opacity-100 sem-impressao">
+              <span>Ver respostas item a item</span>
+              <span x-text="aberto ? '−' : '+'" class="text-lg leading-none"></span>
+            </button>
+            <div x-show="aberto" class="divide-y divide-neutro">
+              <template x-for="item in itens" :key="'r' + item.id">
+                <div class="flex gap-3 py-4 items-center">
+                  <p class="flex-1 text-[13px] leading-snug" x-text="item.texto"></p>
+                  <div class="flex gap-2 shrink-0">
+                    <span class="w-9 h-9 rounded-full flex items-center justify-center font-semibold text-[13px]"
+                          :style="'background:' + (item.cor) + '; color:' + (item.sobre)" x-text="respostas[item.id].eu"></span>
+                    <span class="w-9 h-9 rounded-full border-[3px] flex items-center justify-center font-semibold text-[13px]"
+                          :style="'border-color:' + (item.cor)" x-text="respostas[item.id].equipe"></span>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+
+          <div class="mt-10 flex flex-col gap-3 sem-impressao">
+            <button type="button" @click="window.print()"
+              class="w-full py-3.5 border-2 border-ink rounded-full font-semibold hover:bg-ink hover:text-white transition-colors">
+              Imprimir ou salvar em PDF
+            </button>
+            <a href="<?= htmlspecialchars($cfgApp['site'], ENT_QUOTES) ?>"
+               class="w-full py-3 text-center rotulo opacity-60 hover:opacity-100">
+              Conhecer a InnerPlacement
+            </a>
+          </div>
+        </div>
+      </template>
+    </section>
+
+  </main>
+
+  <footer class="mx-auto w-full max-w-2xl px-5 py-10 sem-impressao">
+    <img src="assets/logo.svg" alt="InnerPlacement" class="h-8 w-auto opacity-40">
+    <p class="mt-4 border-t border-neutro pt-4 text-[10px] leading-relaxed opacity-50">
+      <?= htmlspecialchars(IQA_NOTA_METODOLOGICA, ENT_QUOTES) ?>
+    </p>
+  </footer>
+</div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"></script>
+<script>
+function iqa(dados) {
+  return {
+    itens: dados.itens,
+    curtos: dados.curtos,
+    cores: dados.cores,
+    evento: dados.evento,
+    slug: dados.slug,
+
+    tela: 'inicio',
+    passo: 1,
+    nome: '', email: '', cargo: '', empresa: '',
+    consentimento: false,
+    website: '',
+
+    respostas: {},
+    erro: '',
+    enviando: false,
+    resultado: null,
+    emailEnviado: false,
+    _visto: null,
+
+    init() {
+      this.itens.forEach(i => { this.respostas[i.id] = { eu: null, equipe: null }; });
+      try {
+        const salvo = JSON.parse(sessionStorage.getItem('iqa') || 'null');
+        if (salvo && salvo.respostas) Object.assign(this, salvo);
+      } catch (e) {}
+      this.$watch('respostas', () => this.salvarRascunho());
+    },
+
+    salvarRascunho() {
+      try {
+        sessionStorage.setItem('iqa', JSON.stringify({
+          nome: this.nome, email: this.email, cargo: this.cargo,
+          empresa: this.empresa, consentimento: this.consentimento,
+          respostas: this.respostas,
+        }));
+      } catch (e) {}
+    },
+
+    get itemAtual()   { return this.itens.find(i => i.id === this.passo) || this.itens[0]; },
+    get respondidos() { return this.itens.filter(i => this.completo(i.id)).length; },
+
+    completo(id) {
+      const r = this.respostas[id];
+      return !!(r && r.eu && r.equipe);
+    },
+    fmt(n) { return Number(n).toFixed(1).replace('.', ','); },
+
+    comecar() {
+      this.erro = '';
+      if (this.nome.length < 2)                  return this.erro = 'Informe seu nome.';
+      if (!/^\S+@\S+\.\S{2,}$/.test(this.email)) return this.erro = 'Esse e-mail não parece válido.';
+      if (!this.consentimento)                   return this.erro = 'Marque o aceite para receber o resultado.';
+      this.salvarRascunho();
+      this.tela = 'perguntas';
+      this.passo = (this.itens.find(i => !this.completo(i.id)) || this.itens[14]).id;
+      this.aoTopo();
+    },
+
+    registrou(id) {
+      if (id !== this.passo || !this.completo(id) || this.passo === 15) return;
+      const jaVisto = this._visto === id;
+      this._visto = id;
+      if (jaVisto) return;
+      const rapido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      setTimeout(() => { if (this.passo === id) this.avancar(); }, rapido ? 0 : 420);
+    },
+
+    avancar() {
+      if (!this.completo(this.passo)) return;
+      if (this.passo === 15) {
+        const falta = this.itens.find(i => !this.completo(i.id));
+        if (falta) { this.passo = falta.id; this.aoTopo(); return; }
+        this.tela = 'revisao';
+      } else {
+        this.passo++;
+      }
+      this.aoTopo();
+    },
+
+    voltar() { if (this.passo > 1) { this.passo--; this.aoTopo(); } },
+
+    aoTopo() { this.$nextTick(() => window.scrollTo({ top: 0, behavior: 'instant' })); },
+
+    async enviar() {
+      this.erro = '';
+      this.enviando = true;
+      try {
+        const r = await fetch('api/submit.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nome: this.nome, email: this.email, cargo: this.cargo, empresa: this.empresa,
+            consentimento: this.consentimento, website: this.website, evento: this.slug,
+            respostas: this.respostas,
+          }),
+        });
+        const dados = await r.json();
+        if (!r.ok) { this.erro = dados.erro || 'Algo falhou no envio. Tente de novo.'; return; }
+
+        this.resultado = dados.resultado;
+        this.emailEnviado = !!dados.email_enviado;
+        this.tela = 'resultado';
+        try { sessionStorage.removeItem('iqa'); } catch (e) {}
+        this.aoTopo();
+      } catch (e) {
+        this.erro = 'Sem conexão com o servidor. Verifique a internet e tente de novo.';
+      } finally {
+        this.enviando = false;
+      }
+    },
+  };
+}
+</script>
+</body>
+</html>

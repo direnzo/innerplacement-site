@@ -99,6 +99,12 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 - A chave antiga `~/.ssh/innerplacement` (sem senha) é do repositório do WordPress; não usar aqui.
   Revogá-la fica para depois (decisão do dono, 29/09).
 
+## IQA
+
+- Aplicação PHP à parte, no ar em https://iqa.innerplacement.com.br/ (`~/iqa` no servidor, banco próprio). `iqa/` neste
+  repositório é só cópia de segurança do código; detalhes em `docs/iqa.md`.
+- Nunca versionar `iqa/src/config.php`, `iqa/src/google-service-account.json` nem dump do banco (dados pessoais).
+
 ## Ambiente
 
 - Windows + WSL2 (Ubuntu). Repositórios em `~/projetos/`. Downloads e Drive do Windows em `/mnt/d/`.

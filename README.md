@@ -54,6 +54,7 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 | `tools/navegador.mjs` | Driver do Chromium para conferir animações, rolagem e hover em tempo real (`HOVER=1` para telas com mouse) | sim |
 | `tools/imagem/` | Acabamento das imagens com `sharp` (WebP, AVIF, PNG, SVG). Rodar `npm install` na pasta | sim |
 | `referencia-v2-teste/` | Espelho do HTML publicado em `/v2-teste/`, só para consulta | não |
+| `iqa/` | Cópia de segurança do código do IQA, aplicação à parte em iqa.innerplacement.com.br; não é publicada com o site (`docs/iqa.md`) | sim, sem credenciais |
 | `docs/README-original-desktop.md` | README como veio da sessão do Claude Desktop | sim |
 
 ## Fluxo de trabalho

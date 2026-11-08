@@ -1,0 +1,39 @@
+# IQA · InnerPlacement — Apache 2.4
+# Esta pasta é independente do WordPress. Como o .htaccess do WP só reescreve
+# o que NÃO é arquivo ou diretório real (RewriteCond !-f / !-d), uma subpasta
+# física como /iqa/ é servida direto, sem passar pelo index.php do WordPress.
+
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Força HTTPS
+  RewriteCond %{REQUEST_URI} !^/\.well-known/
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Bloqueia acesso direto às pastas internas
+  RewriteRule ^(src|sql|vendor)/ - [F,L]
+</IfModule>
+
+<FilesMatch "\.(sql|md|json|lock|example\.php)$">
+  Require all denied
+</FilesMatch>
+
+<Files "config.php">
+  Require all denied
+</Files>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json
+</IfModule>
