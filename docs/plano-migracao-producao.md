@@ -29,9 +29,9 @@ Confirmado **[servidor]**: `innerplacement.com.br` é domínio adicional do cPan
 ## 3. Pré-requisitos (nada disso mexe no ar)
 
 1. Documentação v2 e FAQ revisado aplicados em 08/11/2026 **[repo]**. Falta o retorno dos sócios sobre a `/v2-teste/`, e a `main` precisa estar estável, com build de produção sem erro.
-2. Dono preencheu **CNPJ e encarregado de dados (DPO)** na política de privacidade (`src/pages/politica-de-privacidade.astro`).
+2. CNPJ preenchido em 08/11/2026; dono preenche o **encarregado de dados (DPO)** na política de privacidade (`src/pages/politica-de-privacidade.astro`).
 3. Decisões abertas fechadas:
-   - **condição para publicar:** base e período do 86% validados internamente (P10); dados do rodapé (P14); `/e-book/` com o PDF final;
+   - **condição para publicar:** base e período do 86% validados internamente (P10); dados do rodapé (P14); 
    - **mudam texto:** grafia do nome (P15), "No Outplacement" (P17), relatório final (P18), programa do Vinícius (P7), "o/a Executive Alignment" e os termos "rede", "vagas" e "posições" no FAQ revisado;
    - **podem entrar depois da troca:** quatro dimensões na home (P16), ilustração do Manifesto (P19), depoimento da Alessandra (P12), vídeos (Gisele, Rafael, Fabíola editado) e ilustração dos hubs e da Executive Alignment.
 4. Levar para a v2 o que hoje vem da raiz do WordPress **[servidor]**. Tudo que for do `.htaccess` entra em `public/.htaccess`, no repositório: a publicação automática sobrescreve o arquivo no servidor, e a `/v2-teste/` não usa esse arquivo.
