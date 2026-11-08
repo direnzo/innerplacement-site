@@ -108,6 +108,10 @@ Com o dono:
 - Analytics: conferir que os dados continuam no mesmo contêiner (histórico preservado).
 - Cada URL antiga com tráfego que ficou sem 301 vira 404: revisar o relatório de 404 e acrescentar regras.
 
+### 7.0 Performance de referência (Lighthouse 12.8, simulação de celular, na `/v2-teste/`, 08/11/2026)
+
+Sem o Tag Manager, que a `/v2-teste/` não carrega. Home: performance 84, LCP 3,4 s. Para sua empresa: 96, LCP 2,3 s. Next Level (empresa): 82, LCP 2,7 s, CLS 0,20. FAQ: 94, LCP 2,5 s. Post: 89, LCP 1,8 s, CLS 0,19. A nota de SEO sai baixa ali só porque a `/v2-teste/` é `noindex`. Repetir na raiz depois da troca, já com o Tag Manager.
+
 ### 7.1 Medição: o que o contêiner faz (versão 24, lida em 08/11/2026) e o que os dados mostram
 
 - **Analytics** `G-669R79ZWTE` e **Google Ads** `AW-17293202267`. Conversões: "Envio Form" ao carregar `/obrigado` e "Clique Whatsapp" ao carregar `/whatsapp`; a segunda é a única marcada como principal no Analytics (45 eventos em 2026). As duas páginas existem na v2. O formulário do e-book não passa por `/obrigado` e não conta como conversão.

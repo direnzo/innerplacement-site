@@ -6,10 +6,17 @@ import { miolo } from '../lib/svg';
 // migalhas: breadcrumb das páginas por público ([nome, link], a última sem link); kicker: linha acima do h1;
 // destaque: frase de destaque (h2) das páginas de programa (doc. v2, 3.5 e 6.1).
 interface Props { titulo: string; intro?: string | string[]; trilha?: string; migalhas?: [string, string?][]; kicker?: string; destaque?: string; acento?: string; acentoStyle?: string; acentoClass?: string; ilustracao?: string; umaLinha?: boolean }
+const trilhaGoogle = Astro.props.migalhas && {
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [['Início', '/'], ...Astro.props.migalhas].map(([name, href], i) => ({
+    '@type': 'ListItem', position: i + 1, name, ...(href && { item: new URL(href, Astro.site).href }),
+  })),
+};
 const { titulo, intro, trilha, migalhas, kicker, destaque, acento, acentoStyle, acentoClass, ilustracao, umaLinha = false } = Astro.props;
 ---
 <!-- Com ilustração, o topo tem altura mínima para a cena (180 de altura) caber inteira, com o texto
      centralizado. Banner mais baixo (pedido do dono, 02/10): 60% da altura e da cena de antes. -->
+{trilhaGoogle && <script type="application/ld+json" set:html={JSON.stringify(trilhaGoogle)} />}
 <section class:list={['relative overflow-hidden bg-areia-c', ilustracao && 'md:flex md:min-h-[230px] md:items-center']}>
   {ilustracao
     ? <svg viewBox="0 0 420 300" class="topo-ilus absolute right-[max(16px,calc((100%-1120px)/2))] top-1/2 hidden w-[min(27%,300px)] -translate-y-1/2 md:block" aria-hidden="true" data-entrada set:html={miolo(ilustracao)} />
