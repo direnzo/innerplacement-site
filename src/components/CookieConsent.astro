@@ -30,7 +30,7 @@ import { rotas } from '../data/site';
       if (p) { this.estatisticas = !!p.estatisticas; this.marketing = !!p.marketing; }
     },
   }" x-cloak x-show="aberto" x-transition.opacity.duration.200ms @cookies-reabrir.window="aberto = true; detalhes = false"
-  class="fixed inset-x-0 bottom-0 z-50 pb-[max(16px,env(safe-area-inset-bottom))] pt-4" role="dialog" aria-live="polite" aria-label="Preferências de cookies">
+  class="fixed inset-x-0 bottom-0 z-50 pb-[max(16px,env(safe-area-inset-bottom))] pt-4" role="region" aria-live="polite" aria-label="Preferências de cookies">
   <div class="wrap">
     <div class="flex flex-col gap-4 rounded-[22px] bg-tinta p-5 text-white shadow-[0_18px_44px_rgba(35,31,32,.3)] md:p-6">
       <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-8">

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import fonte from '../assets/fonts/hanken-grotesk-latin.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Fechamento from '../components/Fechamento.astro';
@@ -85,9 +86,7 @@ const site = {
   <meta name="geo.region" content="BR-SP" />
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;600;700&display=swap" />
+  <link rel="preload" href={fonte} as="font" type="font/woff2" crossorigin />
   <script type="application/ld+json" set:html={JSON.stringify(schema ?? (Astro.url.pathname === '/' ? [org, site] : org))} />
   <slot name="head" />
 </head>

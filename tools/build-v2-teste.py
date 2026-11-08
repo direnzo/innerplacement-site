@@ -1,7 +1,7 @@
 """Gera a variante de teste do site para a subpasta /v2-teste/, a partir do build de produção (dist/).
 
 O que muda em relação a dist/:
-- caminhos absolutos do site (href, src, srcset, action, data-obrigado) ganham o prefixo /v2-teste;
+- caminhos absolutos do site (href, src, srcset, action, data-obrigado, url() de CSS) ganham o prefixo /v2-teste;
 - todas as páginas recebem <meta name="robots" content="noindex, nofollow"> e perdem a canonical,
   para a versão de teste não competir com o site oficial nas buscas;
 - og:url e og:image apontam para a /v2-teste/, para a prévia de compartilhamento do teste funcionar;
@@ -32,6 +32,8 @@ ATRIBUTO = re.compile(r'\b(href|src|action|data-obrigado)="/(?!/)')
 # srcset tem vários caminhos no mesmo atributo, um por tamanho de imagem.
 SRCSET = re.compile(r'\bsrcset="([^"]*)"')
 CAMINHO_SRCSET = re.compile(r'(^|,\s*)/(?!/)')
+# CSS embutido na página (a fonte hospedada no site).
+URL_CSS = re.compile(r'url\(/(?!/)')
 # O script do Consent Mode + Gerenciador de Tags (Base.astro) e o <noscript> dele (logo no <body>).
 GTM_SCRIPT = re.compile(r'<script>\(function\(\)\{const GTM_ID.*?</script>', re.S)
 GTM_NOSCRIPT = re.compile(r'<noscript><iframe src="https://www\.googletagmanager\.com/ns\.html[^<]*</iframe></noscript>')
@@ -40,6 +42,7 @@ paginas = 0
 for arq in SAIDA.rglob('*.html'):
     html = arq.read_text(encoding='utf-8')
     html = ATRIBUTO.sub(lambda m: f'{m.group(1)}="{PREFIXO}/', html)
+    html = URL_CSS.sub(f'url({PREFIXO}/', html)
     html = SRCSET.sub(lambda m: 'srcset="' + CAMINHO_SRCSET.sub(rf'\1{PREFIXO}/', m.group(1)) + '"', html)
     html = re.sub(r'<link rel="canonical"[^>]*>', '', html)
     html = GTM_SCRIPT.sub('', html)
@@ -57,6 +60,7 @@ for arq in SAIDA.rglob('*.html'):
     html = arq.read_text(encoding='utf-8')
     soltos = re.findall(r'\b(?:href|src|action|data-obrigado)="/(?!/|v2-teste/)[^"]*"', html)
     assert not soltos, f'{arq}: caminhos sem prefixo {soltos[:3]}'
+    assert not re.search(r'url\(/(?!/|v2-teste/)', html), f'{arq}: url() de CSS sem prefixo'
     for srcset in SRCSET.findall(html):
         assert not re.search(r'(^|,\s*)/(?!/|v2-teste/)', srcset), f'{arq}: srcset sem prefixo {srcset[:80]}'
     assert html.count(ROBOTS) == 1, f'{arq}: noindex ausente ou repetido'
