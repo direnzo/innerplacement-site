@@ -10,7 +10,7 @@ Legenda: **[repo]** confirmado no repositório; **[público]** confirmado em 08/
 - O workflow `.github/workflows` publica a `/v2-teste/` a cada commit na `main`. **Ele precisa ser desligado antes da troca** (passo 1) e só religado já reapontado (passo 7), senão um commit, inclusive do painel `/admin`, envia uma cópia noindex para dentro da raiz nova.
 - O e-mail (MX) e o DNS **não mudam**: o domínio continua na mesma hospedagem, só o conteúdo da pasta muda.
 - A `/v2-teste/` fica dentro da pasta do WordPress e **herda o `.htaccess` da raiz**. O que funciona nela (PHP, compressão, HTTP→HTTPS) não prova que vai funcionar depois da troca, quando esse `.htaccess` deixa de valer.
-- As respostas não trazem cabeçalhos do Cloudflare: `server: Apache`, sem `cf-*` **[público]**.
+- O DNS do domínio é administrado no Cloudflare, mas sem proxy: as respostas vêm direto do servidor (`server: Apache`, sem `cf-*`, IP `50.116.86.93`) **[público]**. A troca de pasta não mexe no DNS.
 
 ## 2. Estratégia: troca de pasta (rollback em segundos)
 
@@ -57,6 +57,7 @@ Confirmado **[servidor]**: `innerplacement.com.br` é domínio adicional do cPan
 | Tamanho | 28 GB, dos quais 27 GB são `wp-content/uploads/backwpup` (19 backups do plugin, com dump do banco; responde 403 na web) |
 | Espaço | 75 GB livres no disco, compartilhado e 96% ocupado |
 | Tarefas agendadas | só a do `iqa`, que não depende desta pasta |
+| IQA (`iqa.innerplacement.com.br`) | pasta própria (`~/iqa`) e banco separado do WordPress: não é afetado pela troca nem pela etapa da seção 9 |
 
 ## 4. Backups (pontos de rollback)
 
@@ -78,12 +79,13 @@ A tabela de envios do Elementor guarda os contatos do formulário antigo: export
 2. **Build de produção** no commit final: `npm run build`. Conferir que `dist/` tem `.htaccess`, `robots.txt` sem `Disallow: /` geral, `sitemap-index.xml`, e que só `/obrigado/` tem `noindex`.
 3. **Ensaiar os 301** com o `.htaccess` já mesclado: subir `dist/` no Apache local (`/usr/sbin/apache2`, com configuração própria numa pasta temporária, `AllowOverride All`) e rodar as URLs de `docs/mapa-redirecionamentos.md` com `curl`. O PHP do `enviar.php` só se confirma no servidor (seção 6).
 4. **Enviar para `~/innerplacement-v2-novo`** (rsync do `dist/`, mais o que o inventário do passo 3.4 mandou preservar). Nada muda no ar ainda.
-5. **Ensaiar no servidor de verdade**, antes da troca. O dono cria no cPanel um subdomínio temporário (por exemplo `ensaio.innerplacement.com.br`) com raiz em `~/innerplacement-v2-novo`. Em `https://ensaio…`, conferir páginas, 301, compressão, cache e o `enviar.php` (cai na caixa da Inner: só com o dono ciente). É o único jeito de testar o `.htaccess` novo sem o do WordPress por cima. Durante o ensaio, usar nessa cópia um `robots.txt` com `Disallow: /`, restaurar o arquivo certo e **remover o subdomínio** antes da troca.
+5. **Repetir o ensaio no servidor**, com o build final, no subdomínio `teste.innerplacement.com.br` (`~/teste.innerplacement.com.br`, sem DNS público e com `robots.txt` bloqueando tudo). É o único jeito de testar o `.htaccess` novo sem o do WordPress por cima. Enviar `dist/` com filtro que protege `.well-known/`, copiar `.user.ini` e `php.ini` e testar com `curl --resolve teste.innerplacement.com.br:80:50.116.86.93`. Sem DNS não há certificado e o HTTPS cai em outro site do servidor: testar por HTTP, com uma cópia temporária do `.htaccess` sem a linha `RewriteCond %{HTTPS} !=on [OR]`, e restaurar o arquivo no fim.
+   Ensaio feito em 08/11/2026: páginas, 301 (44 de 45 URLs, `/locations.kml` em 404), www, página 404, compressão, cache, bloqueio de listagem e PHP 8.2 corretos; o HTTP→HTTPS respondeu certo antes da cópia temporária. Não cobriu o envio real do formulário (seção 6) nem a permissão `755` da pasta nova.
    Conferir também: arquivos presentes, permissões (`D755/F644`), `~/inner-formulario.php` intacto e que **`destino_teste` não vale em produção** (o `enviar.php` só usa `destino_teste` na `/v2-teste/`) **[repo]**.
 6. **Troca**, no horário combinado, com o dono presente. Daqui em diante, **não rodar o deploy do repositório do WordPress** (`~/projetos/innerplacement`): ele escreveria na raiz nova.
    `mv ~/innerplacement ~/innerplacement-wp-ANTIGO-<data> && mv ~/innerplacement-v2-novo ~/innerplacement`
 7. **Reapontar a publicação automática** (`.github/workflows` e `tools/publicar-v2-teste.sh`): destino passa a ser a raiz, com filtros que **protegem** `.well-known/`, `.user.ini` e `php.ini` do `--delete`; remover a geração noindex. Só religar o workflow (desligado no passo 1) depois disso e de um `--dry-run` conferido.
-8. **Limpar caches**: hoje não há sinal de Cloudflare na frente do site **[público]**, embora o plano de deploy do WordPress cite "Purge Everything"; purgar só se isso mudar. O cache do WP Rocket some com a pasta antiga.
+8. **Limpar caches**: o Cloudflare só faz o DNS, sem cache na frente do site **[público]**; purgar só se o proxy for ligado. O cache do WP Rocket some com a pasta antiga.
 9. **Retirar a `/v2-teste/`** (já não existe depois do `mv`, pois estava dentro da pasta antiga). Se quiser manter uma cópia de testes, mover para outro lugar com `noindex`.
 
 ## 6. Verificação logo após a troca
