@@ -4,20 +4,21 @@ import ilustracao from '../../imagens/inner-P07-manifesto-v1.svg?raw';
 import { miolo } from '../lib/svg';
 import Svg from '../components/Svg.astro';
 const paragrafos = [
-  'Acompanhar pessoas e empresas nos seus movimentos de carreira é um privilégio, e uma responsabilidade que levamos até o fim.',
-  'Aprendemos que nenhuma ferramenta substitui a atuação humana: é na relação, com método, que um movimento difícil ganha clareza e vira resultado.',
-  'Não reinventamos ninguém. Lapidamos o que cada pessoa já construiu, para que fique visível, para ela e para onde quer chegar.',
-  'Não prometemos milagre. Prometemos caminhar junto até acontecer, e é assim que a Inner Placement cresce: com a evolução de cada cliente.',
+  'Acompanhar pessoas e empresas em seus movimentos de carreira é um privilégio e uma responsabilidade que levamos a sério.',
+  'Aprendemos que nenhuma ferramenta substitui a atuação humana. É na relação, com método e contexto, que decisões ganham clareza e movimentos ganham direção.',
+  'Não reinventamos ninguém. Lapidamos o que cada pessoa já construiu, ampliando consciência, repertório e capacidade de agir.',
+  'Não prometemos fórmulas prontas nem milagres. Prometemos presença, precisão e acompanhamento para transformar decisão em movimento.',
+  'É assim que a InnerPlacement cresce: com a evolução de cada cliente.',
 ];
 ---
-<Base titulo="Manifesto" fechamento descricao="O manifesto da Inner Placement: não reinventamos ninguém, lapidamos o que cada pessoa já construiu. Caminhar junto até acontecer.">
+<Base titulo="Manifesto" fechamento descricao="O manifesto da Inner Placement: não reinventamos ninguém, lapidamos o que cada pessoa já construiu, ampliando consciência, repertório e capacidade de agir.">
   <!-- Quadro branco levemente transparente, com a rosácea grande aparecendo por trás (pedido do dono);
        o desfoque leve mantém a leitura. -->
   <div class="relative isolate">
     <Svg name="rosacea_coral" w={620} class="pointer-events-none absolute -right-24 top-6 -z-10 h-auto w-[360px] opacity-45 md:-right-16 md:w-[620px]" />
   <section class="bloco relative bg-white/80 backdrop-blur-[5px]">
     <div class="wrap relative grid gap-6 py-10 md:py-16 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
-      <!-- P-07: "caminhar junto até acontecer"; fica fixa na coluna do título durante a leitura -->
+      <!-- P-07: fica fixa na coluna do título durante a leitura -->
       <div class="flex flex-col gap-6 lg:sticky lg:top-28 lg:self-start">
         <h1 class="text-[30px] font-semibold leading-[1.15] tracking-[-.02em] md:text-[38px]">Manifesto</h1>
         <svg viewBox="0 0 320 380" class="hidden h-auto w-full max-w-[300px] md:block" aria-hidden="true" data-entrada set:html={miolo(ilustracao)} />

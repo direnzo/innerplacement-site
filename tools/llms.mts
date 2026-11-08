@@ -11,14 +11,17 @@ const RAIZ = new URL('../', import.meta.url).pathname;
 const SITE = 'https://innerplacement.com.br';
 const ler = (p: string) => readFileSync(`${RAIZ}${p}`, 'utf8');
 
-// Páginas no índice (as mesmas 11 do llms.txt antigo, com os endereços da v2).
+// Páginas no índice (com os endereços da documentação v2).
 // nome: texto do link; arq: página .astro de onde saem titulo e descricao.
 const paginas = [
   { nome: 'Inner Placement', arq: 'src/pages/index.astro', rota: '/' },
-  { nome: 'Transição e Recolocação', arq: 'src/pages/transicao-e-recolocacao.astro', rota: '/transicao-e-recolocacao/' },
-  { nome: 'Desenvolvimento de Carreira', arq: 'src/pages/desenvolvimento-de-carreira.astro', rota: '/desenvolvimento-de-carreira/' },
-  { nome: 'Desenvolvimento de Executivos', arq: 'src/pages/desenvolvimento-de-executivos.astro', rota: '/desenvolvimento-de-executivos/' },
-  { nome: 'Outplacement', arq: 'src/pages/outplacement.astro', rota: '/outplacement/' },
+  { nome: 'Para sua empresa', arq: 'src/pages/para-sua-empresa/index.astro', rota: '/para-sua-empresa/' },
+  { nome: 'Next Level (empresa)', arq: 'src/pages/para-sua-empresa/next-level.astro', rota: '/para-sua-empresa/next-level/' },
+  { nome: 'Executive Alignment', arq: 'src/pages/para-sua-empresa/executive-alignment.astro', rota: '/para-sua-empresa/executive-alignment/' },
+  { nome: 'Transition (empresa)', arq: 'src/pages/para-sua-empresa/outplacement.astro', rota: '/para-sua-empresa/outplacement/' },
+  { nome: 'Para você', arq: 'src/pages/para-voce/index.astro', rota: '/para-voce/' },
+  { nome: 'Next Level (você)', arq: 'src/pages/para-voce/next-level.astro', rota: '/para-voce/next-level/' },
+  { nome: 'Transition (você)', arq: 'src/pages/para-voce/transicao-e-recolocacao.astro', rota: '/para-voce/transicao-e-recolocacao/' },
   { nome: 'Quem somos', arq: 'src/pages/quem-somos.astro', rota: '/quem-somos/' },
   { nome: 'Manifesto', arq: 'src/pages/manifesto.astro', rota: '/manifesto/' },
   { nome: 'Depoimentos', arq: 'src/pages/depoimentos.astro', rota: '/depoimentos/' },
@@ -69,9 +72,9 @@ const indice = [
 ].join('\n');
 
 // llms-full.txt: conteúdo completo (serviços + FAQ novo + blog da v2).
-const servicos = ['/outplacement/', '/desenvolvimento-de-executivos/', '/transicao-e-recolocacao/', '/desenvolvimento-de-carreira/'];
+const servicos = ['/para-sua-empresa/next-level/', '/para-sua-empresa/executive-alignment/', '/para-sua-empresa/outplacement/', '/para-voce/next-level/', '/para-voce/transicao-e-recolocacao/'];
 const completo = [
-  '# InnerPlacement — conteúdo completo para LLMs',
+  '# InnerPlacement: conteúdo completo para LLMs',
   '',
   `> ${home.descricao}`,
   '',
@@ -85,7 +88,7 @@ const completo = [
   '',
   ...secoesFaq.flatMap((s) => [
     `### ${s.titulo}`,
-    ...s.perguntas.flatMap((p) => [`**${p.q}**`, p.a, '']),
+    ...s.grupos.flatMap((g) => g.perguntas).flatMap((p) => [`**${p.q}**`, p.a, '']),
   ]),
   '## Blog',
   '',
@@ -96,4 +99,4 @@ const completo = [
 writeFileSync(`${RAIZ}public/llms.txt`, indice);
 writeFileSync(`${RAIZ}public/llms-full.txt`, completo);
 console.log(`public/llms.txt ${(Buffer.byteLength(indice) / 1024).toFixed(1)} KB · ${info.length} páginas`);
-console.log(`public/llms-full.txt ${(Buffer.byteLength(completo) / 1024).toFixed(1)} KB · ${secoesFaq.reduce((n, s) => n + s.perguntas.length, 0)} perguntas · ${posts.length} posts`);
+console.log(`public/llms-full.txt ${(Buffer.byteLength(completo) / 1024).toFixed(1)} KB · ${secoesFaq.flatMap((s) => s.grupos).reduce((n, g) => n + g.perguntas.length, 0)} perguntas · ${posts.length} posts`);

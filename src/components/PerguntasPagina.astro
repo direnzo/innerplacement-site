@@ -1,0 +1,17 @@
+---
+import Acordeao from './Acordeao.astro';
+import { perguntas } from '../data/faq';
+import type { Links } from '../data/faq';
+import { rotas } from '../data/site';
+// Perguntas contextuais no fim das páginas de programa (Orientações do Q&A, item 2): texto do FAQ central.
+interface Props { ids: string[]; links: Links }
+const { ids, links } = Astro.props;
+---
+<section class="wrap grid gap-5 md:gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14" aria-labelledby="perguntas-titulo">
+  <div class="flex flex-col items-start gap-5">
+    <h2 id="perguntas-titulo" class="h2 !font-semibold">Perguntas frequentes</h2>
+    <a href={rotas.faq} class="btn-l hidden lg:inline-flex">Ver todas as perguntas frequentes</a>
+  </div>
+  <Acordeao itens={perguntas(ids, links)} abrirPrimeira prefixo="pagina" />
+  <a href={rotas.faq} class="btn-l w-full lg:hidden">Ver todas as perguntas frequentes</a>
+</section>

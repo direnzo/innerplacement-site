@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import TopoPagina from '../../components/TopoPagina.astro';
+import CardSituacao from '../../components/CardSituacao.astro';
+import Badge from '../../components/Badge.astro';
+import DepoCard from '../../components/DepoCard.astro';
+import { depoimentos as D } from '../../data/depoimentos';
+import { rotas } from '../../data/site';
+---
+<Base titulo="Para você" fechamento
+  descricao="Avançar, ajustar a direção ou fazer uma transição: momentos em que uma carreira pede método e acompanhamento. Identifique o seu.">
+  <TopoPagina titulo="Para você" migalhas={[['Para você']]} acento="rosacea_coral" acentoClass="right-[8%] top-1/2 w-[200px] -translate-y-1/2 opacity-30 lg:w-[260px]"
+    intro="Avançar, ajustar a direção ou fazer uma transição: momentos em que uma carreira pede método e acompanhamento. Identifique o seu." />
+  <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
+    <CardSituacao coral etiqueta="Avançar e ajustar" titulo="Quando a carreira pede um próximo nível, ou um ajuste de direção." href={rotas.voceNextLevel} link="Next Level">Você quer crescer, assumir mais ou ganhar relevância no que já faz. Ou está bem posicionado, mas reconhece que algo na sua atuação, no seu repertório ou na sua direção precisa evoluir. Nos dois casos, o trabalho parte do impacto que você quer ter e constrói a estratégia para chegar lá.</CardSituacao>
+    <CardSituacao coral etiqueta="Transitar" titulo="Quando um ciclo termina, ou está terminando." href={rotas.voceTransition} link="Transition">Você encerrou um ciclo, está encerrando, ou ainda está na empresa e sabe que ele vai terminar. O próximo movimento precisa ser construído com estratégia e discrição, inclusive quando significa mudar de rumo.</CardSituacao>
+  </section>
+  <section class="wrap">
+    <div class="flex flex-col items-start gap-3 rounded-[20px] bg-areia-c p-5 md:p-8">
+      <Badge>Método</Badge>
+      <h2 class="h2 !font-semibold">Antes de mover, entender.</h2>
+      <p class="lead">Você não precisa recomeçar do zero. Precisa lapidar o que já construiu, e isso começa por entender. O método é uma conversa estruturada que percorre quatro dimensões, para que a sua decisão de carreira se construa conectada a você e ao cenário em que ela vai acontecer.</p>
+    </div>
+  </section>
+  <section class="wrap flex flex-col gap-5 pt-2" aria-labelledby="prova">
+    <h2 id="prova" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+    <div class="grid gap-3.5 md:grid-cols-2 md:gap-6">
+      <DepoCard d={D.gisele} />
+      <DepoCard d={D.thiago} />
+    </div>
+  </section>
+</Base>

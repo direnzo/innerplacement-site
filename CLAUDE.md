@@ -21,7 +21,8 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
   Débora Ereno, Cesar Cordeiro), em
   `D:\Google Drive\direnzo@gmail\CLIENTES\InnerPlacement\site_v3\Cópia de site-inner-documentacao-funcional.md`
   (no WSL: `/mnt/d/Google Drive/direnzo@gmail/CLIENTES/InnerPlacement/site_v3/`).
-- O texto em `src/data/` é **literal** desse documento. Não parafrasear, "melhorar" nem abreviar.
+- **Desde 08/11/2026 vale a documentação funcional v2** (`site_v3/revisoes/site-inner-documentacao-funcional-v2 07Nov26.docx`), que substitui a v1, e o `FAQ revisado NOV26.docx` na mesma pasta, que prevalece sobre a seção 9 da v2 (decisão do dono). Pendências dos sócios: seção 14 da v2.
+- O texto em `src/data/` é **literal** desses documentos. Não parafrasear, "melhorar" nem abreviar.
   Texto novo só com aprovação.
 - Identidade visual: Hanken Grotesk, coral `#FF6558`, tinta `#231F20`, areia `#D3CEC4`, areia clara
   `#EFEBE4`, âmbar `#F2B45C`. Tokens em `src/styles/global.css`.

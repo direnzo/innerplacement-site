@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import TopoPagina from '../../components/TopoPagina.astro';
+import CardEtiqueta from '../../components/CardEtiqueta.astro';
+import Acompanha from '../../components/Acompanha.astro';
+import PerguntasPagina from '../../components/PerguntasPagina.astro';
+import { linksEmpresa } from '../../data/faq';
+import { rotas } from '../../data/site';
+---
+<Base titulo="Executive Alignment · Preservar quem precisa mudar"
+  fechamento={{ empresa: true, titulo: 'Existe uma situação executiva que', destaque: 'merece uma leitura mais cuidadosa?', texto: 'Uma conversa sobre a situação, que pode começar sem identificar a pessoa. Sem apresentação de produto e sem compromisso.' }}
+  descricao="Quando um executivo entrega, mas alguma coisa precisa mudar.">
+  <TopoPagina titulo="Executive Alignment" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Executive Alignment']]} kicker="Ajustar · Preservar quem precisa mudar" acento="rosacea_coral" acentoClass="right-[8%] top-1/2 w-[200px] -translate-y-1/2 opacity-30 lg:w-[260px]"
+    destaque="Quando um executivo entrega, mas alguma coisa precisa mudar."
+    intro="Há valor, capacidade de entrega e interesse em preservá-lo, mas um aspecto de comportamento, posicionamento, liderança ou relação começou a representar risco." />
+  <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
+    <CardEtiqueta etiqueta="Como trabalhamos">
+      <p>Definimos com o executivo e com a empresa o impacto esperado e trabalhamos, de forma individual e confidencial, os pontos que precisam mudar sem descaracterizar o que sustenta sua relevância.</p>
+      <p>O processo parte da responsabilidade do executivo sobre a situação e se conecta a desafios reais da sua atuação.</p>
+    </CardEtiqueta>
+    <CardEtiqueta etiqueta="Quando faz sentido" itens={[
+      'feedback crítico de liderança, pares ou equipe;',
+      'dificuldades relacionais ou impacto negativo sobre o time;',
+      'gaps percebidos em avaliações 360;',
+      'dificuldade de adaptação a um novo nível de senioridade;',
+      'situações comportamentais identificadas após processos de Compliance, quando a empresa entende que há espaço para desenvolvimento e permanência do executivo.',
+    ]} />
+  </section>
+  <Acompanha etiqueta="Como a empresa acompanha">
+    <p>Empresa, executivo e Inner alinham o objetivo do trabalho. A empresa acompanha a evolução em relação a esse objetivo, preservando a confidencialidade das conversas individuais.</p>
+    <p>A Inner não conduz investigações ou decisões disciplinares. Atuamos quando existe espaço e intenção para desenvolvimento e mudança.</p>
+  </Acompanha>
+  <PerguntasPagina ids={['ea-o-que-e', 'ea-quando', 'ea-compliance', 'empresa-acompanha']} links={linksEmpresa} />
+</Base>

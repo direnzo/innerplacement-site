@@ -1,63 +1,51 @@
 ---
 import Base from '../layouts/Base.astro';
 import Svg from '../components/Svg.astro';
-import Badge from '../components/Badge.astro';
 import Caminhos from '../components/Caminhos.astro';
 import Clientes from '../components/Clientes.astro';
 import DepoCard from '../components/DepoCard.astro';
 import DepoDestaque from '../components/DepoDestaque.astro';
 import Acordeao from '../components/Acordeao.astro';
+import Numeros from '../components/Numeros.astro';
 import heroSvg from '../../imagens/inner-H01-hero-v4.svg?raw';
-// Bloco 2 (tools/ilustracao/bloco2.mts), aprovado em 30/09.
-import h04 from '../../imagens/inner-H04-passagem-v1.svg?raw';
-import h05 from '../../imagens/inner-H05-organograma-v1.svg?raw';
 import h06 from '../../imagens/inner-H06-capa-video-v2.svg?raw';
-import nAnos from '../../imagens/inner-H21-calendario-v1.svg?raw';
-import nPessoas from '../../imagens/inner-H22-multidao-v1.svg?raw';
-import nPorcento from '../../imagens/inner-H23-rosca-v1.svg?raw';
 import fBola from '../../imagens/inner-F01-bola-v1.svg?raw';
-import fArcos from '../../imagens/inner-F02-arcos-v1.svg?raw';
 import fSetas from '../../imagens/inner-F03-chevrons-v1.svg?raw';
 import fOval from '../../imagens/inner-F04-oval-v1.svg?raw';
-import metodoSvg from '../../imagens/inner-M01-metodo-v1.svg?raw';
 import h09 from '../../imagens/inner-H09-baloes-v1.svg?raw';
 import h10 from '../../imagens/inner-H10-oval-lapidado-v1.svg?raw';
-import tPorque from '../../imagens/inner-T-porque-v1.svg?raw';
 import tProva from '../../imagens/inner-T-prova-v1.svg?raw';
 import tMetodo from '../../imagens/inner-T-metodo-v1.svg?raw';
 import ComIcone from '../components/ComIcone.astro';
 import { miolo } from '../lib/svg';
-import { depoimentos as D, depoimentosHome } from '../data/depoimentos';
+import { depoimentos as D } from '../data/depoimentos';
 import { faqHome } from '../data/faq';
-import { numeros, rotas } from '../data/site';
+import { rotas } from '../data/site';
 
 // Painel do hero: H-01 aprovada (SVG gerado por tools/ilustracao/hero.mts), inline.
 const painel = miolo(heroSvg);
 
-// Prova: destaque e carrossel usam a lista oficial, sorteados no navegador a cada visita.
-const poolProva = depoimentosHome.map((id) => D[id]);
-const glifos = [nAnos, nPessoas, nPorcento];
 // Formas de fundo: decorativas, nas bordas, com leve deslocamento na rolagem (.fundo-par).
 const fundo = (svg: string, vb: string, cls: string) => `<svg viewBox="${vb}" class="fundo-par pointer-events-none absolute ${cls}" aria-hidden="true" data-rolagem="elemento">${miolo(svg)}</svg>`;
 
-const metodo = [
-  ['Contexto individual', 'Quem você é, onde está agora e o que está em jogo nesta escolha.'],
-  ['Ambiente e cultura', 'Onde você rende, e onde você apenas sobrevive.'],
-  ['Potencial e recursos', 'O que já existe em você e pode ser ativado agora.'],
-  ['Cenário futuro', 'Para onde você quer levar a sua carreira, e para onde o mercado está indo.'],
+const dimensoes = [
+  ['Pessoa e momento', 'Quem é esse profissional, o que construiu e o que está em jogo agora.'],
+  ['Contexto', 'O ambiente em que atua, as relações, a cultura e o que esse cenário exige.'],
+  ['Recursos e pontos de ajuste', 'O que já sustenta sua atuação e o que precisa ser ampliado, ajustado ou desenvolvido.'],
+  ['Direção', 'Onde precisa chegar e o que será necessário para produzir esse movimento.'],
 ];
 ---
-<Base titulo="Consultoria de desenvolvimento de carreira" fechamento fundo={false}
-  descricao="Consultoria de desenvolvimento de carreira: transição, outplacement e crescimento de executivos. Método e acompanhamento até acontecer.">
+<Base titulo="Consultoria de desenvolvimento de carreira" fundo={false}
+  fechamento={{ texto: 'Sobre o seu momento de carreira ou sobre a situação de um executivo da sua empresa. Sem apresentação de produto e sem compromisso.' }}
+  descricao="A InnerPlacement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.">
 
   <!-- 1 · Hero: só a frase em grande destaque, com a rosácea por trás. O painel H-01
        (heroSvg/painel) fica preservado no código para uso futuro, sem renderizar. -->
   <section class="relative isolate overflow-hidden">
     <Svg name="rosacea_coral" w={560} class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-auto w-[min(130vw,560px)] -translate-x-1/2 -translate-y-1/2 opacity-[.14] md:w-[640px]" />
     <div class="wrap flex flex-col items-center gap-4 py-12 text-center md:gap-5 md:py-16 lg:py-20 [&_.badge]:self-center">
-      <Badge>Consultoria de carreira · até acontecer</Badge>
-      <h1 class="h1-hero max-w-[24ch] text-[30px] md:text-[38px] lg:text-[46px] lg:leading-[1.12]">Crescer na carreira ou fazer uma transição: decisões que exigem clareza, estratégia, e alguém que caminhe <strong>junto até acontecer.</strong></h1>
-      <p class="lead mx-auto max-w-[58ch] text-center text-[16.5px] md:text-[19px]">Consultoria de desenvolvimento de carreira: transição, outplacement e crescimento de executivos.</p>
+      <h1 class="h1-hero max-w-[24ch] text-[30px] md:text-[38px] lg:text-[46px] lg:leading-[1.12]">Momentos decisivos da trajetória executiva <strong>exigem clareza, contexto e precisão.</strong></h1>
+      <p class="lead mx-auto max-w-[62ch] text-center text-[16.5px] md:text-[19px]">A InnerPlacement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.</p>
     </div>
     <!-- Futuro: painel H-01 guardado (heroSvg + painel + .hero-anim em global.css). Para reativar,
          voltar ao grid de duas colunas com o bloco abaixo.
@@ -75,45 +63,26 @@ const metodo = [
   <!-- 2 · Caminhos -->
   <Caminhos />
 
-  <!-- 3 · Por que a Inner -->
-  <section class="bloco relative isolate bg-white py-9 md:py-12" aria-labelledby="porque-titulo">
+  <!-- 3 · Como trabalhamos -->
+  <section class="bloco relative isolate bg-white py-9 md:py-12" aria-labelledby="como-titulo">
     <Fragment set:html={fundo(fBola, '0 0 400 400', '-right-40 -top-40 -z-10 w-[340px] md:-right-32 md:-top-48 md:w-[460px]')} />
     <Fragment set:html={fundo(fSetas, '0 0 240 120', 'bottom-6 -left-10 -z-10 w-[160px] opacity-30 md:w-[220px]')} />
-    <div class="wrap flex flex-col gap-7">
-      <div class="grid gap-4 md:grid-cols-2 md:gap-14">
-        <ComIcone svg={tPorque}><h2 id="porque-titulo" class="h2">Carreira se decide com método, <strong>e se realiza com acompanhamento.</strong></h2></ComIcone>
-        <p class="lead">Uma decisão de carreira depende de duas leituras: quem você é e onde quer chegar. A Inner faz as duas no mesmo processo, com método, quatro dimensões de análise e um percurso estruturado, e acompanha a execução até o resultado.</p>
+    <div class="wrap flex flex-col gap-6 md:gap-7">
+      <ComIcone svg={tMetodo}><h2 id="como-titulo" class="h2">Carreira se decide com método, <strong>e se realiza com acompanhamento.</strong></h2></ComIcone>
+      <div class="flex flex-col gap-2.5">
+        <h3 class="text-[20px] font-semibold md:text-[22px]">Antes de mover, entender.</h3>
+        <p class="lead !max-w-[78ch]">Nenhum movimento de carreira acontece fora de contexto. Antes de definir o próximo passo, entendemos quem é o profissional, o momento que está vivendo, o ambiente em que atua, o que já construiu e o que a situação exige. Essa leitura percorre quatro dimensões e dá precisão ao trabalho que vem depois.</p>
       </div>
-      <div class="grid gap-7 border-t border-linha pt-7 md:grid-cols-2 md:gap-14">
-        <div class="flex flex-col gap-2.5" x-data="{ mais: false }">
-          <!-- Ilustração à esquerda, selo e título ao lado, quase encostando -->
-          <div class="flex items-center">
-            <svg viewBox="0 0 168 88" class="h-[60px] w-auto shrink-0 md:h-[112px] lg:h-[128px]" aria-hidden="true" data-entrada set:html={miolo(h04)} />
-            <div class="ml-1 flex min-w-0 flex-1 flex-col gap-2 max-md:[&_.badge]:w-auto">
-              <Badge>Para quem está em transição</Badge>
-              <h3 class="text-[16px] font-semibold leading-[1.32] md:text-[18px] lg:text-[19px]">Estratégia de mercado e leitura cuidadosa do profissional, no mesmo processo</h3>
-            </div>
-          </div>
-          <p class="text-[15.5px] leading-[1.62] text-texto md:text-[16px] max-md:line-clamp-4" x-bind:class="mais && 'max-md:line-clamp-none'">Uma transição bem conduzida começa por uma leitura precisa: o que você construiu, o que quer a seguir e como o mercado enxerga isso. A partir dela, a estratégia: posicionamento definido, network ativado com método, oportunidades acompanhadas uma a uma e preparação para cada entrevista. Do primeiro encontro à recolocação.</p>
-          <button type="button" class="self-start text-[14.5px] font-semibold text-coral-d underline underline-offset-4 md:hidden" x-on:click="mais = !mais" x-text="mais ? 'Ler menos' : 'Ler mais'">Ler mais</button>
-        </div>
-        <div class="flex flex-col gap-2.5" x-data="{ mais: false }">
-          <!-- Ilustração à esquerda, selo e título ao lado, quase encostando -->
-          <div class="flex items-center">
-            <svg viewBox="0 0 168 88" class="h-[60px] w-auto shrink-0 md:h-[112px] lg:h-[128px]" aria-hidden="true" data-entrada set:html={miolo(h05)} />
-            <div class="ml-1 flex min-w-0 flex-1 flex-col gap-2 max-md:[&_.badge]:w-auto">
-              <Badge>Para quem quer crescer</Badge>
-              <h3 class="text-[16px] font-semibold leading-[1.32] md:text-[18px] lg:text-[19px]">Estratégia de desenvolvimento e impacto na organização, no mesmo processo</h3>
-            </div>
-          </div>
-          <p class="text-[15.5px] leading-[1.62] text-texto md:text-[16px] max-md:line-clamp-4" x-bind:class="mais && 'max-md:line-clamp-none'">Você quer crescer ou ganhar mais relevância no que já faz. Nos dois casos o trabalho é preciso: definimos o impacto que você quer ter, na carreira e na organização, e construímos a estratégia de desenvolvimento para chegar lá, pode ser uma competência, um comportamento, a forma de se posicionar, ou o que só aparece no caminho. O programa se ajusta ao que o seu dia a dia traz, e acontece fora da hierarquia da empresa: um espaço profissional e confidencial para trabalhar o que lá dentro não dá para expor.</p>
-          <button type="button" class="self-start text-[14.5px] font-semibold text-coral-d underline underline-offset-4 md:hidden" x-on:click="mais = !mais" x-text="mais ? 'Ler menos' : 'Ler mais'">Ler mais</button>
-        </div>
-      </div>
+      <!-- Pendência P16: se os sócios tirarem as quatro dimensões da home, sai esta lista. -->
+      <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4" role="list">
+        {dimensoes.map(([t, p]) => (
+          <li class="flex flex-col gap-1.5 rounded-[20px] bg-areia-c p-5"><h4 class="text-[16px] font-semibold">{t}</h4><p class="text-[14.5px] leading-[1.55] text-texto">{p}</p></li>
+        ))}
+      </ul>
     </div>
   </section>
 
-  <!-- 4 · Prova (e Clientes): formas de fundo nas bordas da página -->
+  <!-- 4 · Prova: formas de fundo nas bordas da página -->
   <div class="relative isolate flex flex-col gap-6 overflow-x-clip md:gap-8">
   <Fragment set:html={fundo(fOval, '0 0 200 280', '-left-24 top-24 -z-10 w-[150px] opacity-50 md:-left-16 md:w-[200px]')} />
   <Fragment set:html={fundo(fBola, '0 0 400 400', '-right-48 top-[45%] -z-10 w-[360px] md:-right-40 md:w-[520px]')} />
@@ -125,56 +94,18 @@ const metodo = [
       </div>
       <a href={rotas.depoimentos} class="btn-l hidden md:inline-flex">Ver todos os depoimentos</a>
     </div>
-    <div class="flex flex-col gap-4" data-depo-destaques>
-      {poolProva.map((d, i) => <DepoDestaque d={d} capa={h06} inicial={i === 0} />)}
+    <DepoDestaque d={D.gisele} capa={h06} inicial />
+    <div class="grid gap-3.5 md:grid-cols-2 md:gap-6">
+      <DepoCard d={D.gustavo} />
+      <DepoCard d={D.christian} />
     </div>
-    <div data-carrossel-caixa>
-      <div class="depo-trilho -mx-4 flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none] md:mx-0 md:gap-6 md:px-0 [&>*]:w-[85%] [&>*]:shrink-0 [&>*]:snap-start md:[&>*]:w-[340px]" data-carrossel>
-        {poolProva.map((d) => <DepoCard d={d} />)}
-      </div>
-      <div class="mt-3 hidden justify-end gap-2 md:flex">
-        <button type="button" class="carrossel-seta" data-carrossel-anterior aria-label="Depoimentos anteriores">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button type="button" class="carrossel-seta" data-carrossel-proximo aria-label="Mais depoimentos">
-          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="mx-auto grid w-full max-w-[820px] grid-cols-3 gap-3 border-t border-tinta/15 pt-6 md:gap-10 md:pt-8">
-      {numeros.map((n, i) => (
-        <div class="relative flex flex-col items-center gap-2 text-center">
-          <Svg name="oval_transparente" w={120} class="pointer-events-none absolute left-1/2 top-1/2 -z-0 h-auto w-[104px] -translate-x-1/2 -translate-y-1/2 opacity-60 md:w-[148px]" />
-          <svg viewBox="0 0 96 64" class="relative h-11 w-auto md:h-16" aria-hidden="true" data-entrada set:html={miolo(glifos[i])} />
-          <b data-conta class="relative text-[36px] font-semibold leading-none tracking-[-.02em] tabular-nums text-coral-d md:text-[57px]">{n.n}</b>
-          <span class="relative max-w-[190px] text-[13px] leading-[1.4] text-texto md:text-[14px]">{n.t}</span>
-        </div>
-      ))}
-    </div>
+    <Numeros />
+    <Clientes />
     <a href={rotas.depoimentos} class="btn-l w-full md:hidden">Ver todos os depoimentos</a>
   </section>
-
-  <Clientes />
   </div>
 
-  <!-- 5 · Método -->
-  <section class="bloco relative isolate bg-areia-c py-9 md:py-12" aria-labelledby="metodo-titulo">
-    <Fragment set:html={fundo(fArcos, '0 0 400 400', '-bottom-10 -left-24 -z-10 w-[300px] md:-left-16 md:w-[420px]')} />
-    <div class="wrap grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_460px] lg:gap-14">
-      <div class="flex flex-col gap-5">
-        <ComIcone svg={tMetodo}><h2 id="metodo-titulo" class="h2">Antes de mover, <strong>entender.</strong></h2></ComIcone>
-        <p class="lead">Você não precisa recomeçar do zero. Precisa lapidar o que já construiu, e isso começa por entender. O método é uma conversa estruturada que percorre quatro dimensões, para que a sua decisão de carreira se construa conectada a você e ao cenário em que ela vai acontecer. É no encontro dessas quatro dimensões que o seu objetivo ganha forma.</p>
-      </div>
-      <div class="flex justify-center lg:row-span-2"><svg viewBox="0 0 412.79 295.26" class="h-auto w-full max-w-[290px] overflow-visible md:max-w-[400px] lg:max-w-[460px]" role="img" aria-label="Diagrama do método: contexto individual, ambiente e cultura, potencial e recursos e cenário futuro se encontram no objetivo" data-rolagem="elemento" set:html={miolo(metodoSvg)} /></div>
-      <ul class="grid grid-cols-2 gap-x-4 gap-y-4 border-t border-tinta/15 pt-5 md:gap-x-8 md:gap-y-5" role="list">
-        {metodo.map(([t, p]) => (
-          <li class="flex flex-col gap-1"><h3 class="text-[15px] font-semibold md:text-[16px]">{t}</h3><p class="text-[14px] leading-[1.5] text-texto md:text-[15px]">{p}</p></li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <!-- 6 · Perguntas -->
+  <!-- 5 · Perguntas -->
   <section class="wrap grid gap-5 md:gap-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-14" aria-labelledby="perguntas-titulo">
     <div class="flex flex-col items-start gap-5">
       <div class="flex items-center gap-3 md:gap-4 lg:flex-col lg:items-start">
@@ -187,7 +118,7 @@ const metodo = [
     <a href={rotas.faq} class="btn-l w-full lg:hidden">Ver todas as perguntas</a>
   </section>
 
-  <!-- 7 · Manifesto -->
+  <!-- 6 · Manifesto -->
   <section class="wrap" aria-labelledby="manifesto-titulo">
     <div class="relative grid gap-5 overflow-hidden rounded-[28px] bg-white p-6 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:items-center md:gap-14 md:p-11">
       <div class="relative flex items-center gap-4 md:gap-6">
@@ -198,7 +129,7 @@ const metodo = [
           <a href={rotas.manifesto} class="btn-l hidden md:inline-flex">Ler o manifesto</a>
         </div>
       </div>
-      <blockquote class="relative text-[20px] font-light leading-[1.4] tracking-[-.01em] md:text-[27px]"><span class="font-semibold text-coral">“</span>Não reinventamos ninguém. Lapidamos o que cada pessoa já construiu, para que fique visível.<span class="font-semibold text-coral">”</span></blockquote>
+      <blockquote class="relative text-[20px] font-light leading-[1.4] tracking-[-.01em] md:text-[27px]"><span class="font-semibold text-coral">“</span>Não reinventamos ninguém. Lapidamos o que cada pessoa já construiu, ampliando consciência, repertório e capacidade de agir.<span class="font-semibold text-coral">”</span></blockquote>
       <a href={rotas.manifesto} class="btn-l relative w-full md:hidden">Ler o manifesto</a>
     </div>
   </section>

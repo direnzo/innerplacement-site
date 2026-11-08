@@ -65,4 +65,4 @@ No fim, ela tinha mais de uma proposta na mesa e escolheu para onde ir. Quando p
 
 *“A mudança acontece porque a vida te empurra.”*
 
-*A InnerPlacement acompanha profissionais e líderes em processos de transição de carreira, executive coaching e desenvolvimento profissional — com escuta humana e método.*
+*A InnerPlacement acompanha profissionais e líderes em processos de transição de carreira, executive coaching e desenvolvimento profissional, com escuta humana e método.*

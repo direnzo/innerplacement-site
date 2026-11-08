@@ -1,0 +1,16 @@
+---
+import Badge from './Badge.astro';
+import Seta from './Seta.astro';
+// Card de situação dos hubs (doc. v2, 5.1): etiqueta com o movimento, título, parágrafo e link com o nome do produto.
+interface Props { etiqueta: string; titulo: string; href: string; link: string; coral?: boolean }
+const { etiqueta, titulo, href, link, coral = false } = Astro.props;
+---
+<article class:list={['flex flex-col items-start gap-3 rounded-[28px] p-5 md:p-7', coral ? 'bg-coral text-tinta' : 'bg-white']}>
+  <Badge variante={coral ? 'tinta' : undefined}>{etiqueta}</Badge>
+  <h3 class="text-[20px] font-semibold leading-[1.25] md:text-[22px]">{titulo}</h3>
+  <p class:list={['pb-2 text-[15.5px] leading-[1.6] md:text-[16px]', coral ? 'text-tinta' : 'text-texto']}><slot /></p>
+  <a href={href} class:list={['via mt-auto self-stretch', coral ? 'bg-white text-tinta' : 'bg-areia-c text-tinta']}>
+    {link}
+    <span class:list={['via-seta', coral ? 'bg-tinta text-white' : 'bg-coral text-tinta']}><Seta /></span>
+  </a>
+</article>

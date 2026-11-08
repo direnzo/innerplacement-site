@@ -49,7 +49,7 @@ echo '==> Envio'
 
 echo '==> Conferência online'
 falhas=0
-for p in '' blog/ por-que-novos-lideres-fracassam/ contato/ depoimentos/ desenvolvimento-de-carreira/ desenvolvimento-de-executivos/ manifesto/ obrigado/ outplacement/ perguntas-frequentes/ quem-somos/ transicao-e-recolocacao/; do
+for p in '' blog/ por-que-novos-lideres-fracassam/ contato/ depoimentos/ manifesto/ obrigado/ para-sua-empresa/ para-sua-empresa/next-level/ para-sua-empresa/executive-alignment/ para-sua-empresa/outplacement/ para-voce/ para-voce/next-level/ para-voce/transicao-e-recolocacao/ perguntas-frequentes/ quem-somos/; do
   cod=$(curl -s -o /tmp/v2-teste-pagina.html -w '%{http_code}' "$URL/$p?v=$CARIMBO")
   robots=$(grep -c 'content="noindex, nofollow"' /tmp/v2-teste-pagina.html || true)
   echo "  $cod  noindex=$robots  /v2-teste/$p"

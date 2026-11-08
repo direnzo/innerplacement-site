@@ -10,10 +10,10 @@ Regras em `public/.htaccess`. Testadas em 21/10/2026 num Apache 2.4 local (docro
 | `/` , `/contato/`, `/manifesto/`, `/quem-somos/`, `/depoimentos/`, `/blog/`, `/obrigado/`, `/politica-de-privacidade/` | mesma URL | existe |
 | 9 posts do blog (mesmo slug) | mesmo slug | existe (os 9 slugs batem com `src/content/blog`; o 10º post do WordPress está nas pendências) |
 | `/metodologia-inner-gestao-carreira/` | mesma URL | existe |
-| `/profissionais-transicao-de-carreira-outplacement/` | `/transicao-e-recolocacao/` | 301 já existia |
-| `/profissionais-evolucao-de-carreira/` | `/desenvolvimento-de-carreira/` | 301 já existia |
-| `/empresas-desenvolvimento-de-executivos/` | `/desenvolvimento-de-executivos/` | 301 já existia |
-| `/empresas/` | `/outplacement/` | 301 já existia |
+| `/profissionais-transicao-de-carreira-outplacement/` | `/para-voce/transicao-e-recolocacao/` | 301 já existia |
+| `/profissionais-evolucao-de-carreira/` | `/para-voce/next-level/` | 301 já existia |
+| `/empresas-desenvolvimento-de-executivos/` | `/para-sua-empresa/next-level/` | 301 já existia |
+| `/empresas/` | `/para-sua-empresa/outplacement/` | 301 já existia |
 | `/faq/` | `/perguntas-frequentes/` | 301 já existia |
 | `/depoimento/<nome>/` (14) | `/depoimentos/` | 301 novo (`RedirectMatch`) |
 | `/whatsapp/` (trampolim do GTM) | `https://wa.me/5511984311675` | 301 novo |

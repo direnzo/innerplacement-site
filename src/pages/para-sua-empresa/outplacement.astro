@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import TopoPagina from '../../components/TopoPagina.astro';
+import ilustracao from '../../../imagens/inner-P04-topo-outplacement-v1.svg?raw';
+import Programa from '../../components/Programa.astro';
+import Acompanha from '../../components/Acompanha.astro';
+import DepoCard from '../../components/DepoCard.astro';
+import PerguntasPagina from '../../components/PerguntasPagina.astro';
+import { depoimentos as D } from '../../data/depoimentos';
+import { linksEmpresa } from '../../data/faq';
+import { rotas } from '../../data/site';
+// Aqui a fala da Fabíola é o recorte da documentação v2 (6.4), mais curto que o da página Depoimentos.
+const fabiola = { ...D.fabiola, texto: 'Obviamente ali o momento do desligamento sempre é duro, nunca é fácil. […] Mas sempre fui muito grata pela empresa que me deu essa oportunidade. […] Foi uma transição muito estruturada, importante para eu entender quem eu era e o que eu podia fazer.' };
+---
+<Base titulo="Transition · Outplacement" fechamento={{ empresa: true, titulo: 'Uma saída que', destaque: 'precisa ser bem conduzida?' }}
+  descricao="Quando um ciclo termina, o próximo movimento precisa ser construído.">
+  <TopoPagina titulo="Transition" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Transition']]} kicker="Transitar · Outplacement" ilustracao={ilustracao}
+    destaque="Quando um ciclo termina, o próximo movimento precisa ser construído."
+    intro="A forma como a empresa conduz uma saída também comunica cultura e cuidado. Na Inner, a transição começa pela compreensão da trajetória, do valor construído e da direção que faz sentido. Depois entram posicionamento, estratégia e acesso ao mercado." />
+  <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
+    <Programa para="empresa" rotulo="Transição" nome="Transition Platinum" destaque="Para transições de maior complexidade, com acompanhamento próximo e individual.">
+      <p>O trabalho percorre direção de carreira, posicionamento, currículo e LinkedIn, network, job hunting e preparação para processos seletivos. Uma consultora dedicada acompanha o processo e dá ritmo e continuidade até a recolocação.</p>
+    </Programa>
+    <Programa para="empresa" rotulo="Transição" nome="Transition Focus" destaque="Para especialistas, analistas e coordenadores, em transições individuais ou em grupo.">
+      <p>Uma trilha estruturada combina encontros individuais nos momentos decisivos com ferramentas para posicionamento, network, busca de oportunidades e preparação para entrevistas. O profissional conduz o processo com autonomia e conta com suporte nos pontos em que a decisão exige mais atenção.</p>
+    </Programa>
+  </section>
+  <Acompanha etiqueta="Como a empresa acompanha">
+    <p>A empresa acompanha o andamento e os principais marcos da transição, preservando a confidencialidade do processo.</p>
+  </Acompanha>
+  <section class="wrap flex flex-col gap-5 pt-2" aria-labelledby="prova">
+    <h2 id="prova" class="h2">Quem já fez esse caminho <strong>conta como foi.</strong></h2>
+    <div class="grid gap-3.5 md:grid-cols-2 md:gap-6">
+      <DepoCard d={D.katia} />
+      <DepoCard d={fabiola} />
+    </div>
+  </section>
+  <PerguntasPagina ids={['grupo', 'e-platinum-focus', 'empresa-acompanha']} links={linksEmpresa} />
+</Base>

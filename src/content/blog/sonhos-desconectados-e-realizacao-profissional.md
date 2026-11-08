@@ -25,7 +25,7 @@ Quando falamos em **realização profissional**, é comum ver pessoas perseguind
 
 ## **O Sonho de Realização Profissional**
 
-A **realização profissional autêntica** nasce do [autoconhecimento](/desenvolvimento-de-carreira/) e da clareza de valores. Não depende apenas do prestígio da empresa, mas da conexão entre o que a pessoa busca e o que o ambiente oferece.
+A **realização profissional autêntica** nasce do [autoconhecimento](/para-voce/next-level/) e da clareza de valores. Não depende apenas do prestígio da empresa, mas da conexão entre o que a pessoa busca e o que o ambiente oferece.
 
 Uma profissional relatou que, ao escolher uma empresa menor, mas alinhada a seus interesses, encontrou satisfação genuína. Esse sonho não era “comprado”, mas construído com base em autenticidade e propósito.
 

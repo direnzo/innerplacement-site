@@ -13,10 +13,13 @@ SAIDA.mkdir(exist_ok=True)
 
 PAGINAS = [  # (token da âncora, pasta no dist, título da aba)
     ('inicio', '', 'Inner Placement'),
-    ('transicao-e-recolocacao', 'transicao-e-recolocacao', 'Transição e Recolocação'),
-    ('desenvolvimento-de-carreira', 'desenvolvimento-de-carreira', 'Desenvolvimento de Carreira'),
-    ('desenvolvimento-de-executivos', 'desenvolvimento-de-executivos', 'Desenvolvimento de Executivos'),
-    ('outplacement', 'outplacement', 'Outplacement'),
+    ('para-sua-empresa', 'para-sua-empresa', 'Para sua empresa'),
+    ('para-sua-empresa/next-level', 'para-sua-empresa/next-level', 'Next Level'),
+    ('para-sua-empresa/executive-alignment', 'para-sua-empresa/executive-alignment', 'Executive Alignment'),
+    ('para-sua-empresa/outplacement', 'para-sua-empresa/outplacement', 'Transition'),
+    ('para-voce', 'para-voce', 'Para você'),
+    ('para-voce/next-level', 'para-voce/next-level', 'Next Level'),
+    ('para-voce/transicao-e-recolocacao', 'para-voce/transicao-e-recolocacao', 'Transition'),
     ('depoimentos', 'depoimentos', 'Depoimentos'),
     ('perguntas-frequentes', 'perguntas-frequentes', 'Perguntas frequentes'),
     ('manifesto', 'manifesto', 'Manifesto'),

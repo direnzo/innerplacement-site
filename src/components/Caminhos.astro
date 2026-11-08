@@ -5,17 +5,16 @@ import { miolo } from '../lib/svg';
 import Badge from './Badge.astro';
 import Seta from './Seta.astro';
 import { rotas } from '../data/site';
+// data-cam: qual dos dois caminhos do disco o link acende ("sobe" ou "sai"); o link do meio não tem desenho próprio.
 const blocos = [
-  { tema: 'coral', titulo: 'Para você', disco: discoVoce,
-    texto: 'Para quem construiu uma carreira sólida e quer chegar ao próximo nível. E para quem encerrou um ciclo e precisa decidir, com estratégia, o próximo passo.',
-    links: [['Quero crescer onde estou', rotas.carreira], ['Estou saindo, ou já saí', rotas.transicao]] },
-  { tema: 'tinta', titulo: 'Para sua empresa', disco: discoEmpresa,
-    texto: 'Para empresas que cuidam da carreira das pessoas nos dois momentos: quando alguém precisa crescer, preparando executivos para responsabilidades maiores; e quando alguém sai, conduzindo o desligamento com responsabilidade.',
-    links: [['Preparar quem precisa crescer', rotas.executivos], ['Cuidar de quem sai', rotas.outplacement]] },
+  { tema: 'tinta', titulo: 'Para sua empresa', href: rotas.paraEmpresa, disco: discoEmpresa,
+    texto: 'Para empresas que cuidam da carreira das pessoas nos três momentos que importam: quando alguém precisa crescer, preparando executivos para responsabilidades maiores; quando alguém que a empresa não quer perder precisa mudar algo para ficar; e quando alguém sai, conduzindo o desligamento com responsabilidade.',
+    links: [['Preparar quem precisa crescer', rotas.empresaNextLevel, 'sobe'], ['Preservar quem precisa mudar', rotas.executiveAlignment], ['Cuidar de quem sai', rotas.empresaTransition, 'sai']] },
+  { tema: 'coral', titulo: 'Para você', href: rotas.paraVoce, disco: discoVoce,
+    texto: 'Para quem construiu uma carreira sólida e quer chegar ao próximo nível. Para quem encerrou um ciclo e precisa decidir, com estratégia, o próximo passo. E para quem, ainda em atividade, considera uma mudança de direção e precisa conduzi-la com discrição: nada é publicado e nenhuma abordagem é feita em seu nome sem autorização.',
+    links: [['Quero crescer onde estou', rotas.voceNextLevel, 'sobe'], ['Estou saindo, ou já saí', rotas.voceTransition, 'sai']] },
 ];
 // Discos H-02 e H-03 (tools/ilustracao/caminhos.mts), embutidos inline (src/lib/svg.ts).
-// Cada disco desenha os dois links do cartão: data-cam="sobe" (1º link) e "sai" (2º link).
-const cam = ['sobe', 'sai'];
 ---
 <div class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
   {blocos.map((b) => {
@@ -23,15 +22,15 @@ const cam = ['sobe', 'sai'];
     return (
       <section aria-label={b.titulo} data-cartao class:list={['relative flex flex-col gap-4 overflow-hidden rounded-[28px] p-5 pb-5 md:px-[30px] md:pb-6 md:pt-[26px]', coral ? 'bg-coral text-tinta' : 'bg-tinta text-white']}>
         <div class="flex items-center justify-between gap-3 md:block">
-          <h2 class="contents"><Badge variante={coral ? 'tinta' : 'coral'}>{b.titulo}</Badge></h2>
+          <h2 class="contents"><a href={b.href} class="inline-flex"><Badge variante={coral ? 'tinta' : 'coral'}>{b.titulo}</Badge></a></h2>
           <div class="cam-disco size-14 shrink-0 overflow-hidden rounded-full bg-areia-c md:absolute md:right-[26px] md:top-6 md:size-[88px]">
             <svg viewBox="0 0 100 100" class="block size-full" aria-hidden="true" set:html={miolo(b.disco)} />
           </div>
         </div>
         <p class:list={['text-[15px] leading-[1.58] md:max-w-[390px] md:text-[16px]', coral ? 'text-tinta' : 'text-white/80']}>{b.texto}</p>
         <nav aria-label={`Caminhos ${b.titulo.toLowerCase()}`} class="mt-auto flex flex-col gap-2.5">
-          {b.links.map(([t, h], i) => (
-            <a href={h} data-cam={cam[i]} class:list={['via', coral ? 'bg-white text-tinta' : 'bg-white/[.07] text-white shadow-[inset_0_0_0_1.5px_rgba(255,255,255,.22)] hover:bg-white/[.12]']}>
+          {b.links.map(([t, h, c]) => (
+            <a href={h} data-cam={c} class:list={['via', coral ? 'bg-white text-tinta' : 'bg-white/[.07] text-white shadow-[inset_0_0_0_1.5px_rgba(255,255,255,.22)] hover:bg-white/[.12]']}>
               {t}
               <span class:list={['via-seta', coral ? 'bg-tinta text-white' : 'bg-coral text-tinta']}><Seta /></span>
             </a>

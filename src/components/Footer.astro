@@ -1,9 +1,8 @@
 ---
 import Svg from './Svg.astro';
-import { EMAIL, WHATSAPP_TXT, TELEFONE_LINK, rotas, enderecos, mapsHref, redes } from '../data/site';
+import { EMAIL, WHATSAPP_TXT, TELEFONE_LINK, rotas, enderecos, mapsHref, redes, publicos } from '../data/site';
 const cols = [
-  { t: 'Profissionais', l: [['Desenvolvimento de Carreira', rotas.carreira], ['Transição e Recolocação', rotas.transicao]] },
-  { t: 'Empresas', l: [['Desenvolvimento de Executivos', rotas.executivos], ['Outplacement', rotas.outplacement]] },
+  ...[publicos[1], publicos[0]].map((g) => ({ t: g.grupo, l: g.itens.map((i) => [i.nome, i.href]) })),
   { t: 'Inner', l: [['Manifesto', rotas.manifesto], ['Quem somos', rotas.quemSomos], ['Depoimentos', rotas.depoimentos], ['Perguntas frequentes', rotas.faq], ['Blog', rotas.blog]] },
 ];
 const ext = (h: string) => h.startsWith('http');
