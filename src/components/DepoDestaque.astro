@@ -15,7 +15,7 @@ const capaConteudo = miolo(capa)
 <div class:list={['depo-destaque grid items-stretch gap-4 md:grid-cols-2 md:gap-6', !inicial && 'hidden']} data-destaque-item={d.id}>
   {yt
     ? <button type="button" class="depo-destaque-midia group relative flex min-h-[220px] w-full items-center justify-center overflow-hidden rounded-[22px] bg-areia-c md:min-h-[300px]" data-yt={yt} data-titulo={`Depoimento de ${d.nome}`} aria-label={`Assistir ao vídeo do depoimento de ${d.nome}`}>
-        <img src={`https://i.ytimg.com/vi/${yt}/hqdefault.jpg`} alt="" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async" />
+        <img src={`https://i.ytimg.com/vi/${yt}/hqdefault.jpg`} alt="" width="480" height="360" class="absolute inset-0 size-full object-cover" loading="lazy" decoding="async" />
         <svg viewBox="0 0 520 260" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 size-full" aria-hidden="true" set:html={miolo(moldura)} />
         <span class="relative flex size-[68px] items-center justify-center rounded-full bg-coral text-tinta shadow-[0_8px_24px_rgba(35,31,32,.15)] transition-transform duration-300 group-hover:scale-110">
           <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>

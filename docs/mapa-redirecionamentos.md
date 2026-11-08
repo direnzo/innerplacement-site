@@ -1,7 +1,9 @@
 # Mapa de redirecionamentos 301 (WordPress → v2)
 
 Base: sitemaps públicos do WordPress em 21/10/2026 (45 URLs) contra as rotas da v2.
-Regras em `public/.htaccess`. **Não testadas em Apache** — validar na `/v2-teste/` ou com `curl -I` no deploy.
+Regras em `public/.htaccess`. Testadas em 21/10/2026 num Apache 2.4 local (docroot = `dist/`) contra as 45 URLs dos sitemaps: 44 respondem 301 ou 200 no destino certo; só `/locations.kml` dá 404 (esperado). Revalidar com `curl -I` no deploy real.
+
+**Correção do mesmo dia:** as regras usavam `Redirect`, que anexa o resto do caminho ao destino (`/depoimento/nome/` ia para `/depoimentos/nome/`, 404; idem `/category/x/`). Trocadas por `RedirectMatch` ancorado, com barra final opcional (`/faq` também redireciona).
 
 | URL no WordPress | Destino na v2 | Situação |
 | --- | --- | --- |
@@ -13,7 +15,7 @@ Regras em `public/.htaccess`. **Não testadas em Apache** — validar na `/v2-te
 | `/empresas-desenvolvimento-de-executivos/` | `/desenvolvimento-de-executivos/` | 301 já existia |
 | `/empresas/` | `/outplacement/` | 301 já existia |
 | `/faq/` | `/perguntas-frequentes/` | 301 já existia |
-| `/depoimento/<nome>/` (13) | `/depoimentos/` | 301 novo (prefixo) |
+| `/depoimento/<nome>/` (14) | `/depoimentos/` | 301 novo (`RedirectMatch`) |
 | `/whatsapp/` (trampolim do GTM) | `https://wa.me/5511984311675` | 301 novo |
 | `/termos-e-condicoes/` | `/politica-de-privacidade/` | 301 novo |
 | `/politica-de-cookies-br/` | `/politica-de-privacidade/` | 301 novo (a política da v2 cobre cookies por categoria) |
