@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import Svg from '../components/Svg.astro';
+import { CTA, rotas } from '../data/site';
+---
+<Base titulo="Página não encontrada" descricao="O endereço pode ter mudado. Comece pelo que você procura.">
+  <meta name="robots" content="noindex" slot="head" />
+  <section class="bloco relative isolate overflow-hidden bg-areia-c">
+    <Svg name="rosacea_coral" w={420} class="pointer-events-none absolute right-[6%] top-1/2 -z-10 hidden h-auto w-[240px] -translate-y-1/2 opacity-30 md:block lg:w-[320px]" />
+    <div class="wrap relative flex flex-col gap-5 py-14 md:py-24 md:pr-[min(36%,380px)]">
+      <h1 class="h1-pag">Página não encontrada.</h1>
+      <p class="lead">O endereço pode ter mudado. Comece pelo que você procura.</p>
+      <div class="flex flex-col flex-wrap gap-3 pt-2 sm:flex-row">
+        <a href={rotas.paraEmpresa} class="btn-l">Para sua empresa</a>
+        <a href={rotas.paraVoce} class="btn-l">Para você</a>
+        <a href={rotas.contato} class="btn">{CTA}</a>
+      </div>
+    </div>
+  </section>
+</Base>
