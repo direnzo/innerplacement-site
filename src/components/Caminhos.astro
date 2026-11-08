@@ -1,34 +1,40 @@
 ---
 import discoVoce from '../../imagens/inner-H02-para-voce-v1.svg?raw';
 import discoEmpresa from '../../imagens/inner-H03-para-empresa-v1.svg?raw';
+import cenaEmpresa from '../../imagens/inner-P12-topo-empresa-v1.svg?raw';
+import cenaVoce from '../../imagens/inner-P13-topo-voce-v1.svg?raw';
 import { miolo } from '../lib/svg';
 import Badge from './Badge.astro';
 import Seta from './Seta.astro';
 import { rotas } from '../data/site';
 // data-cam: qual dos dois caminhos do disco o link acende ("sobe" ou "sai"); o link do meio não tem desenho próprio.
 const blocos = [
-  { tema: 'tinta', titulo: 'Para sua empresa', href: rotas.paraEmpresa, disco: discoEmpresa,
+  { tema: 'tinta', titulo: 'Para sua empresa', href: rotas.paraEmpresa, disco: discoEmpresa, cena: cenaEmpresa,
     texto: 'Para empresas que cuidam da carreira das pessoas nos três momentos que importam: quando alguém precisa crescer, preparando executivos para responsabilidades maiores; quando alguém que a empresa não quer perder precisa mudar algo para ficar; e quando alguém sai, conduzindo o desligamento com responsabilidade.',
     links: [['Preparar quem precisa crescer', rotas.empresaNextLevel, 'sobe'], ['Preservar quem precisa mudar', rotas.executiveAlignment], ['Cuidar de quem sai', rotas.empresaTransition, 'sai']] },
-  { tema: 'coral', titulo: 'Para você', href: rotas.paraVoce, disco: discoVoce,
+  { tema: 'coral', titulo: 'Para você', href: rotas.paraVoce, disco: discoVoce, cena: cenaVoce,
     texto: 'Para quem construiu uma carreira sólida e quer chegar ao próximo nível. Para quem encerrou um ciclo e precisa decidir, com estratégia, o próximo passo. E para quem, ainda em atividade, considera uma mudança de direção e precisa conduzi-la com discrição: nada é publicado e nenhuma abordagem é feita em seu nome sem autorização.',
     links: [['Quero crescer onde estou', rotas.voceNextLevel, 'sobe'], ['Estou saindo, ou já saí', rotas.voceTransition, 'sai']] },
 ];
-// Discos H-02 e H-03 (tools/ilustracao/caminhos.mts), embutidos inline (src/lib/svg.ts).
+// Discos H-02 e H-03 (tools/ilustracao/caminhos.mts), embutidos inline (src/lib/svg.ts). A partir de xl, os cards
+// alargam até as bordas dos blocos da home e ganham a cena do hub num painel claro: os traços escuros das
+// figuras sumiriam direto sobre o card preto. Abaixo disso, ficam só os discos, como nas outras páginas no celular.
 ---
-<div class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
+<div class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6 xl:w-[min(1392px,100%-48px)]">
   {blocos.map((b) => {
     const coral = b.tema === 'coral';
     return (
-      <section aria-label={b.titulo} data-cartao class:list={['relative flex flex-col gap-4 overflow-hidden rounded-[28px] p-5 pb-5 md:px-[30px] md:pb-6 md:pt-[26px]', coral ? 'bg-coral text-tinta' : 'bg-tinta text-white']}>
-        <div class="flex items-center justify-between gap-3 md:block">
+      <section aria-label={b.titulo} data-cartao class:list={['relative flex flex-col gap-4 overflow-hidden rounded-[28px] p-5 pb-5 md:px-[30px] md:pb-6 md:pt-[26px] xl:grid xl:grid-cols-[minmax(0,1fr)_minmax(0,42%)] xl:grid-rows-[1fr_auto] xl:gap-5 xl:p-6', coral ? 'bg-coral text-tinta' : 'bg-tinta text-white']}>
+        <div class="flex min-w-0 flex-col gap-4">
+        <div class="flex items-center justify-between gap-3 md:justify-start md:gap-4">
           <h2 class="contents"><a href={b.href} class="inline-flex"><Badge variante={coral ? 'tinta' : 'coral'}>{b.titulo}</Badge></a></h2>
-          <div class="cam-disco size-14 shrink-0 overflow-hidden rounded-full bg-areia-c md:absolute md:right-[26px] md:top-6 md:size-[88px]">
+          <div class="cam-disco size-14 shrink-0 overflow-hidden rounded-full bg-areia-c md:order-first md:size-16">
             <svg viewBox="0 0 100 100" class="block size-full" aria-hidden="true" set:html={miolo(b.disco)} />
           </div>
         </div>
         <p class:list={['text-[15px] leading-[1.58] md:max-w-[390px] md:text-[16px]', coral ? 'text-tinta' : 'text-white/80']}>{b.texto}</p>
-        <nav aria-label={`Caminhos ${b.titulo.toLowerCase()}`} class="mt-auto flex flex-col gap-2.5">
+        </div>
+        <nav aria-label={`Caminhos ${b.titulo.toLowerCase()}`} class="mt-auto flex flex-col gap-2.5 xl:col-span-2 xl:row-start-2 xl:mt-0">
           {b.links.map(([t, h, c]) => (
             <a href={h} data-cam={c} class:list={['via', coral ? 'bg-white text-tinta' : 'bg-white/[.07] text-white shadow-[inset_0_0_0_1.5px_rgba(255,255,255,.22)] hover:bg-white/[.12]']}>
               {t}
@@ -36,6 +42,9 @@ const blocos = [
             </a>
           ))}
         </nav>
+        <div class="hidden items-center justify-center rounded-[20px] bg-areia-c p-2 xl:col-start-2 xl:row-start-1 xl:flex">
+          <svg viewBox="0 0 420 300" class="topo-ilus h-auto w-full" aria-hidden="true" data-entrada set:html={miolo(b.cena)} />
+        </div>
       </section>
     );
   })}
