@@ -20,5 +20,5 @@ export default defineConfig({
   },
   // sitemap.xml (o WordPress tinha, pelo Yoast; a v2 não tinha nenhum). /obrigado/ fica de fora: é
   // noindex (a página de confirmação do formulário, sem conteúdo para indexar).
-  integrations: [sitemap({ filter: (url) => !url.endsWith('/obrigado/') })],
+  integrations: [sitemap({ filter: (url) => !/\/(obrigado|whatsapp)\/$/.test(url) })],
 });

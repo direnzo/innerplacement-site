@@ -12,7 +12,8 @@ Options -Indexes
 RedirectMatch 301 ^/profissionais-transicao-de-carreira-outplacement/?$ /para-voce/transicao-e-recolocacao/
 RedirectMatch 301 ^/profissionais-evolucao-de-carreira/?$ /para-voce/next-level/
 RedirectMatch 301 ^/empresas-desenvolvimento-de-executivos/?$ /para-sua-empresa/next-level/
-RedirectMatch 301 ^/empresas/?$ /para-sua-empresa/outplacement/
+RedirectMatch 301 ^/empresas?/?$ /para-sua-empresa/outplacement/
+RedirectMatch 301 ^/profissionais/?$ /para-voce/
 # Endereços anteriores das páginas de serviço (só existiram na versão de teste; doc. v2, 3.6)
 RedirectMatch 301 ^/transicao-e-recolocacao/?$ /para-voce/transicao-e-recolocacao/
 RedirectMatch 301 ^/desenvolvimento-de-carreira/?$ /para-voce/next-level/
@@ -23,12 +24,10 @@ RedirectMatch 301 ^/sitemap_index\.xml$ /sitemap-index.xml
 # Depoimentos individuais do WordPress (14) agora vivem na página única
 RedirectMatch 301 ^/depoimento(/.*)?$ /depoimentos/
 # Páginas de apoio do WordPress
-RedirectMatch 301 ^/whatsapp/?$ https://wa.me/5511984311675
 RedirectMatch 301 ^/politica-de-cookies-br/?$ /politica-de-privacidade/
 RedirectMatch 301 ^/termos-e-condicoes/?$ /politica-de-privacidade/
 RedirectMatch 301 ^/endereços(/.*)?$ /contato/
 # Arquivos do blog do WordPress
-RedirectMatch 301 ^/profissionais/?$ /blog/
 RedirectMatch 301 ^/(category|author)(/.*)?$ /blog/
 ErrorDocument 404 /404.html
 

@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import IconeZap from '../components/IconeZap.astro';
+import { WHATSAPP_URL } from '../data/site';
+// Mesma função do /whatsapp/ do WordPress: abrir esta página dispara, no Gerenciador de Tags, a conversão
+// "Clique Whatsapp" (a única marcada como principal no Analytics) e depois segue para o wa.me. Serve aos
+// anúncios e links antigos; o tempo de espera é para a tag sair antes do redirecionamento.
+---
+<Base titulo="WhatsApp" descricao="Abrindo o WhatsApp da Inner Placement.">
+  <meta name="robots" content="noindex" slot="head" />
+  <section class="bloco bg-areia-c">
+    <div class="wrap flex flex-col items-start gap-5 py-14 md:py-24">
+      <h1 class="h1-pag">Abrindo o WhatsApp.</h1>
+      <a href={WHATSAPP_URL} class="btn"><IconeZap />Chamar no WhatsApp</a>
+    </div>
+  </section>
+  <script is:inline define:vars={{ WHATSAPP_URL }}>
+    function seguir() { setTimeout(function () { location.replace(WHATSAPP_URL); }, 800); }
+    if (document.readyState === 'complete') seguir(); else addEventListener('load', seguir);
+  </script>
+</Base>
