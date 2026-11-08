@@ -43,7 +43,7 @@ Confirmado **[servidor]**: `innerplacement.com.br` é domínio adicional do cPan
    - **Copiar para a pasta nova e proteger do `--delete`:** `.user.ini` e `php.ini` (têm uma mitigação de segurança aplicada pela hospedagem em 20/10/2026) e `.well-known/` (renovação do SSL).
    - **Não precisam ir:** não há `cgi-bin/`, `ads.txt` nem arquivo de verificação do Google na raiz. Os blocos de Imagify, Wordfence e WordPress morrem com o WordPress.
 5. `.htaccess` da v2 testado em Apache 2.4 local em 08/11/2026, com o build da `main` (`f3cc2da`), contra as 45 URLs atuais dos sitemaps do WordPress: 44 corretas e `/locations.kml` em 404, como previsto em `docs/mapa-redirecionamentos.md`. Repetir no passo 3 com o `.htaccess` mesclado.
-6. Páginas de erro: o `.htaccess` usa `ErrorDocument 404 /` e a v2 não tem página 404 própria **[repo]**. Decidir se vale criar uma `404.astro` antes da troca (evita páginas inexistentes devolverem a home).
+6. Página de erro: `src/pages/404.astro` criada em 08/11/2026, ligada por `ErrorDocument 404 /404.html` **[repo]**.
 7. Regerar os derivados no commit final, se o texto mudar: `tools/llms.mts` e `tools/compartilhamento.mts`.
 8. Sitemap antigo: `/sitemap_index.xml` (Yoast) tem 301 para `/sitemap-index.xml` em `public/.htaccess` **[repo]**.
 
@@ -129,7 +129,6 @@ Regra: **não apagar `~/innerplacement-wp-ANTIGO-<data>` nem o dump do banco por
 | `--delete` do rsync na raiz apagar `.well-known`, `.user.ini` ou `php.ini` | filtros de proteção; ensaiar com `--dry-run` |
 | PHP do `enviar.php` não rodar por falta do bloco do cPanel no `.htaccess` | mesclar o bloco (passo 3.4) e testar o envio no dia |
 | 301 errados ou ausentes derrubarem posições | mapa em `docs/mapa-redirecionamentos.md`, teste com `curl` e vigília de 404 por 2 semanas |
-| Soft 404 (`ErrorDocument 404 /`) | criar `404.astro` antes da troca, se o dono aprovar |
 | Analytics contar duas vezes ou parar | mesmo contêiner GTM; conferir no tempo real |
 | HTTP→HTTPS, www, compressão ou PHP pararem ao sair o `.htaccess` do WordPress | item 3.4 em `public/.htaccess`, ensaio do passo 5 e conferência da seção 6 |
 | Links externos para arquivos em `wp-content/uploads/` passarem a 404 | conferir no Search Console, antes da troca, os mais linkados, e criar 301 ou copiar os que importarem |

@@ -30,7 +30,7 @@ RedirectMatch 301 ^/endereços(/.*)?$ /contato/
 # Arquivos do blog do WordPress
 RedirectMatch 301 ^/profissionais/?$ /blog/
 RedirectMatch 301 ^/(category|author)(/.*)?$ /blog/
-ErrorDocument 404 /
+ErrorDocument 404 /404.html
 
 # Compressão de texto (imagens, PDF e fontes woff2 já são comprimidos)
 <IfModule mod_filter.c>
