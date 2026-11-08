@@ -3,6 +3,8 @@
 Base: sitemaps públicos do WordPress em 21/10/2026 (45 URLs) contra as rotas da v2.
 Regras em `public/.htaccess`. Testadas em 21/10/2026 num Apache 2.4 local (docroot = `dist/`) contra as 45 URLs dos sitemaps: 44 respondem 301 ou 200 no destino certo; só `/locations.kml` dá 404 (esperado). Revalidar com `curl -I` no deploy real.
 
+**Reteste em 08/11/2026**, depois dos slugs novos da documentação v2: Apache 2.4 local, build `f3cc2da`, 45 URLs dos sitemaps atuais; 44 corretas e `/locations.kml` em 404.
+
 **Correção do mesmo dia:** as regras usavam `Redirect`, que anexa o resto do caminho ao destino (`/depoimento/nome/` ia para `/depoimentos/nome/`, 404; idem `/category/x/`). Trocadas por `RedirectMatch` ancorado, com barra final opcional (`/faq` também redireciona).
 
 | URL no WordPress | Destino na v2 | Situação |
