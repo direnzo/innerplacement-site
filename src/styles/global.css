@@ -1,20 +1,24 @@
 @import "tailwindcss";
+/* Hanken Grotesk (licença em src/assets/fonts/OFL.txt): arquivo variável, só o subconjunto latino, que cobre o português.
+   A reserva imita as medidas dela para o texto não pular quando a fonte chega. */
+@font-face { font-family: "Hanken Grotesk"; src: url("../assets/fonts/hanken-grotesk-latin.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Hanken Reserva"; src: local("Arial"), local("Liberation Sans"), local("Roboto"); size-adjust: 100.6%; ascent-override: 99.4%; descent-override: 30.1%; }
 @source not "../../iqa"; /* cópia de outra aplicação (docs/iqa.md): as classes dela não entram no CSS do site */
 
 /* Tokens da marca Inner Placement. Regra de forma: nenhum canto reto. */
 @theme {
   --color-coral: #FF6558;
-  --color-coral-d: #C4483C;
+  --color-coral-d: #B24136;
   --color-coral-c: #FFE3DE;
   --color-tinta: #231F20;
   --color-areia: #D3CEC4;
   --color-areia-c: #EFEBE4;
   --color-ambar: #F2B45C;
   --color-texto: #4A4643;
-  --color-mudo: #6E6769;
+  --color-mudo: #5B5557;
   --color-linha: #E8E3DA;
   --color-zap: #25D366;
-  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Hanken Grotesk", "Hanken Reserva", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --radius-card: 20px;
   --radius-bloco: 28px;
 }
