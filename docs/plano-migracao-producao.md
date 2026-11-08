@@ -33,7 +33,7 @@ Confirmado **[servidor]**: `innerplacement.com.br` é domínio adicional do cPan
 3. Decisões abertas fechadas:
    - **condição para publicar:** base e período do 86% validados internamente (P10); dados do rodapé (P14); 
    - **mudam texto:** grafia do nome (P15), "No Outplacement" (P17), relatório final (P18), programa do Vinícius (P7), "o/a Executive Alignment" e os termos "rede", "vagas" e "posições" no FAQ revisado;
-   - **podem entrar depois da troca:** quatro dimensões na home (P16), ilustração do Manifesto (P19), depoimento da Alessandra (P12), vídeos (Gisele, Rafael, Fabíola editado) e ilustração dos hubs e da Executive Alignment.
+   - **podem entrar depois da troca:** quatro dimensões na home (P16), ilustração do Manifesto (P19), depoimento da Alessandra (P12) e vídeos (Gisele, Rafael, Fabíola editado).
 4. Levar para a v2 o que hoje vem da raiz do WordPress **[servidor]**. Tudo que for do `.htaccess` entra em `public/.htaccess`, no repositório: a publicação automática sobrescreve o arquivo no servidor, e a `/v2-teste/` não usa esse arquivo.
    - **HTTP→HTTPS: obrigatório.** Hoje vem do bloco "Really Simple Security" do `.htaccess` do WordPress e some na troca.
    - **www→sem www: obrigatório.** Hoje só o WordPress faz: um arquivo estático em `https://www.` responde 200 sem redirecionar.

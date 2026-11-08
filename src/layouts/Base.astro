@@ -21,9 +21,9 @@ const { titulo, descricao, fechamento = false, schema, fundo = true, ogImagem: o
 const tituloCompleto = Astro.url.pathname === '/' ? `Inner Placement · ${titulo}` : `${titulo} · Inner Placement`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // Imagem de compartilhamento (public/og/, gerada por tools/compartilhamento.mts). Páginas sem imagem
-// própria (o Agradecimento, os hubs e a Executive Alignment) usam a da home.
+// própria (o Agradecimento) usam a da home.
 const pagina = Astro.url.pathname.replace(/^\/|\/$/g, '').replace('/', '--') || 'inicio';
-const comImagem = ['inicio', 'para-voce--transicao-e-recolocacao', 'para-voce--next-level', 'para-sua-empresa--next-level', 'para-sua-empresa--outplacement', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato', 'quem-somos', 'blog'];
+const comImagem = ['inicio', 'para-voce--transicao-e-recolocacao', 'para-voce--next-level', 'para-sua-empresa--next-level', 'para-sua-empresa--outplacement', 'para-sua-empresa', 'para-voce', 'para-sua-empresa--executive-alignment', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato', 'quem-somos', 'blog'];
 const ogImagem = new URL(ogPropria ?? `/og/${comImagem.includes(pagina) ? pagina : 'inicio'}.jpg`, Astro.site).href;
 const org = {
   '@context': 'https://schema.org', '@type': 'ProfessionalService', '@id': 'https://innerplacement.com.br/#organizacao', name: 'Inner Placement',

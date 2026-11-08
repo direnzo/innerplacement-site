@@ -108,4 +108,5 @@ Desde 29/09 as ilustrações seguem a abordagem híbrida, por blocos: ver `docs/
 | P-04 | Outplacement | aprovada: topo v1 em SVG no site |
 | P-05 a P-09 | Depoimentos, FAQ, Manifesto, Contato, Agradecimento | aprovadas: v1 em SVG no site |
 | P-10 | Quem somos | aprovada: topo v1 em SVG (os três sócios) |
+| P-12 a P-14 | Para sua empresa, Para você, Executive Alignment | aprovadas: v1 em SVG no site (bloco 6) |
 | G-03, G-05 | Imagens de compartilhamento | aprovadas: `public/og/<página>.jpg` (`tools/compartilhamento.mts`) |
