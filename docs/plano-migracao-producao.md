@@ -39,21 +39,13 @@ Confirmado **[servidor]**: `innerplacement.com.br` é domínio adicional do cPan
    - **www→sem www: obrigatório.** Hoje só o WordPress faz: um arquivo estático em `https://www.` responde 200 sem redirecionar.
    - **Handler e diretivas de PHP:** copiar literalmente os blocos gerados pelo cPanel (`# php -- BEGIN cPanel-generated handler`, PHP 8.2 lsapi, e `# BEGIN cPanel-generated php ini directives`). O PHP da linha de comando é 8.3, então sem o handler a versão do site pode mudar.
    - **Compressão e cache:** hoje vêm do bloco do WP Rocket. Escrever versão enxuta para a v2 (`mod_deflate`; `mod_expires` com HTML sem cache e `_astro/`, fontes e imagens com cache longo).
+   - Os itens acima e o `Options -Indexes` já estão em `public/.htaccess` (08/11/2026), testados em Apache local com HTTPS. No servidor, a confirmação é o ensaio do passo 5.
    - **Copiar para a pasta nova e proteger do `--delete`:** `.user.ini` e `php.ini` (têm uma mitigação de segurança aplicada pela hospedagem em 20/10/2026) e `.well-known/` (renovação do SSL).
    - **Não precisam ir:** não há `cgi-bin/`, `ads.txt` nem arquivo de verificação do Google na raiz. Os blocos de Imagify, Wordfence e WordPress morrem com o WordPress.
 5. `.htaccess` da v2 testado em Apache 2.4 local em 08/11/2026, com o build da `main` (`f3cc2da`), contra as 45 URLs atuais dos sitemaps do WordPress: 44 corretas e `/locations.kml` em 404, como previsto em `docs/mapa-redirecionamentos.md`. Repetir no passo 3 com o `.htaccess` mesclado.
 6. Páginas de erro: o `.htaccess` usa `ErrorDocument 404 /` e a v2 não tem página 404 própria **[repo]**. Decidir se vale criar uma `404.astro` antes da troca (evita páginas inexistentes devolverem a home).
 7. Regerar os derivados no commit final, se o texto mudar: `tools/llms.mts` e `tools/compartilhamento.mts`.
-8. Sitemap antigo: `/sitemap_index.xml` (Yoast) responde 200 hoje **[público]** e a v2 usa `/sitemap-index.xml` **[repo]**. Acrescentar um 301 de um para o outro, para quem já tem o endereço antigo.
-
-Modelo para os dois redirecionamentos do item 4 (logo após `RewriteEngine On`; a exceção mantém a renovação do SSL):
-
-```apache
-RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
-RewriteCond %{HTTPS} !=on [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^ https://innerplacement.com.br%{REQUEST_URI} [L,R=301]
-```
+8. Sitemap antigo: `/sitemap_index.xml` (Yoast) tem 301 para `/sitemap-index.xml` em `public/.htaccess` **[repo]**.
 
 ### 3.1 Resultado das leituras no servidor (08/11/2026)
 
