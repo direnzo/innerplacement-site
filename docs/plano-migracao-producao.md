@@ -108,6 +108,14 @@ Com o dono:
 - Analytics: conferir que os dados continuam no mesmo contêiner (histórico preservado).
 - Cada URL antiga com tráfego que ficou sem 301 vira 404: revisar o relatório de 404 e acrescentar regras.
 
+### 7.1 Medição: o que o contêiner faz (versão 24, lida em 08/11/2026) e o que os dados mostram
+
+- **Analytics** `G-669R79ZWTE` e **Google Ads** `AW-17293202267`. Conversões: "Envio Form" ao carregar `/obrigado` e "Clique Whatsapp" ao carregar `/whatsapp`; a segunda é a única marcada como principal no Analytics (45 eventos em 2026). As duas páginas existem na v2. O formulário do e-book não passa por `/obrigado` e não conta como conversão.
+- **Antes da troca, o dono remove do contêiner as tags de Hotjar e Navegg** (decisão de 08/11/2026): elas carregavam sem pedir consentimento e não constam da Política de Privacidade. Conferir depois em `https://www.googletagmanager.com/gtm.js?id=GTM-ND356DQM`, procurando `hotjar` e `navdmp`.
+- **Linha de base do Search Console (16 meses até 06/11/2026):** 257 cliques, 3.872 impressões; "inner placement" responde por 115 cliques. Home 199 cliques, Quem somos 42, `/empresa/` 8.
+- **O Analytics caiu de cerca de 7 a 35 usuários por semana para 1 a 5 a partir da semana 37 de 2026**, enquanto o Search Console seguiu estável. Hipótese, não confirmada: o GTM movido para web worker (Partytown) no WordPress em 09/2026. Para comparar depois da troca, usar as semanas 1 a 36.
+- Com o aviso de cookies, quem não aceita deixa de ser contado por inteiro: uma queda de números no Analytics depois da troca é esperada e não indica perda de tráfego; o Search Console é a referência.
+
 ## 8. Rollback
 
 | Quando | Ação | Tempo |
