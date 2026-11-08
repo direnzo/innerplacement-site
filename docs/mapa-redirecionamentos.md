@@ -17,6 +17,7 @@ Regras em `public/.htaccess`. Testadas em 21/10/2026 num Apache 2.4 local (docro
 | `/empresas-desenvolvimento-de-executivos/` | `/para-sua-empresa/next-level/` | 301 já existia |
 | `/empresas/` | `/para-sua-empresa/outplacement/` | 301 já existia |
 | `/faq/` | `/perguntas-frequentes/` | 301 já existia |
+| `/sitemap_index.xml` (Yoast) | `/sitemap-index.xml` | 301 novo |
 | `/depoimento/<nome>/` (14) | `/depoimentos/` | 301 novo (`RedirectMatch`) |
 | `/whatsapp/` (trampolim do GTM) | `https://wa.me/5511984311675` | 301 novo |
 | `/termos-e-condicoes/` | `/politica-de-privacidade/` | 301 novo |
