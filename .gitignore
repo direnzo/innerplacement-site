@@ -25,3 +25,8 @@ dist/
 
 # Dados pessoais locais do formulário — nunca versionar.
 /inner-mensagens/
+
+# IQA: a cópia do código fica versionada; credenciais e dependências não (docs/iqa.md).
+/iqa/vendor/
+/iqa/src/config.php
+/iqa/src/google-service-account.json
