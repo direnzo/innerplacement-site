@@ -121,6 +121,10 @@ Depois da fonte hospedada no site e do contraste (08/11/2026), em servidor local
 - **O Analytics caiu de cerca de 7 a 35 usuários por semana para 1 a 5 a partir da semana 37 de 2026**, enquanto o Search Console seguiu estável. Hipótese, não confirmada: o GTM movido para web worker (Partytown) no WordPress em 09/2026. Para comparar depois da troca, usar as semanas 1 a 36.
 - Com o aviso de cookies, quem não aceita deixa de ser contado por inteiro: uma queda de números no Analytics depois da troca é esperada e não indica perda de tráfego; o Search Console é a referência.
 
+### 7.2 Formulários e e-mail (09/11/2026)
+
+O envio real falhou na primeira tentativa: o `.com.br` fica em roteamento Local no cPanel (decisão do modelo híbrido) e não havia caixa contato@ no servidor. Corrigido com um encaminhador para o endereço `.test-google-a.com` do grupo; envio do formulário de contato confirmado pelo dono. Devoluções com o mesmo erro em 10/09 e 29/09 indicam que avisos do formulário antigo podem não ter chegado: os 55 envios estão no backup do banco.
+
 ## 8. Rollback
 
 | Quando | Ação | Tempo |

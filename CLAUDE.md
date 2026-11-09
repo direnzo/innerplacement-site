@@ -95,6 +95,7 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
   `~/inner-formulario.php` (config; `destino_teste` = contato@innerplacement.com.br) e
   `~/inner-mensagens/` (registro de cada mensagem, com dados pessoais: não copiar para o repositório).
   Testar envio real gera e-mail na caixa da Inner: só com o dono ciente.
+- E-mail do domínio (híbrido): o MX é o Google Workspace, onde contato@ é um **grupo**; as contas `iqa@` e `webmaster@` são do cPanel, e por isso o roteamento do `.com.br` fica em **Local** (não mudar para Remoto). Para o `mail()` do site chegar ao grupo, há no cPanel o encaminhador `contato@innerplacement.com.br` → `contato@innerplacement.com.br.test-google-a.com` (criado em 09/11/2026). Sem ele, o servidor recusa com "No Such User Here".
 - A chave antiga `~/.ssh/innerplacement` (sem senha) é do repositório do WordPress; não usar aqui.
   Revogá-la fica para depois (decisão do dono, 29/09).
 
