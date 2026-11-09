@@ -1,14 +1,14 @@
-# Publicação automática da versão de teste (https://innerplacement.com.br/v2-teste/).
+# Publicação automática do site (https://innerplacement.com.br/).
 # Roda a cada commit na main — inclusive os feitos pelo painel /admin (posts e depoimentos) — e pode ser
-# disparada à mão em Actions → "Publicar v2-teste" → Run workflow. Usa o mesmo script da publicação manual
-# (tools/publicar-v2-teste.sh: build, backup no servidor, envio só para v2-teste/, conferência).
+# disparada à mão em Actions → "Publicar site" → Run workflow. Usa tools/publicar-producao.sh, que recusa
+# rodar enquanto houver WordPress na raiz.
 #
 # Segredos do repositório (Settings → Secrets and variables → Actions):
 #   SSH_CHAVE_PUBLICACAO  chave privada dedicada a esta publicação (sem senha; só existe aqui e no cPanel)
 #   SSH_KNOWN_HOSTS       linha(s) de `ssh-keyscan -p 22 innerplacement.com.br` conferidas pelo dono
 # Sem esses segredos o job para logo no início, sem publicar nada.
 # A conexão exige uma chave do servidor já registrada em SSH_KNOWN_HOSTS; não aceita chaves novas.
-name: Publicar v2-teste
+name: Publicar site
 
 on:
   push:
@@ -17,7 +17,7 @@ on:
 
 # Uma publicação por vez; um commit novo espera a anterior terminar.
 concurrency:
-  group: publicar-v2-teste
+  group: publicar-site
   cancel-in-progress: false
 
 permissions:
@@ -67,7 +67,7 @@ jobs:
             | grep -E 'Connecting|Connection|Authenticat|Offering|Server accepts|denied|refused|reset|timed out|Host key|Exit status' || true
 
       - name: Publicar
-        run: tools/publicar-v2-teste.sh
+        run: tools/publicar-producao.sh
 
       - name: Apagar a chave
         if: always()
