@@ -17,7 +17,7 @@ const url = new URL(`/${post.id}/`, Astro.site).href;
 const schema = {
   '@context': 'https://schema.org', '@type': 'BlogPosting', headline: d.titulo, description: d.descricao,
   datePublished: d.data.toISOString().slice(0, 10), dateModified: (d.atualizado ?? d.data).toISOString().slice(0, 10),
-  author: { '@type': 'Person', name: d.autor }, publisher: { '@type': 'Organization', name: 'Inner Placement', url: 'https://innerplacement.com.br/' },
+  author: { '@type': 'Organization', name: d.autor, url: 'https://innerplacement.com.br/' }, publisher: { '@type': 'Organization', name: 'Inner Placement', url: 'https://innerplacement.com.br/' },
   mainEntityOfPage: url, ...(d.imagem && { image: new URL(d.imagem, Astro.site).href }),
 };
 ---
@@ -29,7 +29,7 @@ const schema = {
       <h1 class="h1-pag">{d.titulo}</h1>
       <p class="text-[14.5px] text-mudo"><time datetime={d.data.toISOString().slice(0, 10)}>{dataBR(d.data)}</time> · {d.autor} · {minutos(post.body)} min de leitura</p>
     </header>
-    {d.imagem && <img src={d.imagem} alt={d.imagem_alt ?? ''} width="1600" height="900" class="mx-auto aspect-[16/9] w-full max-w-[960px] rounded-[24px] object-cover" decoding="async" />}
+    {d.imagem && <img src={d.imagem} alt={d.imagem_alt ?? ''} width="1600" height="900" class="mx-auto aspect-[16/9] w-full max-w-[960px] rounded-[24px] object-cover" decoding="async" fetchpriority="high" />}
     <div class="prosa mx-auto w-full max-w-[720px]"><Content /></div>
     <p class="mx-auto w-full max-w-[720px]"><a href={rotas.blog} class="btn-l">← Voltar para o blog</a></p>
   </article>

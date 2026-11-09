@@ -7,7 +7,8 @@ const { etiqueta, titulo, href, link, coral = false } = Astro.props;
 ---
 <article class:list={['flex flex-col items-start gap-3 rounded-[28px] p-5 md:p-7', coral ? 'bg-coral text-tinta' : 'bg-white']}>
   <Badge variante={coral ? 'tinta' : undefined}>{etiqueta}</Badge>
-  <h3 class="text-[20px] font-semibold leading-[1.25] md:text-[22px]">{titulo}</h3>
+  <!-- h2: nos hubs os cards vêm logo depois do h1; com h3 a hierarquia pulava um nível (Lighthouse heading-order). -->
+  <h2 class="text-[20px] font-semibold leading-[1.25] md:text-[22px]">{titulo}</h2>
   <p class:list={['pb-2 text-[15.5px] leading-[1.6] md:text-[16px]', coral ? 'text-tinta' : 'text-texto']}><slot /></p>
   <a href={href} class:list={['via mt-auto self-stretch', coral ? 'bg-white text-tinta' : 'bg-areia-c text-tinta']}>
     {link}

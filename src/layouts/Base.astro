@@ -21,6 +21,8 @@ interface Props { titulo: string; descricao: string; fechamento?: boolean | Prop
 const { titulo, descricao, fechamento = false, schema, fundo = true, ogImagem: ogPropria, tipo = 'website' } = Astro.props;
 const tituloCompleto = Astro.url.pathname === '/' ? `Inner Placement · ${titulo}` : `${titulo} · Inner Placement`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// A 404 é servida em qualquer URL inexistente: um canonical para /404/ apontaria para um endereço que não existe.
+const comCanonical = !/^\/404\/?$/.test(Astro.url.pathname);
 // Imagem de compartilhamento (public/og/, gerada por tools/compartilhamento.mts). Páginas sem imagem
 // própria (o Agradecimento) usam a da home.
 const pagina = Astro.url.pathname.replace(/^\/|\/$/g, '').replace('/', '--') || 'inicio';
@@ -64,7 +66,7 @@ const site = {
   </script>
   <title>{tituloCompleto}</title>
   <meta name="description" content={descricao} />
-  <link rel="canonical" href={canonical} />
+  {comCanonical && <link rel="canonical" href={canonical} />}
   <meta property="og:type" content={tipo} />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:title" content={tituloCompleto} />
