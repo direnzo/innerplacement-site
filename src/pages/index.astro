@@ -37,7 +37,7 @@ const dimensoes = [
 ---
 <Base titulo="Consultoria de desenvolvimento de carreira" fundo={false}
   fechamento={{ texto: 'Sobre o seu momento de carreira ou sobre a situação de um executivo da sua empresa. Sem apresentação de produto e sem compromisso.' }}
-  descricao="A InnerPlacement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.">
+  descricao="A Inner Placement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.">
 
   <!-- 1 · Hero: só a frase em grande destaque, com a rosácea por trás. O painel H-01
        (heroSvg/painel) fica preservado no código para uso futuro, sem renderizar. -->
@@ -45,7 +45,7 @@ const dimensoes = [
     <Svg name="rosacea_coral" w={560} class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-auto w-[min(130vw,560px)] -translate-x-1/2 -translate-y-1/2 opacity-[.14] md:w-[640px]" />
     <div class="wrap flex flex-col items-center gap-4 py-12 text-center md:gap-5 md:py-16 lg:py-20 [&_.badge]:self-center">
       <h1 class="h1-hero max-w-[24ch] text-[30px] md:text-[38px] lg:text-[46px] lg:leading-[1.12]">Momentos decisivos da trajetória executiva <strong>exigem clareza, contexto e precisão.</strong></h1>
-      <p class="lead mx-auto max-w-[62ch] text-center text-[16.5px] md:text-[19px]">A InnerPlacement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.</p>
+      <p class="lead mx-auto max-w-[62ch] text-center text-[16.5px] md:text-[19px]">A Inner Placement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.</p>
     </div>
     <!-- Futuro: painel H-01 guardado (heroSvg + painel + .hero-anim em global.css). Para reativar,
          voltar ao grid de duas colunas com o bloco abaixo.
@@ -73,7 +73,6 @@ const dimensoes = [
         <h3 class="text-[20px] font-semibold md:text-[22px]">Antes de mover, entender.</h3>
         <p class="lead !max-w-[78ch]">Nenhum movimento de carreira acontece fora de contexto. Antes de definir o próximo passo, entendemos quem é o profissional, o momento que está vivendo, o ambiente em que atua, o que já construiu e o que a situação exige. Essa leitura percorre quatro dimensões e dá precisão ao trabalho que vem depois.</p>
       </div>
-      <!-- Pendência P16: se os sócios tirarem as quatro dimensões da home, sai esta lista. -->
       <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4" role="list">
         {dimensoes.map(([t, p]) => (
           <li class="flex flex-col gap-1.5 rounded-[20px] bg-areia-c p-5"><h4 class="text-[16px] font-semibold">{t}</h4><p class="text-[14.5px] leading-[1.55] text-texto">{p}</p></li>

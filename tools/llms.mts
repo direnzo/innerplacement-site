@@ -60,7 +60,7 @@ const contato = `Contato: [${SITE}/contato/](${SITE}/contato/) · WhatsApp ${WHA
 
 // llms.txt: índice curto (mesmo formato do antigo).
 const indice = [
-  '# InnerPlacement',
+  '# Inner Placement',
   '',
   `> ${home.descricao}`,
   '',
@@ -74,7 +74,7 @@ const indice = [
 // llms-full.txt: conteúdo completo (serviços + FAQ novo + blog da v2).
 const servicos = ['/para-sua-empresa/next-level/', '/para-sua-empresa/executive-alignment/', '/para-sua-empresa/outplacement/', '/para-voce/next-level/', '/para-voce/transicao-e-recolocacao/'];
 const completo = [
-  '# InnerPlacement: conteúdo completo para LLMs',
+  '# Inner Placement: conteúdo completo para LLMs',
   '',
   `> ${home.descricao}`,
   '',

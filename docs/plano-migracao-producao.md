@@ -30,10 +30,9 @@ Confirmado **[servidor]**: `innerplacement.com.br` é domínio adicional do cPan
 
 1. Documentação v2 e FAQ revisado aplicados em 08/11/2026 **[repo]**. Falta o retorno dos sócios sobre a `/v2-teste/`, e a `main` precisa estar estável, com build de produção sem erro.
 2. CNPJ preenchido em 08/11/2026; dono preenche o **encarregado de dados (DPO)** na política de privacidade (`src/pages/politica-de-privacidade.astro`).
-3. Decisões abertas fechadas:
-   - **condição para publicar:** base e período do 86% validados internamente (P10); dados do rodapé (P14); 
-   - **mudam texto:** grafia do nome (P15), "No Outplacement" (P17), relatório final (P18), programa do Vinícius (P7), "o/a Executive Alignment" e os termos "rede", "vagas" e "posições" no FAQ revisado;
-   - **podem entrar depois da troca:** quatro dimensões na home (P16), ilustração do Manifesto (P19), depoimento da Alessandra (P12) e vídeos (Gisele, Rafael, Fabíola editado).
+3. Respostas dos sócios recebidas em 09/11/2026 e aplicadas: nome "Inner Placement"; "o Executive Alignment"; "No Transition"; versão longa do que a empresa acompanha; sem relatório final; quatro dimensões e ilustração do Manifesto mantidas; Vinícius Conde com Transition Platinum; 86% e rodapé liberados, com base e período em registro interno; no máximo duas perguntas por página de programa.
+   - **Falta:** encarregado de dados (LGPD) e o texto final da seção 10 da Política de Privacidade.
+   - **Podem entrar depois da troca:** vídeos (Gisele, Rafael, Fabíola editado) e depoimento da Alessandra.
 4. Levar para a v2 o que hoje vem da raiz do WordPress **[servidor]**. Tudo que for do `.htaccess` entra em `public/.htaccess`, no repositório: a publicação automática sobrescreve o arquivo no servidor, e a `/v2-teste/` não usa esse arquivo.
    - **HTTP→HTTPS: obrigatório.** Hoje vem do bloco "Really Simple Security" do `.htaccess` do WordPress e some na troca.
    - **www→sem www: obrigatório.** Hoje só o WordPress faz: um arquivo estático em `https://www.` responde 200 sem redirecionar.
