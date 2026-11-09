@@ -226,6 +226,27 @@ document.querySelectorAll<HTMLElement>('[data-carrossel-caixa]').forEach((caixa)
   }
 });
 
+// Conversão de WhatsApp (docs/ANALYTICS-whatsapp.md). Os botões levam direto ao wa.me; sem este evento,
+// as tags "Clique Botão Whats" do Gerenciador de Tags só disparavam na página /whatsapp/. Contrato (não renomear):
+// { event: 'whatsapp_click', link_url, link_id, link_text, link_location } com link_location em
+// rodape | flutuante | conteudo. Na própria /whatsapp/ não envia: lá a conversão já sai pela visita à página.
+if (!location.pathname.startsWith('/whatsapp')) {
+  document.addEventListener('click', (e) => {
+    const a = (e.target as Element | null)?.closest?.('a[href*="wa.me/"]') as HTMLAnchorElement | null;
+    if (!a) return;
+    const local = a.closest('[data-wa-local]')?.getAttribute('data-wa-local') ?? (a.closest('footer') ? 'rodape' : 'conteudo');
+    const w = window as any;
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({
+      event: 'whatsapp_click',
+      link_url: a.href,
+      link_id: a.id || `wa-${local}`,
+      link_text: (a.textContent || a.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim().slice(0, 100),
+      link_location: local,
+    });
+  }, true);
+}
+
 // Reabre o aviso de cookies (CookieConsent.astro) pelo link do rodapé, para quem quiser rever a escolha.
 document.getElementById('abrir-cookies')?.addEventListener('click', () => dispatchEvent(new Event('cookies-reabrir')));
 
