@@ -29,9 +29,9 @@ Confirmado **[servidor]**: `innerplacement.com.br` é domínio adicional do cPan
 ## 3. Pré-requisitos (nada disso mexe no ar)
 
 1. Documentação v2 e FAQ revisado aplicados em 08/11/2026 **[repo]**. Falta o retorno dos sócios sobre a `/v2-teste/`, e a `main` precisa estar estável, com build de produção sem erro.
-2. CNPJ preenchido em 08/11/2026; dono preenche o **encarregado de dados (DPO)** na política de privacidade (`src/pages/politica-de-privacidade.astro`).
+2. CNPJ preenchido em 08/11/2026; seção 10 com texto provisório (canal contato@) aprovado em 09/11/2026, até definirem o **encarregado de dados (DPO)** na política de privacidade (`src/pages/politica-de-privacidade.astro`).
 3. Respostas dos sócios recebidas em 09/11/2026 e aplicadas: nome "Inner Placement"; "o Executive Alignment"; "No Transition"; versão longa do que a empresa acompanha; sem relatório final; quatro dimensões e ilustração do Manifesto mantidas; Vinícius Conde com Transition Platinum; 86% e rodapé liberados, com base e período em registro interno; no máximo duas perguntas por página de programa.
-   - **Falta:** encarregado de dados (LGPD) e o texto final da seção 10 da Política de Privacidade.
+   - Sem campanhas ativas no Google Ads (dono, 09/11/2026).
    - **Podem entrar depois da troca:** vídeos (Gisele, Rafael, Fabíola editado) e depoimento da Alessandra.
 4. Levar para a v2 o que hoje vem da raiz do WordPress **[servidor]**. Tudo que for do `.htaccess` entra em `public/.htaccess`, no repositório: a publicação automática sobrescreve o arquivo no servidor, e a `/v2-teste/` não usa esse arquivo.
    - **HTTP→HTTPS: obrigatório.** Hoje vem do bloco "Really Simple Security" do `.htaccess` do WordPress e some na troca.

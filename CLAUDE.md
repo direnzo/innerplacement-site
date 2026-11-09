@@ -45,9 +45,9 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
   dada no aviso. **`GTM_ID` é o mesmo contêiner que o WordPress atual usa** (decisão deliberada, para não
   perder o histórico do Analytics na troca de site) — não trocar por um novo sem avisar o dono, porque
   isso quebra a continuidade dos dados.
-- A Política de Privacidade (`src/pages/politica-de-privacidade.astro`) tem um campo pendente que só
-  o dono pode preencher (o encarregado de dados/DPO) — a própria página avisa isso. Não inventar
-  esse valor.
+- A Política de Privacidade (`src/pages/politica-de-privacidade.astro`) traz na seção 10 um texto
+  provisório, com o canal contato@, até os sócios definirem o encarregado de dados (DPO). Não inventar
+  esse nome.
 
 ## Imagens — regras que já custaram retrabalho
 
