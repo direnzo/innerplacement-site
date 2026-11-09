@@ -1,6 +1,6 @@
 # Plano de migração para produção e rollback
 
-Rascunho de 21/10/2026, revisado em 08/11/2026 depois da documentação funcional v2. Para execução **depois** do retorno dos sócios sobre a `/v2-teste/`. Nada deste plano foi executado.
+Rascunho de 21/10/2026, revisado em 08/11/2026 depois da documentação funcional v2. Para execução **depois** do retorno dos sócios sobre a `/v2-teste/`. **Troca executada em 09/11/2026 às 18:06.** WordPress guardado em `~/innerplacement-wp-ANTIGO-20261109`, sem apagar por pelo menos 30 dias (até 09/12/2026). Conferência: 44 de 45 URLs dos sitemaps e 34 de 35 do Search Console; HTTPS, www, domínios alternativos, HSTS, compressão, PHP e bots corretos.
 Legenda: **[repo]** confirmado no repositório; **[público]** confirmado em 08/11/2026 por requisições HTTP de leitura ao site no ar; **[servidor]** confirmado em 08/11/2026 por leitura no servidor (resultado na seção 3.1).
 
 ## 1. Situação de partida

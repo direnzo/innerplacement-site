@@ -1,8 +1,7 @@
 # Inner Placement — site v2
 
-Novo site da Inner Placement, estático, fora do WordPress: Astro 7 + Tailwind CSS 4 + Alpine.js.
-Versão de teste publicada em
-<https://innerplacement.com.br/v2-teste/> para aprovação dos sócios.
+Site da Inner Placement, estático, fora do WordPress: Astro 7 + Tailwind CSS 4 + Alpine.js.
+No ar em <https://innerplacement.com.br/> desde 09/11/2026.
 
 O site atual em WordPress (clone Docker, melhorias de SEO/GEO/performance, deploy em produção)
 fica no repositório `innerplacement`, que será congelado quando esta versão entrar no ar.
@@ -17,7 +16,8 @@ fica no repositório `innerplacement`, que será congelado quando esta versão e
 - `node --experimental-strip-types tools/llms.mts` — gera `public/llms.txt` (índice) e `public/llms-full.txt` (serviços + FAQ + blog) a partir do conteúdo real da v2; rodar de novo quando mudar página, FAQ ou posts
 - `python3 tools/build-v2-teste.py` — depois do `npm run build`, gera `dist-v2-teste/` (e `.zip`) para a subpasta `/v2-teste/`: links com prefixo, `noindex, nofollow` em todas as páginas, sem canonical e sem o `.htaccess` de produção. É o que sobe para `~/innerplacement/v2-teste/` no servidor (a raiz do site é `~/innerplacement`, não `public_html`)
 - `node tools/migracao/migrar-blog.mjs` — migração única dos posts do WordPress (já feita em 01/10; rodar de novo sobrescreve edições). `npm install` em `tools/migracao/` antes
-- `tools/publicar-v2-teste.sh [--simular]` — build + variante + backup no servidor (`~/backups-v2-teste/`) + envio só para `v2-teste/` + conferência das páginas online. Exige a chave `inner-v2` destravada (comando no topo do script). O mesmo script roda sozinho no GitHub Actions a cada commit na `main` (`.github/workflows/publicar.yml`), com uma chave de publicação própria guardada nos segredos do repositório
+- `tools/publicar-producao.sh [--simular]` — build + backup no servidor (`~/backups-producao/`) + envio para a raiz + conferência das páginas; roda sozinho no GitHub Actions a cada commit na `main`
+- `tools/publicar-v2-teste.sh [--simular]` — (fora de uso desde a troca de 09/11/2026) build + variante + backup no servidor (`~/backups-v2-teste/`) + envio só para `v2-teste/` + conferência das páginas online. Exige a chave `inner-v2` destravada (comando no topo do script). O mesmo script roda sozinho no GitHub Actions a cada commit na `main` (`.github/workflows/publicar.yml`), com uma chave de publicação própria guardada nos segredos do repositório
 
 ## Onde mexer
 

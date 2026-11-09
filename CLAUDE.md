@@ -6,11 +6,10 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 ## O que é este projeto
 
 - Site novo da Inner Placement (consultoria de carreira para executivos), estático: Astro 7 +
-  Tailwind CSS 4 + Alpine.js. Vai **substituir o WordPress** em innerplacement.com.br.
+  Tailwind CSS 4 + Alpine.js. **Substituiu o WordPress** em innerplacement.com.br em 09/11/2026.
 - Decisão do dono (29/09/2026): o caminho de melhorar o WordPress (SEO, GEO, performance) não deu
   resultado; a v2 é o caminho. O WordPress fica no repositório `~/projetos/innerplacement`
   (clone Docker), em modo manutenção, e será congelado quando a v2 entrar no ar.
-- Versão de teste publicada em https://innerplacement.com.br/v2-teste/.
 - Origem: a v2 foi criada no Claude Desktop (sessão Cowork "Innerplacement site redesign
   strategy") e importada aqui em 29/09/2026. `build/v0.9/` é o build exportado naquele momento,
   guardado como referência.
@@ -35,7 +34,7 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
   feita pelo painel.
 - Os textos dos posts vieram do WordPress com as trocas da seção 11 aplicadas pelo script; o termo
   "rede" no post `quando-o-terreno-muda…` ficou para decisão do dono.
-- Cada commit na `main` publica a `/v2-teste/` pelo GitHub Actions (chave dedicada sem senha, só nos
+- Cada commit na `main` publica o site, na raiz do domínio, pelo GitHub Actions (chave dedicada sem senha, só nos
   segredos do GitHub e no cPanel; o dono a cria — ela nunca passa pelo agente).
 
 ## LGPD, cookies e analytics
@@ -84,10 +83,10 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
   push/sync pela extensão de Git do VS Code. Commite e avise; não tente autenticar.
 - Nunca versionar `node_modules/`, `dist/`, `.astro/`, `teste/` nem as pastas locais de imagens.
 
-## Publicação do teste (/v2-teste/)
+## Publicação
 
-- `tools/publicar-v2-teste.sh` publica; `--simular` mostra o que mudaria. Nunca toca na raiz do
-  domínio (WordPress). Backup automático em `~/backups-v2-teste/` no servidor.
+- **Desde 09/11/2026 a v2 está no ar na raiz de innerplacement.com.br.** `tools/publicar-producao.sh` publica; `--simular` mostra o que mudaria. Backup automático em `~/backups-producao/` no servidor.
+- O WordPress está guardado em `~/innerplacement-wp-ANTIGO-20261109` (fora do ar). **Não rodar o deploy do repositório `innerplacement`**: ele escreveria na raiz nova. Rollback e limpeza: `docs/plano-migracao-producao.md`, seções 8 e 9.
 - Acesso: host `inner-v2` no `~/.ssh/config` (usuário cPanel `s100c354`), chave `~/.ssh/inner_v2`
   **com senha**. O dono destrava a chave no terminal dele (comando no topo do script) num agente com
   socket fixo `~/.ssh/agente-inner-v2.sock`, válido por 4 h. Se o script disser "Sem acesso",
@@ -111,13 +110,3 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 - Node 22 via nvm.
 - O WordPress local (repo `innerplacement`) roda em Docker em `localhost:8080`. Depois de reiniciar
   o Docker Desktop, o container `ip_wp` não volta sozinho: rodar `docker compose up -d` naquele repo.
-
-## Antes de publicar em produção
-
-Pendências listadas no `README.md` (URLs dos vídeos, Quem somos/Blog ainda no WordPress; logos
-todos autorizados pelo dono em 01/10/2026). Além delas:
-- Não reaproveitar o `robots.txt` nem o `noindex` da home de `build/v0.9/`: eram bloqueios de teste.
-  `public/robots.txt` (desde 02/10/2026) já é o certo para produção. A fonte já está certa (só
-  `/obrigado/` tem `noindex`).
-- O deploy troca o WordPress na raiz do domínio: planejar com backup e rollback, e conferir os 301
-  de `public/.htaccess` contra as URLs reais do WordPress.
