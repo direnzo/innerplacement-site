@@ -1,4 +1,4 @@
-// Perguntas frequentes, texto literal do "FAQ revisado NOV26" aprovado pela Inner.
+// Perguntas frequentes, texto literal do "FAQ revisado NOV26" aprovado pela Inner, com as decisões dos sócios de 09/11/2026.
 // Fonte única: a home e as páginas de programa usam as perguntas daqui. Parágrafos separados por linha em branco.
 import { rotas } from './site.ts';
 
@@ -14,15 +14,15 @@ export const linksVoce: Links = [
 export const linksEmpresa: Links = [
   ['Transition Platinum', rotas.empresaTransition], ['Transition Focus', rotas.empresaTransition],
   ['Next Level', rotas.empresaNextLevel], ['Executive Alignment', rotas.executiveAlignment],
-  ['Outplacement', rotas.empresaTransition], ['outplacement', rotas.empresaTransition],
+  ['Outplacement', rotas.empresaTransition], ['outplacement', rotas.empresaTransition], ['Transition', rotas.empresaTransition],
 ];
 
 const secoes: { id: string; titulo: string; links: Links; grupos: Grupo[] }[] = [
   { id: 'para-comecar', titulo: 'Para começar', links: linksVoce, grupos: [{ perguntas: [
-    { id: 'agencia', q: 'A InnerPlacement é uma agência de empregos?',
+    { id: 'agencia', q: 'A Inner Placement é uma agência de empregos?',
       a: 'Não. A Inner não tem vagas prontas nem faz recrutamento e seleção para empresas. Trabalhamos a carreira do profissional e, na transição, apoiamos a busca de oportunidades com estratégia, posicionamento, network e job hunting dirigido.' },
-    { id: 'o-que-faz', q: 'O que faz a InnerPlacement?',
-      a: 'A InnerPlacement é uma consultoria de desenvolvimento de carreira. Atuamos com executivos e empresas em três movimentos: avançar, quando é preciso estar pronto para mais; ajustar, quando algo relevante precisa mudar; e transitar, quando um ciclo termina e o próximo movimento precisa ser construído.\n\nO trabalho combina leitura de contexto, estratégia e acompanhamento individual.' },
+    { id: 'o-que-faz', q: 'O que faz a Inner Placement?',
+      a: 'A Inner Placement é uma consultoria de desenvolvimento de carreira. Atuamos com executivos e empresas em três movimentos: avançar, quando é preciso estar pronto para mais; ajustar, quando algo relevante precisa mudar; e transitar, quando um ciclo termina e o próximo movimento precisa ser construído.\n\nO trabalho combina leitura de contexto, estratégia e acompanhamento individual.' },
     { id: 'programa-certo', q: 'Qual é o programa certo para a minha situação?',
       a: 'Depende do movimento.\n\nSe você quer crescer, ampliar impacto ou ajustar algum aspecto da sua atuação, o caminho é o Next Level. Se está encerrando um ciclo, ou se preparando para isso, o caminho é o Transition Platinum ou o Transition Focus, conforme a complexidade e o nível de acompanhamento necessário.\n\nPara empresas, há ainda o Executive Alignment, quando existe valor em preservar um executivo, mas algo relevante precisa mudar.' },
     { id: 'primeira-conversa', q: 'A primeira conversa é gratuita?',
@@ -48,11 +48,11 @@ const secoes: { id: string; titulo: string; links: Links; grupos: Grupo[] }[] = 
     { id: 'prazo', q: 'E se eu não me recolocar no prazo esperado?',
       a: 'O tempo de uma transição depende de senioridade, mercado, direcionamento e disponibilidade de oportunidades.\n\nQuando o processo se alonga, revisamos o que está acontecendo e ajustamos a estratégia. No programa em que o acompanhamento se estende até a recolocação, seguimos juntos durante esse movimento.' },
     { id: 'network', q: 'Eu já tenho um bom network. O que a Inner agrega?',
-      a: 'Ter uma rede e saber ativá-la com estratégia são coisas diferentes.\n\nOrganizamos com você quem acessar, com qual objetivo, em que momento e com qual abordagem. Network não é pedir emprego: é construir acesso, informação e conversas relevantes.' },
+      a: 'Ter um network e saber ativá-lo com estratégia são coisas diferentes.\n\nOrganizamos com você quem acessar, com qual objetivo, em que momento e com qual abordagem. Network não é pedir emprego: é construir acesso, informação e conversas relevantes.' },
     { id: 'tempo-recolocacao', q: 'Quanto tempo leva uma recolocação?',
       a: 'Não existe um prazo igual para todos. Área, senioridade, momento do mercado, direcionamento e disponibilidade de oportunidades interferem no tempo.\n\nComo referência histórica, 86% dos nossos assessorados se recolocam, em média, em 4,5 meses. O acompanhamento trabalha aquilo sobre o que podemos atuar: clareza de direção, posicionamento, acesso ao mercado e preparo para cada oportunidade.' },
     { id: 'mercado-oculto', q: 'Como funcionam as oportunidades que não são divulgadas? Vocês acessam o chamado mercado oculto?',
-      a: 'Nem toda oportunidade executiva é anunciada publicamente. Por isso, o trabalho não depende apenas de vagas abertas.\n\nCombinamos network, relações com headhunters, mapeamento de empresas e busca ativa de oportunidades. A Inner ajuda a construir esses caminhos; não promete acesso exclusivo ou direto a posições não divulgadas.' },
+      a: 'Nem toda oportunidade executiva é anunciada publicamente. Por isso, o trabalho não depende apenas de vagas abertas.\n\nCombinamos network, relações com headhunters, mapeamento de empresas e busca ativa de oportunidades. A Inner ajuda a construir esses caminhos; não promete acesso exclusivo ou direto a oportunidades não divulgadas.' },
     { id: 'platinum-focus', q: 'Qual é a diferença entre Transition Platinum e Transition Focus?',
       a: 'Os dois seguem o mesmo método.\n\nO Transition Platinum é indicado para transições de maior complexidade e oferece acompanhamento próximo e contínuo. O Transition Focus é para quem pode conduzir a própria transição com maior autonomia, contando com estrutura e suporte nos momentos decisivos.' },
   ]}]},
@@ -79,7 +79,7 @@ const secoes: { id: string; titulo: string; links: Links; grupos: Grupo[] }[] = 
       { id: 'e-platinum-focus', q: 'Quando utilizar Transition Platinum ou Transition Focus no outplacement?',
         a: 'O Transition Platinum é indicado para transições de maior complexidade, que exigem acompanhamento individual próximo e contínuo.\n\nO Transition Focus atende profissionais que podem conduzir o processo com maior autonomia, contando com estrutura e suporte nos pontos decisivos da transição.' },
       { id: 'empresa-acompanha', q: 'Quando a empresa contrata, o que ela acompanha?',
-        a: 'A empresa acompanha o andamento e a evolução do processo, sem acesso ao conteúdo das conversas individuais, que permanece confidencial.\n\nNo Outplacement, acompanha os principais marcos da transição. No Next Level e no Executive Alignment, empresa, executivo e Inner definem o objetivo do trabalho, e a organização acompanha a evolução em relação a ele.' },
+        a: 'A empresa acompanha o andamento e a evolução do processo, sem acesso ao conteúdo das conversas individuais, que permanece confidencial.\n\nNo Transition, acompanha a evolução da transição e os principais marcos do processo, até seu encerramento.\n\nNo Next Level e no Executive Alignment, o ponto de partida é um objetivo construído em conjunto entre executivo, empresa e Inner. Ao longo do processo, a empresa acompanha a evolução em relação a esse objetivo, preservando o espaço confidencial de trabalho com o executivo.' },
     ]},
   ]},
   { id: 'investimento-e-condicoes', titulo: 'Investimento e condições', links: linksVoce, grupos: [{ perguntas: [

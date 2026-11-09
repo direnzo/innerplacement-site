@@ -86,4 +86,4 @@ A carreira não é só uma trajetória profissional. É uma conversa contínua c
 
 ### *Você tem feito as perguntas certas para a sua carreira? Ou está respondendo muito bem às perguntas erradas?*
 
-A InnerPlacement acompanha profissionais e líderes em processos de transição de carreira, executive coaching e desenvolvimento profissional, com escuta humana e método.
+A Inner Placement acompanha profissionais e líderes em processos de transição de carreira, executive coaching e desenvolvimento profissional, com escuta humana e método.

@@ -78,6 +78,6 @@ Você já fez a parte mais difícil: construiu uma carreira sólida. O próximo 
 
 **Você se identificou com alguma dessas situações?**
 
-Na InnerPlacement, trabalhamos exatamente esse ponto no processo de recolocação profissional executiva: ajudamos profissionais a construir uma narrativa que traduza, com clareza e autenticidade, o valor real que carregam. Seja num programa de outplacement ou de transição de carreira, o autoconhecimento e o posicionamento estratégico andam juntos.
+Na Inner Placement, trabalhamos exatamente esse ponto no processo de recolocação profissional executiva: ajudamos profissionais a construir uma narrativa que traduza, com clareza e autenticidade, o valor real que carregam. Seja num programa de outplacement ou de transição de carreira, o autoconhecimento e o posicionamento estratégico andam juntos.
 
 Conheça a metodologia da Inner em innerplacement.com.br e descubra como podemos apoiar sua próxima fase.

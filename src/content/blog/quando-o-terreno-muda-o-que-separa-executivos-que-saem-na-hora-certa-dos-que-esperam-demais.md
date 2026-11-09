@@ -36,4 +36,4 @@ O terreno em que você está ainda é fértil para você? Não no sentido de ser
 
 **Antes que o cenário decida por você.**
 
-*A InnerPlacement é uma consultoria especializada em assessoria de carreira e recolocação profissional para executivos sênior. Apoiamos profissionais em transição de carreira com método, escuta e visão de mercado, para que a mudança aconteça no tempo certo, pelo caminho certo.*
+*A Inner Placement é uma consultoria especializada em assessoria de carreira e recolocação profissional para executivos sênior. Apoiamos profissionais em transição de carreira com método, escuta e visão de mercado, para que a mudança aconteça no tempo certo, pelo caminho certo.*
