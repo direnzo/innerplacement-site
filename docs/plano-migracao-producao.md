@@ -83,7 +83,7 @@ A tabela de envios do Elementor guarda os contatos do formulário antigo: export
    Conferir também: arquivos presentes, permissões (`D755/F644`), `~/inner-formulario.php` intacto e que **`destino_teste` não vale em produção** (o `enviar.php` só usa `destino_teste` na `/v2-teste/`) **[repo]**.
 6. **Troca**, no horário combinado, com o dono presente. Daqui em diante, **não rodar o deploy do repositório do WordPress** (`~/projetos/innerplacement`): ele escreveria na raiz nova.
    `mv ~/innerplacement ~/innerplacement-wp-ANTIGO-<data> && mv ~/innerplacement-v2-novo ~/innerplacement`
-7. **Reapontar a publicação automática** (`.github/workflows` e `tools/publicar-v2-teste.sh`): destino passa a ser a raiz, com filtros que **protegem** `.well-known/`, `.user.ini` e `php.ini` do `--delete`; remover a geração noindex. Só religar o workflow (desligado no passo 1) depois disso e de um `--dry-run` conferido.
+7. **Reapontar a publicação automática**: merge da branch `deploy/publicacao-raiz` (`tools/publicar-producao.sh` e o workflow), **só depois da troca**. O script recusa rodar se houver `wp-config.php` na raiz, envia `dist/` sem a variante noindex e protege `.well-known/`, `.user.ini`, `php.ini` e `error_log` do `--delete`. Só religar o workflow (desligado no passo 1) depois disso e de um `--dry-run` conferido.
 8. **Limpar caches**: o Cloudflare só faz o DNS, sem cache na frente do site **[público]**; purgar só se o proxy for ligado. O cache do WP Rocket some com a pasta antiga.
 9. **Retirar a `/v2-teste/`** (já não existe depois do `mv`, pois estava dentro da pasta antiga). Se quiser manter uma cópia de testes, mover para outro lugar com `noindex`.
 
