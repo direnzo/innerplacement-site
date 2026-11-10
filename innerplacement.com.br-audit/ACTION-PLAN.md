@@ -18,7 +18,7 @@ Pendências em 10/11/2026. Base: `FULL-AUDIT-REPORT.md` (09/11/2026), com os có
 
 | Item | Ação | Como saber se falhou | Indicador |
 |---|---|---|---|
-| M4 | Criar exceção no ModSecurity para CCBot e Amazonbot, sem desligá-lo no domínio. Causa ainda a confirmar nos logs do cPanel | `curl` com o User-Agent segue em 406 | Status em `/robots.txt` |
+| M4 | Pedir ao suporte da hospedagem uma exceção no ModSecurity para CCBot e Amazonbot, sem desligá-lo no domínio. Causa confirmada em 10/11/2026 pela página de erro. A conta não tem o recurso de ModSecurity no cPanel, e as regras só são legíveis com root | `curl` com o User-Agent segue em 406 | Status em `/robots.txt` |
 | M14 | Verificar o Perfil da Empresa no Google, com o mesmo NAP do site | Perfil sem vínculo com o site | `hasMap` e `sameAs` no schema |
 | M16 | Revisar as tags no GTM e medir o INP real | Tarefas longas seguem acima de 450 ms | INP no CrUX |
 | Fase 4 | Conectar credenciais gratuitas do Google às próximas auditorias | Auditoria sem dados reais | Search Console, CrUX e PageSpeed |
