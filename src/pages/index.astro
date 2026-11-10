@@ -39,13 +39,15 @@ const dimensoes = [
   fechamento={{ texto: 'Sobre o seu momento de carreira ou sobre a situação de um executivo da sua empresa. Sem apresentação de produto e sem compromisso.' }}
   descricao="A Inner Placement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.">
 
-  <!-- 1 · Hero: só a frase em grande destaque, com a rosácea por trás. O painel H-01
-       (heroSvg/painel) fica preservado no código para uso futuro, sem renderizar. -->
-  <section class="relative isolate">
-    <Svg name="rosacea_coral" w={560} class="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-auto w-[min(130vw,560px)] -translate-x-1/2 -translate-y-1/2 opacity-[.14] md:w-[640px]" />
-    <div class="wrap flex flex-col items-center gap-4 py-12 text-center md:gap-5 md:py-16 lg:py-20 [&_.badge]:self-center">
+  <!-- 1 · Hero: só a frase em grande destaque. A rosácea fica na lateral, sem passar por trás do
+       texto (pedido do time, 10/11/2026): na borda direita a partir de 1024 px; abaixo disso, pequena
+       no canto superior direito. O painel H-01 (heroSvg/painel) fica preservado no código para uso
+       futuro, sem renderizar. -->
+  <section class="relative isolate overflow-hidden">
+    <Svg name="rosacea_coral" w={560} class="pointer-events-none absolute -right-[42px] -top-[42px] -z-10 h-auto w-[150px] opacity-[.45] lg:right-0 lg:top-1/2 lg:w-[clamp(340px,29vw,410px)] lg:translate-x-[30%] lg:-translate-y-1/2 lg:opacity-[.24]" />
+    <div class="wrap flex flex-col items-center gap-4 pb-12 pt-[92px] text-center md:gap-5 md:pb-16 lg:items-start lg:py-20 lg:pr-[min(36%,400px)] lg:text-left [&_.badge]:self-center">
       <h1 class="h1-hero max-w-[24ch] text-[30px] md:text-[38px] lg:text-[46px] lg:leading-[1.12]">Momentos decisivos da trajetória executiva <strong>exigem clareza, contexto e precisão.</strong></h1>
-      <p class="lead mx-auto max-w-[62ch] text-center text-[16.5px] md:text-[19px]">A Inner Placement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.</p>
+      <p class="lead mx-auto max-w-[62ch] text-center text-[16.5px] md:text-[19px] lg:mx-0 lg:text-left">A Inner Placement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.</p>
     </div>
     <!-- Futuro: painel H-01 guardado (heroSvg + painel + .hero-anim em global.css). Para reativar,
          voltar ao grid de duas colunas com o bloco abaixo.
