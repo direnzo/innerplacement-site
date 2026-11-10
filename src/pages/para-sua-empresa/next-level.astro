@@ -10,7 +10,7 @@ import { depoimentos as D } from '../../data/depoimentos';
 import { linksEmpresa } from '../../data/faq';
 import { rotas } from '../../data/site';
 ---
-<Base titulo="Next Level · Desenvolvimento de Executivos" fechamento={{ empresa: true, titulo: 'Existe um executivo que', destaque: 'precisa estar pronto para mais?' }}
+<Base titulo="Next Level · Desenvolvimento de Executivos" servico={{ tipo: 'Desenvolvimento de executivos', publico: 'empresa' }} fechamento={{ empresa: true, titulo: 'Existe um executivo que', destaque: 'precisa estar pronto para mais?' }}
   descricao="Quando o executivo precisa estar pronto para mais. O Next Level prepara esse movimento: contratado pela empresa, construído com o executivo.">
   <TopoPagina titulo="Next Level" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Next Level']]} kicker="Avançar · Desenvolvimento de Executivos" ilustracao={ilustracao}
     destaque="Quando o executivo precisa estar pronto para mais."

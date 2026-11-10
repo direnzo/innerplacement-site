@@ -1,9 +1,10 @@
 ---
 titulo: "A Diferença entre sonhos desconectados e realização profissional: uma reflexão necessária"
-descricao: "Descubra a diferença entre sonhos desconectados e realização profissional, e aprenda como alinhar carreira, valores e autoconhecimento para crescer com propósito."
+titulo_seo: "Sonhos e realização profissional"
+descricao: "Descubra a diferença entre sonhos desconectados e realização profissional, e aprenda como alinhar carreira, valores e autoconhecimento para crescer."
 data: 2025-10-24
 atualizado: 2025-10-24
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Desenvolvimento", "Inner Placement"]
 tema: "Desenvolvimento e sucessão"
 imagem: "/blog/imagens/sonhos-desconectados-e-realizacao-profissional.webp"

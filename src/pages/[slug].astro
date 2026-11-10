@@ -4,6 +4,8 @@ import Base from '../layouts/Base.astro';
 import { render } from 'astro:content';
 import { publicados, dataBR, minutos, miniaturas, LARGURAS_CARTAO, type Post } from '../lib/blog';
 import { rotas } from '../data/site';
+import { socios } from '../data/socios';
+import { trilhaSchema } from '../lib/schema';
 
 export async function getStaticPaths() {
   const posts = await publicados();
@@ -21,20 +23,22 @@ const og = d.imagem ? (d.imagem.endsWith('.webp') ? d.imagem.replace(/\.webp$/, 
 const url = new URL(`/${post.id}/`, Astro.site).href;
 // Mesma entidade declarada em Base.astro, ligada pelo @id.
 const org = { '@type': 'ProfessionalService', '@id': 'https://innerplacement.com.br/#organizacao', name: 'Inner Placement', url: 'https://innerplacement.com.br/' };
-const schema = {
+const socio = socios.find((s) => s.id === d.autor);
+const pessoa = socio && { '@type': 'Person', '@id': new URL(`/quem-somos/#${socio.id}`, Astro.site).href, name: socio.nome };
+const schema = [{
   '@context': 'https://schema.org', '@type': 'BlogPosting', headline: d.titulo, description: d.descricao,
   datePublished: d.data.toISOString().slice(0, 10), dateModified: (d.atualizado ?? d.data).toISOString().slice(0, 10),
-  author: d.autor === org.name ? org : { '@type': 'Organization', name: d.autor, url: 'https://innerplacement.com.br/' }, publisher: org,
+  author: pessoa ?? org, publisher: org,
   mainEntityOfPage: url, ...(d.imagem && { image: new URL(d.imagem, Astro.site).href }),
-};
+}, trilhaSchema([['Blog', rotas.blog], [d.titulo]], Astro.site)];
 ---
-<Base titulo={d.titulo} descricao={d.descricao} fechamento ogImagem={og} tipo="article" schema={schema}>
+<Base titulo={d.titulo_seo ?? d.titulo} descricao={d.descricao} fechamento ogImagem={og} tipo="article" schema={schema}>
   <article class="wrap flex flex-col gap-6 pt-6 md:gap-8 md:pt-10">
     <header class="mx-auto flex w-full max-w-[760px] flex-col gap-4">
       <p class="text-[14px] text-mudo"><a href="/" class="-my-3 inline-block py-3 hover:text-tinta">Início</a> / <a href={rotas.blog} class="-my-3 inline-block py-3 hover:text-tinta">Blog</a></p>
       {d.categorias.length > 0 && <p class="flex flex-wrap gap-2">{d.categorias.map((c) => <span class="badge">{c}</span>)}</p>}
       <h1 class="h1-pag">{d.titulo}</h1>
-      <p class="text-[14.5px] text-mudo"><time datetime={d.data.toISOString().slice(0, 10)}>{dataBR(d.data)}</time> · {d.autor} · {minutos(post.body)} min de leitura</p>
+      <p class="text-[14.5px] text-mudo"><time datetime={d.data.toISOString().slice(0, 10)}>{dataBR(d.data)}</time> · {socio ? <a href={`${rotas.quemSomos}#${socio.id}`} class="underline underline-offset-2 hover:text-tinta">{socio.nome}</a> : d.autor} · {minutos(post.body)} min de leitura</p>
     </header>
     {d.imagem && <img src={d.imagem} alt={d.imagem_alt ?? ''} width="1600" height="900" class="mx-auto aspect-[16/9] w-full max-w-[960px] rounded-[24px] object-cover" decoding="async" fetchpriority="high" />}
     <div class="prosa mx-auto w-full max-w-[720px]"><Content /></div>

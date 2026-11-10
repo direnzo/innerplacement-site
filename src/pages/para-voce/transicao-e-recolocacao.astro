@@ -9,17 +9,22 @@ import PerguntasPagina from '../../components/PerguntasPagina.astro';
 import { depoimentos as D } from '../../data/depoimentos';
 import { linksVoce } from '../../data/faq';
 import { rotas } from '../../data/site';
+// Formatos: a mesma fonte para os cards e para o schema Service (Base.astro).
+const formatos = [
+  { nome: 'Transition Platinum', destaque: 'Para transições de maior complexidade, que pedem profundidade e acompanhamento próximo.' },
+  { nome: 'Transition Focus', destaque: 'Para quem quer conduzir a própria transição com estrutura e autonomia.' },
+];
 ---
-<Base titulo="Transition · Transição e Recolocação" fechamento
+<Base titulo="Transition · Transição e Recolocação" servico={{ tipo: 'Transição e recolocação', publico: 'profissional', formatos }} fechamento
   descricao="Quando um ciclo termina, o próximo movimento precisa ser construído. A Inner oferece dois formatos, com o mesmo método e diferentes níveis de acompanhamento.">
   <TopoPagina titulo="Transition" migalhas={[['Para você', rotas.paraVoce], ['Transition']]} kicker="Transitar · Transição e Recolocação" ilustracao={ilustracao}
     destaque="Quando um ciclo termina, o próximo movimento precisa ser construído."
     intro={['Transition é o programa de transição de carreira e recolocação da Inner Placement, para executivos e profissionais que encerram um ciclo. Pode ser contratado por você ou pela sua empresa; nesse caso, é conhecido no mercado como outplacement.', 'A transição pode começar depois de uma saída ou ainda dentro da empresa, quando você já sabe que o ciclo está chegando ao fim. Nesse caso, o processo acontece com a confidencialidade necessária para preservar o movimento até que seja o momento certo de torná-lo público.', 'Em ambos os cenários, o trabalho combina clareza sobre a direção, posicionamento e execução.', 'A Inner oferece dois formatos, com o mesmo método e diferentes níveis de acompanhamento.']} />
   <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
-    <Programa rotulo="Transição" nome="Transition Platinum" destaque="Para transições de maior complexidade, que pedem profundidade e acompanhamento próximo.">
+    <Programa rotulo="Transição" {...formatos[0]}>
       <p>O processo percorre direção de carreira, posicionamento, currículo e LinkedIn, network, job hunting e preparação para processos seletivos. Uma consultora dedicada acompanha o movimento e dá ritmo e continuidade até a recolocação.</p>
     </Programa>
-    <Programa rotulo="Transição" nome="Transition Focus" destaque="Para quem quer conduzir a própria transição com estrutura e autonomia.">
+    <Programa rotulo="Transição" {...formatos[1]}>
       <p>Uma trilha estruturada combina direcionamento, posicionamento, currículo e LinkedIn, network, busca de oportunidades e preparação para entrevistas, com encontros individuais nos momentos decisivos.</p>
       <p>Você conduz o processo e conta com suporte onde a decisão e a preparação exigem mais atenção.</p>
     </Programa>

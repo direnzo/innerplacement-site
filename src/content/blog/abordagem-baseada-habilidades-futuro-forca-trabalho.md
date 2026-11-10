@@ -1,9 +1,10 @@
 ---
 titulo: "Abordagem Baseada em Habilidades: O Futuro da Força de Trabalho"
-descricao: "Entenda por que a abordagem baseada em habilidades é o futuro da força de trabalho. Veja como esse modelo impacta a recolocação profissional, o outplacement e as novas estratégias de RH."
+titulo_seo: "Abordagem Baseada em Habilidades"
+descricao: "Entenda por que a abordagem baseada em habilidades é o futuro da força de trabalho e como esse modelo impacta a recolocação, o outplacement e o RH."
 data: 2025-12-16
 atualizado: 2025-12-16
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Desenvolvimento", "Inner Placement"]
 tema: "Método"
 imagem: "/blog/imagens/abordagem-baseada-habilidades-futuro-forca-trabalho.webp"

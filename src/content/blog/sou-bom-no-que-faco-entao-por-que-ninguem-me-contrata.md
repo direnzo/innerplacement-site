@@ -1,9 +1,10 @@
 ---
 titulo: "“Sou bom no que faço, então por que ninguém me contrata?”"
-descricao: "Coaching de carreira para decisões mais conscientes: descubra por que razão e propósito importam tanto quanto currículo e oportunidades."
+titulo_seo: "Sou bom, por que ninguém me contrata?"
+descricao: "Profissionais competentes, com histórias sólidas e resultados expressivos, que travam na hora de mostrar o que valem. Não falta experiência, falta narrativa."
 data: 2026-06-02
 atualizado: 2026-07-20
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Inner Placement"]
 tema: "Transição e recolocação"
 imagem: "/blog/imagens/sou-bom-no-que-faco-entao-por-que-ninguem-me-contrata.webp"

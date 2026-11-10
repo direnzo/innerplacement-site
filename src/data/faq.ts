@@ -96,6 +96,12 @@ const todas = Object.fromEntries(secoesFaq.flatMap((s) => s.grupos.flatMap((g) =
 export const perguntas = (ids: string[], links?: Links) => ids.map((id) => ({ ...todas[id], ...(links && { links }) }));
 export const faqHome = perguntas(['programa-certo', 'sigilo', 'nl-por-conta-propria', 'empresa-acompanha']);
 
+// FAQPage (schema.org) com as mesmas perguntas que o <details> mostra; a resposta vai em texto puro, sem os links do HTML.
+export const faqSchema = (itens: Pergunta[]) => ({
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: itens.map((p) => ({ '@type': 'Question', name: p.q, acceptedAnswer: { '@type': 'Answer', text: p.a.replace(/\n\n/g, ' ') } })),
+});
+
 // HTML do parágrafo: a primeira menção de cada produto vira link, exceto para a própria página.
 const escapa = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 export const paragrafos = (p: Pergunta, paginaAtual: string) => {

@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 import ilustracao from '../../imagens/inner-P07-manifesto-v1.svg?raw';
 import { miolo } from '../lib/svg';
 import Svg from '../components/Svg.astro';
+import { trilhaSchema } from '../lib/schema';
+const trilha = trilhaSchema([['Manifesto']], Astro.site);
 const paragrafos = [
   'Acompanhar pessoas e empresas em seus movimentos de carreira é um privilégio e uma responsabilidade que levamos a sério.',
   'Aprendemos que nenhuma ferramenta substitui a atuação humana. É na relação, com método e contexto, que decisões ganham clareza e movimentos ganham direção.',
@@ -12,6 +14,7 @@ const paragrafos = [
 ];
 ---
 <Base titulo="Manifesto" fechamento descricao="O manifesto da Inner Placement: não reinventamos ninguém, lapidamos o que cada pessoa já construiu, ampliando consciência, repertório e capacidade de agir.">
+  <script type="application/ld+json" set:html={JSON.stringify(trilha)} />
   <!-- Quadro branco levemente transparente, com a rosácea grande aparecendo por trás (pedido do dono);
        o desfoque leve mantém a leitura. -->
   <div class="relative isolate">

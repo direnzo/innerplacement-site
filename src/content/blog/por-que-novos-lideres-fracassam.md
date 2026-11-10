@@ -1,9 +1,9 @@
 ---
 titulo: "Por que novos líderes fracassam?"
-descricao: "Entenda a sucessão de lideranças e a importância do desenvolvimento emocional dos sucessores para o sucesso organizacional."
+descricao: "Entenda a sucessão de lideranças e a importância do desenvolvimento emocional e do alinhamento de valores dos sucessores para o sucesso organizacional."
 data: 2025-08-14
 atualizado: 2025-08-14
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Desenvolvimento", "Focus"]
 tema: "Desenvolvimento e sucessão"
 imagem: "/blog/imagens/por-que-novos-lideres-fracassam.webp"

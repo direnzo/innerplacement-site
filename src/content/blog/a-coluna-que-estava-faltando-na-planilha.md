@@ -1,9 +1,9 @@
 ---
 titulo: "A coluna que estava faltando na planilha"
-descricao: "Coaching de carreira para decisões mais conscientes: descubra por que razão e propósito importam tanto quanto currículo e oportunidades."
+descricao: "Um executivo de consultoria, uma planilha impecável e a pergunta que nenhum critério media. O que o coaching de carreira revela quando os dados não bastam."
 data: 2026-07-20
 atualizado: 2026-07-20
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Sonhos"]
 tema: "Transição e recolocação"
 imagem: "/blog/imagens/a-coluna-que-estava-faltando-na-planilha.webp"

@@ -1,9 +1,10 @@
 ---
 titulo: "Metodologia Inner de Gestão de Carreira: construindo sua jornada profissional"
-descricao: "Descubra como a Metodologia Inner de gestão de carreira ajuda profissionais a construir uma trajetória mais consciente. ."
+titulo_seo: "Metodologia Inner de Gestão de Carreira"
+descricao: "Descubra como a Metodologia Inner de gestão de carreira ajuda profissionais a compreender e traçar suas trajetórias, com seus conceitos e pilares principais."
 data: 2025-12-08
 atualizado: 2025-12-08
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Comportamento", "Desenvolvimento", "Inner Placement"]
 tema: "Método"
 imagem: "/blog/imagens/metodologia-inner-gestao-carreira.webp"
