@@ -1,0 +1,103 @@
+{
+  "summary": {
+    "health_score": 73,
+    "business_type": "Consultoria de serviços profissionais (B2B e B2C) com blog e endereços físicos",
+    "top_findings": [
+      "Termos comerciais saíram do title e do corpo da home",
+      "Defeitos de markdown publicados em posts",
+      "'150 empresas atendidas' fora dos números autorizados",
+      "Páginas de serviço não definem o serviço",
+      "Aviso de cookies cobre cerca de 25% da tela no mobile"
+    ],
+    "quick_wins": [
+      "Corrigir o markdown quebrado dos posts",
+      "Separar a meta description repetida em 2 posts",
+      "Compactar o aviso de cookies no mobile",
+      "Acrescentar lastmod ao sitemap",
+      "Redirecionar /index.html e /sitemap.xml"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 86,
+      "what_works": ["26 URLs em 200 com canonical correto", "Redirects do mapa em um salto", "404 real"],
+      "findings": [
+        {"title": "index.html duplica páginas com 200", "severity": "Medium", "description": "/index.html, /blog/index.html e /contato/index.html respondem 200; canonical correto reduz o risco.", "recommendation": "301 por THE_REQUEST no .htaccess."},
+        {"title": "ModSecurity devolve 406 a CCBot e Amazonbot", "severity": "Medium", "description": "Inclusive no robots.txt, contrariando a política do arquivo.", "recommendation": "Definir a política e liberar no servidor, se for o caso."},
+        {"title": "Cabeçalhos de segurança incompletos", "severity": "Medium", "description": "HSTS de 30 dias; faltam frame-ancestors, Permissions-Policy e CSP.", "recommendation": "Subir o HSTS aos poucos e acrescentar os cabeçalhos."},
+        {"title": "Sitemap sem lastmod", "severity": "Medium", "description": "0 ocorrências nas 26 URLs.", "recommendation": "serialize com atualizado ?? data."}
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 65,
+      "what_works": ["Casos reais nos posts de 2026", "Sem conteúdo templated"],
+      "findings": [
+        {"title": "Defeitos de markdown publicados", "severity": "High", "description": "Link quebrado e 'Veja também:' vazio em /abordagem-...; ** visível em /o-sobrenome-que-ficou-no-cracha/.", "recommendation": "Corrigir os .md após git pull."},
+        {"title": "'150 empresas atendidas' fora dos números autorizados", "severity": "High", "description": "Em 2 posts; documentação v2, item 11.4.", "recommendation": "Remover ou autorizar."},
+        {"title": "Páginas de serviço não definem o serviço", "severity": "High", "description": "Termos-alvo quase ausentes do corpo.", "recommendation": "Bloco de definição, com aprovação dos sócios."},
+        {"title": "Autoria institucional em 10 de 10 posts", "severity": "High", "description": "Inclusive posts em primeira pessoa.", "recommendation": "Sócios definem o autor de cada post."},
+        {"title": "Estatísticas sem link", "severity": "Medium", "description": "HBR, Gallup, Korn Ferry, LinkedIn, Forbes.", "recommendation": "Confirmar a fonte ou remover."}
+      ]
+    },
+    {
+      "name": "On-Page SEO",
+      "score": 74,
+      "what_works": ["Um H1 e uma description por URL", "Nenhum title duplicado"],
+      "findings": [
+        {"title": "Termos comerciais saíram da home", "severity": "High", "description": "Title sem Outplacement, Transição de Carreira e Recolocação; a home concentra 199 de 257 cliques.", "recommendation": "Novo title com aprovação dos sócios."},
+        {"title": "Metadados com problemas", "severity": "Medium", "description": "Description idêntica em 2 posts; 8 titles acima de 60 caracteres.", "recommendation": "Reescrever com aprovação."},
+        {"title": "Links internos fracos", "severity": "Medium", "description": "0 de páginas de programa para posts; 0 de posts para as páginas Transition.", "recommendation": "Links com palavras já publicadas."}
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 68,
+      "what_works": ["JSON-LD válido nas 26 URLs", "@id estável na organização"],
+      "findings": [
+        {"title": "Person dos sócios ausente", "severity": "High", "description": "Os 3 Person do schema antigo sumiram.", "recommendation": "Gerar a partir de src/data/socios.ts."},
+        {"title": "BlogPosting desconectado da organização", "severity": "Medium", "description": "Autor e publisher sem @id.", "recommendation": "Referenciar #organizacao."},
+        {"title": "Duas sedes em um único nó", "severity": "Medium", "description": "Array de PostalAddress.", "recommendation": "Um nó por unidade."}
+      ]
+    },
+    {
+      "name": "Performance (CWV)",
+      "score": 82,
+      "what_works": ["LCP e CLS bons em laboratório", "Cache imutável em /_astro/"],
+      "findings": [
+        {"title": "HTML pesado", "severity": "Medium", "description": "198 KB na home, com 62,6 KB de CSS inline repetido.", "recommendation": "CSS externo com cache; reduzir SVG inline."},
+        {"title": "INP não medido", "severity": "Info", "description": "Sem dados de campo.", "recommendation": "Conectar CrUX ou web-vitals."}
+      ]
+    },
+    {
+      "name": "AI Search Readiness",
+      "score": 58,
+      "what_works": ["Crawlers de busca com IA liberados", "llms.txt válido", "HTML estático"],
+      "findings": [
+        {"title": "FAQ com display:none no HTML inicial", "severity": "Medium", "description": "25 de 26 respostas; efeito em motores reais é hipótese.", "recommendation": "Conteúdo aberto por padrão."},
+        {"title": "Presença externa fraca", "severity": "Medium", "description": "0 em Wikipedia, Wikidata e Google Notícias.", "recommendation": "Wikidata e menções em imprensa do setor."}
+      ]
+    },
+    {
+      "name": "Images",
+      "score": 74,
+      "what_works": ["WebP", "Sem CLS"],
+      "findings": [
+        {"title": "Miniaturas superdimensionadas", "severity": "Medium", "description": "640x360 usando WebP de 1600 px; 862 KB nas 10 imagens.", "recommendation": "srcset e sizes."}
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {"name": "Phase 1: Critical Fixes", "timeframe": "Week 1", "items": ["Vigília da migração no Search Console", "Corrigir markdown dos posts", "Aviso de cookies compacto no mobile", "301 de /index.html e /sitemap.xml", "FAQ sem display:none", "lastmod no sitemap"]},
+      {"name": "Phase 2: High-Impact Improvements", "timeframe": "Weeks 2-3", "items": ["Aprovar novo title da home", "Decidir '150 empresas'", "Bloco de definição nas páginas de serviço", "Definir autoria dos posts", "Schema Person e por unidade"]},
+      {"name": "Phase 3: Content & Authority", "timeframe": "Month 2", "items": ["Links internos", "Lacuna outplacement executivo", "Perfil da Empresa no Google", "Presença externa"]},
+      {"name": "Phase 4: Monitoring & Iteration", "timeframe": "Ongoing", "items": ["Credenciais do Google", "Nova baseline de drift após a Fase 1", "Revisão em 8 semanas"]}
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}
