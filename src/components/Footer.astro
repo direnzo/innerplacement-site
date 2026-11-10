@@ -26,14 +26,14 @@ const ICONES: Record<string, string> = {
           {enderecos.map((e, i) => (
             <>
               {i > 0 && <span aria-hidden="true"> · </span>}
-              <a href={mapsHref(e)} target="_blank" rel="noopener" class="hover:text-tinta" aria-label={`${e.cidade}: ${e.rua}, ${e.bairro}, abrir no mapa`}>{e.cidade}</a>
+              <a href={mapsHref(e)} target="_blank" rel="noopener" class="-my-3 inline-block py-3 hover:text-tinta" aria-label={`${e.cidade}: ${e.rua}, ${e.bairro}, abrir no mapa`}>{e.cidade}</a>
             </>
           ))}
         </p>
         <div class="flex gap-2">
           {redes.map((r) => (
             <a href={r.href} target="_blank" rel="noopener" aria-label={r.nome}
-              class="inline-flex size-9 items-center justify-center rounded-full border border-linha text-tinta transition-colors hover:border-tinta hover:bg-tinta hover:text-white">
+              class="inline-flex size-11 lg:size-9 items-center justify-center rounded-full border border-linha text-tinta transition-colors hover:border-tinta hover:bg-tinta hover:text-white">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d={ICONES[r.nome]} /></svg>
             </a>
           ))}
@@ -42,22 +42,22 @@ const ICONES: Record<string, string> = {
       {cols.map((c) => (
         <div class="flex flex-col">
           <span class="pb-2 font-semibold">{c.t}</span>
-          {c.l.map(([n, h]) => <a href={h} class="py-1 text-texto hover:text-tinta" target={ext(h) ? '_blank' : undefined} rel={ext(h) ? 'noopener' : undefined}>{n}</a>)}
+          {c.l.map(([n, h]) => <a href={h} class="py-2.5 text-texto lg:py-1 hover:text-tinta" target={ext(h) ? '_blank' : undefined} rel={ext(h) ? 'noopener' : undefined}>{n}</a>)}
         </div>
       ))}
       <!-- col-span-2 no celular (como a logo): dá largura de sobra para o telefone e o e-mail não
            quebrarem linha; no computador, lg:w-max deixa a coluna só do tamanho do texto. -->
       <div class="col-span-2 flex flex-col lg:col-span-1 lg:w-max">
         <span class="pb-2 font-semibold">Contato</span>
-        <a href={TELEFONE_LINK} class="whitespace-nowrap py-1 text-texto hover:text-tinta">{WHATSAPP_TXT}</a>
-        <a href={rotas.contato} class="whitespace-nowrap py-1 text-texto hover:text-tinta">{EMAIL}</a>
+        <a href={TELEFONE_LINK} class="whitespace-nowrap py-2.5 text-texto hover:text-tinta lg:py-1">{WHATSAPP_TXT}</a>
+        <a href={rotas.contato} class="whitespace-nowrap py-2.5 text-texto hover:text-tinta lg:py-1">{EMAIL}</a>
       </div>
     </div>
     <div class="flex flex-wrap items-center justify-between gap-x-5 gap-y-2 border-t border-tinta/15 pt-5 text-[13.5px] text-texto">
       <span>© {new Date().getFullYear()} Inner Placement</span>
-      <div class="flex flex-wrap gap-x-5 gap-y-2">
-        <a href={rotas.privacidade} class="hover:text-tinta">Política de privacidade</a>
-        <button type="button" id="abrir-cookies" class="hover:text-tinta">Preferências de cookies</button>
+      <div class="flex flex-wrap gap-x-5 lg:gap-y-2">
+        <a href={rotas.privacidade} class="py-3 hover:text-tinta lg:py-0">Política de privacidade</a>
+        <button type="button" id="abrir-cookies" class="py-3 hover:text-tinta lg:py-0">Preferências de cookies</button>
       </div>
     </div>
   </div>

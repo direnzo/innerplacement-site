@@ -44,8 +44,6 @@ Durante essa jornada, muitos aprendem a traduzir suas habilidades em resultados 
 
 Por isso, programas de consultoria em recolocação profissional têm se tornado essenciais para quem precisa não apenas reencontrar seu espaço no mercado, mas também reconstruir sua autoconfiança profissional.
 
-Veja também: 
-
 ## **Um Novo Paradigma em Recursos Humanos**
 
 A abordagem baseada em habilidades também implica uma reconfiguração das práticas de recursos humanos, que devem priorizar a identificação de habilidades transferíveis em candidatos, em vez de se concentrar exclusivamente em experiências passadas ou diplomas. Com a crescente automação e evolução das expectativas do mercado, as empresas que adotam essa mentalidade estarão mais preparadas para enfrentar os desafios futuros.
@@ -66,6 +64,6 @@ Com +15 anos de experiência dos sócios de mercado, 150 empresas atendidas e um
 
 Quer conhecer a Inner Placement? [Envie uma mensagem agora](https://wa.me/5511984311675).
 
-***Veja também:*** [***Por que transição de carreira e recolocação não são o mesmo?*
+***Veja também:*** [***Por que transição de carreira e recolocação não são o mesmo?***](/por-que-transicao-de-carreira-e-recolocacao-nao-sao-o-mesmo/)
 
-**](/por-que-transicao-de-carreira-e-recolocacao-nao-sao-o-mesmo/)**Referências**: McKinsey & Company. (2022). *Taking a skills-based approach to building the future workforce*. [Link para o relatório](https://www.mckinsey.com/~/media/mckinsey/business%20functions/people%20and%20organizational%20performance/our%20insights/taking%20a%20skills%20based%20approach%20to%20building%20the%20future%20workforce/taking-a-skills-based-approach-to-building-the-future-workforce-vf.pdf).
+**Referências**: McKinsey & Company. (2022). *Taking a skills-based approach to building the future workforce*. [Link para o relatório](https://www.mckinsey.com/~/media/mckinsey/business%20functions/people%20and%20organizational%20performance/our%20insights/taking%20a%20skills%20based%20approach%20to%20building%20the%20future%20workforce/taking-a-skills-based-approach-to-building-the-future-workforce-vf.pdf).
