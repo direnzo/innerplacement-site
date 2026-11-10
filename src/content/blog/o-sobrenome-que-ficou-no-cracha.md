@@ -16,8 +16,7 @@ Alguns meses depois de voltar a um cargo executivo, ela aceitou olhar para trás
 
 Ela respondeu como quem apresenta um diagnóstico. Despreparada: sabia que o desligamento viria, a reestruturação estava anunciada, e mesmo assim não estava pronta. Fragilizada. Ancorada financeiramente, o que a livrava do desespero. Perdida, sem enxergar opção nenhuma. Quando a lista parecia fechada, acrescentou mais um item, quase como um adendo.
 
-***“E com vergonha, né?”*
-**
+***“E com vergonha, né?”***
 
 A ordem diz muito. A vergonha é das emoções mais presentes em quem perde o emprego e uma das últimas a ganhar nome, inclusive entre pessoas que, como ela, têm vocabulário de sobra para falar de si. E, neste caso, ela aparecia mesmo com o dinheiro resolvido.
 

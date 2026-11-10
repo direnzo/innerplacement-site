@@ -6,8 +6,15 @@ import { Image } from 'astro:assets';
 import ilustracao from '../../imagens/inner-P10-topo-quem-somos-v1.svg?raw';
 import { abertura, socios } from '../data/socios';
 // Quem somos: conteúdo da página do WordPress (src/data/socios.ts), no layout da v2.
+// Schema dos sócios só com o que a página já publica; a organização vem de Base.astro, ligada pelo @id.
+const pessoas = socios.map((s) => ({
+  '@context': 'https://schema.org', '@type': 'Person', '@id': new URL(`/quem-somos/#${s.id}`, Astro.site).href, name: s.nome,
+  url: new URL(`/quem-somos/#${s.id}`, Astro.site).href, image: new URL(s.foto.src, Astro.site).href, description: s.formacao, sameAs: [s.linkedin],
+  worksFor: { '@id': 'https://innerplacement.com.br/#organizacao' },
+}));
 ---
 <Base titulo="Quem somos" fechamento descricao={abertura}>
+  <script type="application/ld+json" set:html={JSON.stringify(pessoas)} />
   <TopoPagina titulo="Quem somos" trilha="Inner" intro={abertura} ilustracao={ilustracao} />
   <section class="wrap flex flex-col gap-5 md:gap-7" aria-label="Sócios da Inner">
     {socios.map((s) => (

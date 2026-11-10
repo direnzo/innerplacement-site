@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import TopoPagina from '../../components/TopoPagina.astro';
 import ilustracao from '../../../imagens/inner-P11-topo-blog-v1.svg?raw';
-import { publicados, dataBR } from '../../lib/blog';
+import { publicados, dataBR, miniaturas, LARGURAS_CARTAO } from '../../lib/blog';
 // Blog: a documentação funcional manda manter o Blog sem alteração de conteúdo; a frase de abertura e a
 // descrição são as da página /blog/ do WordPress.
 const posts = await publicados();
@@ -14,7 +14,7 @@ const abertura = 'Explore nossos artigos e aprofunde-se em insights valiosos sob
     {posts.map((p) => (
       <article class="post-cartao card group flex flex-col overflow-hidden">
         <a href={`/${p.id}/`} class="flex h-full flex-col" aria-label={p.data.titulo}>
-          {p.data.imagem && <div class="aspect-[16/9] overflow-hidden bg-areia-c"><img src={p.data.imagem} alt={p.data.imagem_alt ?? ''} width="640" height="360" loading="lazy" decoding="async" class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" /></div>}
+          {p.data.imagem && <div class="aspect-[16/9] overflow-hidden bg-areia-c"><img src={p.data.imagem} srcset={miniaturas(p.data.imagem)} sizes={LARGURAS_CARTAO} alt={p.data.imagem_alt ?? ''} width="640" height="360" loading="lazy" decoding="async" class="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" /></div>}
           <div class="flex flex-1 flex-col gap-3 p-5 md:p-6">
             <p class="flex flex-wrap gap-x-2 text-[12px] font-bold uppercase tracking-[.07em] text-coral-d">{p.data.categorias.slice(0, 2).join(' · ')}</p>
             <h2 class="text-[19px] font-semibold leading-[1.3] tracking-[-.01em] md:text-[20px]">{p.data.titulo}</h2>

@@ -1,8 +1,9 @@
 ---
 import IconeZap from './IconeZap.astro';
 import { WHATSAPP_URL } from '../data/site';
+// --cookies-h: altura do aviso de cookies enquanto aberto (CookieConsent.astro), para o botão ficar acima dele.
 ---
 <a href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label="Chamar no WhatsApp" data-wa-local="flutuante"
-  class="fixed bottom-[max(16px,env(safe-area-inset-bottom))] right-4 z-30 flex size-14 items-center justify-center gap-2.5 rounded-full bg-zap text-[#0E2F1C] shadow-[0_10px_28px_rgba(35,31,32,.22)] transition-transform hover:scale-105 lg:bottom-6 lg:right-8 lg:h-14 lg:w-auto lg:px-5 lg:pl-4">
+  class="fixed bottom-[calc(max(16px,env(safe-area-inset-bottom))+var(--cookies-h,0px))] right-4 z-30 flex size-14 items-center justify-center gap-2.5 rounded-full bg-zap text-[#0E2F1C] shadow-[0_10px_28px_rgba(35,31,32,.22)] transition-transform hover:scale-105 lg:bottom-[calc(24px+var(--cookies-h,0px))] lg:right-8 lg:h-14 lg:w-auto lg:px-5 lg:pl-4">
   <IconeZap size={24} /><span class="hidden text-[15px] font-semibold lg:inline">WhatsApp</span>
 </a>
