@@ -67,7 +67,7 @@ A classe de líderes e mentores que adotam essa abordagem está capacitando os i
 
 Portanto, se você deseja realinhar sua carreira ou simplesmente refletir sobre seu progresso, considere a Metodologia Inner como seu guia.
 
-Com +15 anos de experiência dos sócios de mercado, 150 empresas atendidas e um time multidisciplinar com vivência corporativa, a Inner oferece suporte qualificado para quem busca uma recolocação de carreira estruturada e para executivos que precisam de acompanhamento completo em Outplacement Executivo.
+Com +15 anos de experiência dos sócios e um time multidisciplinar com vivência corporativa, a Inner oferece suporte qualificado para quem busca uma recolocação de carreira estruturada e para executivos que precisam de acompanhamento completo em Outplacement Executivo.
 
 Se você está pronto para começar a escrever o próximo capítulo da sua carreira, a conversa começa agora. Aplique esses princípios e abra-se para um mundo de possibilidades.
 

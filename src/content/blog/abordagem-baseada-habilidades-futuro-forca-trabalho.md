@@ -60,7 +60,7 @@ A união entre estratégias de outplacement, práticas modernas de RH e o fortal
 
 A Inner Placement se destaca nesse contexto ao aplicar uma metodologia própria, unindo expertise em gestão de carreira e desenvolvimento executivo, apoiada por quatro pilares essenciais que colocam o objetivo do profissional ou da empresa no centro da estratégia. 
 
-Com +15 anos de experiência dos sócios de mercado, 150 empresas atendidas e um time multidisciplinar com vivência corporativa, a Inner oferece suporte qualificado para quem busca uma recolocação de carreira estruturada e para executivos que precisam de acompanhamento completo em Outplacement Executivo.
+Com +15 anos de experiência dos sócios e um time multidisciplinar com vivência corporativa, a Inner oferece suporte qualificado para quem busca uma recolocação de carreira estruturada e para executivos que precisam de acompanhamento completo em Outplacement Executivo.
 
 Quer conhecer a Inner Placement? [Envie uma mensagem agora](https://wa.me/5511984311675).
 
