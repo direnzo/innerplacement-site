@@ -21,13 +21,16 @@ const { Content } = await render(post);
 const d = post.data;
 const og = d.imagem ? (d.imagem.endsWith('.webp') ? d.imagem.replace(/\.webp$/, '-og.jpg') : d.imagem) : undefined;
 const url = new URL(`/${post.id}/`, Astro.site).href;
-// Mesma entidade declarada em Base.astro, ligada pelo @id.
-const org = { '@type': 'ProfessionalService', '@id': 'https://innerplacement.com.br/#organizacao', name: 'Inner Placement', url: 'https://innerplacement.com.br/' };
+// Referência à entidade completa que Base.astro declara na mesma página, ligada pelo @id.
+const org = { '@id': 'https://innerplacement.com.br/#organizacao', name: 'Inner Placement', url: 'https://innerplacement.com.br/' };
 const socio = socios.find((s) => s.id === d.autor);
-const pessoa = socio && { '@type': 'Person', '@id': new URL(`/quem-somos/#${socio.id}`, Astro.site).href, name: socio.nome };
+const perfil = socio && new URL(`/quem-somos/#${socio.id}`, Astro.site).href;
+const pessoa = socio && { '@type': 'Person', '@id': perfil, name: socio.nome, url: perfil };
+// Só existe a data do post: o schema a declara à meia-noite de Brasília, com fuso, sem mudar o dia.
+const dataHora = (x: Date) => `${x.toISOString().slice(0, 10)}T00:00:00-03:00`;
 const schema = [{
   '@context': 'https://schema.org', '@type': 'BlogPosting', headline: d.titulo, description: d.descricao,
-  datePublished: d.data.toISOString().slice(0, 10), dateModified: (d.atualizado ?? d.data).toISOString().slice(0, 10),
+  datePublished: dataHora(d.data), dateModified: dataHora(d.atualizado ?? d.data),
   author: pessoa ?? org, publisher: org,
   mainEntityOfPage: url, ...(d.imagem && { image: new URL(d.imagem, Astro.site).href }),
 }, trilhaSchema([['Blog', rotas.blog], [d.titulo]], Astro.site)];
