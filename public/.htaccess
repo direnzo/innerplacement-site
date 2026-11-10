@@ -58,6 +58,8 @@ ExpiresByType image/svg+xml "access plus 1 month"
 Header always set X-Content-Type-Options "nosniff"
 Header always set Referrer-Policy "strict-origin-when-cross-origin"
 Header always set Strict-Transport-Security "max-age=2592000" "expr=%{HTTPS} == 'on'"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 # _astro/: o nome do arquivo muda quando o conteúdo muda, então o cache pode ser definitivo.
 <IfModule mod_setenvif.c>
