@@ -12,6 +12,7 @@ export const GTM_ID = 'GTM-ND356DQM';
 
 // Endereços dos dois escritórios (iguais aos do schema.org em Base.astro — fonte única). mapsHref monta
 // o link do Google Maps a partir deles, para o rodapé e qualquer outro lugar que precisar.
+// O primeiro é a matriz (São Paulo, confirmado pelo dono em 09/11/2026): o schema usa essa ordem.
 export const enderecos = [
   { cidade: 'São Paulo', uf: 'SP', rua: 'Av. Tabapuã, 500, cj. 32', bairro: 'Itaim Bibi' },
   { cidade: 'Curitiba', uf: 'PR', rua: 'R. Visconde do Rio Branco, 1358, cj. 703', bairro: 'Centro' },

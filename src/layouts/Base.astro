@@ -28,12 +28,20 @@ const comCanonical = !/^\/404\/?$/.test(Astro.url.pathname);
 const pagina = Astro.url.pathname.replace(/^\/|\/$/g, '').replace('/', '--') || 'inicio';
 const comImagem = ['inicio', 'para-voce--transicao-e-recolocacao', 'para-voce--next-level', 'para-sua-empresa--next-level', 'para-sua-empresa--outplacement', 'para-sua-empresa', 'para-voce', 'para-sua-empresa--executive-alignment', 'depoimentos', 'perguntas-frequentes', 'manifesto', 'contato', 'quem-somos', 'blog'];
 const ogImagem = new URL(ogPropria ?? `/og/${comImagem.includes(pagina) ? pagina : 'inicio'}.jpg`, Astro.site).href;
+const endereco = (e: (typeof enderecos)[number]) => ({
+  '@type': 'PostalAddress', streetAddress: `${e.rua}, ${e.bairro}`, addressLocality: e.cidade, addressRegion: e.uf, addressCountry: 'BR',
+});
+// A organização tem o endereço da matriz; cada outra sede é um nó próprio, ligado a ela pelo @id.
+const [matriz, ...unidades] = enderecos;
 const org = {
   '@context': 'https://schema.org', '@type': 'ProfessionalService', '@id': 'https://innerplacement.com.br/#organizacao', name: 'Inner Placement',
   url: 'https://innerplacement.com.br/', logo: 'https://innerplacement.com.br/logo.svg', image: 'https://innerplacement.com.br/og/inicio.jpg',
   sameAs: redes.map((r) => r.href), email: EMAIL, telephone: WHATSAPP_TXT,
-  areaServed: 'BR', address: enderecos.map((e) => ({
-    '@type': 'PostalAddress', streetAddress: `${e.rua}, ${e.bairro}`, addressLocality: e.cidade, addressRegion: e.uf, addressCountry: 'BR',
+  areaServed: 'BR', address: endereco(matriz),
+  subOrganization: unidades.map((e) => ({
+    '@type': 'ProfessionalService', '@id': `https://innerplacement.com.br/#unidade-${e.cidade.toLowerCase()}`, name: 'Inner Placement',
+    url: 'https://innerplacement.com.br/', email: EMAIL, telephone: WHATSAPP_TXT, address: endereco(e),
+    parentOrganization: { '@id': 'https://innerplacement.com.br/#organizacao' },
   })),
 };
 // A home (sem schema próprio) também declara o site, ligado à organização pelo @id.
