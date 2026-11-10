@@ -7,18 +7,18 @@ Pendências em 10/11/2026. Base: `FULL-AUDIT-REPORT.md` (09/11/2026), com os có
 | Item | Decisão | Como saber se falhou | Indicador |
 |---|---|---|---|
 | A4 | Acrescentar frase de definição em Next Level e Executive Alignment, como já feito na Transition | Sem ganho em consultas genéricas em 12 semanas | Consultas não-marca por página |
-| A6 | Definir quem assina cada post (o schema `Person` já existe) | Posts em primeira pessoa seguem sem autor | Campo `autor` |
-| M2 e CORE-04 | Aprovar descriptions e titles. Sugestão para a home (141 caracteres): "A Inner Placement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição." | Duplicatas ou textos cortados | Relatório on-page |
 | M3 (parte) | Aprovar módulo "Leia também" nas páginas de programa (`findings/cluster.md`, seção 6) | Páginas de programa seguem sem link para posts | Links internos por página |
 | M6 | Confirmar ou remover as fontes das estatísticas dos posts | Estatísticas sem fonte seguem no ar | Leitura dos posts |
 | M11 | Unificar as duas versões do método e revisar posts antigos | Duas versões seguem no ar | Leitura das páginas |
 | Conteúdo | Aprovar novos posts sobre outplacement executivo e Executive Alignment, que têm 0 posts de apoio (`findings/cluster.md`) | Hubs seguem sem satélites | Consultas não-marca por hub |
+| Páginas-pilar | Aprovar "O que é outplacement", "Quanto custa e quanto dura" e "Outplacement x coaching x recolocação" | Consultas informativas seguem sem página de destino | Consultas não-marca por página |
+| Formato dos posts e páginas finas | Aprovar parágrafo-resposta de 40 a 60 palavras no início dos artigos, listas, tabela Platinum x Focus e conteúdo para `/e-book/` e `/manifesto/` | Artigos seguem sem resposta direta no início | Trechos em destaque e citações em buscas por IA |
 
 ## Depende de servidor ou de contas
 
 | Item | Ação | Como saber se falhou | Indicador |
 |---|---|---|---|
-| M4 | Pedir ao suporte da hospedagem uma exceção no ModSecurity para CCBot e Amazonbot, sem desligá-lo no domínio. Causa confirmada em 10/11/2026 pela página de erro. A conta não tem o recurso de ModSecurity no cPanel, e as regras só são legíveis com root | `curl` com o User-Agent segue em 406 | Status em `/robots.txt` |
+| M4 | Pedir ao suporte da hospedagem uma exceção no ModSecurity para CCBot e Amazonbot, sem desligá-lo no domínio. Causa confirmada em 10/11/2026 pela página de erro. A conta não tem o recurso de ModSecurity no cPanel, e as regras só são legíveis com root. O User-Agent curto `Mozilla/5.0` também recebeu 406 em 10/11/2026: citar no chamado | `curl` com o User-Agent segue em 406 | Status em `/robots.txt` |
 | M14 | Verificar o Perfil da Empresa no Google, com o mesmo NAP do site | Perfil sem vínculo com o site | `hasMap` e `sameAs` no schema |
 | M16 | Revisar as tags no GTM e medir o INP real | Tarefas longas seguem acima de 450 ms | INP no CrUX |
 | Fase 4 | Conectar credenciais gratuitas do Google às próximas auditorias | Auditoria sem dados reais | Search Console, CrUX e PageSpeed |
