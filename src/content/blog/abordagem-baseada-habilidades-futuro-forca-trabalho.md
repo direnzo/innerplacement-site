@@ -5,6 +5,7 @@ data: 2025-12-16
 atualizado: 2025-12-16
 autor: "Inner Placement"
 categorias: ["Desenvolvimento", "Inner Placement"]
+tema: "Método"
 imagem: "/blog/imagens/abordagem-baseada-habilidades-futuro-forca-trabalho.webp"
 imagem_alt: "abordagem baseada em habilidades"
 rascunho: false
@@ -24,7 +25,7 @@ Esse movimento acompanha uma tendência global em que a recolocação profission
 
 Recentemente, a McKinsey publicou um relatório abordando a necessidade de mudar o foco da valorização do conhecimento para a valorização das habilidades. De acordo com o relatório, a habilidade de aprender e se adaptar é crucial para prosperar em um ambiente de trabalho em rápida evolução. Isso ressoa fortemente nas discussões sobre as dificuldades que profissionais enfrentam ao tentar se reposicionar ou transitar entre carreiras, onde muitas vezes o foco permanece no conhecimento adquirido, em vez das habilidades práticas que podem ser aplicadas em novas situações.
 
-A importância das habilidades também se revela nos programas de Outplacement Executivo, como os da [Inner Placement](/), que orientam líderes e gestores durante a recolocação no mercado de trabalho. 
+A importância das habilidades também se revela nos programas de [Outplacement Executivo](/para-sua-empresa/outplacement/), como os da [Inner Placement](/), que orientam líderes e gestores durante a recolocação no mercado de trabalho. 
 
 Nesses programas, o foco está em identificar competências transferíveis, fortalecer a narrativa profissional e trabalhar a preparação para entrevistas, etapas fundamentais para acelerar a busca de recolocação profissional. 
 

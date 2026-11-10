@@ -5,6 +5,7 @@ data: 2026-06-02
 atualizado: 2026-07-20
 autor: "Inner Placement"
 categorias: ["Inner Placement"]
+tema: "Transição e recolocação"
 imagem: "/blog/imagens/sou-bom-no-que-faco-entao-por-que-ninguem-me-contrata.webp"
 imagem_alt: "“Sou bom no que faço, então por que ninguém me contrata?”"
 rascunho: false
@@ -12,9 +13,9 @@ rascunho: false
 
 **“Sou bom no que faço, então por que ninguém me contrata?”**
 
-Existe um paradoxo silencioso que aparece com frequência nos processos de recolocação profissional executiva: profissionais altamente competentes, com histórias sólidas e resultados expressivos, que travam exatamente no momento em que precisam mostrar o que valem.
+Existe um paradoxo silencioso que aparece com frequência nos processos de [recolocação profissional executiva](/para-voce/transicao-e-recolocacao/): profissionais altamente competentes, com histórias sólidas e resultados expressivos, que travam exatamente no momento em que precisam mostrar o que valem.
 
-Não é falta de experiência. Não é falta de resultado. É falta de narrativa, e, muitas vezes, o peso de bloqueios internos que ninguém vê.
+Não é falta de experiência. Não é falta de resultado. É falta de narrativa, e, muitas vezes, o peso de [bloqueios internos](/o-sobrenome-que-ficou-no-cracha/) que ninguém vê.
 
 ## O currículo que não conta a história
 
@@ -48,7 +49,7 @@ Existe um desafio específico para quem vem de agências, consultorias ou ambien
 
 A experiência é real e valiosa, mas está embalada de um jeito que o mercado não reconhece imediatamente.
 
-A solução não é simplificar demais. É traduzir: transformar o que você fez em linguagem de resultado. Não “gerenciei campanhas de mídia”, mas “aumentei o ROI de mídia em 40% em 18 meses para uma carteira de 12 clientes.” Essa é a diferença entre um currículo que passa pelo filtro ATS e um que não passa.
+A solução não é simplificar demais. É traduzir: transformar o que você fez em [linguagem de resultado](/abordagem-baseada-habilidades-futuro-forca-trabalho/). Não “gerenciei campanhas de mídia”, mas “aumentei o ROI de mídia em 40% em 18 meses para uma carteira de 12 clientes.” Essa é a diferença entre um currículo que passa pelo filtro ATS e um que não passa.
 
 ## O que realmente trava a recolocação profissional executiva
 
@@ -78,6 +79,6 @@ Você já fez a parte mais difícil: construiu uma carreira sólida. O próximo 
 
 **Você se identificou com alguma dessas situações?**
 
-Na Inner Placement, trabalhamos exatamente esse ponto no processo de recolocação profissional executiva: ajudamos profissionais a construir uma narrativa que traduza, com clareza e autenticidade, o valor real que carregam. Seja num programa de outplacement ou de transição de carreira, o autoconhecimento e o posicionamento estratégico andam juntos.
+Na Inner Placement, trabalhamos exatamente esse ponto no processo de recolocação profissional executiva: ajudamos profissionais a construir uma narrativa que traduza, com clareza e autenticidade, o valor real que carregam. Seja num [programa de outplacement](/para-sua-empresa/outplacement/) ou de [transição de carreira](/por-que-transicao-de-carreira-e-recolocacao-nao-sao-o-mesmo/), o autoconhecimento e o posicionamento estratégico andam juntos.
 
-Conheça a metodologia da Inner em innerplacement.com.br e descubra como podemos apoiar sua próxima fase.
+[Conheça a metodologia da Inner](/metodologia-inner-gestao-carreira/) em innerplacement.com.br e descubra como podemos apoiar sua próxima fase.

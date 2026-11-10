@@ -5,6 +5,7 @@ data: 2025-10-24
 atualizado: 2025-10-24
 autor: "Inner Placement"
 categorias: ["Desenvolvimento", "Inner Placement"]
+tema: "Desenvolvimento e sucessão"
 imagem: "/blog/imagens/sonhos-desconectados-e-realizacao-profissional.webp"
 imagem_alt: "A Diferença Entre Sonhos Desconectados e Realização Profissional: Uma Reflexão Necessária"
 rascunho: false
@@ -29,7 +30,7 @@ A **realização profissional autêntica** nasce do [autoconhecimento](/para-voc
 
 Uma profissional relatou que, ao escolher uma empresa menor, mas alinhada a seus interesses, encontrou satisfação genuína. Esse sonho não era “comprado”, mas construído com base em autenticidade e propósito.
 
-Para isso, é essencial um processo de **autoavaliação** que ajude a identificar o que realmente importa, evitando seguir padrões impostos por outros.
+Para isso, é essencial um processo de **[autoavaliação](/a-coluna-que-estava-faltando-na-planilha/)** que ajude a identificar o que realmente importa, evitando seguir padrões impostos por outros.
 
 ## **Aprendizado Através da Desilusão**
 
@@ -49,6 +50,6 @@ Desenvolver uma carreira que respeite quem somos é um dos maiores presentes que
 
 ## **E o próximo passo?**
 
-A Inner Placement apoia profissionais em **transição de carreira, recolocação e desenvolvimento de liderança**. Nosso foco é ajudar você a alinhar escolhas profissionais com seus valores e construir uma trajetória mais autêntica.
+A Inner Placement apoia profissionais em **[transição de carreira, recolocação](/para-voce/transicao-e-recolocacao/) e desenvolvimento de liderança**. Nosso foco é ajudar você a alinhar escolhas profissionais com seus valores e construir uma trajetória mais autêntica.
 
-👉 Quer dar o próximo passo? [Conheça a metodologia da Inner](/) e descubra como podemos apoiar sua evolução profissional.
+👉 Quer dar o próximo passo? [Conheça a metodologia da Inner](/metodologia-inner-gestao-carreira/) e descubra como podemos apoiar sua evolução profissional.

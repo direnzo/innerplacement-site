@@ -5,6 +5,7 @@ data: 2026-10-05
 atualizado: 2026-10-05
 autor: "Inner Placement"
 categorias: ["Inner Placement"]
+tema: "Transição e recolocação"
 imagem: "/blog/imagens/o-sobrenome-que-ficou-no-cracha.webp"
 imagem_alt: "O sobrenome que ficou no crachá"
 rascunho: false
@@ -30,7 +31,7 @@ O dinheiro protegia o orçamento, não a identidade. Ela resumiu a perda numa im
 
 *“Eu perdi o crachá. Eu era a \[meu nome\] da empresa tal. Era o meu sobrenome.”*
 
-Quem passou muitos anos numa mesma empresa grande conhece essa fusão. O nome da companhia deixa de ser o lugar onde se trabalha e passa a fazer parte de como a pessoa se apresenta, e de como é apresentada pelos outros. Quando o crachá vai embora, a pergunta “o que você faz?” fica sem resposta pronta.
+Quem passou [muitos anos numa mesma empresa grande](/quando-o-terreno-muda-o-que-separa-executivos-que-saem-na-hora-certa-dos-que-esperam-demais/) conhece essa fusão. O nome da companhia deixa de ser o lugar onde se trabalha e passa a fazer parte de como a pessoa se apresenta, e de como é apresentada pelos outros. Quando o crachá vai embora, a pergunta “o que você faz?” fica sem resposta pronta.
 
 ## **Diante de quem**
 
@@ -50,7 +51,7 @@ Olhando para trás, ela não atribui essa fase a falta de preparo técnico. A re
 
 *“Eu não tinha problema de conhecimento, eu não tinha problema de capacidade. A minha energia tava contaminada.”*
 
-Numa entrevista, ninguém vê a vergonha escrita no currículo. Mas quem está do outro lado da mesa percebe o estado de quem fala.
+[Numa entrevista](/sou-bom-no-que-faco-entao-por-que-ninguem-me-contrata/), ninguém vê a vergonha escrita no currículo. Mas quem está do outro lado da mesa percebe o estado de quem fala.
 
 ## **O dia em que ela falou**
 
@@ -64,4 +65,4 @@ No fim, ela tinha mais de uma proposta na mesa e escolheu para onde ir. Quando p
 
 *“A mudança acontece porque a vida te empurra.”*
 
-*A Inner Placement acompanha profissionais e líderes em processos de transição de carreira, executive coaching e desenvolvimento profissional, com escuta humana e método.*
+*A Inner Placement acompanha profissionais e líderes em processos de [transição de carreira](/para-voce/transicao-e-recolocacao/), executive coaching e desenvolvimento profissional, com escuta humana e método.*

@@ -32,6 +32,8 @@ RedirectMatch 301 ^/termos-e-condicoes/?$ /politica-de-privacidade/
 RedirectMatch 301 ^/endereços(/.*)?$ /contato/
 # Arquivos do blog do WordPress
 RedirectMatch 301 ^/(category|author)(/.*)?$ /blog/
+# Feeds do WordPress (do site, dos posts e de comentários)
+RedirectMatch 301 ^/(.+/)?feed/?$ /rss.xml
 ErrorDocument 404 /404.html
 
 # Compressão de texto (imagens, PDF e fontes woff2 já são comprimidos)

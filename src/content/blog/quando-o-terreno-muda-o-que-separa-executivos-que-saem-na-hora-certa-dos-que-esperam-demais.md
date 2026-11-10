@@ -5,6 +5,7 @@ data: 2026-08-12
 atualizado: 2026-08-12
 autor: "Inner Placement"
 categorias: ["Next Level"]
+tema: "Transição e recolocação"
 imagem: "/blog/imagens/quando-o-terreno-muda-o-que-separa-executivos-que-saem-na-hora-certa-dos-que-esperam-demais.webp"
 imagem_alt: "Quando o terreno muda: o que separa executivos que saem na hora certa dos que esperam demais"
 rascunho: false
@@ -26,9 +27,9 @@ Por que profissionais inteligentes, experientes, com décadas de decisões compl
 
 O primeiro é o peso do que já foi investido. Vinte e cinco anos numa empresa não é só currículo, é identidade, é network, é história construída. Reconhecer que aquele lugar já não é mais o seu terreno significa, de alguma forma, colocar em xeque quem você é. O cérebro evita esse reconhecimento ativamente, não por fraqueza, mas por mecanismo de proteção. É o que a psicologia chama de sunk cost, e ele opera silenciosamente, distorcendo a leitura do presente com o peso do passado.
 
-O segundo mecanismo é a fusão entre papel e identidade. Quando um executivo não consegue separar quem ele é de onde ele trabalha, qualquer sinal de que aquele lugar não é mais para ele é lido como uma ameaça existencial, não como informação útil. O mapa interno distorce os dados externos. E o terceiro é a dificuldade de processar sinais sob ansiedade: pesquisa publicada no Frontiers in Psychology mostrou que a inteligência emocional, especialmente a capacidade de regular emoções negativas, é o principal preditor da capacidade de tomar decisões de carreira. Quem opera sob pressão emocional tende a travar exatamente quando precisaria agir.
+O segundo mecanismo é a [fusão entre papel e identidade](/o-sobrenome-que-ficou-no-cracha/). Quando um executivo não consegue separar quem ele é de onde ele trabalha, qualquer sinal de que aquele lugar não é mais para ele é lido como uma ameaça existencial, não como informação útil. O mapa interno distorce os dados externos. E o terceiro é a dificuldade de processar sinais sob ansiedade: pesquisa publicada no Frontiers in Psychology mostrou que a inteligência emocional, especialmente a capacidade de regular emoções negativas, é o principal preditor da capacidade de tomar decisões de carreira. Quem opera sob pressão emocional tende a travar exatamente quando precisaria agir.
 
-Somados, esses três mecanismos explicam por que a transição de carreira de executivos sênior frequentemente acontece tarde, quando o cenário já tomou a decisão, e não quando o profissional ainda tinha protagonismo sobre ela. E explicam também por que o trabalho de assessoria de carreira vai muito além de atualizar currículo ou mapear oportunidades no mercado. O trabalho central é criar o espaço, interno e externo, para que a leitura aconteça sem distorção.
+Somados, esses três mecanismos explicam por que a [transição de carreira de executivos sênior](/por-que-transicao-de-carreira-e-recolocacao-nao-sao-o-mesmo/) frequentemente acontece tarde, quando o cenário já tomou a decisão, e não quando o profissional ainda tinha protagonismo sobre ela. E explicam também por que o trabalho de assessoria de carreira vai muito além de atualizar currículo ou mapear oportunidades no mercado. O trabalho central é criar o espaço, interno e externo, para que a leitura aconteça sem distorção.
 
 Renato não era mais perspicaz do que o executivo que foi pego de surpresa. Tinha autoconhecimento suficiente para reconhecer a incompatibilidade quando ela começou a aparecer, e tinha alguém de fora que o ajudou a nomear o que estava vendo, sem a distorção de quem está dentro. Esse espaço não surge naturalmente. Ele é construído.
 
@@ -36,4 +37,4 @@ O terreno em que você está ainda é fértil para você? Não no sentido de ser
 
 **Antes que o cenário decida por você.**
 
-*A Inner Placement é uma consultoria especializada em assessoria de carreira e recolocação profissional para executivos sênior. Apoiamos profissionais em transição de carreira com método, escuta e visão de mercado, para que a mudança aconteça no tempo certo, pelo caminho certo.*
+*A Inner Placement é uma consultoria especializada em assessoria de carreira e [recolocação profissional para executivos sênior](/para-voce/transicao-e-recolocacao/). Apoiamos profissionais em transição de carreira com método, escuta e visão de mercado, para que a mudança aconteça no tempo certo, pelo caminho certo.*

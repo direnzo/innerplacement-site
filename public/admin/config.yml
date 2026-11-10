@@ -50,6 +50,7 @@ collections:
         required: false
         options: [Comportamento, Desenvolvimento, Inner Placement, Sonhos, Platinum, Focus, Next Level]
         hint: 'Nomes de programa sem sufixo (sem "Corporate", "Executivo" ou "Go Fast"), como pede a documentação.'
+      - { name: tema, label: Tema, widget: select, required: false, options: ['Transição e recolocação', 'Desenvolvimento e sucessão', 'Método'], hint: 'Define os posts sugeridos em "Leia também": primeiro os do mesmo tema.' }
       - { name: imagem, label: Capa, widget: image, required: false, hint: 'Horizontal, de preferência 1600 × 900. Também é a imagem de compartilhamento do post.' }
       - { name: imagem_alt, label: Descrição da capa, widget: string, required: false, hint: 'Para leitores de tela: o que a imagem mostra, em uma frase.' }
       - { name: rascunho, label: Rascunho (não publicar), widget: boolean, default: false }
