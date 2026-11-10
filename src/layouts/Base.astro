@@ -18,7 +18,7 @@ import { EMAIL, WHATSAPP_TXT, GTM_ID, enderecos, redes } from '../data/site';
 // (fundo={false}) porque tem as suas, posicionadas à mão no bloco 2.
 // ogImagem: caminho de uma imagem de compartilhamento própria (posts do blog: a capa). tipo: og:type.
 // servico: páginas de programa; nome e descrição do schema vêm do próprio titulo e da descricao da página.
-interface Props { servico?: { tipo: string; publico: 'empresa' | 'profissional'; formatos?: { nome: string; destaque: string }[] }; titulo: string; descricao: string; fechamento?: boolean | PropsFechamento; schema?: object; fundo?: boolean; ogImagem?: string; tipo?: 'website' | 'article' }
+interface Props { servico?: { tipo: string; publico: 'empresa' | 'profissional'; formatos?: { nome: string; destaque: string }[] }; titulo: string; descricao: string; fechamento?: boolean | PropsFechamento; schema?: object[]; fundo?: boolean; ogImagem?: string; tipo?: 'website' | 'article' }
 const { servico, titulo, descricao, fechamento = false, schema, fundo = true, ogImagem: ogPropria, tipo = 'website' } = Astro.props;
 const tituloCompleto = Astro.url.pathname === '/' ? `Inner Placement · ${titulo}` : `${titulo} · Inner Placement`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -106,7 +106,7 @@ const schemaServico = servico && {
   <meta name="theme-color" content="#FFFFFF" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href={fonte} as="font" type="font/woff2" crossorigin />
-  <script type="application/ld+json" set:html={JSON.stringify(schema ?? (Astro.url.pathname === '/' ? [org, site] : org))} />
+  <script type="application/ld+json" set:html={JSON.stringify(schema ? [org, ...schema] : Astro.url.pathname === '/' ? [org, site] : org)} />
   {schemaServico && <script type="application/ld+json" set:html={JSON.stringify(schemaServico)} />}
   <slot name="head" />
 </head>
