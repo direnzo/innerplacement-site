@@ -7,7 +7,12 @@ import { rotas } from '../data/site';
 
 export async function getStaticPaths() {
   const posts = await publicados();
-  return posts.map((p, i) => ({ params: { slug: p.id }, props: { post: p, outros: posts.filter((o) => o.id !== p.id).slice(0, 3) } }));
+  // "Leia também": primeiro os posts do mesmo tema; o restante, do mais novo para o mais antigo.
+  return posts.map((p) => {
+    const demais = posts.filter((o) => o.id !== p.id);
+    const mesmoTema = (o: Post) => Boolean(p.data.tema) && o.data.tema === p.data.tema;
+    return { params: { slug: p.id }, props: { post: p, outros: [...demais.filter(mesmoTema), ...demais.filter((o) => !mesmoTema(o))].slice(0, 3) } };
+  });
 }
 const { post, outros } = Astro.props as { post: Post; outros: Post[] };
 const { Content } = await render(post);

@@ -5,6 +5,7 @@ data: 2025-07-25
 atualizado: 2025-08-11
 autor: "Inner Placement"
 categorias: ["Focus", "Next Level", "Platinum"]
+tema: "Transição e recolocação"
 imagem: "/blog/imagens/por-que-transicao-de-carreira-e-recolocacao-nao-sao-o-mesmo.webp"
 imagem_alt: "Por que transição de carreira e recolocação não são o mesmo?"
 rascunho: false
@@ -12,7 +13,7 @@ rascunho: false
 
 A transição de carreira é um processo mais amplo, que envolve fatores como áreas de interesse, experiências prévias, formação e competências, estrutura de valores e aspirações profissionais, dentre outros. Este panorama reforça que não se trata apenas de mudar de emprego, mas de um olhar estruturado para a carreira, tanto no presente quanto para desenhar o futuro.
 
-Para saber a melhor forma de lidar com este momento, é necessário entender e diferenciar transição de carreira e recolocação profissional. Embora muita gente os use como sinônimos, eles têm significados, e impactos, bem diferentes. É comum que momentos de mudança tragam questionamentos sobre a trajetória profissional, e entender o que cada etapa representa é essencial para movimentações assertivas e construção de um plano realista e coerente com seus objetivos. 
+Para saber a melhor forma de lidar com este momento, é necessário entender e diferenciar transição de carreira e recolocação profissional. Embora muita gente os use como sinônimos, eles têm significados, e impactos, bem diferentes. É comum que [momentos de mudança](/quando-o-terreno-muda-o-que-separa-executivos-que-saem-na-hora-certa-dos-que-esperam-demais/) tragam questionamentos sobre a trajetória profissional, e entender o que cada etapa representa é essencial para movimentações assertivas e construção de um plano realista e coerente com seus objetivos. 
 
 Tanto a transição quanto a recolocação envolvem planejamento, mas com foco e profundidade diferentes.Ambas, se bem estruturadas, podem ser ágeis e eficazes, porém se forem realizadas sem uma estruturação podem levar a escolhas equivocadas, gerando ainda mais desgaste. 
 
@@ -26,7 +27,7 @@ Segundo a Forbes, profissionais que fazem uma transição de carreira com acompa
 
 Nesses casos, é comum que surja o desejo por uma promoção assertiva no sentido mais amplo, não necessariamente um cargo mais alto, mas uma função mais conectada com propósito e habilidades. 
 
-O desenvolvimento de lideranças também pode surgir como uma nova rota para quem busca crescer com significado.
+O [desenvolvimento de lideranças](/para-voce/next-level/) também pode surgir como uma nova rota para quem busca crescer com significado.
 
 Ambos os caminhos partem de uma mesma realidade: a necessidade de mudança.
 
@@ -34,9 +35,9 @@ Porém, devemos olhar a profundidade desta necessidade de mudanças. 
 
 Em alguns casos, só mudar de emprego e ou trabalho resolve esta angústia, neste caso, só um trabalho de recolocação atenderia este problema. 
 
-Já quando se trata de uma necessidade mais profunda de mudança, que envolve desde a insatisfação com suas atividades, sentido de realização e mudanças de rotas, o mais indicado é a transição de carreira, que além do trabalho tático, possui uma etapa anterior de identificação dos novos rumos de carreira e de vida.
+Já quando se trata de uma necessidade mais profunda de mudança, que envolve desde a insatisfação com suas atividades, sentido de realização e mudanças de rotas, o mais indicado é a transição de carreira, que além do trabalho tático, possui uma etapa anterior de [identificação dos novos rumos de carreira](/a-coluna-que-estava-faltando-na-planilha/) e de vida.
 
-É nesse ponto que programas de outplacement, conduzidos por consultorias especializadas, podem fazer a diferença. 
+É nesse ponto que [programas de outplacement](/para-sua-empresa/outplacement/), conduzidos por consultorias especializadas, podem fazer a diferença. 
 
 O acompanhamento permite que o profissional tenha suporte estratégico durante o processo de mudança, seja em movimentações internas, uma recolocação rápida ou uma virada completa na trajetória.
 
@@ -46,10 +47,10 @@ A movimentação de carreira certa pode ser o primeiro passo para uma nova fase 
 
 **Quer entender qual caminho faz mais sentido para você ou para sua equipe?**
 
-A [Inner Placement](/quem-somos/) é especializada em transição de carreira, recolocação e desenvolvimento de lideranças. 
+A [Inner Placement](/quem-somos/) é especializada em [transição de carreira, recolocação](/para-voce/transicao-e-recolocacao/) e desenvolvimento de lideranças. 
 
 Nós atuamos com programas de outplacement, promoção assertiva e movimentações internas que respeitam o momento de cada profissional e o contexto da organização.
 
 Buscamos sempre um olhar estratégico, sensível e profundamente humano para ajudar empresas e pessoas a conduzirem suas movimentações de carreira com clareza, consciência e propósito.
 
-Vamos conversar? [Conheça a metodologia da Inner](/) e descubra como podemos apoiar sua próxima fase de desenvolvimento profissional e organizacional.
+Vamos conversar? [Conheça a metodologia da Inner](/metodologia-inner-gestao-carreira/) e descubra como podemos apoiar sua próxima fase de desenvolvimento profissional e organizacional.

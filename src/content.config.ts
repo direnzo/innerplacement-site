@@ -14,6 +14,7 @@ const blog = defineCollection({
     atualizado: z.coerce.date().optional(),
     autor: z.string().default('Inner Placement'),
     categorias: z.array(z.string()).default([]),
+    tema: z.string().optional(),
     imagem: z.string().optional(),
     imagem_alt: z.string().optional(),
     rascunho: z.boolean().default(false),

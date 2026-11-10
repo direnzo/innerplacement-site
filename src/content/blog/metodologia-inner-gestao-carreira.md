@@ -5,6 +5,7 @@ data: 2025-12-08
 atualizado: 2025-12-08
 autor: "Inner Placement"
 categorias: ["Comportamento", "Desenvolvimento", "Inner Placement"]
+tema: "Método"
 imagem: "/blog/imagens/metodologia-inner-gestao-carreira.webp"
 imagem_alt: "Metodologia Inner de Gestão de Carreira"
 rascunho: false
@@ -28,13 +29,13 @@ Essa visão também dialoga com reflexões presentes em processos de recolocaç�
 
 Ao revisitar seus capítulos anteriores, o profissional passa a identificar competências, resultados e pontos fortes que normalmente são utilizados em programas de consultoria em recolocação profissional e na preparação para entrevistas. 
 
-Essa análise estruturada é fundamental para construir narrativas sólidas que fortalecem a busca de recolocação profissional.
+Essa análise estruturada é fundamental para construir [narrativas sólidas](/sou-bom-no-que-faco-entao-por-que-ninguem-me-contrata/) que fortalecem a busca de recolocação profissional.
 
 ## **A Importância do Diálogo**
 
 Um aspecto central dessa metodologia é o diálogo entre o indivíduo e o mundo. Essa conversa permite que os profissionais se conectem com suas emoções e desejos, compreendendo suas aspirações em um contexto mais amplo. O método é descritivo, não prescritivo; ele não impõe um caminho, mas convida à reflexão e a uma jornada de autoconhecimento.
 
-Esse processo de diálogo interno e externo também é fundamental no contexto de outplacement executivo, onde a compreensão das motivações, da identidade profissional e das expectativas do mercado guia a construção de um plano de ação mais assertivo. 
+Esse processo de diálogo interno e externo também é fundamental no contexto de [outplacement executivo](/para-sua-empresa/outplacement/), onde a compreensão das motivações, da identidade profissional e das expectativas do mercado guia a construção de um plano de ação mais assertivo. 
 
 Profissionais que passam por transições estruturadas aprendem a alinhar seus objetivos pessoais ao cenário corporativo, aumentando significativamente suas chances de êxito em processos de recolocação de carreira de alto nível.
 
@@ -43,7 +44,7 @@ Profissionais que passam por transições estruturadas aprendem a alinhar seus o
 A **Metodologia Inner** se fundamenta em quatro pilares principais:
 
 1. **Histórico Pessoal**: Analisar as experiências passadas, os sucessos e as dificuldades para entender como estas moldaram a carreira atual.
-2. **Potencial e Recursos**: Identificar as habilidades e recursos disponíveis que podem ser utilizados para avançar na carreira.
+2. **Potencial e Recursos**: Identificar as [habilidades e recursos](/abordagem-baseada-habilidades-futuro-forca-trabalho/) disponíveis que podem ser utilizados para avançar na carreira.
 3. **Momento Presente**: Refletir sobre a situação atual, avaliando o que é importante e desejável no presente.
 4. **Tendências**: Estar atento às mudanças e às inovações do mercado que podem impactar a trajetória profissional, permitindo adaptabilidade e crescimento contínuo.
 

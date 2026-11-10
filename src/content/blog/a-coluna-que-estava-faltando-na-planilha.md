@@ -5,6 +5,7 @@ data: 2026-07-20
 atualizado: 2026-07-20
 autor: "Inner Placement"
 categorias: ["Sonhos"]
+tema: "Transição e recolocação"
 imagem: "/blog/imagens/a-coluna-que-estava-faltando-na-planilha.webp"
 imagem_alt: "A coluna que estava faltando na planilha"
 rascunho: false
@@ -56,7 +57,7 @@ As empresas no topo da planilha dele eram de biotecnologia, conectadas a doença
 
 **Razão e emoção: não é uma escolha**
 
-Aqui está o ponto central, e ele vale para qualquer processo de transição de carreira ou tomada de decisão profissional: não se trata de jogar a planilha fora. Trata-se de completá-la.
+Aqui está o ponto central, e ele vale para qualquer [processo de transição de carreira](/por-que-transicao-de-carreira-e-recolocacao-nao-sao-o-mesmo/) ou tomada de decisão profissional: não se trata de jogar a planilha fora. Trata-se de completá-la.
 
 Decisões que ignoram a emoção tendem a ser tecnicamente corretas e humanamente vazias. Você aceita a vaga certa, na empresa certa, no momento certo, e três meses depois não consegue explicar por que algo não encaixa. Decisões que ignoram a razão têm o romantismo do salto no escuro, mas raramente sustentam o peso do cotidiano.
 
@@ -72,7 +73,7 @@ Quando você está diante de uma decisão de carreira, uma vaga, uma proposta, u
 
 Não “isso faz sentido para o meu currículo?”. Não “essa empresa tem boa reputação?”. Não “essa é a melhor oportunidade disponível agora?”. Essas perguntas importam, mas elas não chegam lá.
 
-A pergunta sobre felicidade acessa algo que os dados não capturam: o seu sistema de valores, o que te dá energia, o tipo de ambiente onde você floresce, o trabalho que te faz querer levantar de manhã. É no coaching de carreira que esse espaço se abre, não para substituir a razão, mas para dar voz ao que a razão sozinha não alcança.
+A pergunta sobre felicidade acessa algo que os dados não capturam: o seu [sistema de valores](/sonhos-desconectados-e-realizacao-profissional/), o que te dá energia, o tipo de ambiente onde você floresce, o trabalho que te faz querer levantar de manhã. É no coaching de carreira que esse espaço se abre, não para substituir a razão, mas para dar voz ao que a razão sozinha não alcança.
 
 Ele tinha todas as respostas certas para as perguntas erradas. Quando adicionou a coluna certa, as respostas mudaram. E com elas, a direção.
 
@@ -86,4 +87,4 @@ A carreira não é só uma trajetória profissional. É uma conversa contínua c
 
 ### *Você tem feito as perguntas certas para a sua carreira? Ou está respondendo muito bem às perguntas erradas?*
 
-A Inner Placement acompanha profissionais e líderes em processos de transição de carreira, executive coaching e desenvolvimento profissional, com escuta humana e método.
+A Inner Placement acompanha profissionais e líderes em processos de [transição de carreira](/para-voce/transicao-e-recolocacao/), [executive coaching](/para-voce/next-level/) e desenvolvimento profissional, com escuta humana e método.

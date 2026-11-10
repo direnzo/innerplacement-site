@@ -5,12 +5,13 @@ data: 2025-08-14
 atualizado: 2025-08-14
 autor: "Inner Placement"
 categorias: ["Desenvolvimento", "Focus"]
+tema: "Desenvolvimento e sucessão"
 imagem: "/blog/imagens/por-que-novos-lideres-fracassam.webp"
 imagem_alt: "imagem-banner-por-que-novos-lideres-fracassam"
 rascunho: false
 ---
 
-A sucessão de lideranças é um dos momentos mais críticos na evolução de uma organização. 
+A [sucessão de lideranças](/para-sua-empresa/next-level/) é um dos momentos mais críticos na evolução de uma organização. 
 
 Segundo um estudo da Harvard Business Review, cerca de 60% das falhas em processos de sucessão acontecem devido à falta de preparação emocional, alinhamento de valores e desenvolvimento individual dos sucessores (Harvard Business Review, 2021).
 
@@ -18,7 +19,7 @@ Para garantir uma sucessão sem imprevistos, é essencial que as organizações 
 
 Isso não apenas prepara os líderes do futuro, como também estimula o engajamento dos colaboradores com o próprio crescimento na carreira.
 
-Infelizmente, muitas organizações concentram-se apenas na transferência de competências técnicas e na escolha de candidatos com o melhor currículo, negligenciando a importância de um olhar individualizado. 
+Infelizmente, muitas organizações concentram-se apenas na transferência de [competências técnicas](/abordagem-baseada-habilidades-futuro-forca-trabalho/) e na escolha de candidatos com o melhor currículo, negligenciando a importância de um olhar individualizado. 
 
 Essa abordagem superficial pode levar à perda de talentos valiosos, que se sentem desvalorizados, desengajados ou menos apoiados na sua jornada de crescimento. 
 
@@ -28,11 +29,11 @@ Além disso, a falta de planejamento em movimentações internas pode impactar n
 
 Quando os processos de movimentação de carreira não são conduzidos de forma estratégica, corre-se o risco de promover profissionais sem preparo, comprometendo o desempenho da equipe e a cultura da empresa.
 
-Ao pensar na sucessão, o foco deve estar na preparação ampla do sucessor, envolvendo uma construção de autoconhecimento, alinhamento de valores e desenvolvimento emocional. 
+Ao pensar na sucessão, o foco deve estar na preparação ampla do sucessor, envolvendo uma construção de autoconhecimento, alinhamento de valores e [desenvolvimento emocional](/o-diferencial-invisivel-da-seguranca-psicologica/). 
 
 Liderar com autenticidade, empatia e coragem requer mais que habilidades técnicas, exige maturidade e um olhar atento às nossas emoções e particularidades. É nesse contexto que a promoção assertiva ganha relevância. 
 
-Garantir que os colaboradores estejam preparados não apenas tecnicamente, mas também emocionalmente para assumir novos desafios, é crucial para evitar falhas em processos de sucessão e fortalecer o desenvolvimento de lideranças.
+Garantir que os colaboradores estejam preparados não apenas tecnicamente, mas também emocionalmente para assumir novos desafios, é crucial para evitar [falhas em processos de sucessão](/e-book/) e fortalecer o desenvolvimento de lideranças.
 
 Um processo de sucessão bem sucedido e sustentável deve reconhecer as potencialidades e diferenças individuais, aumentando as chances de retenção de talentos de alto potencial e evitando que líderes promissores se sintam desmotivados ou desvalorizados.
 
