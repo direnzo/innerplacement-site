@@ -1,9 +1,10 @@
 ---
 titulo: "Quando o terreno muda: o que separa executivos que saem na hora certa dos que esperam demais"
-descricao: "Saiba como executivos sênior podem identificar o momento certo para uma transição de carreira antes que o cenário decida por eles."
+titulo_seo: "Quando o terreno muda: a hora de sair"
+descricao: "Saiba como executivos sênior podem identificar o momento certo para uma transição de carreira antes que o cenário decida por eles. Dois casos, dois desfechos."
 data: 2026-08-12
 atualizado: 2026-08-12
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Next Level"]
 tema: "Transição e recolocação"
 imagem: "/blog/imagens/quando-o-terreno-muda-o-que-separa-executivos-que-saem-na-hora-certa-dos-que-esperam-demais.webp"

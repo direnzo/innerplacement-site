@@ -19,7 +19,7 @@ import tMetodo from '../../imagens/inner-T-metodo-v1.svg?raw';
 import ComIcone from '../components/ComIcone.astro';
 import { miolo } from '../lib/svg';
 import { depoimentos as D } from '../data/depoimentos';
-import { faqHome } from '../data/faq';
+import { faqHome, faqSchema } from '../data/faq';
 import { rotas } from '../data/site';
 
 // Painel do hero: H-01 aprovada (SVG gerado por tools/ilustracao/hero.mts), inline.
@@ -37,7 +37,7 @@ const dimensoes = [
 ---
 <Base titulo="Outplacement, transição e recolocação" fundo={false}
   fechamento={{ texto: 'Sobre o seu momento de carreira ou sobre a situação de um executivo da sua empresa. Sem apresentação de produto e sem compromisso.' }}
-  descricao="A Inner Placement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição, com método, leitura cuidadosa e acompanhamento individual.">
+  descricao="A Inner Placement é uma consultoria que apoia executivos e empresas quando uma trajetória precisa avançar, ajustar-se ou fazer uma transição.">
 
   <!-- 1 · Hero: só a frase em grande destaque. A rosácea fica na lateral, sem passar por trás do
        texto (pedido do time, 10/11/2026): na borda direita a partir de 1024 px; abaixo disso, pequena
@@ -115,6 +115,7 @@ const dimensoes = [
       </div>
       <a href={rotas.faq} class="btn-l hidden lg:inline-flex">Ver todas as perguntas</a>
     </div>
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema(faqHome))} />
     <Acordeao itens={faqHome} abrirPrimeira prefixo="home" />
     <a href={rotas.faq} class="btn-l w-full lg:hidden">Ver todas as perguntas</a>
   </section>

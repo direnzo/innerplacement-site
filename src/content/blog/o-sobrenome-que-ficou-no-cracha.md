@@ -1,9 +1,9 @@
 ---
 titulo: "O sobrenome que ficou no crachá"
-descricao: "Uma executiva que nunca tinha parado de trabalhar e uma palavra que ela deixou para o fim da lista. O que a vergonha faz com quem perde o emprego, e o que muda quando ela é dita em voz alta. Alguns meses depois de voltar a um cargo executivo, ela aceitou olhar para trás e…"
+descricao: "O que a vergonha faz com quem perde o emprego, e o que muda quando ela é dita em voz alta. A história de uma executiva que nunca tinha parado de trabalhar."
 data: 2026-10-05
 atualizado: 2026-10-05
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Inner Placement"]
 tema: "Transição e recolocação"
 imagem: "/blog/imagens/o-sobrenome-que-ficou-no-cracha.webp"

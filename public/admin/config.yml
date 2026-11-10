@@ -39,10 +39,11 @@ collections:
     sortable_fields: [data, titulo]
     fields:
       - { name: titulo, label: Título, widget: string }
-      - { name: descricao, label: Descrição, widget: text, hint: 'Resumo de uma ou duas frases. Aparece no cartão do blog, no Google e nas prévias de compartilhamento.' }
+      - { name: titulo_seo, label: Título no Google, widget: string, required: false, hint: 'Opcional. Até 42 caracteres, quando o título do post for mais longo que isso.' }
+      - { name: descricao, label: Descrição, widget: text, hint: 'De 140 a 160 caracteres. Aparece no cartão do blog, no Google e nas prévias de compartilhamento.' }
       - { name: data, label: Data de publicação, widget: datetime, format: YYYY-MM-DD, time_format: false }
       - { name: atualizado, label: Atualizado em, widget: datetime, format: YYYY-MM-DD, time_format: false, required: false }
-      - { name: autor, label: Autor, widget: string, default: Inner Placement }
+      - { name: autor, label: Autor, widget: select, default: Inner Placement, options: [{ label: Inner Placement, value: Inner Placement }, { label: César Cordeiro, value: cesar-cordeiro }, { label: Débora Ereno, value: debora-ereno }, { label: Paula Oliveira, value: paula-oliveira }] }
       - name: categorias
         label: Categorias
         widget: select

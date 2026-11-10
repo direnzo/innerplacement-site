@@ -4,18 +4,21 @@ import TopoPagina from '../components/TopoPagina.astro';
 import Svg from '../components/Svg.astro';
 import { Image } from 'astro:assets';
 import ilustracao from '../../imagens/inner-P10-topo-quem-somos-v1.svg?raw';
-import { abertura, socios } from '../data/socios';
+import { abertura, areasDaEquipe, socios } from '../data/socios';
 // Quem somos: conteúdo da página do WordPress (src/data/socios.ts), no layout da v2.
 // Schema dos sócios só com o que a página já publica; a organização vem de Base.astro, ligada pelo @id.
 const pessoas = socios.map((s) => ({
   '@context': 'https://schema.org', '@type': 'Person', '@id': new URL(`/quem-somos/#${s.id}`, Astro.site).href, name: s.nome,
-  url: new URL(`/quem-somos/#${s.id}`, Astro.site).href, image: new URL(s.foto.src, Astro.site).href, description: s.formacao, sameAs: [s.linkedin],
+  url: new URL(`/quem-somos/#${s.id}`, Astro.site).href, image: new URL(s.foto.src, Astro.site).href, description: s.formacao, sameAs: [s.linkedin], jobTitle: s.cargo,
+  // Só o que a página publica: as áreas e as instituições somem do schema se saírem do texto.
+  knowsAbout: [...areasDaEquipe.filter((a) => abertura.includes(a)), ...s.areas.filter((a) => s.formacao.includes(a))],
+  alumniOf: s.instituicoes.filter((i) => s.formacao.includes(i)).map((name) => ({ '@type': 'Organization', name })),
   worksFor: { '@id': 'https://innerplacement.com.br/#organizacao' },
 }));
 ---
-<Base titulo="Quem somos" fechamento descricao={abertura}>
+<Base titulo="Quem somos" fechamento descricao="Conheça César Cordeiro, Débora Ereno e Paula Oliveira, sócios da Inner Placement, especialistas em desenvolvimento executivo e gestão de carreira.">
   <script type="application/ld+json" set:html={JSON.stringify(pessoas)} />
-  <TopoPagina titulo="Quem somos" trilha="Inner" intro={abertura} ilustracao={ilustracao} />
+  <TopoPagina titulo="Quem somos" migalhas={[['Quem somos']]} intro={abertura} ilustracao={ilustracao} />
   <section class="wrap flex flex-col gap-5 md:gap-7" aria-label="Sócios da Inner">
     {socios.map((s) => (
       <article id={s.id} class="card grid scroll-mt-24 gap-6 p-6 md:grid-cols-[220px_minmax(0,1fr)] md:gap-12 md:p-10" aria-labelledby={`${s.id}-nome`}>

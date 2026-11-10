@@ -1,9 +1,10 @@
 ---
 titulo: "O diferencial invisível da segurança psicológica na formação de líderes e sucessores. Será?"
+titulo_seo: "O diferencial da segurança psicológica"
 descricao: "Entenda como a segurança psicológica influencia sua performance, colabora com inovação e ajuda você a se tornar um líder mais preparado e confiante."
 data: 2025-10-24
 atualizado: 2025-10-24
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Inner Placement"]
 tema: "Desenvolvimento e sucessão"
 imagem: "/blog/imagens/o-diferencial-invisivel-da-seguranca-psicologica.webp"

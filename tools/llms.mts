@@ -30,15 +30,11 @@ const paginas = [
   { nome: 'Blog', arq: 'src/pages/blog/index.astro', rota: '/blog/' },
 ];
 
-// titulo="..." e descricao="..." da tag <Base> de cada página. Quem somos usa
-// descricao={abertura}: cai no caso especial abaixo (src/data/socios.ts).
+// titulo="..." e descricao="..." da tag <Base> de cada página.
 const baseDe = (arq: string) => {
   const tag = ler(arq).match(/<Base\s[^>]*>/s)?.[0] ?? '';
   const titulo = tag.match(/titulo="([^"]+)"/)?.[1] ?? tag.match(/titulo=\{[^}]*\}/)?.[0] ?? '';
-  let descricao = tag.match(/descricao="([^"]+)"/)?.[1] ?? '';
-  if (!descricao && /descricao=\{abertura\}/.test(tag)) {
-    descricao = ler('src/data/socios.ts').match(/export const abertura =\s*'([^']+)'/)?.[1] ?? '';
-  }
+  const descricao = tag.match(/descricao="([^"]+)"/)?.[1] ?? '';
   return { titulo, descricao };
 };
 

@@ -8,7 +8,7 @@ import { publicados, dataBR, miniaturas, LARGURAS_CARTAO } from '../../lib/blog'
 const posts = await publicados();
 const abertura = 'Explore nossos artigos e aprofunde-se em insights valiosos sobre desenvolvimento de carreira, liderança e transformação.';
 ---
-<Base titulo="Blog" fechamento descricao="Explore conteúdos exclusivos sobre transição de carreira, desenvolvimento profissional e estratégias para crescimento no mercado de trabalho, com insights e dicas para sua jornada.">
+<Base titulo="Blog" fechamento descricao="Explore conteúdos exclusivos sobre transição de carreira, desenvolvimento profissional e estratégias para crescimento no mercado de trabalho.">
   <TopoPagina titulo="Blog" trilha="Inner" intro={abertura} ilustracao={ilustracao} />
   <section class="wrap grid gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3" aria-label="Artigos">
     {posts.map((p) => (

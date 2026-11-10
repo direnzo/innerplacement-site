@@ -8,9 +8,9 @@ import PerguntasPagina from '../../components/PerguntasPagina.astro';
 import { linksEmpresa } from '../../data/faq';
 import { rotas } from '../../data/site';
 ---
-<Base titulo="Executive Alignment · Preservar quem precisa mudar"
+<Base titulo="Executive Alignment · Preservar e ajustar" servico={{ tipo: 'Desenvolvimento de executivos', publico: 'empresa' }}
   fechamento={{ empresa: true, titulo: 'Existe uma situação executiva que', destaque: 'merece uma leitura mais cuidadosa?', texto: 'Uma conversa sobre a situação, que pode começar sem identificar a pessoa. Sem apresentação de produto e sem compromisso.' }}
-  descricao="Quando um executivo entrega, mas alguma coisa precisa mudar. Há valor, capacidade de entrega e interesse em preservá-lo.">
+  descricao="Quando um executivo entrega, mas alguma coisa precisa mudar. Há valor, capacidade de entrega e interesse em preservá-lo: conheça o Executive Alignment.">
   <TopoPagina titulo="Executive Alignment" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Executive Alignment']]} kicker="Ajustar · Preservar quem precisa mudar" ilustracao={ilustracao}
     destaque="Quando um executivo entrega, mas alguma coisa precisa mudar."
     intro="Há valor, capacidade de entrega e interesse em preservá-lo, mas um aspecto de comportamento, posicionamento, liderança ou relação começou a representar risco." />

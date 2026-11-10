@@ -11,17 +11,22 @@ import { linksEmpresa } from '../../data/faq';
 import { rotas } from '../../data/site';
 // Aqui a fala da Fabíola é o recorte da documentação v2 (6.4), mais curto que o da página Depoimentos.
 const fabiola = { ...D.fabiola, texto: 'Obviamente ali o momento do desligamento sempre é duro, nunca é fácil. […] Mas sempre fui muito grata pela empresa que me deu essa oportunidade. […] Foi uma transição muito estruturada, importante para eu entender quem eu era e o que eu podia fazer.' };
+// Formatos: a mesma fonte para os cards e para o schema Service (Base.astro).
+const formatos = [
+  { nome: 'Transition Platinum', destaque: 'Para transições de maior complexidade, com acompanhamento próximo e individual.' },
+  { nome: 'Transition Focus', destaque: 'Para especialistas, analistas e coordenadores, em transições individuais ou em grupo.' },
+];
 ---
-<Base titulo="Transition · Outplacement" fechamento={{ empresa: true, titulo: 'Uma saída que', destaque: 'precisa ser bem conduzida?' }}
+<Base titulo="Transition · Outplacement" servico={{ tipo: 'Outplacement', publico: 'empresa', formatos }} fechamento={{ empresa: true, titulo: 'Uma saída que', destaque: 'precisa ser bem conduzida?' }}
   descricao="Quando um ciclo termina, o próximo movimento precisa ser construído. A forma como a empresa conduz uma saída também comunica cultura e cuidado.">
-  <TopoPagina titulo="Transition" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Transition']]} kicker="Transitar · Outplacement" ilustracao={ilustracao}
+  <TopoPagina titulo="Transition: outplacement para empresas" migalhas={[['Para sua empresa', rotas.paraEmpresa], ['Transition']]} kicker="Transitar · Outplacement" ilustracao={ilustracao}
     destaque="Quando um ciclo termina, o próximo movimento precisa ser construído."
     intro={['Outplacement é o apoio que a empresa oferece a um profissional desligado para conduzir sua transição de carreira. Na Inner Placement, esse programa se chama Transition e tem dois formatos: Transition Platinum e Transition Focus.', 'A forma como a empresa conduz uma saída também comunica cultura e cuidado. Na Inner, a transição começa pela compreensão da trajetória, do valor construído e da direção que faz sentido. Depois entram posicionamento, estratégia e acesso ao mercado.']} />
   <section class="wrap grid gap-3.5 md:grid-cols-2 md:gap-6">
-    <Programa para="empresa" rotulo="Transição" nome="Transition Platinum" destaque="Para transições de maior complexidade, com acompanhamento próximo e individual.">
+    <Programa para="empresa" rotulo="Transição" {...formatos[0]}>
       <p>O trabalho percorre direção de carreira, posicionamento, currículo e LinkedIn, network, job hunting e preparação para processos seletivos. Uma consultora dedicada acompanha o processo e dá ritmo e continuidade até a recolocação.</p>
     </Programa>
-    <Programa para="empresa" rotulo="Transição" nome="Transition Focus" destaque="Para especialistas, analistas e coordenadores, em transições individuais ou em grupo.">
+    <Programa para="empresa" rotulo="Transição" {...formatos[1]}>
       <p>Uma trilha estruturada combina encontros individuais nos momentos decisivos com ferramentas para posicionamento, network, busca de oportunidades e preparação para entrevistas. O profissional conduz o processo com autonomia e conta com suporte nos pontos em que a decisão exige mais atenção.</p>
     </Programa>
   </section>

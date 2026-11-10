@@ -1,9 +1,10 @@
 ---
 titulo: "Por que transição de carreira e recolocação não são o mesmo?"
-descricao: "A transição de carreira é um processo mais amplo, que envolve fatores como áreas de interesse, experiências prévias, formação e competências, estrutura de valores e aspirações profissionais, dentre outros. Este panorama reforça que não se trata apenas de mudar de emprego, mas de um olhar estruturado"
+titulo_seo: "Transição de carreira não é recolocação"
+descricao: "A transição de carreira é um processo mais amplo que a recolocação: envolve áreas de interesse, experiências, competências, valores e aspirações profissionais."
 data: 2025-07-25
 atualizado: 2025-08-11
-autor: "Inner Placement"
+autor: "cesar-cordeiro"
 categorias: ["Focus", "Next Level", "Platinum"]
 tema: "Transição e recolocação"
 imagem: "/blog/imagens/por-que-transicao-de-carreira-e-recolocacao-nao-sao-o-mesmo.webp"

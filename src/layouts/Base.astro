@@ -17,8 +17,9 @@ import { EMAIL, WHATSAPP_TXT, GTM_ID, enderecos, redes } from '../data/site';
 // fundo: formas da marca flutuando nas bordas de todas as páginas (pedido do dono, 01/10); a home desliga
 // (fundo={false}) porque tem as suas, posicionadas à mão no bloco 2.
 // ogImagem: caminho de uma imagem de compartilhamento própria (posts do blog: a capa). tipo: og:type.
-interface Props { titulo: string; descricao: string; fechamento?: boolean | PropsFechamento; schema?: object; fundo?: boolean; ogImagem?: string; tipo?: 'website' | 'article' }
-const { titulo, descricao, fechamento = false, schema, fundo = true, ogImagem: ogPropria, tipo = 'website' } = Astro.props;
+// servico: páginas de programa; nome e descrição do schema vêm do próprio titulo e da descricao da página.
+interface Props { servico?: { tipo: string; publico: 'empresa' | 'profissional'; formatos?: { nome: string; destaque: string }[] }; titulo: string; descricao: string; fechamento?: boolean | PropsFechamento; schema?: object; fundo?: boolean; ogImagem?: string; tipo?: 'website' | 'article' }
+const { servico, titulo, descricao, fechamento = false, schema, fundo = true, ogImagem: ogPropria, tipo = 'website' } = Astro.props;
 const tituloCompleto = Astro.url.pathname === '/' ? `Inner Placement · ${titulo}` : `${titulo} · Inner Placement`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // A 404 é servida em qualquer URL inexistente: um canonical para /404/ apontaria para um endereço que não existe.
@@ -48,6 +49,13 @@ const org = {
 const site = {
   '@context': 'https://schema.org', '@type': 'WebSite', '@id': 'https://innerplacement.com.br/#site', url: 'https://innerplacement.com.br/',
   name: 'Inner Placement', inLanguage: 'pt-BR', publisher: { '@id': 'https://innerplacement.com.br/#organizacao' },
+};
+const nomeServico = titulo.split(' · ')[0];
+const schemaServico = servico && {
+  '@context': 'https://schema.org', '@type': 'Service', '@id': `${canonical}#servico`, name: nomeServico, description: descricao, url: canonical, serviceType: servico.tipo,
+  provider: { '@id': 'https://innerplacement.com.br/#organizacao' }, areaServed: 'BR',
+  audience: { '@type': 'Audience', audienceType: servico.publico === 'empresa' ? 'Empresas' : 'Profissionais' },
+  ...(servico.formatos && { hasOfferCatalog: { '@type': 'OfferCatalog', name: `Formatos do ${nomeServico}`, itemListElement: servico.formatos.map((f) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: f.nome, description: f.destaque } })) } }),
 };
 ---
 <!doctype html>
@@ -99,6 +107,7 @@ const site = {
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="preload" href={fonte} as="font" type="font/woff2" crossorigin />
   <script type="application/ld+json" set:html={JSON.stringify(schema ?? (Astro.url.pathname === '/' ? [org, site] : org))} />
+  {schemaServico && <script type="application/ld+json" set:html={JSON.stringify(schemaServico)} />}
   <slot name="head" />
 </head>
 <body class="min-h-dvh">

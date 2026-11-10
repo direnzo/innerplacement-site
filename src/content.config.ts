@@ -9,10 +9,12 @@ const blog = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     titulo: z.string(),
+    titulo_seo: z.string().optional(), // só para o <title>, quando o título do post passa de 42 caracteres
     descricao: z.string(),
     data: z.coerce.date(),
     atualizado: z.coerce.date().optional(),
-    autor: z.string().default('Inner Placement'),
+    // Slug de um sócio (src/data/socios.ts) ou a empresa, enquanto o post não tiver assinatura.
+    autor: z.enum(['Inner Placement', 'cesar-cordeiro', 'debora-ereno', 'paula-oliveira']).default('Inner Placement'),
     categorias: z.array(z.string()).default([]),
     tema: z.string().optional(),
     imagem: z.string().optional(),
