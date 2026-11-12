@@ -65,8 +65,8 @@ if (( falhas )); then
 fi
 echo "Publicado em $URL/  (backup: ~/$BACKUPS/site-$CARIMBO.tgz)"
 
-# Linhas ">f..." do rsync são arquivos enviados; index.html vira a URL da pasta, e só entram URLs do sitemap.
-mudadas=$(grep -oE '^>f[^ ]* (.*/)?index\.html$' /tmp/site-envio.txt | awk '{print $2}' | sed -E 's#index\.html$##' \
+# Linhas "<f..." do rsync são arquivos enviados ao servidor (">f" seria recebido); index.html vira a URL da pasta, e só entram URLs do sitemap.
+mudadas=$(grep -oE '^[<>]f[^ ]* (.*/)?index\.html$' /tmp/site-envio.txt | awk '{print $2}' | sed -E 's#index\.html$##' \
   | while read -r p; do u="$URL/$p"; grep -q "<loc>$u</loc>" dist/sitemap-0.xml && echo "$u"; done || true)
 rm -f /tmp/site-envio.txt
 if [[ -n "$mudadas" ]]; then
