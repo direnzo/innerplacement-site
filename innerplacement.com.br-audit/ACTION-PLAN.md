@@ -12,6 +12,7 @@ Pendências em 10/11/2026. Base: `FULL-AUDIT-REPORT.md` (09/11/2026), com os có
 | M11 | Unificar as duas versões do método e revisar posts antigos | Duas versões seguem no ar | Leitura das páginas |
 | Conteúdo | Aprovar novos posts sobre outplacement executivo e Executive Alignment, que têm 0 posts de apoio (`findings/cluster.md`) | Hubs seguem sem satélites | Consultas não-marca por hub |
 | Páginas-pilar | Aprovar "O que é outplacement", "Quanto custa e quanto dura" e "Outplacement x coaching x recolocação" | Consultas informativas seguem sem página de destino | Consultas não-marca por página |
+| Perguntas da Naia (12/11/2026) | Levar "86% recolocados em 4,5 meses" e os outros 2 números autorizados à página de Outplacement; dizer se o atendimento é remoto, presencial ou ambos; aprovar a página "Como escolher uma consultoria de outplacement"; decidir se a Inner quer aparecer para demissão em massa (`findings/ia-visibilidade-2026-11-12.md`) | Inner segue fora das respostas das perguntas de alta aderência | Prompts ativos no painel da Naia |
 | Formato dos posts e páginas finas | Aprovar parágrafo-resposta de 40 a 60 palavras no início dos artigos, listas, tabela Platinum x Focus e conteúdo para `/e-book/` e `/manifesto/` | Artigos seguem sem resposta direta no início | Trechos em destaque e citações em buscas por IA |
 
 ## Depende de servidor ou de contas
