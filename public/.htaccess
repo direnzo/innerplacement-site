@@ -63,6 +63,16 @@ Header always set Strict-Transport-Security "max-age=2592000" "expr=%{HTTPS} == 
 Header always set X-Frame-Options "SAMEORIGIN"
 Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
+# Política de segurança de conteúdo (CSP), por enquanto só em teste (Report-Only: o navegador avisa no console
+# e não bloqueia). Testada aplicada em 12/11/2026 com GTM, GA4, Google Ads, YouTube e formulário, sem violação.
+# Os hashes são dos scripts embutidos (GTM em Base.astro e /whatsapp/); o build falha se eles mudarem sem
+# atualizar esta linha (astro.config.mjs). 'unsafe-eval' é exigido pelo Alpine.js. O painel /admin fica de fora.
+<IfModule mod_setenvif.c>
+<IfModule mod_headers.c>
+SetEnvIf Request_URI "^/admin" painel_cms
+Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'sha256-UOKdeLHedhqVVywncl9w4hQIUPQTIQsEE947/6g5rZ4=' 'sha256-brpMY3fy3d1HIhBeViOGWfCy6lbBnIV46FQfX2/es9o=' 'unsafe-eval' https://*.googletagmanager.com https://*.doubleclick.net https://*.google-analytics.com https://www.googleadservices.com https://pagead2.googlesyndication.com https://www.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://i.ytimg.com https://*.google-analytics.com https://*.googletagmanager.com https://*.doubleclick.net https://www.google.com https://www.google.com.br https://pagead2.googlesyndication.com https://www.googleadservices.com; connect-src 'self' https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://*.googletagmanager.com https://*.doubleclick.net https://pagead2.googlesyndication.com https://www.google.com https://www.google.com.br https://www.googleadservices.com; font-src 'self'; frame-src https://www.youtube-nocookie.com https://www.youtube.com https://*.doubleclick.net https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'" env=!painel_cms
+</IfModule>
+</IfModule>
 # _astro/: o nome do arquivo muda quando o conteúdo muda, então o cache pode ser definitivo.
 <IfModule mod_setenvif.c>
 <IfModule mod_headers.c>

@@ -10,6 +10,9 @@ HOST=inner-v2
 DESTINO='innerplacement'                    # relativo ao HOME do usuário cPanel
 BACKUPS='backups-producao'                  # no HOME, fora da raiz pública
 URL='https://innerplacement.com.br'
+# IndexNow (Bing, Yandex e outros; o Bing alimenta o ChatGPT e o Copilot): a chave é pública por definição
+# e fica em public/<chave>.txt. Avisa só as páginas do sitemap cujo HTML mudou nesta publicação.
+INDEXNOW_CHAVE='2235cbaab95c27f44fafdf9f58c50349'
 # Existem só no servidor e devem ficar (o rsync --delete não os apaga).
 PRESERVAR=(.well-known/ .user.ini php.ini error_log)
 
@@ -44,7 +47,7 @@ echo "==> Backup no servidor: ~/$BACKUPS/site-$CARIMBO.tgz (mantém os 10 mais r
 "${SSH[@]}" "mkdir -p ~/$BACKUPS && chmod 700 ~/$BACKUPS && tar czf ~/$BACKUPS/site-$CARIMBO.tgz -C ~ $DESTINO && cd ~/$BACKUPS && ls -1t site-*.tgz | tail -n +11 | xargs -r rm -f"
 
 echo '==> Envio'
-"${RSYNC[@]}" --itemize-changes
+"${RSYNC[@]}" --itemize-changes | tee /tmp/site-envio.txt
 
 echo '==> Conferência online'
 falhas=0
@@ -61,3 +64,15 @@ if (( falhas )); then
   exit 1
 fi
 echo "Publicado em $URL/  (backup: ~/$BACKUPS/site-$CARIMBO.tgz)"
+
+# Linhas ">f..." do rsync são arquivos enviados; index.html vira a URL da pasta, e só entram URLs do sitemap.
+mudadas=$(grep -oE '^>f[^ ]* (.*/)?index\.html$' /tmp/site-envio.txt | awk '{print $2}' | sed -E 's#index\.html$##' \
+  | while read -r p; do u="$URL/$p"; grep -q "<loc>$u</loc>" dist/sitemap-0.xml && echo "$u"; done || true)
+rm -f /tmp/site-envio.txt
+if [[ -n "$mudadas" ]]; then
+  echo "==> IndexNow: $(wc -l <<<"$mudadas") página(s)"
+  json=$(python3 -c 'import json,sys; print(json.dumps({"host":"innerplacement.com.br","key":sys.argv[1],"keyLocation":sys.argv[2],"urlList":sys.stdin.read().split()}))' \
+    "$INDEXNOW_CHAVE" "$URL/$INDEXNOW_CHAVE.txt" <<<"$mudadas")
+  cod=$(curl -s -o /dev/null -w '%{http_code}' -X POST -H 'Content-Type: application/json; charset=utf-8' --data "$json" https://api.indexnow.org/indexnow || true)
+  echo "  resposta $cod (200 ou 202 = recebido)"   # falha aqui não desfaz a publicação
+fi
