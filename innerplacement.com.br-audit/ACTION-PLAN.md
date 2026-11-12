@@ -23,13 +23,15 @@ Pendências em 10/11/2026. Base: `FULL-AUDIT-REPORT.md` (09/11/2026), com os có
 | M16 | Revisar as tags no GTM e medir o INP real | Tarefas longas seguem acima de 450 ms | INP no CrUX |
 | Fase 4 | Conectar credenciais gratuitas do Google às próximas auditorias | Auditoria sem dados reais | Search Console, CrUX e PageSpeed |
 | Presença externa | Wikidata e menções em imprensa do setor, nessa ordem | Entidade sem corroboração externa | Citações em buscas por IA |
+| Visibilidade em IA (12/11/2026) | Em 8 consultas de busca usada por IA, incluindo "Inner Placement consultoria carreira" e `innerplacement.com.br`, a marca não apareceu nenhuma vez. As respostas citam oHub, Reclame Aqui, artigos de opinião (Monitor Mercantil, Exame, InfoMoney) e marcas grandes (Stato Intoo, LHH, Korn Ferry, IBRA, Orientha, Thomas Case). Ordem sugerida: Bing Webmaster Tools (alimenta ChatGPT e Copilot) com o sitemap; perfil no oHub nas categorias outplacement e recolocação, em SP e Curitiba; página da empresa no LinkedIn e no Reclame Aqui; artigos assinados pelos sócios em veículos de negócios | Marca segue ausente nas mesmas consultas em 8 semanas | Menções da marca nas consultas de `findings/ia-visibilidade-2026-11-12.md` |
+| HTTP/2 | Pedir à hospedagem HTTP/2 (e Brotli, se houver). O servidor responde só em HTTP/1.1, o que o Lighthouse aponta no `/blog/` | `curl --http2` segue em 1.1 | `%{http_version}` |
 
 ## Agenda
 
 | Quando | Ação |
 |---|---|
-| A partir de 23/11/2026 | SEC-02: subir o HSTS para 1 ano, sem `includeSubDomains` |
-| Sem data | SEC-03: testar CSP em `Report-Only`, por causa de GTM e YouTube |
+| A partir de 23/11/2026 | SEC-02: subir o HSTS para 1 ano, sem `includeSubDomains`. Mozilla Observatory em 12/11/2026: B− (65); o HSTS curto custa 10 pontos |
+| Sem data | SEC-03: testar CSP em `Report-Only`, por causa de GTM e YouTube. A falta de CSP custa 25 pontos no Observatory; com HSTS e CSP, a nota vai a A |
 | Agora que a Fase 1 está no ar | Criar nova baseline de drift, mantendo a do WordPress |
 | 04/01/2027 | Rever cliques não-marca, páginas indexadas e 404. Se houver queda, conferir antes as atualizações do Google no período |
 | Antes de ativar campanhas | Rever o bloqueio de `AdsBot` no `robots.txt` |
