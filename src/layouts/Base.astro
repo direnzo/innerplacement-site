@@ -65,7 +65,7 @@ const schemaServico = servico && {
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <!-- Consent Mode do Google: nega a medição por padrão: só o aviso de cookies (CookieConsent.astro) libera,
        por categoria, guardando a escolha para as próximas páginas. O Gerenciador de Tags (GTM_ID em
-       src/data/site.ts) carrega sempre, mas sem medir nada até a permissão ser dada. -->
+       src/data/site.ts) carrega sempre (adiado, ver abaixo), mas sem medir nada até a permissão ser dada. -->
   <script is:inline define:vars={{ GTM_ID }}>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -74,11 +74,21 @@ const schemaServico = servico && {
       var p = JSON.parse(localStorage.getItem('cookies-inner') || 'null');
       if (p) gtag('consent', 'update', { analytics_storage: p.estatisticas ? 'granted' : 'denied', ad_storage: p.marketing ? 'granted' : 'denied', ad_user_data: p.marketing ? 'granted' : 'denied', ad_personalization: p.marketing ? 'granted' : 'denied' });
     } catch (e) {}
-    (function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', GTM_ID);
+    // O GTM (com GA4 e Google Ads) bloqueava ~260 ms da renderização no celular. Ele carrega na primeira
+    // interação ou 6 s depois, o que vier antes. Eventos empurrados antes disso (consentimento,
+    // whatsapp_click) ficam na fila do dataLayer e são processados quando ele carrega.
+    (function (w, d, i) {
+      var feito = false, ev = ['pointerdown', 'keydown', 'scroll', 'touchstart', 'mousemove'];
+      function carregar() {
+        if (feito) return; feito = true;
+        ev.forEach(function (e) { w.removeEventListener(e, carregar, { passive: true }); });
+        w.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var j = d.createElement('script'); j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i;
+        d.head.appendChild(j);
+      }
+      ev.forEach(function (e) { w.addEventListener(e, carregar, { passive: true }); });
+      w.addEventListener('load', function () { setTimeout(carregar, 6000); });
+    })(window, document, GTM_ID);
   </script>
   <title>{tituloCompleto}</title>
   <meta name="description" content={descricao} />

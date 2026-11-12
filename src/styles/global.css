@@ -354,7 +354,8 @@
      área do texto, sem cortar o resto da flor nem depender do comprimento de cada nome. */
   .prog-logo .pl-nome { position: relative; z-index: 1; color: var(--color-tinta); text-shadow: 0 0 1px #fff, 0 0 5px #fff, 0 0 9px #fff; }
   .prog-logo .pl-ros { position: absolute; z-index: 0; right: -.25em; top: 50%; width: 1.55em; height: auto; translate: 0 -50%; opacity: .92; transition: rotate .7s cubic-bezier(.2, .8, .3, 1); }
-  .prog-logo[data-para="empresa"] .pl-nome { color: var(--color-coral); font-weight: 400; }
+  /* #FA5F52: o coral um tom abaixo, para passar no contraste mínimo de texto grande (3,08:1 no branco; o #FF6558 dá 2,89). */
+  .prog-logo[data-para="empresa"] .pl-nome { color: #FA5F52; font-weight: 400; }
   .prog-logo[data-para="empresa"] .pl-ros { filter: grayscale(1) brightness(.35); opacity: .22; }
 }
 @media (hover: hover) { @layer components { article:hover .prog-logo .pl-ros { rotate: 60deg; } } }
