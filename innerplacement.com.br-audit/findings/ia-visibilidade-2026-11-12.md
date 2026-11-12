@@ -61,3 +61,30 @@ Linha de base para repetir em 8 semanas (por volta de 07/01/2027), com as mesmas
 | LHH | 49 | 87 | 89 | 85 | 10,0 s |
 | Thomas Case | 34 | 91 | 57 | 92 | 8,2 s |
 | Blumen | 28 | 94 | 79 | 85 | 16,3 s |
+
+## Perguntas sugeridas pela Naia (uma por tópico, 12/11/2026)
+
+O painel da Naia sugeriu 19 perguntas em 6 tópicos; 2 ativas no plano gratuito. Rodadas aqui com a mesma busca, uma por tópico.
+
+| Tópico | Pergunta | Inner? | Indicados | Aderência |
+|---|---|---|---|---|
+| Outplacement corporativo para executivos | qual o melhor outplacement para executivos c-level que precisam de recolocação e mentoria individual (ativa) | Não | IBRA, Connection HR (oHub) | Alta |
+| Programa para demitidos | sou gerente de rh e preciso indicar um programa de outplacement para demitidos focado em recolocação para cargos de liderança | Não | Connection HR, LHH, Talento RH | Alta |
+| Melhores consultorias | quais as melhores consultorias de outplacement para executivos em transição de carreira | Não | IBRA, Connection HR, Orientha, Nexo HR | Alta |
+| Como escolher | tenho orçamento limitado para contratar outplacement individual (ativa) | Não | Orientha, Connection HR, Stato | Média |
+| Custo corporativo | qual o custo de outplacement corporativo para 10 demitidos | Não | Nenhum indicado | Média |
+| Demissão em massa | vou desligar 80 pessoas, outplacement em grupo em 30 dias | Não | Nenhum indicado | Baixa |
+
+- Nas perguntas de custo e de demissão em massa a IA não indicou fornecedor: ninguém publica preço, prazo ou formato. A Orientha é citada por publicar fatos concretos ("programas de 03, 06, 09 ou 12 meses").
+- O site responde a parte das perguntas (grupo, currículo, entrevistas, 86% em 4,5 meses), mas o número fica fora da página de Outplacement, e não diz se o atendimento é remoto.
+- Sugestão de prompts ativos na Naia: manter o de C-level; trocar o de orçamento limitado pelo do gerente de RH que indica programa para cargos de liderança.
+
+## Relatório técnico da Naia (execução 1, nota 96): situação em 12/11/2026
+
+| Item | Situação |
+|---|---|
+| CORE-04 | Resolvido: descrição da home com 142 caracteres |
+| SEC-03 | Resolvido: X-Frame-Options e Permissions-Policy no ar desde 10/11 (4 de 5 cabeçalhos) |
+| SEC-02 | Agendado para 23/11 |
+| CIT-02, CIT-08 | Depende das sócias; o caminho é a página-pilar e os números na página de Outplacement |
+| PERF-07, ACC-21, ACC-23, ACC-24 | Descartados no plano de ação |
