@@ -21,7 +21,7 @@ const miniaturas = () => ({
       const { default: sharp } = await import('sharp');
       const pasta = fileURLToPath(new URL('blog/imagens/', dir));
       for (const f of readdirSync(pasta).filter((n) => n.endsWith('.webp'))) {
-        for (const w of [640, 960]) {
+        for (const w of [480, 640, 720, 960]) {
           await sharp(pasta + f).resize({ width: w, withoutEnlargement: true }).webp({ quality: 78 }).toFile(pasta + f.replace(/\.webp$/, `-${w}.webp`));
         }
       }
