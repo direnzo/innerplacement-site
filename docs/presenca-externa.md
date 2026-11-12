@@ -60,4 +60,4 @@ Ordem sugerida:
 | LinkedIn da empresa | Já existe: conferir site, endereço e descrição | |
 | Reclame Aqui | Aparece nas perguntas "qual contratar" | Só criar se alguém vai responder o que chegar |
 
-Depois de cada cadastro feito, avise para incluir o link em `redes` (`src/data/site.ts`), que alimenta o `sameAs` do schema.
+Depois de cada cadastro feito, avise para incluir o link no `sameAs` do schema (hoje montado a partir de `redes`, em `src/data/site.ts`, que também aparece no rodapé; oHub e Reclame Aqui entram só no schema).
