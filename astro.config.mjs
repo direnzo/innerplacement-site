@@ -1,4 +1,5 @@
 import { readdirSync, readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
@@ -14,6 +15,27 @@ const lastmod = Object.fromEntries(readdirSync(POSTS).filter((f) => f.endsWith('
 
 // Miniaturas dos cartões do blog, geradas no build para valer também nas capas enviadas pelo painel /admin
 // (public/blog/imagens/ não passa pelo astro:assets). Larguras usadas em miniaturas(), src/lib/blog.ts.
+// A CSP do public/.htaccess libera os scripts embutidos pelo hash. Se um deles mudar e o hash não for
+// atualizado lá, o GTM pararia em silêncio quando a política for aplicada: por isso o build falha.
+const conferirCsp = () => ({
+  name: 'conferir-csp',
+  hooks: {
+    'astro:build:done': async ({ dir }) => {
+      const csp = readFileSync('public/.htaccess', 'utf8').match(/Content-Security-Policy[^"]*"([^"]+)"/)?.[1] ?? '';
+      const raiz = fileURLToPath(dir);
+      const faltam = new Set();
+      for (const f of readdirSync(raiz, { recursive: true }).filter((n) => n.endsWith('.html') && !n.startsWith('admin'))) {
+        for (const [, attrs, corpo] of readFileSync(raiz + f, 'utf8').matchAll(/<script(?![^>]*\bsrc=)([^>]*)>([\s\S]*?)<\/script>/g)) {
+          if (attrs.includes('ld+json')) continue;
+          const hash = `'sha256-${createHash('sha256').update(corpo).digest('base64')}'`;
+          if (!csp.includes(hash)) faltam.add(`${hash} (${f})`);
+        }
+      }
+      if (faltam.size) throw new Error(`CSP desatualizada no public/.htaccess. Hashes que faltam:\n${[...faltam].join('\n')}`);
+    },
+  },
+});
+
 const miniaturas = () => ({
   name: 'miniaturas-blog',
   hooks: {
@@ -53,5 +75,6 @@ export default defineConfig({
       serialize: (item) => ({ ...item, ...(lastmod[new URL(item.url).pathname] && { lastmod: lastmod[new URL(item.url).pathname] }) }),
     }),
     miniaturas(),
+    conferirCsp(),
   ],
 });
