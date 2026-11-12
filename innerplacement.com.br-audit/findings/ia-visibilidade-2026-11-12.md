@@ -88,3 +88,9 @@ O painel da Naia sugeriu 19 perguntas em 6 tópicos; 2 ativas no plano gratuito.
 | SEC-02 | Agendado para 23/11 |
 | CIT-02, CIT-08 | Depende das sócias; o caminho é a página-pilar e os números na página de Outplacement |
 | PERF-07, ACC-21, ACC-23, ACC-24 | Descartados no plano de ação |
+
+## Lighthouse no ar depois da publicação (12/11/2026, 23h40)
+
+Mobile: home, Outplacement, Transição e Contato com 100 nas 4 categorias; `/blog/` com 99 em performance (LCP simulado de 1,9 s na capa do primeiro post, com HTTP/1.1). Desktop: 100 nas 4 categorias nas 5 páginas.
+
+IndexNow: a primeira publicação não avisou nenhuma URL (o script procurava `>f`, e o rsync marca envio com `<f`). Corrigido; as 26 URLs do sitemap foram enviadas à mão, com resposta HTTP 202.
