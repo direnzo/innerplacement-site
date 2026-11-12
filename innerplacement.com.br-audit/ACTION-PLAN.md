@@ -32,7 +32,7 @@ Pendências em 10/11/2026. Base: `FULL-AUDIT-REPORT.md` (09/11/2026), com os có
 | Quando | Ação |
 |---|---|
 | A partir de 23/11/2026 | SEC-02: subir o HSTS para 1 ano, sem `includeSubDomains`. Mozilla Observatory em 12/11/2026: B− (65); o HSTS curto custa 10 pontos |
-| Após a publicação da `main` | SEC-03: CSP já no ar em `Report-Only` (`public/.htaccess`), testada aplicada em servidor local sem violação. Rodar o mesmo teste do navegador em produção; sem violação, trocar para `Content-Security-Policy` junto com o HSTS de 23/11. Com os dois, o Observatory deve ir de B− (65) para A |
+| 23/11/2026, junto com o SEC-02 | SEC-03: trocar `Content-Security-Policy-Report-Only` por `Content-Security-Policy` em `public/.htaccess`. Verificada em produção em 12/11/2026: 0 violações em 9 páginas e no clique de WhatsApp (conversão do Google Ads e GA4), com consentimento total. Antes de criar tag nova no GTM com outro domínio, incluir o domínio na CSP. Com HSTS e CSP, o Observatory deve ir de B− (65) para A |
 | Agora que a Fase 1 está no ar | Criar nova baseline de drift, mantendo a do WordPress |
 | 04/01/2027 | Rever cliques não-marca, páginas indexadas e 404. Se houver queda, conferir antes as atualizações do Google no período |
 | Antes de ativar campanhas | Rever o bloqueio de `AdsBot` no `robots.txt` |
