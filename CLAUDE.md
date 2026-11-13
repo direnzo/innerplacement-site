@@ -44,6 +44,11 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
   dada no aviso. **`GTM_ID` é o mesmo contêiner que o WordPress atual usa** (decisão deliberada, para não
   perder o histórico do Analytics na troca de site) — não trocar por um novo sem avisar o dono, porque
   isso quebra a continuidade dos dados.
+- **Metricool** (desde 12/11/2026): carregado por `src/scripts/app.ts`, só com consentimento de Estatísticas e
+  depois da primeira interação (como o GTM). Não colar o script nem o pixel `<img>` do Metricool no HTML: mediriam
+  quem recusou cookies e contariam a visita em dobro. Citado na Política de Privacidade.
+- **CSP** em `public/.htaccess` (Report-Only até 23/11/2026, depois definitiva): todo domínio novo de script,
+  pixel ou tag do GTM precisa entrar nela, e script embutido novo exige o hash (o build falha sem ele).
 - A Política de Privacidade (`src/pages/politica-de-privacidade.astro`) traz na seção 10 um texto
   provisório, com o canal contato@, até os sócios definirem o encarregado de dados (DPO). Não inventar
   esse nome.
