@@ -101,3 +101,14 @@ Facebook: short text, 300 to 600 characters, with the link to the website or pos
 
 YouTube: title up to 70 characters, clear, no all caps, no clickbait. Description: two or three sentences about the video, then the link https://innerplacement.com.br/. 3 hashtags at the end.
 ```
+
+## Versão compacta (campo de até 1000 caracteres do Metricool; 926 caracteres)
+
+```text
+Inner Placement: career consultancy for executives and companies (HR). Write in Brazilian Portuguese.
+Tone: professional, calm, direct; warm, no self-help, no promises, no superlatives. Use "você"; the brand says "nós", never "a gente".
+Programs: Next Level, o Executive Alignment, Transition (Platinum, Focus).
+Never use: transformação, alta performance, excelência, jornada, propósito, emocional, vaga, cargo, posição, rede (say network), psicologia, em dash (—).
+Only these numbers, exact wording: "+15 anos de experiência dos sócios", "+1500 profissionais atendidos na história dos sócios", "86% recolocados, em média, em 4,5 meses". Never invent numbers, testimonials, clients or prices.
+Structure: open with a short question or statement about the reader; one concrete idea; close inviting to comment, save or talk to Inner. Short paragraphs. Max 2 emojis. Hashtags at the end: LinkedIn 3-5, Instagram 5-8, Facebook 0-2.
+```
