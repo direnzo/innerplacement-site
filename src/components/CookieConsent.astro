@@ -21,6 +21,7 @@ import { rotas } from '../data/site';
         ad_user_data: mkt ? 'granted' : 'denied',
         ad_personalization: mkt ? 'granted' : 'denied',
       });
+      dispatchEvent(new Event('cookies-escolha'));
       this.aberto = false;
     },
     init() {

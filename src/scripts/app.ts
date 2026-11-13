@@ -247,6 +247,34 @@ if (!location.pathname.startsWith('/whatsapp')) {
   }, true);
 }
 
+// Metricool (estatísticas de visitas, painel de redes sociais da Inner). Mede visitas, então só carrega para
+// quem aceitou "Estatísticas" no aviso de cookies, e, como o GTM, só depois da primeira interação ou 6 s após
+// o carregamento, para não pesar na abertura da página. O domínio está na CSP (public/.htaccess).
+const METRICOOL_HASH = '25df424498ad94c9dc7ec00c3d5f832a';
+const aceitouEstatisticas = () => {
+  try { return !!JSON.parse(localStorage.getItem('cookies-inner') || 'null')?.estatisticas; } catch { return false; }
+};
+let metricoolPedido = false;
+const carregarMetricool = () => {
+  if (metricoolPedido || !aceitouEstatisticas()) return;
+  metricoolPedido = true;
+  const s = document.createElement('script');
+  s.src = 'https://tracker.metricool.com/resources/be.js';
+  s.async = true;
+  s.onload = () => (window as unknown as { beTracker?: { t: (o: { hash: string }) => void } }).beTracker?.t({ hash: METRICOOL_HASH });
+  document.head.appendChild(s);
+};
+const quandoOcioso = (fn: () => void) => {
+  const ev = ['pointerdown', 'keydown', 'scroll', 'touchstart', 'mousemove'];
+  let feito = false;
+  const uma = () => { if (feito) return; feito = true; ev.forEach((e) => removeEventListener(e, uma)); fn(); };
+  ev.forEach((e) => addEventListener(e, uma, { passive: true }));
+  if (document.readyState === 'complete') setTimeout(uma, 6000); else addEventListener('load', () => setTimeout(uma, 6000));
+};
+quandoOcioso(carregarMetricool);
+// Quem aceita "Estatísticas" no aviso já interagiu com a página: carrega na hora.
+addEventListener('cookies-escolha', carregarMetricool);
+
 // Reabre o aviso de cookies (CookieConsent.astro) pelo link do rodapé, para quem quiser rever a escolha.
 document.getElementById('abrir-cookies')?.addEventListener('click', () => dispatchEvent(new Event('cookies-reabrir')));
 
