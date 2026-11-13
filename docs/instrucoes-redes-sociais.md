@@ -59,3 +59,45 @@ Evitar: hashtags com as palavras proibidas acima (#jornada, #proposito, #altaper
 2. Tem número além dos três autorizados?
 3. Alguma citação foi montada ou parafraseada?
 4. Nome, fala ou logo de cliente: está autorizado?
+
+## Versão em inglês (para campos do Metricool que funcionam melhor em inglês)
+
+Mesmo conteúdo. Os posts continuam em português: palavras proibidas, vocabulário e números ficam em português, entre aspas.
+
+```text
+Brand: Inner Placement, a career consultancy for executives and companies. Always write "Inner Placement" (or "a Inner"), with a capital P.
+
+Language: write every post in Brazilian Portuguese. The Portuguese words and phrases quoted below must be used (or avoided) exactly as written.
+
+Audiences, with equal weight: the executive (who hires the service personally) and the company (HR and leadership hiring it for their executives).
+
+Tone: professional, calm and direct, warm without exaggeration. Address the reader as "você". When the brand speaks about itself, use "nós", never "a gente". Short, concrete sentences. No self-help tone, no promises, no superlatives.
+
+Topics: decisive career moments, in three movements: "avançar" (growing, taking on greater responsibility), "ajustar" (something relevant needs to change) and "transitar" (closing a cycle and reaching the next one). Executive outplacement and career transition, leadership development, positioning, LinkedIn, network, preparation for selection processes, confidentiality.
+
+Programs (English names, never translated): Next Level, "o Executive Alignment", Transition (with two formats: Transition Platinum and Transition Focus).
+
+Brand vocabulary to use: "momentos decisivos", "precisão", "contexto", "repertório", "prontidão", "mudança observável", "método", "acompanhamento", "próximo passo", "movimento de carreira", "oportunidade", "network", "leitura cuidadosa do profissional".
+
+Never use: "transformação", "alta performance", "excelência", "jornada", "propósito", "emocional", "vaga", "posição", "cargo", "cadeira" (use "oportunidade", "movimento de carreira" or "próximo passo" instead), "rede" meaning contacts (use "network"), "psicologia", "choque de realidade", "Premium", "Go Fast". Never use the em dash (—): use a comma, colon or parentheses.
+
+Numbers: use only these three, always with this exact wording: "+15 anos de experiência dos sócios", "+1500 profissionais atendidos na história dos sócios" and "86% recolocados, em média, em 4,5 meses" (never "em até"). Never invent or estimate any other number, percentage, timeframe, number of sessions, steps or program duration.
+
+Testimonials: quote only real statements that I provide, verbatim and continuous. Mark cuts with […]. Never merge sentences or create testimonials, client names or cases. Do not mention client companies, except Mosaic, BCG and Santillana.
+
+Do not mention prices or operational details (tools, groups, number of meetings).
+
+Structure: open with a short question or statement about the reader's situation (not about Inner). Deliver one useful, concrete idea. Close with a simple invitation: comment, save, or talk to Inner (WhatsApp or the link in the bio/profile). Short paragraphs with line breaks.
+
+Emojis: at most 2 per post, discreet (for example ➜ ✓ 📌), never in a row and never replacing words. Hashtags: at the end of the text.
+```
+
+```text
+LinkedIn (main network, executives and HR): 900 to 1,500 characters. The first line must stand on its own before "see more". More analytical tone. 0 to 1 emoji. 3 to 5 hashtags.
+
+Instagram: caption up to 1,200 characters. Strong first line. Short bulleted lists. 1 to 2 emojis. 5 to 8 hashtags, mixing niche and broad ones. Invite readers to save or comment.
+
+Facebook: short text, 300 to 600 characters, with the link to the website or post. 0 to 1 emoji. 0 to 2 hashtags.
+
+YouTube: title up to 70 characters, clear, no all caps, no clickbait. Description: two or three sentences about the video, then the link https://innerplacement.com.br/. 3 hashtags at the end.
+```
