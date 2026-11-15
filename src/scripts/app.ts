@@ -5,6 +5,27 @@ import Alpine from 'alpinejs';
 // o envio comum também funciona (o servidor redireciona). Só a versão de testes num arquivo único
 // (tools/versao-teste.py, window.INNER_TESTE = true) não envia: ela não tem servidor.
 const ERRO_ENVIO = 'Não foi possível enviar agora. Tente de novo em instantes ou chame a Inner no WhatsApp.';
+
+// Conversão de formulário (docs/ANALYTICS.md). Contrato com o Gerenciador de Tags (não renomear):
+// { event: 'lead_submit', form_name: 'contato' | 'ebook' }, enviado só quando o servidor confirma o envio.
+// Devolve uma promessa que resolve quando o GTM processou o evento ou após 800 ms (sem GTM, sem consentimento
+// ou com bloqueador), para o redirecionamento do contato não cortar o envio da medição.
+const registrarLead = (form_name: 'contato' | 'ebook') => new Promise<void>((resolve) => {
+  const w = window as any;
+  w.dataLayer = w.dataLayer || [];
+  const fim = window.setTimeout(resolve, 800);
+  w.dataLayer.push({ event: 'lead_submit', form_name, eventCallback: () => { clearTimeout(fim); resolve(); } });
+});
+
+// Tráfego interno (docs/ANALYTICS.md): abrir qualquer página com ?interno=1 marca este navegador por 1 ano
+// (cookie ip_interno, lido pelo GTM para enviar traffic_type=internal ao GA4); ?interno=0 desmarca.
+// Fica no código, e não numa tag HTML do GTM, porque a CSP do site não aceita script embutido.
+{
+  const interno = new URLSearchParams(location.search).get('interno');
+  if (interno === '1') document.cookie = 'ip_interno=1; path=/; max-age=31536000; SameSite=Lax; Secure';
+  else if (interno === '0') document.cookie = 'ip_interno=; path=/; max-age=0; SameSite=Lax; Secure';
+}
+
 Alpine.data('contato', () => ({
   f: { nome: '', email: '', whatsapp: '', mensagem: '' },
   erros: {} as Record<string, string>,
@@ -31,7 +52,7 @@ Alpine.data('contato', () => ({
     try {
       const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
       const dados = await r.json().catch(() => ({}));
-      if (r.ok && dados.ok) { location.href = dados.destino || obrigado; return; }
+      if (r.ok && dados.ok) { await registrarLead('contato'); location.href = dados.destino || obrigado; return; }
       this.erros = dados.erro ? { envio: dados.erro } : { envio: ERRO_ENVIO };
     } catch {
       this.erros = { envio: ERRO_ENVIO };
@@ -67,7 +88,7 @@ Alpine.data('ebook', () => ({
       const form = e.target as HTMLFormElement;
       const r = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
       const dados = await r.json().catch(() => ({}));
-      if (r.ok && dados.ok) { this.liberado = true; this.enviando = false; return; }
+      if (r.ok && dados.ok) { this.liberado = true; this.enviando = false; registrarLead('ebook'); return; }
       this.erros = dados.erro ? { envio: dados.erro } : { envio: ERRO_ENVIO };
     } catch {
       this.erros = { envio: ERRO_ENVIO };
@@ -226,7 +247,7 @@ document.querySelectorAll<HTMLElement>('[data-carrossel-caixa]').forEach((caixa)
   }
 });
 
-// Conversão de WhatsApp (docs/ANALYTICS-whatsapp.md). Os botões levam direto ao wa.me; sem este evento,
+// Conversão de WhatsApp (docs/ANALYTICS.md). Os botões levam direto ao wa.me; sem este evento,
 // as tags "Clique Botão Whats" do Gerenciador de Tags só disparavam na página /whatsapp/. Contrato (não renomear):
 // { event: 'whatsapp_click', link_url, link_id, link_text, link_location } com link_location em
 // rodape | flutuante | conteudo. Na própria /whatsapp/ não envia: lá a conversão já sai pela visita à página.
