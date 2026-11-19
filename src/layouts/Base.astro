@@ -74,10 +74,13 @@ const schemaServico = servico && {
       var p = JSON.parse(localStorage.getItem('cookies-inner') || 'null');
       if (p) gtag('consent', 'update', { analytics_storage: p.estatisticas ? 'granted' : 'denied', ad_storage: p.marketing ? 'granted' : 'denied', ad_user_data: p.marketing ? 'granted' : 'denied', ad_personalization: p.marketing ? 'granted' : 'denied' });
     } catch (e) {}
-    // O GTM (com GA4 e Google Ads) bloqueava ~260 ms da renderização no celular. Ele carrega na primeira
-    // interação ou 6 s depois, o que vier antes. Eventos empurrados antes disso (consentimento,
-    // whatsapp_click) ficam na fila do dataLayer e são processados quando ele carrega.
-    (function (w, d, i) {
+    // Diagnóstico controlado de CLS: os parâmetros abaixo só existem na branch de teste.
+    // ?cls-test=sem-terceiros impede o carregamento do GTM; Metricool é bloqueado em app.ts.
+    // ?cls-test=fonte-reserva força Arial para comparar o impacto da fonte web.
+    var clsTest = new URLSearchParams(location.search).get('cls-test');
+    if (clsTest === 'fonte-reserva') document.documentElement.classList.add('cls-test-fonte-reserva');
+    // O GTM carrega na primeira interação ou 6 s depois, o que vier antes.
+    if (clsTest !== 'sem-terceiros') (function (w, d, i) {
       var feito = false, ev = ['pointerdown', 'keydown', 'scroll', 'touchstart', 'mousemove'];
       function carregar() {
         if (feito) return; feito = true;
