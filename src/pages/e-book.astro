@@ -40,8 +40,8 @@ const campo = 'h-[52px] w-full rounded-full border-[1.5px] border-linha bg-white
           <button type="submit" class="btn w-full sm:w-auto sm:self-start" :disabled="enviando" :aria-busy="enviando.toString()"><span x-text="enviando ? 'Enviando…' : 'Clique para ter acesso ao e-book.'">Clique para ter acesso ao e-book.</span></button>
         </form>
 
-        <div x-cloak x-show="liberado" data-pdf={PDF} class="flex flex-col gap-4 rounded-[20px] bg-white p-5 md:p-7" role="status">
-          <a :href="liberado ? $el.parentElement.dataset.pdf : null" class="btn self-start" download>Clique aqui para fazer o download</a>
+        <div x-cloak x-show="liberado" class="flex flex-col gap-4 rounded-[20px] bg-white p-5 md:p-7" role="status">
+          <a href={PDF} class="btn self-start" download>Clique aqui para fazer o download</a>
         </div>
       </div>
     </div>
