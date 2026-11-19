@@ -1,0 +1,41 @@
+name: Validar PR (sem publicar)
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'astro.config.*'
+      - '.github/workflows/validar-pr.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Instalar dependências
+        run: npm ci
+      - name: Compilar Astro
+        run: npm run build
+      - name: Validar link estático do e-book
+        run: |
+          node --input-type=module <<'JS'
+          import { readFileSync, existsSync } from 'node:fs';
+          import assert from 'node:assert/strict';
+          const html = readFileSync('dist/e-book/index.html', 'utf8');
+          const pdf = '/e-book/Por-que-os-Planos-de-Sucessao-Falham-e-Como-Evitar.pdf';
+          assert.ok(html.includes('href="' + pdf + '"'), 'Link estático do PDF não encontrado no HTML');
+          assert.ok(existsSync('dist' + pdf), 'Arquivo PDF não encontrado no build');
+          console.log('Link estático e arquivo PDF verificados.');
+          JS
