@@ -6,8 +6,8 @@ backend:
   name: github
   repo: direnzo/innerplacement-site
   branch: main
-  # base_url: endereço do serviço de login com GitHub (Cloudflare Worker sveltia-cms-auth), quando
-  # configurado. Sem ele, o painel oferece "entrar com token" (token pessoal do GitHub).
+  # base_url: endereço do Worker sveltia-cms-auth (botão "Entrar com GitHub"). Passo a passo e como dar
+  # acesso a novas pessoas: docs/painel-admin.md. Sem base_url, o painel só oferece "entrar com token".
   commit_messages:
     create: 'Painel: cria {{collection}} "{{slug}}"'
     update: 'Painel: atualiza {{collection}} "{{slug}}"'
