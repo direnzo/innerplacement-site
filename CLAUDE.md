@@ -84,8 +84,9 @@ Instruções para sessões de agente neste repositório. Estrutura, comandos e "
 
 - `main` é sempre estável. Cada frente de trabalho numa branch própria (`imagens/rodada-3`,
   `pagina/outplacement`, `deploy/producao`…), com merge na `main` ao concluir.
-- Remote: github.com/direnzo/innerplacement-site. **O WSL não tem credenciais do GitHub**: o dono faz
-  push/sync pela extensão de Git do VS Code. Commite e avise; não tente autenticar.
+- Remote: github.com/direnzo/innerplacement-site. Desde 24/11/2026 o WSL acessa o GitHub pelo `gh`
+  (logado como `direnzo`; o git usa `gh auth git-credential`), então `git fetch`/`pull` funcionam. **Push na
+  `main` publica o site**: só com pedido explícito do dono; na dúvida, commite e avise. Não refaça o login.
 - Nunca versionar `node_modules/`, `dist/`, `.astro/`, `teste/` nem as pastas locais de imagens.
 
 ## Publicação
