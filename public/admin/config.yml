@@ -23,6 +23,11 @@ app_title: Inner Placement
 logo:
   src: /logo.svg
 
+# Endereços sem acento nem caractere especial ("três" vira "tres") para posts novos e imagens enviadas.
+slug:
+  encoding: ascii
+  clean_accents: true
+
 # Imagens enviadas pelo painel (capas do blog).
 media_folder: public/blog/imagens
 public_folder: /blog/imagens
