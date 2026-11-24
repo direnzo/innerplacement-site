@@ -8,7 +8,7 @@ autor: Inner Placement
 categorias:
   - Comportamento
 tema: ''
-imagem: /blog/imagens/Capa_artigo_Os três filtros .png
+imagem: /blog/imagens/os-tres-filtros-que-distorcem-a-sua-historia-na-entrevista.png
 imagem_alt: ''
 rascunho: false
 ---

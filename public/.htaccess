@@ -32,6 +32,9 @@ RedirectMatch 301 ^/termos-e-condicoes/?$ /politica-de-privacidade/
 RedirectMatch 301 ^/endereços(/.*)?$ /contato/
 # Arquivos do blog do WordPress
 RedirectMatch 301 ^/(category|author)(/.*)?$ /blog/
+# Posts renomeados para endereço sem acento. ".{2,3}" casa a letra acentuada em NFC (2 bytes) ou NFD (3 bytes),
+# mas não a letra sem acento (1 byte): assim o endereço novo não redireciona para si mesmo.
+RedirectMatch 301 ^/os-tr.{2,3}s-filtros-que-distorcem-a-sua-hist.{2,3}ria-na-entrevista/?$ /os-tres-filtros-que-distorcem-a-sua-historia-na-entrevista/
 # Feeds do WordPress (do site, dos posts e de comentários)
 RedirectMatch 301 ^/(.+/)?feed/?$ /rss.xml
 ErrorDocument 404 /404.html
