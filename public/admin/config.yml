@@ -6,6 +6,8 @@ backend:
   name: github
   repo: direnzo/innerplacement-site
   branch: main
+  # Só "Entrar com token": sem o Worker de login, o botão do GitHub não funciona (docs/painel-admin.md).
+  auth_methods: [token]
   # Acesso por token pessoal do GitHub, um por editor ("Entrar com token"): docs/painel-admin.md.
   # Sem base_url de propósito; base_url só entra se adotarmos o login "Entrar com GitHub" (Worker sveltia-cms-auth).
   commit_messages:
@@ -17,7 +19,9 @@ backend:
 
 site_url: https://innerplacement.com.br
 display_url: https://innerplacement.com.br
-logo_url: /favicon.svg
+app_title: Inner Placement
+logo:
+  src: /logo.svg
 
 # Imagens enviadas pelo painel (capas do blog).
 media_folder: public/blog/imagens
