@@ -85,6 +85,6 @@ Para ele, parte da resposta foi também se permitir não ter pressa. Entender qu
 
 A carreira não é só uma trajetória profissional. É uma conversa contínua com quem você é, com o que valoriza, com o tipo de vida que quer construir. E essa conversa exige mais do que uma boa planilha. Exige as perguntas certas. E alguém que te ajude a ouvi-las.
 
-### *Você tem feito as perguntas certas para a sua carreira? Ou está respondendo muito bem às perguntas erradas?*
+## *Você tem feito as perguntas certas para a sua carreira? Ou está respondendo muito bem às perguntas erradas?*
 
 A Inner Placement acompanha profissionais e líderes em processos de [transição de carreira](/para-voce/transicao-e-recolocacao/), [executive coaching](/para-voce/next-level/) e desenvolvimento profissional, com escuta humana e método.

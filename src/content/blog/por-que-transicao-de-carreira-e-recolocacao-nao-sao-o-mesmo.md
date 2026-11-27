@@ -1,9 +1,9 @@
 ---
-titulo: "Por que transição de carreira e recolocação não são o mesmo?"
-titulo_seo: "Transição de carreira não é recolocação"
-descricao: "A transição de carreira é um processo mais amplo que a recolocação: envolve áreas de interesse, experiências, competências, valores e aspirações profissionais."
+titulo: "Transição de carreira, recolocação ou outplacement: qual caminho seguir?"
+titulo_seo: "Transição, recolocação ou outplacement: qual escolher?"
+descricao: "Entenda a diferença entre transição de carreira, recolocação e outplacement e descubra qual caminho faz sentido para o seu momento profissional."
 data: 2025-07-25
-atualizado: 2025-08-11
+atualizado: 2026-11-27
 autor: "cesar-cordeiro"
 categorias: ["Focus", "Next Level", "Platinum"]
 tema: "Transição e recolocação"
@@ -17,6 +17,17 @@ A transição de carreira é um processo mais amplo, que envolve fatores como á
 Para saber a melhor forma de lidar com este momento, é necessário entender e diferenciar transição de carreira e recolocação profissional. Embora muita gente os use como sinônimos, eles têm significados, e impactos, bem diferentes. É comum que [momentos de mudança](/quando-o-terreno-muda-o-que-separa-executivos-que-saem-na-hora-certa-dos-que-esperam-demais/) tragam questionamentos sobre a trajetória profissional, e entender o que cada etapa representa é essencial para movimentações assertivas e construção de um plano realista e coerente com seus objetivos. 
 
 Tanto a transição quanto a recolocação envolvem planejamento, mas com foco e profundidade diferentes.Ambas, se bem estruturadas, podem ser ágeis e eficazes, porém se forem realizadas sem uma estruturação podem levar a escolhas equivocadas, gerando ainda mais desgaste. 
+
+## Transição, recolocação ou desenvolvimento: por onde começar?
+
+Antes de escolher um programa, vale entender qual é a necessidade principal deste momento:
+
+- **Recolocação profissional:** para quem quer buscar uma nova posição próxima à experiência que já construiu.
+- **Transição de carreira:** para quem precisa rever direção, possibilidades e posicionamento antes de entrar no mercado.
+- **Desenvolvimento de carreira:** para quem quer se preparar para um próximo nível sem necessariamente encerrar o ciclo atual.
+- **Outplacement:** para quem recebe o apoio da empresa durante uma saída ou uma movimentação planejada.
+
+Esses caminhos podem se encontrar ao longo da jornada. O ponto de partida, porém, muda o tipo de acompanhamento, as decisões que precisam ser tomadas e o ritmo do processo.
 
 A recolocação é um processo mais direto, seu foco está em encontrar uma vaga ou emprego, normalmente parecidos com a que o profissional ocupava anteriormente. Neste caminho, o que predomina é o foco no currículo competitivo, LinkedIn bem posicionado, networking ativo e boa preparação para entrevistas.
 
@@ -45,6 +56,12 @@ O acompanhamento permite que o profissional tenha suporte estratégico durante o
 Independentemente da escolha, o mais importante é garantir que o movimento seja feito com consciência, clareza e alinhamento com seus valores. 
 
 A movimentação de carreira certa pode ser o primeiro passo para uma nova fase de crescimento pessoal e profissional.
+
+## Como a Inner pode apoiar esse momento
+
+Para profissionais que estão encerrando um ciclo ou buscando uma nova posição, o [Transition](/para-voce/transicao-e-recolocacao/) combina direção, posicionamento e execução. Para quem quer crescer na carreira atual ou se preparar para novas responsabilidades, o [Next Level](/para-voce/next-level/) parte do impacto que a pessoa quer construir.
+
+Quando a contratação é feita pela organização, o [Transition para empresas](/para-sua-empresa/outplacement/) estrutura o apoio à pessoa e os marcos de acompanhamento para a empresa, preservando a confidencialidade da jornada.
 
 **Quer entender qual caminho faz mais sentido para você ou para sua equipe?**
 
