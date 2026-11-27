@@ -1,6 +1,6 @@
 ---
-titulo: Os três filtros que distorcem a sua história na entrevista
-titulo_seo: Os três filtros que distorcem a sua história na entrevista
+titulo: Os três filtros que distorcem a sua história na entrevista
+titulo_seo: Filtros que distorcem sua história na entrevista
 descricao: Como apresentar sua trajetória em uma entrevista de emprego? Conheça os três filtros que distorcem sua história e saiba como evitá-los.
 data: 2026-11-24
 atualizado: 2026-11-24
@@ -41,4 +41,4 @@ Antes da próxima entrevista, vale submeter a própria trajetória a quatro perg
 
 Na maioria dos casos, a experiência já está lá. Falta contá-la para quem está ouvindo.
 
-###### A InnerPlacement acompanha profissionais e líderes em processos de transição de carreira, executive coaching e desenvolvimento profissional, com escuta humana e método.
+**A InnerPlacement acompanha profissionais e líderes em processos de transição de carreira, executive coaching e desenvolvimento profissional, com escuta humana e método.**
