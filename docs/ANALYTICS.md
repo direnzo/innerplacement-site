@@ -12,7 +12,8 @@ Os eventos abaixo saem de `src/scripts/app.ts`. **Não renomear eventos nem par�
 | `whatsapp_click` | Clique em link `wa.me/` (fora da página /whatsapp/) | `link_url`, `link_id`, `link_text`, `link_location` (`rodape`, `flutuante`, `conteudo`) | `contact_whatsapp` (evento principal) |
 
 - O contato redireciona para `/obrigado/` depois do envio; o código espera o GTM processar o
-  `lead_submit` (até 800 ms) antes de sair da página.
+  `lead_submit` (até 800 ms) antes de sair da página. Os cliques diretos em WhatsApp seguem a
+  mesma regra, para reduzir a perda de conversão antes de o aplicativo abrir.
 - O e-book não sai da página: o servidor responde e o botão de download aparece (`/e-book/?ok=1` no envio
   sem JavaScript). Por isso o lead do e-book não pode ser medido pela visita a `/obrigado/`.
 - A visita a `/whatsapp/` continua sendo medida pela própria página no GTM.

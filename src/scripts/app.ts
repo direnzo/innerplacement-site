@@ -258,12 +258,30 @@ if (!location.pathname.startsWith('/whatsapp')) {
     const local = a.closest('[data-wa-local]')?.getAttribute('data-wa-local') ?? (a.closest('footer') ? 'rodape' : 'conteudo');
     const w = window as any;
     w.dataLayer = w.dataLayer || [];
+    // Em uma navegação para o aplicativo, a página pode encerrar antes de o
+    // GTM disparar a tag. Para o clique normal na mesma aba, damos até 800 ms
+    // para a fila ser processada; cliques com modificadores preservam o
+    // comportamento padrão de abrir outra aba.
+    const deveAguardar = e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey && a.target !== '_blank';
+    let seguir: number | undefined;
+    let abriu = false;
+    const abrirWhatsApp = () => {
+      if (abriu) return;
+      abriu = true;
+      if (seguir !== undefined) window.clearTimeout(seguir);
+      window.location.assign(a.href);
+    };
+    if (deveAguardar) {
+      e.preventDefault();
+      seguir = window.setTimeout(abrirWhatsApp, 800);
+    }
     w.dataLayer.push({
       event: 'whatsapp_click',
       link_url: a.href,
       link_id: a.id || `wa-${local}`,
       link_text: (a.textContent || a.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim().slice(0, 100),
       link_location: local,
+      ...(deveAguardar && { eventCallback: abrirWhatsApp }),
     });
   }, true);
 }

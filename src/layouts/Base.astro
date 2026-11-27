@@ -20,6 +20,10 @@ import { EMAIL, WHATSAPP_TXT, GTM_ID, enderecos, redes } from '../data/site';
 // servico: páginas de programa; nome e descrição do schema vêm do próprio titulo e da descricao da página.
 interface Props { servico?: { tipo: string; publico: 'empresa' | 'profissional'; formatos?: { nome: string; destaque: string }[] }; titulo: string; descricao: string; fechamento?: boolean | PropsFechamento; schema?: object[]; fundo?: boolean; ogImagem?: string; tipo?: 'website' | 'article' }
 const { servico, titulo, descricao, fechamento = false, schema, fundo = true, ogImagem: ogPropria, tipo = 'website' } = Astro.props;
+// A rota legada /whatsapp/ redireciona em 800 ms para o aplicativo. Nela, o GTM
+// precisa começar a carregar antes do redirecionamento para que a conversão
+// configurada no contêiner tenha oportunidade de ser enviada.
+const carregarGtmImediatamente = Astro.url.pathname === '/whatsapp/';
 const tituloCompleto = Astro.url.pathname === '/' ? `Inner Placement · ${titulo}` : `${titulo} · Inner Placement`;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 // A 404 é servida em qualquer URL inexistente: um canonical para /404/ apontaria para um endereço que não existe.
@@ -66,7 +70,7 @@ const schemaServico = servico && {
   <!-- Consent Mode do Google: nega a medição por padrão: só o aviso de cookies (CookieConsent.astro) libera,
        por categoria, guardando a escolha para as próximas páginas. O Gerenciador de Tags (GTM_ID em
        src/data/site.ts) carrega sempre (adiado, ver abaixo), mas sem medir nada até a permissão ser dada. -->
-  <script is:inline define:vars={{ GTM_ID }}>
+  <script is:inline define:vars={{ GTM_ID, carregarGtmImediatamente }}>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
@@ -87,7 +91,8 @@ const schemaServico = servico && {
         d.head.appendChild(j);
       }
       ev.forEach(function (e) { w.addEventListener(e, carregar, { passive: true }); });
-      w.addEventListener('load', function () { setTimeout(carregar, 6000); });
+      if (carregarGtmImediatamente) carregar();
+      else w.addEventListener('load', function () { setTimeout(carregar, 6000); });
     })(window, document, GTM_ID);
   </script>
   <title>{tituloCompleto}</title>
