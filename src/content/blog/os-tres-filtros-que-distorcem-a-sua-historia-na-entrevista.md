@@ -1,6 +1,6 @@
 ---
 titulo: Os três filtros que distorcem a sua história na entrevista
-titulo_seo: Filtros que distorcem sua história na entrevista
+titulo_seo: Como contar sua história em entrevistas
 descricao: Como apresentar sua trajetória em uma entrevista de emprego? Conheça os três filtros que distorcem sua história e saiba como evitá-los.
 data: 2026-11-24
 atualizado: 2026-11-24

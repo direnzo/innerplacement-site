@@ -1,6 +1,6 @@
 ---
 titulo: "Transição de carreira, recolocação ou outplacement: qual caminho seguir?"
-titulo_seo: "Transição, recolocação ou outplacement: qual escolher?"
+titulo_seo: "Transição, recolocação e outplacement"
 descricao: "Entenda a diferença entre transição de carreira, recolocação e outplacement e descubra qual caminho faz sentido para o seu momento profissional."
 data: 2025-07-25
 atualizado: 2026-11-27
