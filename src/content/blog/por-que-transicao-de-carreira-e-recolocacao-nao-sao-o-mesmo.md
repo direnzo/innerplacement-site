@@ -35,7 +35,7 @@ Ferramentas como assessment, simulações de entrevistas e estratégias de marca
 
 Já a transição de carreira é mais ampla e estratégica. Carreira envolve analisar a trajetória profissional, reforçar ou redefinir o rumo profissional, explorar novas áreas ou formatos de trabalho, alinhar valores e revisar o próprio posicionamento. 
 
-Segundo a Forbes, profissionais que fazem uma transição de carreira com acompanhamento estruturado aumentam em até 2,5 vezes sua clareza de objetivos profissionais e assertividade em decisões futuras, gerando mais satisfação e realização.
+Um acompanhamento estruturado pode ajudar a organizar objetivos, avaliar possibilidades e tomar decisões de carreira com mais clareza.
 
 Nesses casos, é comum que surja o desejo por uma promoção assertiva no sentido mais amplo, não necessariamente um cargo mais alto, mas uma função mais conectada com propósito e habilidades. 
 

@@ -74,7 +74,7 @@ export const menu = [
 export const numeros = [
   { n: '+15', t: 'anos de experiência dos sócios' },
   { n: '+1500', t: 'profissionais atendidos na história dos sócios' },
-  { n: '86%', t: 'recolocados, em média, em 4,5 meses' },
+  { n: '1:1', t: 'acompanhamento personalizado' },
 ];
 
 // Logos de clientes: a documentação v2 (8/11/2026) reduziu aos três abaixo.
