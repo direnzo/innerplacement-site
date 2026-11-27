@@ -71,4 +71,4 @@ Nós atuamos com programas de outplacement, promoção assertiva e movimentaçõ
 
 Buscamos sempre um olhar estratégico, sensível e profundamente humano para ajudar empresas e pessoas a conduzirem suas movimentações de carreira com clareza, consciência e propósito.
 
-Vamos conversar? [Conheça a metodologia da Inner](/metodologia-inner-gestao-carreira/) e descubra como podemos apoiar sua próxima fase de desenvolvimento profissional e organizacional.
+Vamos conversar? [Agende uma conversa sem compromisso](/contato/) ou [conheça a metodologia da Inner](/metodologia-inner-gestao-carreira/) e descubra como podemos apoiar sua próxima fase de desenvolvimento profissional e organizacional.
